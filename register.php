@@ -21,7 +21,6 @@ $doublesFee=getOne('reg_doublesFee');
 $sandFee=getOne('reg_sandFee');
 $totalFee=$fee;
 
-
 $aryDeadline = explode('/',$deadline);
 $dtRegularDeadline = mktime(23, 59, 59, $aryDeadline[0], $aryDeadline[1], $aryDeadline[2]);
 $aryLateDeadline = explode('/',$lateDeadline);
@@ -30,6 +29,15 @@ $timenow = time();
 $isClosed = $dtFinalDeadline - $timenow <= 0;
 $isLate = $dtRegularDeadline - $timenow <= 0;
 $registrationDeadline = date('l, F j, Y', $dtRegularDeadline);
+
+// custom code to handle special thursday double header leagues with higher price
+$doubleHeaderFee = 500.0;
+if ($isLate) {
+  $doubleHeaderFee += $lateFee;
+}
+$doubleHeaderPayPalFee = $doubleHeaderFee * 0.029 + 0.30;
+$doubleHeaderAmount = $doubleHeaderFee + $doubleHeaderPayPalFee;
+// end special thursday double header stuff
 
 if($isClosed) {
   print <<<EOF
@@ -225,14 +233,6 @@ EOF;
   </h1>
 $statusMessage
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_xclick" />
-<input type="hidden" name="business" value="info@portlandvolleyball.org" />
-<input type="hidden" name="item_name" value="$season Team Fee" />
-<input type="hidden" name="amount" value="$amount" />
-<input type="hidden" name="no_shipping" value="1" />
-<input type="hidden" name="cn" value="Your Team Name" />
-<input type="hidden" name="currency_code" value="USD" />
 EOF;
 
   if($formSubmitted == true) {
@@ -298,7 +298,7 @@ button.  Required fields are marked with an asterisk (*).
 </p>
 
 <p>
-The team fee for $season is $$fee.
+The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Thursday Coed Doubleheader leagues.
 
 <!--
 <div>
@@ -339,8 +339,7 @@ EOF;
     print <<<EOF
 </p>
 
-<p>
-If you have already registered, but have not yet paid:
+<p>If you have already registered, but have not yet paid:</p>
 
 <table style="margin-left: 20px;">
   <tr>
@@ -352,16 +351,37 @@ If you have already registered, but have not yet paid:
       <em>Make sure to write the team name on your check.</em>
     </td>
     <td valign="top" style="padding-left: 15px;">
-      Pay using PayPal by clicking the button below.
+      Pay for <strong>standard</strong> leagues using PayPal by clicking the button below.
       <p>
-      <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_xclick" />
+        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
+        <input type="hidden" name="item_name" value="$season Team Fee" />
+        <input type="hidden" name="amount" value="$amount" />
+        <input type="hidden" name="no_shipping" value="1" />
+        <input type="hidden" name="cn" value="Your Team Name" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
+      </form>
       </p>
+    </td>
+    <td valign="top" style="padding-left: 15px;">
+      <p>Pay for <strong>Thursday Coed Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_xclick" />
+        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
+        <input type="hidden" name="item_name" value="$season Double Header League Team Fee" />
+        <input type="hidden" name="amount" value="$doubleHeaderAmount" />
+        <input type="hidden" name="no_shipping" value="1" />
+        <input type="hidden" name="cn" value="Your Team Name" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
+      </form>
     </td>
   </tr>
 </table>
-</form>
 
-<form name="register" method="post" style="border: 1px solid #aaaaaa; padding: 40px;">
+<form name="register" method="post" style="border: 1px solid #aaaaaa; padding: 40px; margin-top: 10px;">
 <table>
   <tr>
     <td>Team Name*</td>
