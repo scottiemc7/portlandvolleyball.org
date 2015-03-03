@@ -1,0 +1,113 @@
+body {
+	background-color: #ffffff;
+}
+
+body, td, p {
+	font-family: verdana, arial, helvetica;
+	font-size: 10pt;
+}
+
+h1 {
+	font-size: 12pt;
+	color: #333399;
+	font-family: arial, helvetica;
+	margin-bottom: 5px;
+}
+
+h4 { color: #0066cc;
+	margin-bottom: 2px;
+	font-family: arial, helvetica;
+	font-size: 11pt; }
+
+p {
+	margin-top: 2px;
+	margin-bottom: 8px;
+}
+
+th {
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: left;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-bottom-color: #000099;
+}
+
+td .number{
+	
+}
+
+#nav {
+	width: 97%;
+	text-align: left;
+	font-size: 12px; 
+	font-weight: bold;
+	padding: 0px;
+	height: 75px;
+	font-family: arial, helvetica, sans;
+	background-color: #0066cc;
+	border: 2px solid #333399;
+	color: #ffffff;
+}
+
+#navLinks {
+	text-align: right;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+
+#subLinks {
+	margin-bottom: 30px;
+}
+#content { 
+	padding: 15px 0px 15px 15px;
+	width: 97%;
+} 
+
+#sidebar { background-color: #ffffcc;
+	float: right;
+	padding: 0px 10px 10px 10px;
+	width: 250px;
+	margin-left: 10px;
+	border: 1px solid #0066cc; }
+
+#nav a:link, .nav a:hover, #nav a:visited {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#subLinks a:link, #subLinks a:visited {
+	font-size: 10px;
+	color: #ffffcc;
+	font-weight: bold;	
+}
+
+.interiorTable td { border-bottom: 1px solid #9999ff;
+	padding: 6px; }
+.interiorTable th { text-align: left; 
+	border-bottom: 2px solid #9999ff;
+	border-top: 2px solid #9999ff;
+	padding: 6px;
+}
+
+.interiorTable {
+	width: 100%;
+}
+
+
+/*just like interiorTable, but smaller */
+.subTable td { border-bottom: 1px solid #9999ff;
+	padding: 2px;
+	font-size: 10px; }
+.subTable th { text-align: left; 
+	border-bottom: 2px solid #9999ff;
+	border-top: 2px solid #9999ff;
+	padding: 2px;
+	font-size: 10px;
+}
+
+.highlight 
+{
+	font-weight: bold;
+	color: #990000;	
+}

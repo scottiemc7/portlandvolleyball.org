@@ -1,0 +1,28 @@
+<?php
+	session_start();
+	//session_register('logged_in');
+	//if (!$HTTP_SESSION_VARS['logged_in']) {
+	if (!$_SESSION['logged_in']) {
+   		header("Location: login.php");
+   	}
+?>
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="admin.css">
+</head>
+
+<body>
+<div class="header">PVA Administration</div>
+<span class="button"><a href="/index.php">PVA site</a></span>
+<span class="button"><a href="index.php">Menu</a></span>
+<span class="button"><a href="homepage_add.php">Home Page Articles</a></span>
+<span class="button"><a href="events.php">Events</a></span>
+<span class="button"><a href="team_add.php">Teams</a></span>
+<span class="button"><a href="league_add.php">Leagues</a></span>
+<span class="button"><a href="gyms_add.php">Gyms</a></span>
+<span class="button"><a href="games_add.php">Games</a></span>
+<span class="button"><a href="links_add.php">Links</a></span>
+<span class="button"><a href="registrations.php">Registrations</a></span>
+<span class="button"><a href="ref_add.php">Referees</a></span>

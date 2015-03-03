@@ -1,0 +1,25 @@
+<?php
+	session_start();
+	//session_register('logged_in_ref');
+	if (!$_SESSION['logged_in_ref']) {
+   		header("Location: login.php");
+   	}
+?>
+<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
+
+<html>
+<head>
+	<style type="text/css" media="all">
+ 	  @import "ref.css";
+	</style>
+
+	<link rel="stylesheet"
+   	type="text/css"
+   	media="print" href="print.css" />
+</head>
+
+<body>
+<div class="header">PVA Administration</div>
+<span class="button"><a href="/index.php">PVA site</a></span>
+<span class="button"><a href="index.php">Edit scores</a></span>
+<span class="button"><a href="login.php">Ref login/out</a></span>

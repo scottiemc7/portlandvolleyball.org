@@ -1,0 +1,12 @@
+<?php include("header.html"); ?>
+
+<p><b>Registrations:</b> <a href="/admin/registrations.php">View</a></p>
+<p><b>Events:</b> <a href="/admin/events_add.php">Add/Edit</a></p>
+<p><b>Home page:</b> <a href="/admin/homepage_add.php">Add/Edit</a></p>
+<p><b>Teams:</b>  <a href="/admin/team_add.php">Add/Edit</a></p>
+<p><b>Leagues:</b>  <a href="/admin/league_add.php">Add/Edit</a></p>
+<p><b>Gyms:</b>  <a href="/admin/gyms_add.php">Add/Edit</a></p>
+<p><b>Games:</b> <a href="/admin/games_add.php">Add/Edit</a></p>
+
+</body>
+</html>

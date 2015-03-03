@@ -1,0 +1,124 @@
+<?php include("header.html"); ?>
+
+<h1>Add a new event</h1>
+
+<?php
+	require 'DB.php';
+	$dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
+	$dbh = DB::connect($dsn);
+	if (DB::isError($dbh)) {
+		die($dbh->getMessage());
+	}
+		
+	if ($HTTP_POST_VARS['delete'] == "yes") {
+		$dbh->query("DELETE FROM events WHERE id = $id");
+	}
+	
+	if ($HTTP_POST_VARS['title'] != "") {
+		$bOK = true;
+		
+		$dt_array = explode('/', $HTTP_POST_VARS['date']);
+		if (!checkdate($dt_array[0], $dt_array[1], $dt_array[2])) {
+			echo "<script language=\"Javascript\">";
+			echo "alert(\"Date must be M(M)/D(D)/YYYY\");";
+			echo "</script>";
+			$bOK = false;
+		}
+		if ($HTTP_POST_VARS['date'] != "") {
+			$dtarray = explode('/',$HTTP_POST_VARS['date']);
+			$dt = $dtarray[2] . '-' . $dtarray[0] . '-' . $dtarray[1];}
+			else {$dt = NULL;}
+		if ($HTTP_POST_VARS['time'] != "") {$tm = $HTTP_POST_VARS['time'];}
+		if ($HTTP_POST_VARS['description'] != "") {$desc = ereg_replace("'", "&#39", $HTTP_POST_VARS['description']);}
+			else {$desc = "&nbsp";}
+		$title = ereg_replace("'", "&#39", $HTTP_POST_VARS['title']);
+		
+		if ($bOK == true) {
+			$status = $dbh->query("INSERT INTO events (title, description, dt, tm) VALUES('$title', '$desc', '$dt', '$tm')");
+			if (DB::isError($status)) {
+				die($status->getMessage());
+			}
+		}
+	}
+
+echo "<form name=\"addEvent\" class=\"eventForm\" method=\"post\">";
+echo "	<table>";
+echo " 		<tr>";
+echo "		<td>Date</td>";
+echo "		<td><input type=\"text\" name=\"date\" ";
+if (($bOK != true) && (isset($dt_array))) printf("value=\"%d/%d/%d\"", $dt_array[0], $dt_array[1], $dt_array[2]);
+echo "		</td>";
+echo "		</tr>";
+echo "		<tr>";
+echo "			<td>Time</td>";
+echo "			<td><input type=\"text\" name=\"time\" ";
+if ($bOK != true) echo "value=\"$tm\" ";
+echo "size=\"10\"></td>";
+echo "		</tr>";
+echo "		<tr>";
+echo "			<td>Event</td>";
+echo "			<td><input type=\"text\" name=\"title\" ";
+if ($bOK != true) echo "value=\"$title\" ";
+echo "size=\"40\"></td>";
+echo "		</tr>";
+echo "		<tr>";
+echo "			<td>Comments</td>";
+echo "			<td><textarea name=\"description\" cols=\"35\" rows=\"3\">";
+if ($bOK != true) echo "$desc";
+echo "</textarea></td>";
+
+?>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="submit" value="Add Event"></td>
+		</tr>
+	</table>			
+</form>
+
+<?php
+	$qry = $dbh->getAll("SELECT *
+			FROM events
+			ORDER BY dt, tm ASC");
+	if (!$qry) {
+		echo "<div style=\"\"width: 750px; font-weight: bold; text-align: center;\"\">There are no events to display.</div>";
+	} else {
+		echo "<h1>Existing Events</h1>
+			<table cellpadding=\"6\" cellspacing=\"0\" width=\"750\" class=\"eventTable\">
+				<tr>
+					<th>Date/Time</th>
+					<th>Event</th>
+					<th>Comments</th>
+					<th>&nbsp;</th>
+				</tr>";
+		foreach($qry as $result) {
+			$dtarray = explode('-', $result[3]);
+			$tmarray = explode(':', $result[4]);
+			echo "<tr>
+		<td nowrap valign=\"top\">";
+		printf("%d/%d/%d<br>", $dtarray[1], $dtarray[2], $dtarray[0]);
+		printf("%d:%02d</td>", $tmarray[0], $tmarray[1]);
+		echo "
+		<td valign=\"top\">$result[1]</td>
+		<td valign=\"top\">
+			$result[2]";
+			if ($result[5] != "") {echo "<br><a href=\"$result[5]\">more information</a>";}	
+		echo "
+		</td>
+		<td>
+		<form action=\"events_edit.php\" method=\"post\">
+			<input type=\"submit\" value=\"Edit\">
+			<input type=\"hidden\" name=\"id\" value=\"$result[0]\">
+		</form>
+		</td>
+	</tr>";
+		}
+	}
+	
+?>
+
+</table>
+</body>
+</html>
+
+

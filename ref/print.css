@@ -1,0 +1,25 @@
+
+body, p, td, th { font-family: verdana, arial, helvetica, sans;
+	font-size: .7em; 
+}
+	
+h1 { font-size: 1.2em;
+	color: #666666; 
+}
+
+form { margin-bottom: 0px; }
+
+.header { width: 100%;
+	font-size: 1.0em;
+	font-weight: bold;
+	color: #003399;
+	background-color: #cccccc; 
+	padding: 10px; 
+}
+
+.eventTable td { border-bottom: 1px solid #9999ff;
+}
+.eventTable th { text-align: left; 
+	border-bottom: 2px solid #9999ff;
+	border-top: 2px solid #9999ff;
+}
