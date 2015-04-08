@@ -127,6 +127,7 @@ print <<<EOF
     <option value="7:45">7:45</option>
     <option value="8:00">8:00</option>
     <option value="8:15">8:15</option>
+    <option value="8:30">8:30</option>
     <option value="9:00">9:00</option>
     <option value="9:15">9:15</option>
     <option value="9:30">9:30</option>
