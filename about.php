@@ -19,49 +19,45 @@
 			board members are as follows:</p>
 			<table cellspacing="4">
         <tr>
-          <td>Dave DeGraff</td>
+          <td>Jocelyn Pease</td>
           <td>President</td>
-         </tr>
+        </tr>
         <tr>
-          <td>Chihiro Aber</td>
+          <td>Ronda Johnson</td>
           <td>Vice President</td>
-         </tr>
+        </tr>
         <tr>
-          <td>OPEN</td>
-          <td>Secretary</td>
-         </tr>
-        <tr>
-          <td>OPEN</td>
+          <td>Abby Strom</td>
           <td>Treasurer</td>
-         </tr>
+        </tr>
+        <tr>
+          <td>David Rueck</td>
+          <td>Secretary</td>
+        </tr>
         <tr>
           <td>Lisa Walter</td>
           <td>Referee-in-Chief</td>
-         </tr>
+        </tr>
         <tr>
           <td>Michelle Baldwin</td>
           <td>Executive Assistant</td>
-         </tr>
+        </tr>
         <tr>
           <td>Jill Emmert-Tricarico</td>
           <td>Member at Large</td>
-         </tr>
+        </tr>
         <tr>
-          <td>Ronda Johnson</td>
+          <td>Carly Dirks</td>
           <td>Member at Large</td>
-         </tr>
+        </tr>
         <tr>
-          <td>Stefanie Linch</td>
+          <td>Gloria Bremer</td>
           <td>Member at Large</td>
-         </tr>
+        </tr>
         <tr>
-          <td>Jocelyn Pease</td>
+          <td>Meghan Mulkey</td>
           <td>Member at Large</td>
-         </tr>
-        <tr>
-          <td>Abby Strom</td>
-          <td>Member at Large</td>
-         </tr>
+        </tr>
     </table>
 		
 <?php include("footer.html"); ?>
