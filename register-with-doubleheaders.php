@@ -235,7 +235,7 @@ EOF;
   if($formSubmitted == true) {
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
-<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Thursday Coed Doubleheader leagues.</p>
+<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.</p>
 <!--
  <div>
    <b>NOTE: If registering a quads team then contact Michelle (<a href="mailto:info@portlandvolleyball.org">info@portlandvolleyball.org</a>) to pay.</b>
@@ -292,7 +292,7 @@ You have two payment options:
       </form>
     </p>
 
-    <p>Pay for <strong>Thursday Coed Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
+    <p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
     <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
@@ -323,7 +323,7 @@ button.  Required fields are marked with an asterisk (*).
 </p>
 
 <p>
-The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Thursday Coed Doubleheader leagues.
+The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
 
 <!--
 <div>
@@ -391,7 +391,7 @@ EOF;
       </p>
     </td>
     <td valign="top" style="padding-left: 15px;">
-      <p>Pay for <strong>Thursday Coed Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
+      <p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
         <input type="hidden" name="business" value="info@portlandvolleyball.org" />
