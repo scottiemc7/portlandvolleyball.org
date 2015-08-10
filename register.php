@@ -30,20 +30,18 @@ $isClosed = $dtFinalDeadline - $timenow <= 0;
 $isLate = $dtRegularDeadline - $timenow <= 0;
 $registrationDeadline = date('l, F j, Y', $dtRegularDeadline);
 
-// custom code to handle sand price
-$sandPayPalFee = $sandFee * 0.029 + 0.30;
-$sandAmount = round($sandFee + $sandPayPalFee, 2);
-// end special sand stuff
+// custom code to handle special thursday double header leagues with higher price
+$doubleHeaderFee = 500.0;
+$doubleHeaderPayPalFee = $doubleHeaderFee * 0.029 + 0.30;
+$doubleHeaderAmount = $doubleHeaderFee + $doubleHeaderPayPalFee;
+// end special thursday double header stuff
 
 if($isClosed) {
   print <<<EOF
 <p>We are no longer accepting online registrations.</p>
 EOF;
 }else{
-  if($isLate) {
-    $totalFee+=$lateFee;
-    $sandAmount += $lateFee;
-  }
+  if($isLate) $totalFee+=$lateFee;
   	
   $statusMessage = "";
   $formSubmitted = false;
@@ -237,7 +235,7 @@ EOF;
   if($formSubmitted == true) {
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
-<p>The team fee for $season is $$fee for grass leagues, or $$sandFee for sand leagues.</p>
+<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Thursday Coed Doubleheader leagues.</p>
 <!--
  <div>
    <b>NOTE: If registering a quads team then contact Michelle (<a href="mailto:info@portlandvolleyball.org">info@portlandvolleyball.org</a>) to pay.</b>
@@ -251,6 +249,16 @@ Also, since it's after $registrationDeadline,
 <b>you now owe the $$lateFee late fee</b>.
 EOF;
     } 
+    if($isSummer) {
+      print <<<EOF
+<div>
+<b>Doubles teams: </b> the fee is $$doublesFee.  Please send your check by mail.
+</div>
+<div>
+<b>Sand teams: </b> the fee is $$sandFee.  Please send your check by mail.
+</div>
+EOF;
+    }
 
     print <<<EOF
 <p>
@@ -269,7 +277,7 @@ You have two payment options:
     for a free account, and an additional service fee will be charged
     for all online payments.</p>
 
-    <p>Pay for <strong>grass</strong> leagues using PayPal by clicking the button below.</p>
+    <p>Pay for <strong>standard</strong> leagues using PayPal by clicking the button below.</p>
 
     <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -284,13 +292,13 @@ You have two payment options:
       </form>
     </p>
 
-    <p>Pay for <strong>sand</strong> leagues using PayPal by clicking <em>this</em> button.</p>
+    <p>Pay for <strong>Thursday Coed Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
     <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
         <input type="hidden" name="business" value="info@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Sand Team Fee" />
-        <input type="hidden" name="amount" value="$sandAmount" />
+        <input type="hidden" name="item_name" value="$season Double Header League Team Fee" />
+        <input type="hidden" name="amount" value="$doubleHeaderAmount" />
         <input type="hidden" name="no_shipping" value="1" />
         <input type="hidden" name="cn" value="Your Team Name" />
         <input type="hidden" name="currency_code" value="USD" />
@@ -315,7 +323,7 @@ button.  Required fields are marked with an asterisk (*).
 </p>
 
 <p>
-The team fee for $season is $$fee for grass leagues, or $$sandFee for sand leagues.
+The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Thursday Coed Doubleheader leagues.
 
 <!--
 <div>
@@ -368,7 +376,7 @@ EOF;
       <em>Make sure to write the team name on your check.</em>
     </td>
     <td valign="top" style="padding-left: 15px;">
-      Pay for <strong>grass</strong> leagues using PayPal by clicking the button below.
+      Pay for <strong>standard</strong> leagues using PayPal by clicking the button below.
       <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
@@ -383,12 +391,12 @@ EOF;
       </p>
     </td>
     <td valign="top" style="padding-left: 15px;">
-      <p>Pay for <strong>sand</strong> leagues using PayPal by clicking <em>this</em> button.</p>
+      <p>Pay for <strong>Thursday Coed Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
         <input type="hidden" name="business" value="info@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Sand Team Fee" />
-        <input type="hidden" name="amount" value="$sandAmount" />
+        <input type="hidden" name="item_name" value="$season Double Header League Team Fee" />
+        <input type="hidden" name="amount" value="$doubleHeaderAmount" />
         <input type="hidden" name="no_shipping" value="1" />
         <input type="hidden" name="cn" value="Your Team Name" />
         <input type="hidden" name="currency_code" value="USD" />
