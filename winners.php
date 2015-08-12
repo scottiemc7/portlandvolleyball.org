@@ -1,5 +1,24 @@
 <?php include("header.html"); ?>
 
+<h1>Spring 2015 Playoff Winners</h1>
+<p>
+  <ul>
+    <li><strong>Women&#39;s A1</strong> Notorious DIG</li>
+    <li><strong>Women&#39;s A2</strong> Team North </li>
+    <li><strong>Women&#39;s BB 1</strong> Spiked Punch</li>
+    <li><strong>Women&#39;s BB 2</strong> The Guidettes</li>
+    <li><strong>Women&#39;s B</strong> We're Out of Shape </li>
+    <li><strong>Women&#39;s AA</strong> Hot Spicy Ballz </li>
+    <li><strong>Women&#39;s A Tuesdays</strong> Safe Sets </li>
+    <li><strong>Women&#39;s A Wednesday</strong> Twice Around the Block</li>
+    <li><strong>Coed A</strong> The Servicals</li>
+    <li><strong>Coed B</strong> Booya </li>
+    <li><strong>Coed C</strong> A &amp; L Bombers </li>
+    <li><strong>Coed A Thursday</strong> Court Jesters </li>
+    <li><strong>Coed B Thursday</strong> Top Gun</li>
+  </ul>
+</p>
+
 <h1>Winter 2015 Playoff Winners</h1>
 <p>
   <ul>
