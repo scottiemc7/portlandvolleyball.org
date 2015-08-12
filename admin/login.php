@@ -5,7 +5,7 @@
 	//$pass = $HTTP_GET_VARS['pw'];
 	$user = $_REQUEST['uname'];
 	$pass = $_REQUEST['pw'];
-	if ($user == "pva_admin" && $pass == "@dm1n1st37") {
+	if ($user == "pva_admin" && $pass == "deep energy idea store") {
 		//$HTTP_SESSION_VARS['logged_in'] = true;
 		$_SESSION['logged_in'] = true;
 		header("Location: index.php");

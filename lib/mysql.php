@@ -8,7 +8,7 @@ function dbinit() {
 
   $host='mysql.portlandvolleyball.org';
   $username='pvaDBusr';
-  $password='V0ll3y';
+  $password='ifGBO5wR5wQtJp3';
   $dbname='pvaDB';
 
   $mysql=new mysqli($host,$username,$password,$dbname);
