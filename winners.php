@@ -1,5 +1,16 @@
 <?php include("header.html"); ?>
 
+<h1>Summer 2015 Playoff Winners</h1>
+<p>
+  <ul>
+    <li><strong>Women&#39;s A1</strong> Shin-Digs</li>
+    <li><strong>Women&#39;s A2</strong> Deflated Balls</li>
+    <li><strong>Coed Reverse Quads A</strong> PVA All-Stars</li>
+    <li><strong>Coed Reverse Quads B</strong> iSpike</li>
+    <li><strong>Sand</strong> Sunshine</li>
+  </ul>
+</p>
+
 <h1>Spring 2015 Playoff Winners</h1>
 <p>
   <ul>
