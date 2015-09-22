@@ -1,5 +1,6 @@
 body {
 	background-color: #ffffff;
+  margin: 10px;
 }
 
 body, td, p {
@@ -11,7 +12,7 @@ h1 {
 	font-size: 12pt;
 	color: #333399;
 	font-family: arial, helvetica;
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 h4 { color: #0066cc;
@@ -24,6 +25,14 @@ p {
 	margin-bottom: 8px;
 }
 
+li {
+  padding-bottom: 5px;
+}
+
+li li:first-child {
+  padding-top: 5px;
+}
+
 th {
 	font-size: 10pt;
 	font-weight: bold;
@@ -33,21 +42,18 @@ th {
 	border-bottom-color: #000099;
 }
 
-td .number{
-	
-}
-
 #nav {
-	width: 97%;
+	width: 100%;
 	text-align: left;
 	font-size: 12px; 
 	font-weight: bold;
-	padding: 0px;
-	height: 75px;
+	padding: 0 10px 0 0;
+	height: 79px;
 	font-family: arial, helvetica, sans;
-	background-color: #0066cc;
-	border: 2px solid #333399;
+	background-color: #06c;
+	border: 2px solid #06c;
 	color: #ffffff;
+  box-sizing: border-box;
 }
 
 #navLinks {
@@ -59,9 +65,11 @@ td .number{
 #subLinks {
 	margin-bottom: 30px;
 }
+
 #content { 
+  box-sizing: border-box;
 	padding: 15px 0px 15px 15px;
-	width: 97%;
+	width: 100%;
 } 
 
 #sidebar { background-color: #ffffcc;
