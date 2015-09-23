@@ -15,10 +15,12 @@ h1 {
   margin-bottom: 5px;
 }
 
-h4 { color: #0066cc;
-	margin-bottom: 2px;
+h4 {
+  color: #0066cc;
+	margin-bottom: 10px;
 	font-family: arial, helvetica;
-	font-size: 11pt; }
+	font-size: 11pt;
+}
 
 p {
 	margin-top: 2px;
@@ -72,12 +74,14 @@ th {
 	width: 100%;
 } 
 
-#sidebar { background-color: #ffffcc;
+#sidebar {
+  background-color: #ffffcc;
 	float: right;
-	padding: 0px 10px 10px 10px;
+	padding: 0px 15px 15px 15px;
 	width: 250px;
-	margin-left: 10px;
-	border: 1px solid #0066cc; }
+	margin: 0 0 20px 20px;
+	border: 1px solid #0066cc;
+}
 
 #nav a:link, .nav a:hover, #nav a:visited {
 	color: #ffffff;
