@@ -2,8 +2,8 @@
 
 <?php
 
-include '/home/pva/portlandvolleyball.org/lib/mysql.php';
-include '/home/pva/portlandvolleyball.org/lib/support.php';
+include '../lib/mysql.php';
+include '../lib/support.php';
 
 $error=dbinit();
 if($error!=="") {

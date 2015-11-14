@@ -1,7 +1,7 @@
 <?php
 
 include("header.html");
-include '/home/pva/portlandvolleyball.org/lib/mysql.php';
+include 'lib/mysql.php';
 
 print <<<EOF
 Standings are calculated according to the <a href="pvarules.php#standings">PVA Rules.</a><br />

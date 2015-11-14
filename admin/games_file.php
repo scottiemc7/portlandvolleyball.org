@@ -1,6 +1,6 @@
 <?php
 
-include '/home/pva/portlandvolleyball.org/lib/mysql.php';
+include '../lib/mysql.php';
 
 session_start();
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {

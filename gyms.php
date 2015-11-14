@@ -1,7 +1,7 @@
 <?php 
 
 include("header.html");
-include '/home/pva/portlandvolleyball.org/lib/mysql.php';
+include 'lib/mysql.php';
 
 print <<<EOF
 <h1>PVA Gyms / Playing Locations</h1>

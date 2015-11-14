@@ -1,6 +1,6 @@
 <?php
 
-include '/home/pva/portlandvolleyball.org/lib/mysql.php';
+include '../lib/mysql.php';
 
 session_start();
 //session_register('logged_in_ref');

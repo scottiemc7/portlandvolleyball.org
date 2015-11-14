@@ -2,7 +2,7 @@
 <?php
 
 include("header.html");
-include '/home/pva/portlandvolleyball.org/lib/mysql.php';
+include '../lib/mysql.php';
 
 $error=dbinit();
 if($error!=="") {

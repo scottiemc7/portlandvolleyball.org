@@ -3,7 +3,7 @@
 
 include("header.html");
 
-include '/home/pva/portlandvolleyball.org/lib/mysql.php';
+include '../lib/mysql.php';
 
 $ref = $_SESSION['ref'];
 
