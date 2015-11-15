@@ -17,9 +17,7 @@ if($error!=="") {
   exit;
 }
 
-$sql=<<<EOF
-SELECT * FROM registration_leagues
-EOF;
+$sql = 'SELECT * FROM leagues';
 
 $leagues=array();
 if($result=dbquery($sql)) {
@@ -30,9 +28,9 @@ if($result=dbquery($sql)) {
     $night=$row['night'];
     $active=$row['active'];
 
-    $leagues[$id]['name']=$name;
-    $leagues[$id]['night']=$night;
-    $leagues[$id]['active']=$active;
+    $leagues[$id]['name'] = $name;
+    $leagues[$id]['night'] = $night;
+    $leagues[$id]['active'] = $active;
   }
 
   mysqli_free_result($result);
@@ -107,4 +105,4 @@ dbclose();
 
 header("Content-type: application/octet-stream");
 header("Content-disposition: attachment; filename=registrations.csv");
-print $contents; 
+print $contents;
