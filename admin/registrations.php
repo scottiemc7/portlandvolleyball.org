@@ -16,22 +16,22 @@ if ($_POST['delete'] == "true") {
     print "***ERROR*** dbquery: Failed query<br />$error\n";
     exit;
   }
-}	
+}
 if ($_POST['deleteall'] == "true") {
   if(! dbquery("DELETE FROM registration WHERE 1")) {
     $error=dberror();
     print "***ERROR*** dbquery: Failed query<br />$error\n";
     exit;
   }
-}	
+}
 if ($_POST['paid'] == "true") {
   if(! dbquery("UPDATE registration SET paid=1 WHERE id=$id")) {
     $error=dberror();
     print "***ERROR*** dbquery: Failed query<br />$error\n";
     exit;
   }
-}	
-	
+}
+
 $count=0;
 if($result=dbquery('SELECT COUNT(*) AS count FROM registration')) {
   $row=mysqli_fetch_assoc($result);
@@ -42,7 +42,7 @@ if($result=dbquery('SELECT COUNT(*) AS count FROM registration')) {
   print "***ERROR*** dbquery: Failed query<br />$error\n";
   exit;
 }
-	
+
 $countPaid=0;
 if($result=dbquery('SELECT COUNT(*) AS count FROM registration WHERE paid=1')) {
   $row=mysqli_fetch_assoc($result);
@@ -53,15 +53,14 @@ if($result=dbquery('SELECT COUNT(*) AS count FROM registration WHERE paid=1')) {
   print "***ERROR*** dbquery: Failed query<br />$error\n";
   exit;
 }
-  
-$sql=<<<EOF
-SELECT r.id AS id, teamname, rl.name AS league1, mgrName, mgrPhone, mgrEmail, 
-rl.night AS night1, rl2.name AS league2, rl2.night AS night2, r.paid AS paid, 
-(select count(*) from team_members where teamid = r.id) as teammembers FROM 
-((registration r left join registration_leagues rl on rl.id = r.league) 
-left join registration_leagues rl2 on rl2.id = r.league2) 
-ORDER BY rl.name, rl.night, teamname
-EOF;
+
+$sql = '
+  SELECT r.id AS id, teamname, rl.name AS league1, mgrName, mgrPhone, mgrEmail,
+  rl.night AS night1, rl2.name AS league2, rl2.night AS night2, r.paid AS paid,
+  (select count(*) from team_members where teamid = r.id) as teammembers FROM
+  ((registration r left join leagues rl on rl.id = r.league)
+  left join leagues rl2 on rl2.id = r.league2)
+  ORDER BY rl.name, rl.night, teamname';
 
 if($result=dbquery($sql)) {
 
@@ -121,7 +120,7 @@ EOF;
   <td valign="top">$mgrEmail</td>
   <td nowrap="nowrap">
 EOF;
-        
+
       if(!$paid){
         $teamname = str_replace("'", "\'", $teamname);
         print <<<EOF
@@ -169,17 +168,16 @@ EOF;
 }
 
 dbclose();
-  
+
 /****************************************************************/
 
 function showSummary() {
 
-  $sql=<<<EOF
-SELECT name, night, 
-(SELECT count(*) FROM registration WHERE league=registration_leagues.id) AS registered, 
-(SELECT count(*) FROM registration WHERE league=registration_leagues.id AND paid=1) AS paid 
-FROM registration_leagues WHERE active = 1 ORDER BY name, night
-EOF;
+  $sql = '
+    SELECT name, night, cap,
+    (SELECT count(*) FROM registration WHERE league=leagues.id) AS registered,
+    (SELECT count(*) FROM registration WHERE league=leagues.id AND paid=1) AS paid
+    FROM leagues WHERE active = 1 ORDER BY name, night';
 
   if($result=dbquery($sql)) {
 
@@ -191,6 +189,7 @@ EOF;
   <th>Night of week</th>
   <th>Registered</th>
   <th>Paid</th>
+  <th>Cap</th>
 </tr>
 
 EOF;
@@ -200,6 +199,7 @@ EOF;
       $name=$row['name'];
       $night=$row['night'];
       $registered=$row['registered'];
+      $cap = $row['cap'];
       $paid=$row['paid'];
 
       print <<<EOF
@@ -208,6 +208,7 @@ EOF;
   <td>$night</td>
   <td>$registered</td>
   <td>$paid</td>
+  <td>$cap</td>
 </tr>
 EOF;
     }
@@ -223,5 +224,5 @@ EOF;
     exit;
   }
 }
-						
+
 ?>
