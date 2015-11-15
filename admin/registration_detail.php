@@ -26,7 +26,7 @@ if(isset($_POST['league'])) {
 $sql=<<<EOF
 SELECT r.id AS id, teamname, rl.name AS league1, rl.night AS night1, mgrName, mgrPhone, mgrPhone2, mgrEmail, mgrEmail2,
 addr1, addr2, city, state, zip, altName, altPhone, altEmail, comments, rl2.name AS league2, rl2.night AS night2, newOld
-FROM ((registration r LEFT JOIN registration_leagues rl on rl.id = r.league) LEFT JOIN registration_leagues rl2 on rl2.id = r.league2)
+FROM ((registration r LEFT JOIN leagues rl on rl.id = r.league) LEFT JOIN leagues rl2 on rl2.id = r.league2)
 WHERE r.id = $id
 EOF;
 
@@ -41,7 +41,7 @@ if($result=dbquery($sql)) {
 <h1>Team Details</h1>
 
 <form method="post">
-Change league to: 
+Change league to:
 <select name="league">
   <option value="">-- Select --</option>
 EOF;
@@ -92,7 +92,7 @@ EOF;
   <tr><td>Alternate phone:</td><td>$altPhone&nbsp;</td></tr>
   <tr><td>Alternate email:</td><td>$altEmail&nbsp;</td></tr>
   <tr><td>Team status:</td><td>$newOld&nbsp;</td></tr>
-  <tr><td>Comments: </td><td>$comments&nbsp;</td></tr>	
+  <tr><td>Comments: </td><td>$comments&nbsp;</td></tr>
 </table>
 EOF;
     }
@@ -117,7 +117,8 @@ EOF;
 
 function getLeagues() {
   $sql=<<<EOF
-SELECT id, name, night FROM registration_leagues WHERE active=1
+SELECT id, name, night FROM leagues WHERE active=1
+ORDER BY name, night
 EOF;
 
   if($result=dbquery($sql)) {
