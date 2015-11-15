@@ -81,7 +81,7 @@ EOF;
     print <<<EOF
 <br style="clear: both;" />
 <p />
-<table cellpadding="6" cellspacing="0" width="750" class="eventTable">
+<table cellpadding="6" cellspacing="0" class="eventTable">
 <tr>
   <th>Team Name</th>
   <th>Roster submitted?</th>
@@ -112,13 +112,13 @@ EOF;
       print <<<EOF
 <tr>
   <td nowrap valign="top"><a href="registration_detail.php?id=$id">$teamname</a><br/>$paidstring</td>
-  <td>$rosterstring</td>
-  <td nowrap>$league1 $night1</td>
-  <td nowrap>$league2 $night2 &nbsp;</td>
+  <td valign="top">$rosterstring</td>
+  <td valign="top" nowrap>$league1 - $night1</td>
+  <td valign="top" nowrap>$league2 - $night2&nbsp;</td>
   <td valign="top">$mgrName</td>
   <td valign="top">$mgrPhone</td>
   <td valign="top">$mgrEmail</td>
-  <td nowrap="nowrap">
+  <td valign="top" nowrap>
 EOF;
 
       if(!$paid){

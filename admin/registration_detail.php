@@ -82,8 +82,8 @@ EOF;
       print <<<EOF
 <table border="1" cellspacing="0" cellpadding="3">
   <tr><td>Team name:</td><td>$teamname</td></tr>
-  <tr><td>League:</td><td>$league1 $night1</td></tr>
-  <tr><td>2nd choice:</td><td>$league2 $night2</td></tr>
+  <tr><td>League:</td><td>$league1 - $night1</td></tr>
+  <tr><td>2nd choice:</td><td>$league2 - $night2</td></tr>
   <tr><td>Manager:</td><td>$mgrName</td></tr>
   <tr><td>Phone:</td><td>$mgrPhone, $mgrPhone2</td></tr>
   <tr><td>Email:</td><td>$mgrEmail, $mgrEmail2</td></tr>
