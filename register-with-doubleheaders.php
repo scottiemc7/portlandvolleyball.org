@@ -42,15 +42,15 @@ if($isClosed) {
 EOF;
 }else{
   if($isLate) $totalFee+=$lateFee;
-  	
+
   $statusMessage = "";
   $formSubmitted = false;
-  	
+
   //process form
   if($_POST['teamName'] != "") {
     $bOK = true;
     $prob_spam = false;
- 		
+
     $teamName = $_POST['teamName'];
     if(strlen($teamName) == 0) $bOK=false;
     //if(substr_count($teamName, '.net') + substr_count($teamName, '.com') + substr_count($teamName, '.org') > 0) {
@@ -95,7 +95,7 @@ EOF;
       $prob_spam = true;
       $bOK = false;
     }
-        
+
     if($league == "") {
       $bOK = false;
     }else{
@@ -132,7 +132,7 @@ EOF;
     }
 
     $newOld=$_POST['newOld'];
-        
+
     if($bOK == true) {
 
       // Prevent SQL injection
@@ -160,11 +160,11 @@ EOF;
       $sql=<<<EOF
 INSERT INTO registration(teamName, mgrName, mgrPhone, mgrPhone2,
 mgrEmail, mgrEmail2, altName, altPhone, altPhone2, altEmail, league, league2,
-addr1, addr2, city, state, zip, comments, night, newOld) 
-VALUES('$teamNameClean', '$mgrNameClean', '$mgrPhoneClean', '$mgrPhone2Clean', 
-'$mgrEmailClean', '$mgrEmail2Clean', '$altNameClean', '$altPhoneClean', 
-'$altPhone2Clean', '$altEmailClean', '$leagueClean', '$league2Clean', 
-'$addr1Clean', '$addr2Clean', '$cityClean', '$stateClean', 
+addr1, addr2, city, state, zip, comments, night, newOld)
+VALUES('$teamNameClean', '$mgrNameClean', '$mgrPhoneClean', '$mgrPhone2Clean',
+'$mgrEmailClean', '$mgrEmail2Clean', '$altNameClean', '$altPhoneClean',
+'$altPhone2Clean', '$altEmailClean', '$leagueClean', '$league2Clean',
+'$addr1Clean', '$addr2Clean', '$cityClean', '$stateClean',
 '$zipClean', '$commentsClean', '$nightClean', '$newOldClean')
 EOF;
       if(!dbquery($sql)) {
@@ -175,7 +175,7 @@ EOF;
 
       $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
       $formSubmitted = true;
-        
+
       $mailstring=<<<EOF
 Team: $teamName
 Manager: $mgrName
@@ -190,7 +190,7 @@ Status: $newOld
 Comments: $comments
 
 EOF;
-  			
+
       mail("register@portlandvolleyball.org", "New registration - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
     }elseif ($prob_spam == true) {
       $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
@@ -209,7 +209,7 @@ League: $leaguename ($leaguenight)
 Status: $newOld
 Comments: $comments
 EOF;
-  			
+
       //mail("pva@portlandvolleyball.org", "Probable pva reg spam - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
     }else{
       $statusMessage=<<<EOF
@@ -245,10 +245,10 @@ EOF;
 
     if($isLate) {
       print <<<EOF
-Also, since it's after $registrationDeadline, 
+Also, since it's after $registrationDeadline,
 <b>you now owe the $$lateFee late fee</b>.
 EOF;
-    } 
+    }
     if($isSummer) {
       print <<<EOF
 <div>
@@ -336,7 +336,7 @@ EOF;
     if($isLate) {
       print <<<EOF
 <b>
-Also, since it's after $registrationDeadline, 
+Also, since it's after $registrationDeadline,
 you owe the $$lateFee late fee.
 </b>
 Please include it with your payment.
@@ -470,8 +470,8 @@ EOF;
     $leagueSelect="";
 
     $sql=<<<EOF
-SELECT id, name, night, 
-(SELECT COUNT(*) FROM registration WHERE league=registration_leagues.id and paid=1) AS number 
+SELECT id, name, night,
+(SELECT COUNT(*) FROM registration WHERE league=registration_leagues.id and paid=1) AS number
 FROM registration_leagues WHERE active=1 ORDER BY name, night
 EOF;
 
@@ -482,7 +482,7 @@ EOF;
 	$night=$row['night'];
 	$number=$row['number'];
 
-//    if($number < 8) 
+//    if($number < 8)
 
         $leagueSelect.=<<<EOF
 <option value="$id">$name - $night</option>
@@ -533,7 +533,7 @@ EOF;
       <select name="league2">
       $leagueSelect
       </select>
-      <br/> 
+      <br/>
     </td>
   </tr>
   <tr>
@@ -545,7 +545,7 @@ EOF;
       </select>
       <br />
       <small>
-        (If "Returning team" and your team name and/or team manager has changed then 
+        (If "Returning team" and your team name and/or team manager has changed then
         enter your previous team name and manager in comments section below.)
       </small>
     </td>

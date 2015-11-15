@@ -63,7 +63,7 @@ function getLeagues($active=-1) {
       $leagues[$name]['id']=$id;
       $leagues[$name]['active']=$active;
     }
-  
+
     mysqli_free_result($result);
   }else{
     $error=dberror();
@@ -137,8 +137,8 @@ function getTeams() {
   $teams=array();
 
   $sql=<<<EOF
-SELECT t.id AS id, t.name AS team, l.name AS league 
-FROM (teams t LEFT JOIN leagues l ON l.id=t.league) 
+SELECT t.id AS id, t.name AS team, l.name AS league
+FROM (teams t LEFT JOIN leagues l ON l.id=t.league)
 ORDER BY t.name
 EOF;
 

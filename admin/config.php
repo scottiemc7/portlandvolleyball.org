@@ -9,11 +9,11 @@ if($error!=="") {
   print "***ERROR*** dbinit: $error\n";
   exit;
 }
-	
+
 if (isset($_POST['submit'])) {
 
   $statusSummary = "";
-   
+
   if(isset($_POST['season'])) {
     $value=preg_replace('/[^a-zA-Z0-9\,\ ]/','',$_POST['season']);
     if(empty($value)) {
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
       setOne('reg_season',$value);
     }
   }
-   
+
   if(isset($_POST['deadline'])) {
     $value=preg_replace('/[^0-9\/]/','',$_POST['deadline']);
     $aryDeadline=explode('/',$value);
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
       setOne('reg_deadline',$value);
     }
   }
-   
+
   if(isset($_POST['lateDeadline'])) {
     $value=preg_replace('/[^0-9\/]/','',$_POST['lateDeadline']);
     $aryDeadline=explode('/',$value);
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
       setOne('reg_lateDeadline',$value);
     }
   }
-   
+
   if(isset($_POST['fee'])) {
     $value=preg_replace('/[^0-9]/','',$_POST['fee']);
     if(empty($value)) {
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
       setOne('reg_fee',$value);
     }
   }
-   
+
   if(isset($_POST['lateFee'])) {
     $value=preg_replace('/[^0-9]/','',$_POST['lateFee']);
     if(empty($value)) {
@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
       setOne('reg_lateFee',$value);
     }
   }
-   
+
   if(isset($_POST['payPalFee'])) {
     $value=preg_replace('/[^0-9\.]/','',$_POST['payPalFee']);
     if(empty($value)) {
@@ -69,13 +69,13 @@ if (isset($_POST['submit'])) {
       setOne('reg_payPalFee',$value);
     }
   }
-   
+
   if(isset($_POST['isSummer'])) {
     setOne('reg_isSummer','1');
   }else{
     setOne('reg_isSummer','0');
   }
-   
+
   if(isset($_POST['doublesFee'])) {
     $value=preg_replace('/[^0-9]/','',$_POST['doublesFee']);
     if(empty($value)) {
@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
       setOne('reg_doublesFee',$value);
     }
   }
-   
+
   if(isset($_POST['sandFee'])) {
     $value=preg_replace('/[^0-9]/','',$_POST['sandFee']);
     if(empty($value)) {
@@ -93,13 +93,13 @@ if (isset($_POST['submit'])) {
       setOne('reg_sandFee',$value);
     }
   }
-    
-  if($statusSummary=="" && $_POST['season']!="") { 
-    $statusSummary = "Your changes have been saved."; 
+
+  if($statusSummary=="" && $_POST['season']!="") {
+    $statusSummary = "Your changes have been saved.";
   }
 
 } // end handle save
-  
+
 $season=getOne('reg_season');
 $deadline=getOne('reg_deadline');
 $lateDeadline=getOne('reg_latedeadline');
@@ -107,8 +107,8 @@ $fee=getOne('reg_fee');
 $lateFee=getOne('reg_latefee');
 $payPalFee=getOne('reg_paypalfee');  //2.9% + $.30
 $isSummer=getOne('reg_isSummer');
-$doublesFee=getOne('reg_doublesFee');  
-$sandFee=getOne('reg_sandFee');  
+$doublesFee=getOne('reg_doublesFee');
+$sandFee=getOne('reg_sandFee');
 
 dbclose();
 
