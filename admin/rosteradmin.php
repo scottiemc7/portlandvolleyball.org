@@ -9,7 +9,6 @@ if($error!=="") {
   exit;
 }
 
-
 $req=array_merge($_GET,$_POST);
 
 /*
@@ -34,12 +33,12 @@ if(isset($req['id'])) {
 EOF;
 
   $submit=$req['submit'];
-  if(strcasecmp($submit,"Modify roster")==0) {
+  if(strcasecmp($submit,"Modify Roster")==0) {
     // Delete old roster and save new roster
     ModifyRoster($season,$id,$req);
     // Display new roster
     ShowRoster($season,$id);
-  }elseif(strcasecmp($submit,"Show roster")==0) {
+  }elseif(strcasecmp($submit,"Show Roster")==0) {
     // Display roster
     ShowRoster($season,$id);
   }else{
@@ -66,17 +65,18 @@ exit;
 function ModifyRoster($season,$id,$req) {
 
   // Process modified roster
-  $lname=array();
-  $fname=array();
-  $ssize=array();
+  $lastNames = array();
+  $firstNames = array();
+  $emails = array();
   for($i=0; $i<12; $i++) {
     if(isset($req["lastname$i"])) {
       $lastname=CleanText($req["lastname$i"]);
-      if(preg_match("/[a-zA-Z]/",$lastname)) {
+      if(preg_match("/[a-zA-Z]/", $lastname)) {
         $firstname=CleanText($req["firstname$i"]);
-        array_push($lname,$lastname);
-        array_push($fname,$firstname);
-        array_push($ssize,$req["shirtsize$i"]);
+        $email = CleanText($req["email$i"]);
+        array_push($lastNames, $lastname);
+        array_push($firstNames, $firstname);
+        array_push($emails, $email);
       }
     }
   }
@@ -92,15 +92,15 @@ function ModifyRoster($season,$id,$req) {
   }
 
   // Insert new roster
-  for($i=0; $i<count($lname); $i++) {
+  for($i=0; $i<count($lastNames); $i++) {
     if(strcasecmp($season,"cur")==0) {
     }else{
 
       $sql=<<<EOF
 INSERT INTO team_members
-(teamid,lastName,firstName,addedBy,dateAdded,shirtSize)
+(teamid,lastName,firstName,addedBy,dateAdded,email)
 VALUES
-($id,'$lname[$i]','$fname[$i]','Admin',now(),'$ssize[$i]')
+($id,'$lastNames[$i]','$firstNames[$i]','Admin',now(),'$emails[$i]')
 EOF;
 
       if(!dbquery($sql)) {
@@ -147,14 +147,14 @@ EOF;
 
   $roster=GetRoster($season,$id);
   foreach($roster as $member) {
-    $lastName=$member['lastName'];
     $firstName=$member['firstName'];
+    $lastName=$member['lastName'];
     $email=$member['email'];
     $addedBy=$member['addedBy'];
     $dateAdded=$member['dateAdded'];
 
     print <<<EOF
-  <tr><td>$lastName, $firstName</td><td>$email</td><td>$dateAdded</td><td>$addedBy</td></tr>
+  <tr><td>$firstName $lastName</td><td>$email</td><td>$dateAdded</td><td>$addedBy</td></tr>
 EOF;
   }
 
@@ -164,7 +164,7 @@ EOF;
 <p />
 <form method="post">
 <input type="hidden" name="id" value="$id"/>
-<input type="submit" name="submit" value="Edit roster"/>
+<input type="submit" name="submit" value="Edit Roster"/>
 </form>
 <p />
 <a href="$script">Select another roster</a>
@@ -177,44 +177,28 @@ EOF;
 
 function FormRoster($season,$id) {
 
-  $shirtsizes = array('XSM','SM','M','L','XL','XXL');
-
   print <<<EOF
 <p />
 <form method="post">
 <input type="hidden" name="id" value="$id"/>
 <table>
-<tr><th>Last Name</th><th>First Name</th><th>Shirt Size</th></tr>
+<tr><th>First Name</th><th>Last Name</th><th>Email Address</th></tr>
 EOF;
 
   $i=0;
   $roster=GetRoster($season,$id);
   foreach($roster as $member) {
-    $lastName=$member['lastName'];
     $firstName=$member['firstName'];
-    $shirtSize=$member['shirtSize'];
+    $lastName=$member['lastName'];
+    $email=$member['email'];
     $addedBy=$member['addedBy'];
     $dateAdded=$member['dateAdded'];
 
     print <<<EOF
 <tr>
-  <td><input type="text" name="lastname$i" value="$lastName" size="25" /></td>
   <td><input type="text" name="firstname$i" value="$firstName" size="25" /></td>
-  <td><select name="shirtsize$i">
-EOF;
-
-    foreach ($shirtsizes as $ss) {
-      $selected="";
-      if(strcasecmp($shirtSize,$ss) == 0) {
-        $selected='selected="selected"';
-      }
-      print <<<EOF
-<option value="$ss"$selected>$ss</option>
-EOF;
-    }
-
-    print <<<EOF
-  </select></td>
+  <td><input type="text" name="lastname$i" value="$lastName" size="25" /></td>
+  <td><input type="text" name="email$i" value="$email" size="25" /></td>
 </tr>
 EOF;
     $i++;
@@ -224,19 +208,9 @@ EOF;
 
     print <<<EOF
 <tr>
-  <td><input type="text" name="lastname$j" value="" size="25" /></td>
   <td><input type="text" name="firstname$j" value="" size="25" /></td>
-  <td><select name="shirtsize$j">
-EOF;
-
-    foreach ($shirtsizes as $ss) {
-      print <<<EOF
-<option value="$ss">$ss</option>
-EOF;
-    }
-
-    print <<<EOF
-  </select></td>
+  <td><input type="text" name="lastname$j" value="" size="25" /></td>
+  <td><input type="text" name="email$j" value="" size="25" /></td>
 </tr>
 EOF;
   }
@@ -245,7 +219,7 @@ EOF;
 
   print <<<EOF
 </table>
-<input type="submit" name="submit" value="Modify roster"/>
+<input type="submit" name="submit" value="Modify Roster"/>
 <input type="reset"/>
 </form>
 <p />
@@ -301,7 +275,7 @@ EOF;
     print <<<EOF
   </select>
   <p />
-  <input type="submit" name="submit" value="Show roster"/>
+  <input type="submit" name="submit" value="Show Roster"/>
   <p />
 </form>
 EOF;
