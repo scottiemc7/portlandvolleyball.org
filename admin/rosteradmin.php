@@ -13,7 +13,7 @@ if($error!=="") {
 $req=array_merge($_GET,$_POST);
 
 /*
-   Pre-season tables: registration, registration_leagues, team_members
+   Pre-season tables: registration, leagues, team_members
    Current season tables: teams (except missing manager info), leagues, ?
 */
 $season="pre";
@@ -80,7 +80,7 @@ function ModifyRoster($season,$id,$req) {
       }
     }
   }
-      
+
   // Remove existing roster
   if(strcasecmp($season,"cur")==0) {
   }else{
@@ -97,7 +97,7 @@ function ModifyRoster($season,$id,$req) {
     }else{
 
       $sql=<<<EOF
-INSERT INTO team_members 
+INSERT INTO team_members
 (teamid,lastName,firstName,addedBy,dateAdded,shirtSize)
 VALUES
 ($id,'$lname[$i]','$fname[$i]','Admin',now(),'$ssize[$i]')
@@ -141,20 +141,20 @@ function CleanText($text) {
 
 function ShowRoster($season,$id) {
   print <<<EOF
-<table>
-  <tr><th>Name</th><th>Shirt Size</th><th> &nbsp; &nbsp; Added On</th><th>Added By</th></tr>
+<table class="roster-show">
+  <tr><th>Name</th><th>Email Address</th><th> &nbsp; &nbsp; Added On</th><th>Added By</th></tr>
 EOF;
 
   $roster=GetRoster($season,$id);
   foreach($roster as $member) {
     $lastName=$member['lastName'];
     $firstName=$member['firstName'];
-    $shirtSize=$member['shirtSize'];
+    $email=$member['email'];
     $addedBy=$member['addedBy'];
     $dateAdded=$member['dateAdded'];
 
     print <<<EOF
-  <tr><td>$lastName, $firstName</td><td align="center">$shirtSize</td><td>$dateAdded</td><td>$addedBy</td></tr>
+  <tr><td>$lastName, $firstName</td><td>$email</td><td>$dateAdded</td><td>$addedBy</td></tr>
 EOF;
   }
 
@@ -241,6 +241,8 @@ EOF;
 EOF;
   }
 
+  $script= $_SERVER['PHP_SELF'];
+
   print <<<EOF
 </table>
 <input type="submit" name="submit" value="Modify roster"/>
@@ -262,16 +264,16 @@ function FormTeams($season) {
   if(strcasecmp($season,"cur")==0) {
     $sql=<<<EOF
 SELECT t.id AS id, t.name AS team, league.name AS league
-FROM teams t 
-JOIN leagues league on t.league=league.id 
+FROM teams t
+JOIN leagues league on t.league=league.id
 WHERE league.active=1
 ORDER BY t.name
 EOF;
   }else{
     $sql=<<<EOF
 SELECT t.id AS id, t.teamName AS team, league.name AS league
-FROM registration t 
-JOIN registration_leagues league on t.league=league.id 
+FROM registration t
+JOIN leagues league on t.league=league.id
 WHERE league.active=1
 ORDER BY t.teamName
 EOF;
@@ -325,15 +327,15 @@ function GetTeam($season,$id) {
   if(strcasecmp($season,"cur")==0) {
     $sql=<<<EOF
 SELECT t.name AS team, league.name AS league
-FROM teams t 
-JOIN leagues league on t.league = league.id 
+FROM teams t
+JOIN leagues league on t.league = league.id
 WHERE t.id=$id
 EOF;
   }else{
     $sql=<<<EOF
 SELECT t.teamName AS team, league.name AS league
-FROM registration t 
-JOIN registration_leagues league on t.league = league.id 
+FROM registration t
+JOIN leagues league on t.league = league.id
 WHERE t.id=$id
 EOF;
   }
@@ -379,24 +381,18 @@ function GetRoster($season,$id) {
 
   $roster=array();
 
-  if(strcasecmp($season,"cur")==0) {
-    $sql=<<<EOF
-SELECT * FROM ? WHERE teamid=$id
-EOF;
-  }else{
-    $sql=<<<EOF
-SELECT lastName, firstName, shirtSize, addedBy, dateAdded
+  $sql=<<<EOF
+SELECT lastName, firstName, email, addedBy, dateAdded
 FROM team_members
 WHERE teamid=$id
 EOF;
-  }
 
   if($result=dbquery($sql)) {
     while($row=mysqli_fetch_assoc($result)) {
       $roster[]=array(
         'lastName' => $row['lastName'],
         'firstName' => $row['firstName'],
-        'shirtSize' => $row['shirtSize'],
+        'email' => $row['email'],
         'addedBy' => $row['addedBy'],
         'dateAdded' => $row['dateAdded']
       );
