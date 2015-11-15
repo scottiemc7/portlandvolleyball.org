@@ -99,9 +99,10 @@ EOF;
     if($league == "") {
       $bOK = false;
     }else{
-      if($result=dbquery("SELECT name FROM leagues WHERE id=$league")) {
+      if($result=dbquery("SELECT name, night FROM leagues WHERE id=$league")) {
         if($row=mysqli_fetch_assoc($result)) {
           $leaguename=$row['name'];
+          $leaguenight=$row['night'];
         }else{
           $bOK = false;
         }
@@ -118,6 +119,7 @@ EOF;
       if($result=dbquery("SELECT name FROM leagues WHERE id=$league2")) {
         if($row=mysqli_fetch_assoc($result)) {
           $leaguename2=$row['name'];
+          $leaguenight2=$row['night'];
         }else{
           $bOK = false;
         }
@@ -181,8 +183,8 @@ Email: $mgrEmail, $mgrEmail2
 Alternate: $altName
 Phone: $altPhone, $altPhone2
 Email: $altEmail
-League: $leaguename
-2nd choice: $leaguename2
+League: $leaguename ($leaguenight)
+2nd choice: $leaguename2 ($leaguenight2)
 Status: $newOld
 Comments: $comments
 
@@ -201,8 +203,8 @@ Email: $mgrEmail, $mgrEmail2
 Alternate: $altName
 Phone: $altPhone, $altPhone2
 Email: $altEmail
-League: $leaguename
-2nd choice: $leaguename2
+League: $leaguename ($leaguenight)
+2nd choice: $leaguename2 ($leaguenight2)
 Status: $newOld
 Comments: $comments
 EOF;
@@ -467,7 +469,7 @@ EOF;
     $leagueSelect="";
 
     $sql = '
-      SELECT l.id, l.name, l.cap
+      SELECT l.id, l.name, l.night, l.cap
       FROM leagues as l
       LEFT JOIN (SELECT league, count(*) as registrations
                  FROM registration
@@ -481,9 +483,10 @@ EOF;
       while($row=mysqli_fetch_assoc($result)) {
         $id=$row['id'];
         $name=$row['name'];
+        $night=$row['night'];
 
         $leagueSelect.=<<<EOF
-<option value="$id">$name</option>
+<option value="$id">$name - $night</option>
 EOF;
       }
       mysqli_free_result($result);
@@ -514,13 +517,11 @@ Your spot is not held just by signing up online.<br/>
 
 EOF;
 
-    if(!$isSummer) {
-      print <<<EOF
-<b>There are a maximum number of 8 teams per league.</b>
-If the league you want is full, contact Michelle Baldwin at <a href="mailto:info@portlandvolleyball.org">info@portlandvolleyball.org</a>.
+    print <<<EOF
+<b>There is a maximum number of teams per league. Once a league is full it will no longer be listed here.</b>
+If the league you want is not listed, contact Michelle Baldwin at <a href="mailto:info@portlandvolleyball.org">info@portlandvolleyball.org</a>.
 </small>
 EOF;
-    }
 
     print <<<EOF
     </td>
