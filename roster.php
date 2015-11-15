@@ -12,40 +12,41 @@ if($error!=="") {
 //constants
 $statusMessage="";
 $addedMessage="";
-	
+
 $bOK = true;
 $formSubmitted = false;
 if($_POST['formSubmitted'] == "true") {
   $formSubmitted = true;
 }
-  
+
 //process form
 if ($formSubmitted == true) {
-	
+
   $teamid=preg_replace('/[^\d]/','',$_POST['teamid']);
   if(strlen($teamid) == 0) $bOK = false;
-		
+
   if(strlen($_POST['firstname1']) == 0) $bOK = false;
-      
+
   $addedBy=preg_replace('/[^a-zA-Z\'\-\ ]/','',$_POST['addedBy']);
   $addedByClean=dbescape($addedBy);
   if($addedBy == "") $bOK = false;
- 
-  if($bOK == true) {    
+
+  if($bOK == true) {
     for($i=1; $i<=12; $i++) {
-      $firstName=preg_replace('/[^a-zA-Z\'\-\ ]/','',$_POST['firstname'.$i]);
-      $lastName=preg_replace('/[^a-zA-Z\'\-\ ]/','',$_POST['lastname'.$i]);
-      $shirt=preg_replace('/[^LMSX]/','',$_POST['shirt'.$i]);
+      $firstName = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['firstname'.$i]);
+      $lastName = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['lastname'.$i]);
+      $email = $_POST['email'.$i];
 
       // Prevent SQL injection
       $firstNameClean=dbescape($firstName);
       $lastNameClean=dbescape($lastName);
+      $emailClean = dbescape($email);
 
       if(strlen($firstName) > 0){
         $addedMessage.="<br/>".$firstName." ".$lastName;
         $sql=<<<EOF
-INSERT INTO team_members(teamID, firstName, lastName, addedBy, dateAdded, shirtSize) 
-VALUES($teamid, '$firstNameClean', '$lastNameClean', '$addedByClean', now(), '$shirt')
+INSERT INTO team_members(teamID, firstName, lastName, addedBy, dateAdded, email)
+VALUES($teamid, '$firstNameClean', '$lastNameClean', '$addedByClean', now(), '$email')
 EOF;
 
         if(!dbquery($sql)) {
@@ -69,12 +70,12 @@ print <<<EOF
 $statusMessage
 
 EOF;
-		
+
 if($formSubmitted == true && $bOK == true) {
   print <<<EOF
   <p>Thank you for updating your roster online.  You have added the following members to your team.</p>
   <p>$addedMessage</p>
-  <p>For changes or deletions, please email Michelle Baldwin at 
+  <p>For changes or deletions, please email Michelle Baldwin at
     <script laguage="javascript">
       getMailto('info', 'portlandvolleyball.org');
     </script>
@@ -104,7 +105,7 @@ EOF;
 
   $sql=<<<EOF
 SELECT r.id AS id, r.teamname AS team, rl.name AS league, rl.night AS night
-FROM registration_leagues rl
+FROM leagues rl
 JOIN registration r on rl.id = r.league
 ORDER BY rl.name, rl.night, r.teamname
 EOF;
@@ -115,7 +116,7 @@ EOF;
 EOF;
 
   if($result=dbquery($sql)) {
-  
+
     while($row=mysqli_fetch_assoc($result)) {
       $id=$row['id'];
       $team=$row['team'];
@@ -153,36 +154,25 @@ EOF;
           <tr>
             <td style="font-weight: bold;">First Name</td>
             <td style="font-weight: bold;">Last Name</td>
-            <td style="font-weight: bold;">T-shirt Size</td>
+            <td style="font-weight: bold;">Email Address</td>
           </tr>
 EOF;
 
   for($i=1; $i<=12; $i++) {
-    $firstname=preg_replace('/[^a-zA-Z\'\-\ ]/','',$_POST['firstname'.$i]);
-    $lastname=preg_replace('/[^a-zA-Z\'\-\ ]/','',$_POST['lastname'.$i]);
-    $shirt=preg_replace('/[^LMSX]/','',$_POST['shirt'.$i]);
+    $firstname = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['firstname'.$i]);
+    $lastname = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['lastname'.$i]);
+    $email = $_POST['email'.$i];
 
     print <<<EOF
           <tr>
             <td>
-              <input type="text" name="firstname$i" value="$firstname" size="40" />
+              <input type="text" name="firstname$i" value="$firstname" size="20" />
             </td>
             <td>
-              <input type="text" name="lastname$i" value="$lastname" size="40" />
+              <input type="text" name="lastname$i" value="$lastname" size="20" />
             </td>
             <td>
-              <select name="shirt$i">
-EOF;
-    $sizes=array("XSM","SM","M","L","XL","XXL");
-    foreach($sizes as $size) {
-      $selected="";
-      if($shirt===$size) $selected=' selected="selected"';
-      print <<<EOF
-                <option value="$size"$selected>$size</option>
-EOF;
-    }
-    print <<<EOF
-              </select>
+              <input type="text" name="email$i" value="$email" size="25" />
             </td>
           </tr>
 EOF;
