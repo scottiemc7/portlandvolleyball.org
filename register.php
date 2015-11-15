@@ -42,15 +42,15 @@ if($isClosed) {
 EOF;
 }else{
   if($isLate) $totalFee+=$lateFee;
-  	
+
   $statusMessage = "";
   $formSubmitted = false;
-  	
+
   //process form
   if($_POST['teamName'] != "") {
     $bOK = true;
     $prob_spam = false;
- 		
+
     $teamName = $_POST['teamName'];
     if(strlen($teamName) == 0) $bOK=false;
     //if(substr_count($teamName, '.net') + substr_count($teamName, '.com') + substr_count($teamName, '.org') > 0) {
@@ -95,15 +95,14 @@ EOF;
       $prob_spam = true;
       $bOK = false;
     }
-        
+
     if($league == "") {
       $bOK = false;
     }else{
-      if($result=dbquery("SELECT name,night FROM registration_leagues WHERE id=$league")) {
+      if($result=dbquery("SELECT name FROM leagues WHERE id=$league")) {
         if($row=mysqli_fetch_assoc($result)) {
-	  $leaguename=$row['name'];
-	  $leaguenight=$row['night'];
-	}else{
+          $leaguename=$row['name'];
+        }else{
           $bOK = false;
         }
         mysqli_free_result($result);
@@ -116,11 +115,10 @@ EOF;
     if($league2 == "") {
       $bOK = false;
     }else{
-      if($result=dbquery("SELECT name,night FROM registration_leagues WHERE id=$league2")) {
+      if($result=dbquery("SELECT name FROM leagues WHERE id=$league2")) {
         if($row=mysqli_fetch_assoc($result)) {
-	  $leaguename2=$row['name'];
-	  $leaguenight2=$row['night'];
-	}else{
+          $leaguename2=$row['name'];
+        }else{
           $bOK = false;
         }
         mysqli_free_result($result);
@@ -132,7 +130,7 @@ EOF;
     }
 
     $newOld=$_POST['newOld'];
-        
+
     if($bOK == true) {
 
       // Prevent SQL injection
@@ -154,18 +152,17 @@ EOF;
       $stateClean=dbescape($state);
       $zipClean=dbescape($zip);
       $commentsClean=dbescape($comments);
-      $nightClean=dbescape($night);
       $newOldClean=dbescape($newOld);
 
       $sql=<<<EOF
 INSERT INTO registration(teamName, mgrName, mgrPhone, mgrPhone2,
 mgrEmail, mgrEmail2, altName, altPhone, altPhone2, altEmail, league, league2,
-addr1, addr2, city, state, zip, comments, night, newOld) 
-VALUES('$teamNameClean', '$mgrNameClean', '$mgrPhoneClean', '$mgrPhone2Clean', 
-'$mgrEmailClean', '$mgrEmail2Clean', '$altNameClean', '$altPhoneClean', 
-'$altPhone2Clean', '$altEmailClean', '$leagueClean', '$league2Clean', 
-'$addr1Clean', '$addr2Clean', '$cityClean', '$stateClean', 
-'$zipClean', '$commentsClean', '$nightClean', '$newOldClean')
+addr1, addr2, city, state, zip, comments, newOld)
+VALUES('$teamNameClean', '$mgrNameClean', '$mgrPhoneClean', '$mgrPhone2Clean',
+'$mgrEmailClean', '$mgrEmail2Clean', '$altNameClean', '$altPhoneClean',
+'$altPhone2Clean', '$altEmailClean', '$leagueClean', '$league2Clean',
+'$addr1Clean', '$addr2Clean', '$cityClean', '$stateClean',
+'$zipClean', '$commentsClean', '$newOldClean')
 EOF;
       if(!dbquery($sql)) {
         $error=dberror();
@@ -175,7 +172,7 @@ EOF;
 
       $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
       $formSubmitted = true;
-        
+
       $mailstring=<<<EOF
 Team: $teamName
 Manager: $mgrName
@@ -184,13 +181,13 @@ Email: $mgrEmail, $mgrEmail2
 Alternate: $altName
 Phone: $altPhone, $altPhone2
 Email: $altEmail
-League: $leaguename ($leaguenight)
-2nd choice: $leaguename2 ($leaguenight2)
+League: $leaguename
+2nd choice: $leaguename2
 Status: $newOld
 Comments: $comments
 
 EOF;
-  			
+
       mail("register@portlandvolleyball.org", "New registration - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
     }elseif ($prob_spam == true) {
       $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
@@ -204,12 +201,12 @@ Email: $mgrEmail, $mgrEmail2
 Alternate: $altName
 Phone: $altPhone, $altPhone2
 Email: $altEmail
-League: $leaguename ($leaguenight)
-2nd choice: $leaguename2 ($leaguenight2)
+League: $leaguename
+2nd choice: $leaguename2
 Status: $newOld
 Comments: $comments
 EOF;
-  			
+
       //mail("pva@portlandvolleyball.org", "Probable pva reg spam - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
     }else{
       $statusMessage=<<<EOF
@@ -245,10 +242,10 @@ EOF;
 
     if($isLate) {
       print <<<EOF
-Also, since it's after $registrationDeadline, 
+Also, since it's after $registrationDeadline,
 <b>you now owe the $$lateFee late fee</b>.
 EOF;
-    } 
+    }
     if($isSummer) {
       print <<<EOF
 <div>
@@ -336,7 +333,7 @@ EOF;
     if($isLate) {
       print <<<EOF
 <b>
-Also, since it's after $registrationDeadline, 
+Also, since it's after $registrationDeadline,
 you owe the $$lateFee late fee.
 </b>
 Please include it with your payment.
@@ -469,23 +466,24 @@ EOF;
 
     $leagueSelect="";
 
-    $sql=<<<EOF
-SELECT id, name, night, 
-(SELECT COUNT(*) FROM registration WHERE league=registration_leagues.id and paid=1) AS number 
-FROM registration_leagues WHERE active=1 ORDER BY name, night
-EOF;
+    $sql = '
+      SELECT l.id, l.name, l.cap
+      FROM leagues as l
+      LEFT JOIN (SELECT league, count(*) as registrations
+                 FROM registration
+                 GROUP BY league) as r
+      ON l.id = r.league
+      WHERE l.active = 1
+      AND (r.registrations IS NULL OR r.registrations < l.cap)
+      ORDER BY l.name';
 
     if($result=dbquery($sql)) {
       while($row=mysqli_fetch_assoc($result)) {
-	$id=$row['id'];
-	$name=$row['name'];
-	$night=$row['night'];
-	$number=$row['number'];
-
-//    if($number < 8) 
+        $id=$row['id'];
+        $name=$row['name'];
 
         $leagueSelect.=<<<EOF
-<option value="$id">$name - $night</option>
+<option value="$id">$name</option>
 EOF;
       }
       mysqli_free_result($result);
@@ -533,7 +531,7 @@ EOF;
       <select name="league2">
       $leagueSelect
       </select>
-      <br/> 
+      <br/>
     </td>
   </tr>
   <tr>
@@ -545,7 +543,7 @@ EOF;
       </select>
       <br />
       <small>
-        (If "Returning team" and your team name and/or team manager has changed then 
+        (If "Returning team" and your team name and/or team manager has changed then
         enter your previous team name and manager in comments section below.)
       </small>
     </td>

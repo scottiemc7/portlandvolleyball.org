@@ -99,11 +99,10 @@ EOF;
     if($league == "") {
       $bOK = false;
     }else{
-      if($result=dbquery("SELECT name,night FROM registration_leagues WHERE id=$league")) {
+      if($result=dbquery("SELECT name FROM leagues WHERE id=$league")) {
         if($row=mysqli_fetch_assoc($result)) {
-	  $leaguename=$row['name'];
-	  $leaguenight=$row['night'];
-	}else{
+          $leaguename=$row['name'];
+        }else{
           $bOK = false;
         }
         mysqli_free_result($result);
@@ -116,11 +115,10 @@ EOF;
     if($league2 == "") {
       $bOK = false;
     }else{
-      if($result=dbquery("SELECT name,night FROM registration_leagues WHERE id=$league2")) {
+      if($result=dbquery("SELECT name FROM leagues WHERE id=$league2")) {
         if($row=mysqli_fetch_assoc($result)) {
-	  $leaguename2=$row['name'];
-	  $leaguenight2=$row['night'];
-	}else{
+          $leaguename2=$row['name'];
+        }else{
           $bOK = false;
         }
         mysqli_free_result($result);
@@ -154,18 +152,17 @@ EOF;
       $stateClean=dbescape($state);
       $zipClean=dbescape($zip);
       $commentsClean=dbescape($comments);
-      $nightClean=dbescape($night);
       $newOldClean=dbescape($newOld);
 
       $sql=<<<EOF
 INSERT INTO registration(teamName, mgrName, mgrPhone, mgrPhone2,
 mgrEmail, mgrEmail2, altName, altPhone, altPhone2, altEmail, league, league2,
-addr1, addr2, city, state, zip, comments, night, newOld)
+addr1, addr2, city, state, zip, comments, newOld)
 VALUES('$teamNameClean', '$mgrNameClean', '$mgrPhoneClean', '$mgrPhone2Clean',
 '$mgrEmailClean', '$mgrEmail2Clean', '$altNameClean', '$altPhoneClean',
 '$altPhone2Clean', '$altEmailClean', '$leagueClean', '$league2Clean',
 '$addr1Clean', '$addr2Clean', '$cityClean', '$stateClean',
-'$zipClean', '$commentsClean', '$nightClean', '$newOldClean')
+'$zipClean', '$commentsClean', '$newOldClean')
 EOF;
       if(!dbquery($sql)) {
         $error=dberror();
@@ -184,8 +181,8 @@ Email: $mgrEmail, $mgrEmail2
 Alternate: $altName
 Phone: $altPhone, $altPhone2
 Email: $altEmail
-League: $leaguename ($leaguenight)
-2nd choice: $leaguename2 ($leaguenight2)
+League: $leaguename
+2nd choice: $leaguename2
 Status: $newOld
 Comments: $comments
 
@@ -204,8 +201,8 @@ Email: $mgrEmail, $mgrEmail2
 Alternate: $altName
 Phone: $altPhone, $altPhone2
 Email: $altEmail
-League: $leaguename ($leaguenight)
-2nd choice: $leaguename2 ($leaguenight2)
+League: $leaguename
+2nd choice: $leaguename2
 Status: $newOld
 Comments: $comments
 EOF;
@@ -469,23 +466,24 @@ EOF;
 
     $leagueSelect="";
 
-    $sql=<<<EOF
-SELECT id, name, night,
-(SELECT COUNT(*) FROM registration WHERE league=registration_leagues.id and paid=1) AS number
-FROM registration_leagues WHERE active=1 ORDER BY name, night
-EOF;
+    $sql = '
+      SELECT l.id, l.name, l.cap
+      FROM leagues as l
+      LEFT JOIN (SELECT league, count(*) as registrations
+                 FROM registration
+                 GROUP BY league) as r
+      ON l.id = r.league
+      WHERE l.active = 1
+      AND (r.registrations IS NULL OR r.registrations < l.cap)
+      ORDER BY l.name';
 
     if($result=dbquery($sql)) {
       while($row=mysqli_fetch_assoc($result)) {
-	$id=$row['id'];
-	$name=$row['name'];
-	$night=$row['night'];
-	$number=$row['number'];
-
-//    if($number < 8)
+        $id=$row['id'];
+        $name=$row['name'];
 
         $leagueSelect.=<<<EOF
-<option value="$id">$name - $night</option>
+<option value="$id">$name</option>
 EOF;
       }
       mysqli_free_result($result);
