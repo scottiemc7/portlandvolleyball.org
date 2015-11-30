@@ -143,8 +143,6 @@ EOF;
     }
 			
     print  "</table>";
-  }else{
-    print $dis->name . " is empty like the black void.<br />";
   }
 }
 
