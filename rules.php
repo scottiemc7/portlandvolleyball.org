@@ -10,8 +10,8 @@
 <a href="pvaoutdoorrules.php">PVA Outdoor Rules</a><br />
 
 <p />
-<a href="2013_15DCRindoor.pdf">USA Volleyball Indoor Rules (3.3MB)</a><br />
-<a href="2013_15DCRbeach.pdf">USA Volleyball Outdoor Rules (2.2MB)</a><br />
+<a href="2015_17DCRindoor.pdf">USA Volleyball Indoor Rules</a><br />
+<a href="2015_17DCRbeach.pdf">USA Volleyball Outdoor Rules</a><br />
 
 <p />
 <a href="/pva_bylaws.pdf" target="_blank">PVA Bylaws</a>
