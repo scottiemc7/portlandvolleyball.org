@@ -1,7 +1,7 @@
 <?php include("header.html"); ?>
 
 <h1>Portland Volleyball Association - Playing Regulations</h1>
-<b><i>USA Rules will be followed, with Park Bureau differences.</i></b>
+<b><i>USA Volleyball Rules will be followed, with the following differences:</i></b>
 
 <p>
 <i>AGE</i><br />
@@ -105,34 +105,36 @@ Server will be the back row player with the other 3 being front row players.
 <i>COED ONLY</i><br />
 The player positions must alternate man/woman/man/woman. 
 When a ball is hit two or more times and crosses the plane of the net, one hit must be by a woman. 
-Coed teams are legal as follows:
-<ul>
-    <li>3 women and 3 men</li>
-    <li>3 women and 2 men</li>
-    <li>4 women and 2 men</li>
-    <li>4 women and 1 man</li>
-    <li>5 women and 1 man</li>
-    <li>3 women and 1 man</li>
-    <li>2 women and 2 men</li>
-</ul>
+</p>
 <p>
-A back row male may block, if two women and 1 man are at the net.
+Coed teams are legal as follows:
+</p>
+<p>
+Teams of six, five, or four players are considered legal as long as there is an equal or greater
+number of women than men. The only exception is when a team is playing with five players and there
+are three men and two women. This is allowed but the Ghost Player Rule must be followed as
+described below:
+</p>
+<p>
+<em>Ghost Player Rule</em>: This rule automatically goes into effect for a coed team any time that team chooses, or is forced by circumstance, to play with only five players, and those players consist of three men and two women. The team playing with three men and two women must leave a space in their lineup where the missing woman should be. If the missing woman would be in the front row, there would be only two front row players for that rotation. When the missing woman would normally serve, the serve goes to the opposing team, like a side-­out but without any point awarded.
+</p>
+<p>
+A back row male may block if two women and one man are at the net.
 </p>
 <p>
 If a team has 4 players (i.e. 2 men + 2 women or 3 women + 1 man), the service rotation must stay in order (male, female, male, female), and players still must rotate in their positions.  There will be 3 front row players  and 1 back row player (the server).  So, when rotating, the server moves  to the left front position and the right front moves to the serving position as the only back row player.
 </p>
 <p>
-If a team has 5 players, they will always rotate so that 3 players are in the front row and 2 are in the back row (no ghost).
+If a team has 5 players consisting of 3 women and 2 men they will always rotate so that 3 players are in the front row and 2 are in the back row--no ghost rule.
 </p>
 <p>
-It a team has 4 women and 2 men, the men must still be lined up as though there are 3 men (they CANNOT be opposite each other in the lineup). 
+If a team has 4 women and 2 men, the men must still be lined up as though there are 3 men (they CANNOT be opposite each other in the lineup). 
 In addition, the extra woman does not count as a man touching the ball when there is more than one contact.
 </p>
 <p>
-If you have 3 males, and 3 females present at the match, you must play them - the other scenarios apply when you are short players ONLY.
+If a team has 3 men and 3 women present at the match, the team must play them; the other scenarios apply only when a team is short players.
 </p>
 <p>
-<i>EXEMPTION:</i> A team may play with 3 men and 2 women ONCE during a season.  This will be recorded and tracked.
 </p>
 </p>
 
