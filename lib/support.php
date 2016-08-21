@@ -116,7 +116,7 @@ EOF;
       $ref="$lname, $fname";
       $refs[$ref]['id']=$id;
       $refs[$ref]['uname']=$uname;
-      $refs[$ref]['passord']=$passord;
+      $refs[$ref]['password']=$password;
     }
 
     mysqli_free_result($result);

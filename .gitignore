@@ -17,3 +17,8 @@ week2sched.pdf
 admin/TreasurerFiles.zip
 logos
 *.swp
+
+tests/_output/*
+
+composer.phar
+/vendor/
