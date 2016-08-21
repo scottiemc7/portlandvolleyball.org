@@ -6,13 +6,10 @@ function dbinit() {
   global $mysql;
   $error="";
 
-  // set $host to 'localhost' for local development
-  $host = 'mysql.portlandvolleyball.org';
-  $username='pvaDBusr';
-  $password='ifGBO5wR5wQtJp3';
-  $dbname='pvaDB';
-
+  require 'config/mysql.php';
   $mysql=new mysqli($host,$username,$password,$dbname);
+
+
   if(!$mysql) {
     $error= "dbinit: Cannot connect (Error #" . mysqli_connect_errno() .
             ") " . mysqli_connect_error();

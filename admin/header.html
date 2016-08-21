@@ -1,16 +1,14 @@
 <?php
 	session_start();
-	//session_register('logged_in');
-	//if (!$HTTP_SESSION_VARS['logged_in']) {
 	if (!$_SESSION['logged_in']) {
-   		header("Location: login.php");
-   	}
+ 		header("Location: /admin/login.php");
+ 	}
 ?>
 <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="admin.css">
+	<link rel="stylesheet" type="text/css" href="/admin/admin.css">
 </head>
 
 <body>
