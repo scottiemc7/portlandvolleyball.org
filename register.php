@@ -31,7 +31,7 @@ $isLate = $dtRegularDeadline - $timenow <= 0;
 $registrationDeadline = date('l, F j, Y', $dtRegularDeadline);
 
 // custom code to handle special thursday double header leagues with higher price
-$doubleHeaderFee = 500.0;
+$doubleHeaderFee = 525.0;
 $doubleHeaderPayPalFee = $doubleHeaderFee * 0.029 + 0.30;
 $doubleHeaderAmount = $doubleHeaderFee + $doubleHeaderPayPalFee;
 // end special thursday double header stuff
