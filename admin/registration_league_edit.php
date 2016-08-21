@@ -75,7 +75,7 @@ if($result=dbquery($sql)) {
     <td>&nbsp;</td>
     <td><input type="submit" value="Edit"></td>
   </tr>
-</table>			
+</table>
 <input type="hidden" name="id" value="$id" />
 </form>
 

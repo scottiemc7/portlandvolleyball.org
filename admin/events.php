@@ -38,7 +38,7 @@ if(isset($req['submit'])) {
     }
 
     $sql=<<<EOF
-SELECT id,title,description,DATE_FORMAT(dt,'%m/%d/%Y') AS dt,TIME_FORMAT(tm,'%H:%i') AS tm,link 
+SELECT id,title,description,DATE_FORMAT(dt,'%m/%d/%Y') AS dt,TIME_FORMAT(tm,'%H:%i') AS tm,link
 FROM events WHERE id=$id
 EOF;
 
@@ -51,16 +51,16 @@ EOF;
 
         print "<h1>Edit event</h1>\n";
         if($row=mysqli_fetch_assoc($result)) {
-	  $id=$row['id'];
-	  $title=$row['title'];
-	  $description=$row['description'];
-	  $dt=$row['dt'];
-	  $tm=$row['tm'];
-	  $link=$row['link'];
+    $id=$row['id'];
+    $title=$row['title'];
+    $description=$row['description'];
+    $dt=$row['dt'];
+    $tm=$row['tm'];
+    $link=$row['link'];
 
           Form($id,$title,$description,$dt,$tm,$link);
         }
-	exit;
+  exit;
 
       }
 
@@ -117,7 +117,7 @@ EOF;
 print "<h1>Add a new event</h1>\n";
 Form("","","","","","");
 ShowAll();
-	
+
 dbclose();
 
 /**
@@ -127,7 +127,7 @@ dbclose();
 function ShowAll() {
 
   $sql=<<<EOF
-SELECT id,title,description,DATE_FORMAT(dt,'%m/%d/%Y'),TIME_FORMAT(tm,'%H:%i'),link 
+SELECT id,title,description,DATE_FORMAT(dt,'%m/%d/%Y'),TIME_FORMAT(tm,'%H:%i'),link
 FROM events ORDER BY dt, tm ASC
 EOF;
 
@@ -145,16 +145,16 @@ EOF;
 EOF;
 
       while($row=mysqli_fetch_assoc($result)) {
-	$id=$row['id'];
-	$title=$row['title'];
-	$description=$row['description'];
-	$dt=$row['dt'];
-	$tm=$row['tm'];
-	$link=$row['link'];
+  $id=$row['id'];
+  $title=$row['title'];
+  $description=$row['description'];
+  $dt=$row['dt'];
+  $tm=$row['tm'];
+  $link=$row['link'];
 
-	if(! empty($link)) {
-	  $description.="<br /><a href=\"$link\">More information</a>";
-	}
+  if(! empty($link)) {
+    $description.="<br /><a href=\"$link\">More information</a>";
+  }
 
         print <<<EOF
   <tr><td nowrap valign="top">$dt<br />$tm</td>
@@ -181,7 +181,7 @@ EOF;
   }
 
 }
-	
+
 /**
 *** Event form
 **/
@@ -230,7 +230,7 @@ EOF;
 EOF;
   }
 }
-	
+
 /**
 *** Process submitted form
 ***
@@ -285,7 +285,7 @@ function Process($req) {
 
   return array($status,$id,$title,$description,$date,$time,$link);
 }
-	
+
 /**
 *** Display error message
 **/

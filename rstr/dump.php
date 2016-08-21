@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-include("../header.html"); 
+include("../header.html");
 
 include 'lib/mysql.php';
 
@@ -11,7 +11,7 @@ if($error!=="") {
 }
 
 if(isset($_GET["t"]) and ( ! empty($_GET["t"]))) {
-  
+
   $table=$_GET["t"];
 
   $sql=<<<EOF
@@ -37,22 +37,22 @@ EOF;
         //ksort($row);
         if($first==1) {
           print "<tr>";
-	  foreach ($row as $key => $value) {
-	    print "<th>$key</th>";
-	  }
+    foreach ($row as $key => $value) {
+      print "<th>$key</th>";
+    }
           print "</tr>\n";
           $first=0;
         }
         print "<tr>";
         foreach ($row as $key => $value) {
-	  if(strcmp($value,"") == 0) {
-	    $value="&nbsp;";
-	  }
+    if(strcmp($value,"") == 0) {
+      $value="&nbsp;";
+    }
           print "<td>$value</td>";
         }
         print "</tr>\n";
       }
-  
+
       mysqli_free_result($result);
 
       print <<<EOF

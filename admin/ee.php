@@ -32,9 +32,9 @@ if(isset($req['submit'])) {
     }else{
       Error("No ID specified");
     }
-	
+
     $qry = $dbh->getAll("SELECT id,title,description,DATE_FORMAT(dt,'%m/%d/%Y'),TIME_FORMAT(tm,'%H:%i'),link  FROM events WHERE id = $id");
-    if(!$qry) { 
+    if(!$qry) {
       Error("Event ($id) deleted.");
     }else{
       print "<h1>Edit event</h1>\n";
@@ -83,7 +83,7 @@ if(isset($req['submit'])) {
 print "<h1>Add a new event</h1>\n";
 Form("","","","","","");
 ShowAll($dbh);
-	
+
 /**
 *** Show all events
 **/
@@ -121,7 +121,7 @@ EOF;
 EOF;
   }
 }
-	
+
 /**
 *** Event form
 **/
@@ -170,7 +170,7 @@ EOF;
 EOF;
   }
 }
-	
+
 /**
 *** Process submitted form
 ***
@@ -225,7 +225,7 @@ function Process($req) {
 
   return array($status,$id,$title,$description,$date,$time,$link);
 }
-	
+
 /**
 *** Display error message
 **/

@@ -1,5 +1,5 @@
-<?php 	//This file is the primary page for referees,
-	//provide a list of games to choose for editing
+<?php   //This file is the primary page for referees,
+  //provide a list of games to choose for editing
 
 include("header.html");
 
@@ -14,11 +14,11 @@ if($error!=="") {
 }
 
 $sql=<<<EOF
-SELECT teams.name AS visitor, t.name AS home, gyms.name AS gym1, 
+SELECT teams.name AS visitor, t.name AS home, gyms.name AS gym1,
 DATE_FORMAT(dt, '%c/%d (%a)') as dt2, tm, s.court AS court,
-s.hscore1 AS hscore1, s.vscore1 AS vscore1, 
+s.hscore1 AS hscore1, s.vscore1 AS vscore1,
 s.hscore2 AS hscore2, s.vscore2 AS vscore2,
-s.hscore3 AS hscore3, s.vscore3 AS vscore3, 
+s.hscore3 AS hscore3, s.vscore3 AS vscore3,
 s.id AS id, s.gym AS gymID, l.name AS league
 FROM (((games s LEFT JOIN teams ON teams.id = s.visitor)
 LEFT JOIN gyms ON gyms.id = s.gym)

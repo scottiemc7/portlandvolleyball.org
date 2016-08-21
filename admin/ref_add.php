@@ -12,7 +12,7 @@ if($error!=="") {
   print "***ERROR*** dbinit: $error\n";
   exit;
 }
-	
+
 if($_POST['delete'] == "yes") {
   $id=preg_replace('/[^\d]/','',$_POST['id']);
   if(!dbquery("DELETE FROM refs WHERE id=$id")) {
@@ -27,7 +27,7 @@ if($_POST['delete'] == "yes") {
   $lname=preg_replace('/[^a-zA-Z]/','',$_POST['lname']);
 
   $sql=<<<EOF
-INSERT INTO refs(uname, password, fname, lname) 
+INSERT INTO refs(uname, password, fname, lname)
 VALUES('$uname', '$password', '$fname', '$lname')
 EOF;
   if(!dbquery($sql)) {
@@ -36,7 +36,7 @@ EOF;
     exit;
   }
 }
-	
+
 print <<<EOF
 <form action="ref_add.php" name="addRef" class="eventForm" method="post">
 <table>
@@ -57,14 +57,14 @@ print <<<EOF
     <td><input type="password" name="password" value="" size="40"></td>
   </tr>
   <tr>
-    <td colspan="2">Supply the username and password to the referee. 
+    <td colspan="2">Supply the username and password to the referee.
     The referee will use these to login to enter scores.</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td><input type="submit" name="submit" value="Add Ref"></td>
   </tr>
-</table>			
+</table>
 </form>
 EOF;
 

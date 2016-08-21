@@ -77,7 +77,7 @@ function ModifyRoster($dbh,$season,$id,$req) {
       }
     }
   }
-      
+
   // Remove existing roster
   if(strcasecmp($season,"cur")==0) {
   }else{
@@ -93,10 +93,10 @@ function ModifyRoster($dbh,$season,$id,$req) {
   for($i=0; $i<count($lname); $i++) {
     if(strcasecmp($season,"cur")==0) {
     }else{
-      $sql="INSERT INTO team_members 
+      $sql="INSERT INTO team_members
             (teamid,lastName,firstName,addedBy,dateAdded,shirtSize)
-	    VALUES
-	    ($id,'$lname[$i]','$fname[$i]','Admin',now(),'$ssize[$i]')";
+      VALUES
+      ($id,'$lname[$i]','$fname[$i]','Admin',now(),'$ssize[$i]')";
       //print "$sql<p />";
       $status=$dbh->query($sql);
       if(DB::isError($status)) {
@@ -250,15 +250,15 @@ function FormTeams($dbh,$season) {
 
   // Lookup all teams
   if(strcasecmp($season,"cur")==0) {
-    $qryTeams = $dbh->getAll("SELECT t.id, t.name, league.name 
-                              FROM teams t 
-                              JOIN leagues league on t.league = league.id 
+    $qryTeams = $dbh->getAll("SELECT t.id, t.name, league.name
+                              FROM teams t
+                              JOIN leagues league on t.league = league.id
                               WHERE league.active = 1
                               ORDER BY t.name");
   }else{
-    $qryTeams = $dbh->getAll("SELECT t.id, t.teamName, league.name 
-                              FROM registration t 
-                              JOIN registration_leagues league on t.league = league.id 
+    $qryTeams = $dbh->getAll("SELECT t.id, t.teamName, league.name
+                              FROM registration t
+                              JOIN registration_leagues league on t.league = league.id
                               WHERE league.active = 1
                               ORDER BY t.teamName");
   }
@@ -292,14 +292,14 @@ END;
 function GetTeam($dbh,$season,$id) {
 
   if(strcasecmp($season,"cur")==0) {
-    $team=$dbh->getAll("SELECT t.name, league.name 
-                        FROM teams t 
-                        JOIN leagues league on t.league = league.id 
+    $team=$dbh->getAll("SELECT t.name, league.name
+                        FROM teams t
+                        JOIN leagues league on t.league = league.id
                         WHERE t.id=$id");
   }else{
-    $team=$dbh->getAll("SELECT t.teamName, league.name 
-                        FROM registration t 
-                        JOIN registration_leagues league on t.league = league.id 
+    $team=$dbh->getAll("SELECT t.teamName, league.name
+                        FROM registration t
+                        JOIN registration_leagues league on t.league = league.id
                         WHERE t.id=$id");
   }
   //print_r($team);
@@ -334,11 +334,11 @@ EOF;
 function GetRoster($dbh,$season,$id) {
   if(strcasecmp($season,"cur")==0) {
     $qryMembers=$dbh->getAll("SELECT *
-		              FROM ?
+                  FROM ?
                               WHERE teamid=$id");
   }else{
     $qryMembers=$dbh->getAll("SELECT lastName, firstName, shirtSize, dateAdded, addedBy
-		              FROM team_members
+                  FROM team_members
                               WHERE teamid=$id");
   }
 

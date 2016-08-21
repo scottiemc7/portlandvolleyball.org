@@ -46,7 +46,7 @@ EOF;
         $dateAdded=$row['dateAdded'];
         $addedBy=$row['addedBy'];
 
-	$contents.="$id\t$team\t$league\t$firstName $lastName\t$email\t$dateAdded\t$addedBy\n";
+  $contents.="$id\t$team\t$league\t$firstName $lastName\t$email\t$dateAdded\t$addedBy\n";
       }
       mysqli_free_result($result2);
     }else{

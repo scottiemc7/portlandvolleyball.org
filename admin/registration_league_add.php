@@ -23,7 +23,7 @@ if($_POST['delete'] == "yes") {
     }
   }
 }
-	
+
 if(($_POST['name'] != "") && ($_POST['night'] != "")) {
   $name=dbescape($_POST['name']);
   $night=preg_replace('/[^a-zA-Z]/','',$_POST['night']);
@@ -61,7 +61,7 @@ print <<<EOF
     <td>&nbsp;</td>
     <td><input type="submit" value="Add Registration League"></td>
   </tr>
-</table>			
+</table>
 </form>
 
 EOF;
@@ -76,7 +76,7 @@ if($result=dbquery($sql)) {
   if($row_cnt==0) {
     print "div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no items to display.</div>";
   }else{
-						
+
     print <<<EOF
 <h1>Current registration leagues</h1>
 <table cellpadding="6" cellspacing="0" width="750" class="eventTable">

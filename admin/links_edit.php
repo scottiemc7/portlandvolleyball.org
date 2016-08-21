@@ -67,7 +67,7 @@ EOF;
     <td>&nbsp;</td>
     <td><input type="submit" value="Edit" /></td>
   </tr>
-</table>			
+</table>
 <input type="hidden" name="id" value="$id" />
 </form>
 <form action="links_add.php" name="delete" method="post" style="margin-left: 70px;">

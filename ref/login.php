@@ -55,12 +55,12 @@ dbclose();
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="ref.css">
-	<script language="javascript">
-		function loadMe() {
-			document.forms[0].uname.focus();
-		}
-	</script>
+  <link rel="stylesheet" type="text/css" href="ref.css">
+  <script language="javascript">
+    function loadMe() {
+      document.forms[0].uname.focus();
+    }
+  </script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -77,37 +77,37 @@ dbclose();
 
 if ($_SESSION['logged_in_ref'] == false) {
 ?>
-	<form action="login.php" method="post" class="eventForm" cellpadding="6">
-	<table>
-		<tr>
-			<td>Login:</td>
-			<td><input type="text" name="uname"></td>
-		</tr>
-		<tr>
-			<td>Password:</td>
-			<td><input type="password" name="pw"></td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td><input type="submit" value="submit"></td>
-		</tr>
-	</table>
-	</form>
+  <form action="login.php" method="post" class="eventForm" cellpadding="6">
+  <table>
+    <tr>
+      <td>Login:</td>
+      <td><input type="text" name="uname"></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input type="password" name="pw"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="submit"></td>
+    </tr>
+  </table>
+  </form>
 <?php
-	} else {
+  } else {
 ?>
-	<form action="login.php" method="post" class="eventForm" cellpadding="6">
-	<table>
-		<tr>
-		<?php
-		$msg = "<td>Logged in as " . $_SESSION['refname'] . ".</td>";
-		echo $msg;
-		?>
-		<td><input type="submit" name="logout" value="logout"></td>
-		</tr>
-	</form>
+  <form action="login.php" method="post" class="eventForm" cellpadding="6">
+  <table>
+    <tr>
+    <?php
+    $msg = "<td>Logged in as " . $_SESSION['refname'] . ".</td>";
+    echo $msg;
+    ?>
+    <td><input type="submit" name="logout" value="logout"></td>
+    </tr>
+  </form>
 <?php
-	}
+  }
 
 ?>
 </body>

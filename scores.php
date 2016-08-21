@@ -14,8 +14,8 @@ if($error!=="") {
 
 $sql=<<<EOF
 SELECT t.id AS id, t.name AS team, l.name AS league
-FROM teams t 
-JOIN leagues l on t.league=l.id 
+FROM teams t
+JOIN leagues l on t.league=l.id
 WHERE l.active=1
 ORDER BY t.name
 EOF;
@@ -40,11 +40,11 @@ print <<<EOF
 <div id="content">
 <h1>Scores for completed games</h1>
 
-<p>To filter, choose one of the options below, and click "Filter". 
+<p>To filter, choose one of the options below, and click "Filter".
 
 <form name="sort" method="post">
-	<select name="teams" onchange="document.sort.leagues.selectedIndex = 0;">
-	<option value="">-- Select team --</option>
+  <select name="teams" onchange="document.sort.leagues.selectedIndex = 0;">
+  <option value="">-- Select team --</option>
 
 EOF;
 
@@ -98,7 +98,7 @@ Scores are shown 'home - visitor'
 </div>
 </td>
 </tr>
-	
+
 EOF;
 
 $where="";
@@ -110,15 +110,15 @@ if(isset($teams) && ($teams > 0))
   $where.=" AND (t.id=$teams OR teams.id=$teams)";
 
 $sql=<<<EOF
-SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt1, tm, 
-g.hscore1 AS h1, g.hscore2 AS h2, g.hscore3 AS h3, 
-g.vscore1 AS v1, g.vscore2 AS v2, g.vscore3 AS v3, 
+SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt1, tm,
+g.hscore1 AS h1, g.hscore2 AS h2, g.hscore3 AS h3,
+g.vscore1 AS v1, g.vscore2 AS v2, g.vscore3 AS v3,
 t.name AS home, teams.name AS visitor, l.name AS league
 FROM ((((games g)
 LEFT JOIN teams t ON t.id = g.home)
 LEFT JOIN teams ON teams.id = g.visitor)
 LEFT JOIN leagues l ON t.league = l.id)
-WHERE g.hscore1 IS NOT NULL $where 
+WHERE g.hscore1 IS NOT NULL $where
 ORDER BY dt, tm
 EOF;
 

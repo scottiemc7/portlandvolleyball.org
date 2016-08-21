@@ -17,7 +17,7 @@ if($_POST['delete'] == "yes") {
     exit;
   }
 }
-	
+
 if($_POST['name'] != "") {
   $name=dbescape($_POST['name']);
   $address=dbescape($_POST['address']);
@@ -56,7 +56,7 @@ print <<<EOF
     <td>&nbsp;</td>
     <td><input type="submit" value="Add Gym"></td>
   </tr>
-</table>			
+</table>
 </form>
 EOF;
 

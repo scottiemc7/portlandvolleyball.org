@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include("header.html");
 include 'lib/mysql.php';
@@ -55,7 +55,7 @@ EOF;
 
       $url="";
       if($row['map']!=NULL) {
-	$map=$row['map'];
+  $map=$row['map'];
         $url=<<<EOF
 <a href="$map">map</a>
 EOF;

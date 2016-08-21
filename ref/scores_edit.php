@@ -1,10 +1,10 @@
-<?php 	//This file is the score-editing page for
-	//a particular game for the logged-in ref
+<?php   //This file is the score-editing page for
+  //a particular game for the logged-in ref
 
 include("header.html");
 
 include '../lib/mysql.php';
- 
+
 $ref = $HTTP_SESSION_VARS['ref'];
 
 $h1=NULL;
@@ -63,7 +63,7 @@ if (($h1 != NULL)||($v1 != NULL)) {
   $hpts = 0;
   $vpts = 0;
   if($h1 != $v1) {
-    $h1>$v1?$hpts+=0.5:$vpts+=0.5;	// 0.5 match points per game
+    $h1>$v1?$hpts+=0.5:$vpts+=0.5;  // 0.5 match points per game
   };
   if ($h2 != $v2) {
     $h2>$v2?$hpts+=0.5:$vpts+=0.5;
@@ -72,12 +72,12 @@ if (($h1 != NULL)||($v1 != NULL)) {
     $h3>$v3?$hpts+=0.5:$vpts+=0.5;
   }
   if ($hpts != $vpts) {
-    $hpts>$vpts?$hpts+=2:$vpts+=2;	// 2 points for winning the most games
+    $hpts>$vpts?$hpts+=2:$vpts+=2;  // 2 points for winning the most games
   }
   $hsum = $h1+$h2+$h3;
   $vsum = $v1+$v2+$v3;
   if ($hsum != $vsum) {
-    $hsum>$vsum?$hpts+=1:$vpts+=1;	// 1 point for scoring the most game points in the match
+    $hsum>$vsum?$hpts+=1:$vpts+=1;  // 1 point for scoring the most game points in the match
   }
 } else {
   $hpts = $vpts = 0;
@@ -98,7 +98,7 @@ EOF;
 
   if(dbquery($sql)) {
     print <<<EOF
-This score has been successfully edited.  
+This score has been successfully edited.
 <a href="index.php">return to ref home</a>
 EOF;
   }else{
@@ -109,7 +109,7 @@ EOF;
 }
 
 $sql=<<<EOF
-SELECT g.hscore1 AS h1, g.vscore1 AS v1, g.hscore2 AS h2, g.vscore2 AS v2, g.hscore3 AS h3, g.vscore3 AS v3, 
+SELECT g.hscore1 AS h1, g.vscore1 AS v1, g.hscore2 AS h2, g.vscore2 AS v2, g.hscore3 AS h3, g.vscore3 AS v3,
 t.name AS home, teams.name AS visitor, g.notes AS notes
 FROM ((games g LEFT JOIN teams t ON t.id = g.home) LEFT JOIN teams ON teams.id = g.visitor)
 WHERE g.id = $game
@@ -136,7 +136,7 @@ EOF;
     $home=$row['home'];
     $visitor=$row['visitor'];
     $notes=$row['notes'];
-      
+
     print <<<EOF
 <form action="scores_edit.php" method="post">
 <table class="eventTable" cellspacing="0" style="width: 60%; text-align: center;">

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-include("../header.html"); 
+include("../header.html");
 
 require 'DB.php';
 $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
@@ -40,7 +40,7 @@ foreach ($map as $key => $value) {
 
   #$qry = $dbh->getAll("SELECT * FROM registration_leagues WHERE active=1");
   $qry = $dbh->getAll("SELECT rl.id,rl.name,rl.night,rl.active,l.id,l.name,l.active FROM registration_leagues rl,leagues l WHERE rl.id=$key AND l.id=$value");
-						
+
   if (!$qry) {
     print <<<EOF
 <tr><td colspan="5">There are no items to display ($key -> $value)</td></tr>
@@ -49,14 +49,14 @@ EOF;
     foreach($qry as $row){
       print "<tr>";
       foreach ($row as $key => $value) {
-	if(strcmp($value,"") == 0) {
-	  $value="&nbsp;";
-	}
+  if(strcmp($value,"") == 0) {
+    $value="&nbsp;";
+  }
         print "<td>$value</td>";
       }
       print "</tr>\n";
     }
-  } 
+  }
 }
 
 print <<<EOF

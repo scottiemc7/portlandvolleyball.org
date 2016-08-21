@@ -1,24 +1,24 @@
 <?php include("header.html"); ?>
 
 <?php
-  
-	require 'DB.php';
-	$dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
-	$dbh = DB::connect($dsn);
-	if (DB::isError($dbh)) {
-		die($dbh->getMessage());
-	}
 
-	$season = $dbh->getOne("select value from vars where name = 'reg_season'");
-	$deadline = $dbh->getOne("select value from vars where name = 'reg_deadline'");
-	$lateDeadline = $dbh->getOne("select value from vars where name = 'reg_latedeadline'");
-	$fee = $dbh->getOne("select value from vars where name = 'reg_fee'");
-	$lateFee = $dbh->getOne("select value from vars where name = 'reg_latefee'");;
-	$payPalFee = $dbh->getOne("select value from vars where name = 'reg_paypalfee'");  //2.9% + $.30
-	$isSummer = $dbh->getOne("select value from vars where name = 'reg_isSummer'");
-	$doublesFee = $dbh->getOne("select value from vars where name = 'reg_doublesFee'");  
-	$totalFee = $fee;
-  
+  require 'DB.php';
+  $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
+  $dbh = DB::connect($dsn);
+  if (DB::isError($dbh)) {
+    die($dbh->getMessage());
+  }
+
+  $season = $dbh->getOne("select value from vars where name = 'reg_season'");
+  $deadline = $dbh->getOne("select value from vars where name = 'reg_deadline'");
+  $lateDeadline = $dbh->getOne("select value from vars where name = 'reg_latedeadline'");
+  $fee = $dbh->getOne("select value from vars where name = 'reg_fee'");
+  $lateFee = $dbh->getOne("select value from vars where name = 'reg_latefee'");;
+  $payPalFee = $dbh->getOne("select value from vars where name = 'reg_paypalfee'");  //2.9% + $.30
+  $isSummer = $dbh->getOne("select value from vars where name = 'reg_isSummer'");
+  $doublesFee = $dbh->getOne("select value from vars where name = 'reg_doublesFee'");
+  $totalFee = $fee;
+
   $aryDeadline = explode('/',$deadline);
   $dtRegularDeadline = mktime(23, 59, 59, $aryDeadline[0], $aryDeadline[1], $aryDeadline[2]);
   $aryLateDeadline = explode('/',$lateDeadline);
@@ -26,8 +26,8 @@
   $timenow = time();
   $isClosed = $dtFinalDeadline - $timenow <= 0;
   $isLate = $dtRegularDeadline - $timenow <= 0;
-  
-	$registrationDeadline = date('l, F j, Y', $dtRegularDeadline);
+
+  $registrationDeadline = date('l, F j, Y', $dtRegularDeadline);
 
   // Start: Added by Bill on 2010-01-03
   if($isClosed && isset($_GET["supersecret"]) && (strcmp($_GET["supersecret"],"volleyballisfun")==0)) {
@@ -42,73 +42,73 @@
 <?php
   }
   else {
-	  if($isLate)
-		  $totalFee += $lateFee;
-  	
-	  $statusMessage = "";
-  	
-	  $formSubmitted = false;
-  	
-	  //process form
-	  if ($_POST['teamname'] != "") {
-		  $bOK = true;
-		  $prob_spam = false;
-  		
-		  $teamName = $_POST['teamname'];
-		  if(strlen($teamName) == 0)
-			  $bOK = false;
-  //		if(substr_count($teamName, '.net') + substr_count($teamName, '.com') + substr_count($teamName, '.org') > 0) {
-  //			$prob_spam = true;
-  //			$bOK = false;
-  //		}
-		  $mgrName = $_POST['mgrName'];
-		  if($mgrName == "")
-			  $bOK = false;
-		  $mgrPhone = $_POST['phone1'];
-		  if($mgrPhone == "")
-			  $bOK = false;
-		  if(substr_count($mgrPhone, '5001020') > 0 || substr_count($mgrPhone, '123456') > 0) {
-			  $prob_spam = true;
-			  $bOK = false;
-		  }
-		  $mgrPhone2 = $_POST['phone2'];
-		  $mgrEmail = $_POST['email'];
-		  if($mgrEmail == "")
-			  $bOK = false;
-		  if(substr_count($mgrEmail, 'gawab.') > 0) {
-			  $prob_spam = true;
-			  $bOK = false;
-		  }
-		  $mgrEmail2 = $_POST['email2'];
-		  $altName = $_POST['alt_name'];
-		  $altPhone = $_POST['alt_phone1'];
-		  $altPhone2 = $_POST['alt_phone2'];
-		  $altEmail = $_POST['alt_email'];
-		  $league = $_POST['league'];
-		  $league2 = $_POST['league2'];
-		  //if($league == "")
-			  //bOK = false;
-		  $addr1 = $_POST['addr1'];
-		  if($addr1 == "")
-			  $bOK = false;
-		  $addr2 = $_POST['addr2'];
-		  //if($addr2 == "")
-			  //bOK = false;
-		  $city = $_POST['city'];
-		  //if($city == "")
-			  //bOK = false;
-		  $state = $_POST['state'];
-		  //if($state == "")
-			  //bOK = false;
-		  $zip = $_POST['zip'];
-		  //if($zip == "")
-			  //bOK = false;
-		  $comments = $_POST['comments'];
-		  if(substr_count($comments, 'drugs') > 0 || substr_count($comments, 'online store') > 0 || substr_count($comments, 'tramadol') > 0) {
-			  $prob_spam = true;
-			  $bOK = false;
-		  }
-        
+    if($isLate)
+      $totalFee += $lateFee;
+
+    $statusMessage = "";
+
+    $formSubmitted = false;
+
+    //process form
+    if ($_POST['teamname'] != "") {
+      $bOK = true;
+      $prob_spam = false;
+
+      $teamName = $_POST['teamname'];
+      if(strlen($teamName) == 0)
+        $bOK = false;
+  //    if(substr_count($teamName, '.net') + substr_count($teamName, '.com') + substr_count($teamName, '.org') > 0) {
+  //      $prob_spam = true;
+  //      $bOK = false;
+  //    }
+      $mgrName = $_POST['mgrName'];
+      if($mgrName == "")
+        $bOK = false;
+      $mgrPhone = $_POST['phone1'];
+      if($mgrPhone == "")
+        $bOK = false;
+      if(substr_count($mgrPhone, '5001020') > 0 || substr_count($mgrPhone, '123456') > 0) {
+        $prob_spam = true;
+        $bOK = false;
+      }
+      $mgrPhone2 = $_POST['phone2'];
+      $mgrEmail = $_POST['email'];
+      if($mgrEmail == "")
+        $bOK = false;
+      if(substr_count($mgrEmail, 'gawab.') > 0) {
+        $prob_spam = true;
+        $bOK = false;
+      }
+      $mgrEmail2 = $_POST['email2'];
+      $altName = $_POST['alt_name'];
+      $altPhone = $_POST['alt_phone1'];
+      $altPhone2 = $_POST['alt_phone2'];
+      $altEmail = $_POST['alt_email'];
+      $league = $_POST['league'];
+      $league2 = $_POST['league2'];
+      //if($league == "")
+        //bOK = false;
+      $addr1 = $_POST['addr1'];
+      if($addr1 == "")
+        $bOK = false;
+      $addr2 = $_POST['addr2'];
+      //if($addr2 == "")
+        //bOK = false;
+      $city = $_POST['city'];
+      //if($city == "")
+        //bOK = false;
+      $state = $_POST['state'];
+      //if($state == "")
+        //bOK = false;
+      $zip = $_POST['zip'];
+      //if($zip == "")
+        //bOK = false;
+      $comments = $_POST['comments'];
+      if(substr_count($comments, 'drugs') > 0 || substr_count($comments, 'online store') > 0 || substr_count($comments, 'tramadol') > 0) {
+        $prob_spam = true;
+        $bOK = false;
+      }
+
         $leaguename = $dbh->getAll("select name, night from registration_leagues where id = $league");
         $leaguename = $leaguename[0][0]." ".$leaguename[0][1];
         if($league2 != "") {
@@ -118,59 +118,59 @@
         else {
           $leaguename2 = "Not selected";
         }
-        
-  		 
-		  if($bOK == true) {
-			  $status = $dbh->query("INSERT INTO registration(teamName, mgrName, mgrPhone, mgrPhone2,
-				  mgrEmail, mgrEmail2, altName, altPhone, altPhone2, altEmail, league, league2,
-				  addr1, addr2, city, state, zip, comments, night) 
-				  VALUES('".mysql_real_escape_string($teamName)."', '".mysql_real_escape_string($mgrName)."', 
-					'".mysql_real_escape_string($mgrPhone)."', '".mysql_real_escape_string($mgrPhone2)."',
-					'".mysql_real_escape_string($mgrEmail)."', '".mysql_real_escape_string($mgrEmail2)."', 
-					'".mysql_real_escape_string($altName)."', '".mysql_real_escape_string($altPhone)."', 
-					'".mysql_real_escape_string($altPhone2)."', '".mysql_real_escape_string($altEmail)."', 
-					'".mysql_real_escape_string($league)."', '".mysql_real_escape_string($league2)."', 
-					'".mysql_real_escape_string($addr1)."', '".mysql_real_escape_string($addr2)."', 
-					'".mysql_real_escape_string($city)."', '".mysql_real_escape_string($state)."', 
-				  	'".mysql_real_escape_string($zip)."', '".mysql_real_escape_string($comments)."', 
-					'".mysql_real_escape_string($night)."')");
-			  if (DB::isError($status)) {
-				  die($status->getMessage());
-			  }
-  			
-			  $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
-			  $formSubmitted = true;
-        
-			  $mailstring = "Team: $teamName\r\n\r\nManager: $mgrName";
-			  $mailstring = "$mailstring\r\n\tPhone: $mgrPhone, $mgrPhone2\r\n\tEmail: $mgrEmail, $mgrEmail2";
-			  $mailstring = "$mailstring\r\n\r\nAlternate: $altName\r\n\tPhone: $altPhone, $altPhone2\r\n\tEmail: $altEmail";
-			  $mailstring = "$mailstring\r\n\r\nLeague: $leaguename\r\n2nd choice: $leaguename2";
-			  $mailstring = "$mailstring\r\n\r\nComments: $comments";
-  			
-			  mail("pva@portlandvolleyball.org", "New registration - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
 
-			  //send email to user
-			  $mailstring = "Thank you for registering your team with the Portland Volleyball Association!\r\n\r\nYour registration details are as follows:\r\n\r\n$mailstring\r\n\r\nPlease note that you are not fully registered until we have received your payment.  If you have any questions regarding your registration, please send an email to Michelle Baldwin at info@portlandvolleyball.org.";
-			  mail("$mgrName<$mgrEmail>", "PVA registration", $mailstring, "From: Portland Volleyball Association<info@portlandvolleyball.org>");
-		  }
-		  else if ($prob_spam == true) {
-			  $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
-			  $formSubmitted = true;
-			  $mailstring = "Team: $teamName\r\n\r\nManager: $mgrName";
-			  $mailstring = "$mailstring\r\n\tPhone: $mgrPhone, $mgrPhone2\r\n\tEmail: $mgrEmail, $mgrEmail2";
-			  $mailstring = "$mailstring\r\n\r\nAlternate: $altName\r\n\tPhone: $altPhone, $altPhone2\r\n\tEmail: $altEmail";
-			  $mailstring = "$mailstring\r\n\r\nLeague: $leaguename\r\n2nd choice: $leaguename2";
-			  $mailstring = "$mailstring\r\n\r\nComments: $comments";
-  			
-			  mail("register@portlandvolleyball.org", "Probable pva reg spam - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
-		  }
-		  else {
-			  $statusMessage = "<p class=highlight>You forgot to fill in one or more required 
-			  fields.<br />Please make sure all fields marked with an asterisk have been filled in.</p>";
-		  }
-	  }
+
+      if($bOK == true) {
+        $status = $dbh->query("INSERT INTO registration(teamName, mgrName, mgrPhone, mgrPhone2,
+          mgrEmail, mgrEmail2, altName, altPhone, altPhone2, altEmail, league, league2,
+          addr1, addr2, city, state, zip, comments, night)
+          VALUES('".mysql_real_escape_string($teamName)."', '".mysql_real_escape_string($mgrName)."',
+          '".mysql_real_escape_string($mgrPhone)."', '".mysql_real_escape_string($mgrPhone2)."',
+          '".mysql_real_escape_string($mgrEmail)."', '".mysql_real_escape_string($mgrEmail2)."',
+          '".mysql_real_escape_string($altName)."', '".mysql_real_escape_string($altPhone)."',
+          '".mysql_real_escape_string($altPhone2)."', '".mysql_real_escape_string($altEmail)."',
+          '".mysql_real_escape_string($league)."', '".mysql_real_escape_string($league2)."',
+          '".mysql_real_escape_string($addr1)."', '".mysql_real_escape_string($addr2)."',
+          '".mysql_real_escape_string($city)."', '".mysql_real_escape_string($state)."',
+            '".mysql_real_escape_string($zip)."', '".mysql_real_escape_string($comments)."',
+          '".mysql_real_escape_string($night)."')");
+        if (DB::isError($status)) {
+          die($status->getMessage());
+        }
+
+        $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
+        $formSubmitted = true;
+
+        $mailstring = "Team: $teamName\r\n\r\nManager: $mgrName";
+        $mailstring = "$mailstring\r\n\tPhone: $mgrPhone, $mgrPhone2\r\n\tEmail: $mgrEmail, $mgrEmail2";
+        $mailstring = "$mailstring\r\n\r\nAlternate: $altName\r\n\tPhone: $altPhone, $altPhone2\r\n\tEmail: $altEmail";
+        $mailstring = "$mailstring\r\n\r\nLeague: $leaguename\r\n2nd choice: $leaguename2";
+        $mailstring = "$mailstring\r\n\r\nComments: $comments";
+
+        mail("pva@portlandvolleyball.org", "New registration - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
+
+        //send email to user
+        $mailstring = "Thank you for registering your team with the Portland Volleyball Association!\r\n\r\nYour registration details are as follows:\r\n\r\n$mailstring\r\n\r\nPlease note that you are not fully registered until we have received your payment.  If you have any questions regarding your registration, please send an email to Michelle Baldwin at info@portlandvolleyball.org.";
+        mail("$mgrName<$mgrEmail>", "PVA registration", $mailstring, "From: Portland Volleyball Association<info@portlandvolleyball.org>");
+      }
+      else if ($prob_spam == true) {
+        $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
+        $formSubmitted = true;
+        $mailstring = "Team: $teamName\r\n\r\nManager: $mgrName";
+        $mailstring = "$mailstring\r\n\tPhone: $mgrPhone, $mgrPhone2\r\n\tEmail: $mgrEmail, $mgrEmail2";
+        $mailstring = "$mailstring\r\n\r\nAlternate: $altName\r\n\tPhone: $altPhone, $altPhone2\r\n\tEmail: $altEmail";
+        $mailstring = "$mailstring\r\n\r\nLeague: $leaguename\r\n2nd choice: $leaguename2";
+        $mailstring = "$mailstring\r\n\r\nComments: $comments";
+
+        mail("register@portlandvolleyball.org", "Probable pva reg spam - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
+      }
+      else {
+        $statusMessage = "<p class=highlight>You forgot to fill in one or more required
+        fields.<br />Please make sure all fields marked with an asterisk have been filled in.</p>";
+      }
+    }
   //$statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
-  //			$formSubmitted = true;
+  //      $formSubmitted = true;
 ?>
 <div id="content">
   <h1>
@@ -189,7 +189,7 @@
               <input type="hidden" name="cn" value="Your Team Name">
                 <input type="hidden" name="currency_code" value="USD">
 
-                  <?php 
+                  <?php
 if($formSubmitted == true) {
 ?>
 
@@ -197,13 +197,13 @@ if($formSubmitted == true) {
                   <p>
                     The team fee for the <?=$season?> season is $<?=$fee?>.
                     <?php
-		if($isLate) {
-	?>
+    if($isLate) {
+  ?>
                     Also, since it's after <?=$registrationDeadline?>, <b>
                       you now owe the $<?=$lateFee?> late fee
                     </b>.
                     <?php
-	} 
+  }
     if($isSummer) {
   ?>
                     <div>
@@ -211,7 +211,7 @@ if($formSubmitted == true) {
                     </div>
                     <?php
     }
-	?>
+  ?>
                     <p>
                       You have two payment options:
                       <ol>
@@ -249,16 +249,16 @@ else {
                     <p>
                       The team fee for <?php echo $season?> is $<?php echo $fee?>.
                       <?php
-	if($isLate) {
-	?>
+  if($isLate) {
+  ?>
                       <b>
                         Also, since it's after
                         <?=$registrationDeadline?>, you owe the $<?php echo $lateFee?> late fee.
                       </b> Please include it
                       with your payment.
                       <?php
-	}
-	?>
+  }
+  ?>
                     </p>
 
                     <p>
@@ -375,18 +375,18 @@ as number from registration_leagues where active = 1 order by name, night");
 ?>
           <select name="league">
             <?php
-	foreach($qryLeagues as $league){
-    if($league[3] < 8) 
-  		echo("<option value=\"$league[0]\">$league[1] - $league[2]</option>");
-	}
-	?>
+  foreach($qryLeagues as $league){
+    if($league[3] < 8)
+      echo("<option value=\"$league[0]\">$league[1] - $league[2]</option>");
+  }
+  ?>
           </select>
           <br/>
           <?php
   if(!$isSummer) {
 ?>
           <div style="font-size: 10px; color: #999999;">Women's leagues: AA is higher than A and BB is higher than B.</div>
-          <?php 
+          <?php
    }
 ?>
           <small>
@@ -398,7 +398,7 @@ as number from registration_leagues where active = 1 order by name, night");
   ?>
               <b> There are a maximum number of 8 teams per league.</b> If the league you want is full, contact Michelle Baldwin at <a href="mailto:info@portlandvolleyball.org">info@portlandvolleyball.org</a>.
           </small>
-          <?php 
+          <?php
   }
   ?>
         </td>
@@ -411,11 +411,11 @@ as number from registration_leagues where active = 1 order by name, night");
           <select name="league2">
             <option value=""></option>
             <?php
-	foreach($qryLeagues as $league){
-    if($league[3] < 8) 
-  		echo("<option value=\"$league[0]\">$league[1] - $league[2]</option>");
-	}
-	?>
+  foreach($qryLeagues as $league){
+    if($league[3] < 8)
+      echo("<option value=\"$league[0]\">$league[1] - $league[2]</option>");
+  }
+  ?>
           </select>
 
           <br/>
@@ -442,7 +442,7 @@ as number from registration_leagues where active = 1 order by name, night");
 ?>
 
 </div>
-<?php 
+<?php
 }
 ?>
 <?php include("footer.html"); ?>

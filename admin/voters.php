@@ -15,9 +15,9 @@ $dbh = DB::connect($dsn);
 if (DB::isError($dbh)) {
   die($dbh->getMessage());
 }
-  
+
 $qry = $dbh->getAll("SELECT r.id, rl.name, rl.night, teamname, mgrName, mgrEmail, mgrEmail2 FROM (registration2 r left join registration_leagues2 rl on rl.id = r.league) ORDER BY rl.name, rl.night, teamname");
-						
+
 $contents="";
 if (!$qry) {
   $contents="There are no items to display.\n";
@@ -36,4 +36,4 @@ if (!$qry) {
 }
 header("Content-type: application/octet-stream");
 header("Content-disposition: attachment; filename=voters.csv");
-print $contents; 
+print $contents;

@@ -12,11 +12,11 @@ if($error!=="") {
   print "***ERROR*** dbinit: $error\n";
   exit;
 }
-	
-if(isset($_POST['id'])) { 
-  $id=preg_replace('/[^\d]/','',$_POST['id']); 
+
+if(isset($_POST['id'])) {
+  $id=preg_replace('/[^\d]/','',$_POST['id']);
 }
-	
+
 if ($_POST['title'] != "") {
   $title = dbescape($_POST['title']);
   $article = dbescape($_POST['article']);
@@ -60,47 +60,47 @@ EOF;
 
       print <<<EOF
 <form name="edit" class="eventForm" method="post">
-	<table>
+  <table>
 
-		<tr>
-			<td>Title</td>
-			<td><input type="text" name="title" value="$title" size="40"></td>
-		</tr>
-		<tr>
-			<td valign="top">Article</td>
-			<td><textarea name="article" cols="60" rows="8">$article</textarea>
-			<p>Note:  To stop spammers from collecting your email address, it's best to obscure
-			it on the page.  You'll want to add it like the following (this is an example for info@portlandvolleyball.org).</p>
-				<blockquote><small>&lt;script language="javascript"&gt;<br/>
-				getMailto('info', 'portlandvolleyball.org')<br/>
-				&lt;/script&gt;</small></blockquote>
-			</td>
+    <tr>
+      <td>Title</td>
+      <td><input type="text" name="title" value="$title" size="40"></td>
+    </tr>
+    <tr>
+      <td valign="top">Article</td>
+      <td><textarea name="article" cols="60" rows="8">$article</textarea>
+      <p>Note:  To stop spammers from collecting your email address, it's best to obscure
+      it on the page.  You'll want to add it like the following (this is an example for info@portlandvolleyball.org).</p>
+        <blockquote><small>&lt;script language="javascript"&gt;<br/>
+        getMailto('info', 'portlandvolleyball.org')<br/>
+        &lt;/script&gt;</small></blockquote>
+      </td>
 
-		</tr>
-		<tr>
-			<td>Column</td>
-			<td>
-				<input type="text" name="column" value="$storycolumn" />
-			</td>
-		</tr>
-		<tr>
-			<td>Priority</td>
-			<td>
-				<input type="text" name="priority" value="$priority" /> (9=highest, 1=lowest)
-			</td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td><input type="submit" value="Edit"/></td>
-		</tr>
-	</table>			
-	<input type="hidden" name="id" value="$id">
+    </tr>
+    <tr>
+      <td>Column</td>
+      <td>
+        <input type="text" name="column" value="$storycolumn" />
+      </td>
+    </tr>
+    <tr>
+      <td>Priority</td>
+      <td>
+        <input type="text" name="priority" value="$priority" /> (9=highest, 1=lowest)
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="Edit"/></td>
+    </tr>
+  </table>
+  <input type="hidden" name="id" value="$id">
 </form><br/>
 
 <form action="homepage_add.php" name="delete" method="post" style="margin-left: 70px;">
-	<input type="hidden" name="delete" value="yes" />
-	<input type="hidden" name="id" value="$id" />
-	<input type="submit" value="Delete this article" onclick="javascript:return confirm('Really delete this article?')" />
+  <input type="hidden" name="delete" value="yes" />
+  <input type="hidden" name="id" value="$id" />
+  <input type="submit" value="Delete this article" onclick="javascript:return confirm('Really delete this article?')" />
 </form>
 EOF;
     }

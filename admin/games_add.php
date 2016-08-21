@@ -17,7 +17,7 @@ if($_POST['delete'] != "") {
     print "***ERROR*** dbquery: Failed query<br />$error\n";
     exit;
   }
-}	
+}
 
 if($_POST['deleteall'] != "") {
   if(!dbquery("DELETE FROM games WHERE 1")) {
@@ -25,7 +25,7 @@ if($_POST['deleteall'] != "") {
     print "***ERROR*** dbquery: Failed query<br />$error\n";
     exit;
   }
-}	
+}
 
 if(isset($_POST['home'])) {
   $dtarray = explode('/',$_POST['dt']);
@@ -38,7 +38,7 @@ if(isset($_POST['home'])) {
   $ref = $_POST['ref'];
 
   $sql=<<<EOF
-INSERT INTO games (dt, tm, gym, court, home, visitor, ref) 
+INSERT INTO games (dt, tm, gym, court, home, visitor, ref)
 VALUES ('$dt', '$tm', $gym, '$court', $home, $visitor, '$ref')
 EOF;
   if(!dbquery($sql)) {
@@ -58,13 +58,13 @@ print <<<EOF
 <tr>
   <td>Home Team:</td>
   <td>
-    <select name="home">		
+    <select name="home">
     <option value=""> -- Select -- </option>
 EOF;
 
 $sql=<<<EOF
 SELECT t.id AS id, t.name AS team, l.name AS league
-FROM (teams t LEFT JOIN leagues l ON l.id = t.league) 
+FROM (teams t LEFT JOIN leagues l ON l.id = t.league)
 ORDER BY l.name, t.name
 EOF;
 
@@ -96,7 +96,7 @@ print <<<EOF
 <tr>
   <td>Visitor:</td>
   <td>
-    <select name="visitor">		
+    <select name="visitor">
     <option value=""> -- Select -- </option>
     $str
     </select>
@@ -197,13 +197,13 @@ print <<<EOF
 EOF;
 
 $sql=<<<EOF
-SELECT teams.name AS visitor, t.name AS home, gyms.name AS gym, 
-dt, tm, s.id AS id, s.edited AS edited, refs.fname AS fname, 
-refs.lname AS lname, refs.id AS refid, s.hmp AS hmp, s.vmp AS vmp, 
+SELECT teams.name AS visitor, t.name AS home, gyms.name AS gym,
+dt, tm, s.id AS id, s.edited AS edited, refs.fname AS fname,
+refs.lname AS lname, refs.id AS refid, s.hmp AS hmp, s.vmp AS vmp,
 s.hscore1 AS h1, s.vscore1 AS v1, s.notes AS notes
-FROM ((((games s LEFT JOIN teams ON teams.id = s.visitor) 
-LEFT JOIN gyms ON gyms.id = s.gym) LEFT JOIN teams t ON t.id = s.home) 
-LEFT JOIN refs ON refs.id = s.ref ) 
+FROM ((((games s LEFT JOIN teams ON teams.id = s.visitor)
+LEFT JOIN gyms ON gyms.id = s.gym) LEFT JOIN teams t ON t.id = s.home)
+LEFT JOIN refs ON refs.id = s.ref )
 ORDER BY dt, tm
 EOF;
 
@@ -247,7 +247,7 @@ EOF;
 
     if($visitor == "BYE" || $home == "BYE" || $gym == "BYE" || $gym == "Cancelled") {
       print '<span style="text-align: center;">N/A</span>';
-    }elseif(($h1==NULL && $v1==NULL) && strtotime($dt) < time() - 86400) { 
+    }elseif(($h1==NULL && $v1==NULL) && strtotime($dt) < time() - 86400) {
       // If the first game has no score and the date is past, we need a score
       print '<span style="color: #ff0000;">Need score</span>';
     }else{
@@ -281,7 +281,7 @@ EOF;
   print "***ERROR*** dbquery: Failed query<br />$error\n";
   exit;
 }
-	
+
 print <<<EOF
 </table>
 

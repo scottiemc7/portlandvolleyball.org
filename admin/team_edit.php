@@ -13,13 +13,13 @@ if($error!=="") {
   exit;
 }
 
-if(isset($_POST['id'])) { 
-  $id=preg_replace('/[^\d]/','',$_POST['id']); 
+if(isset($_POST['id'])) {
+  $id=preg_replace('/[^\d]/','',$_POST['id']);
 }
-	
+
 if($_POST['name'] != "") {
   $name = dbescape($_POST['name']);
-  $league=preg_replace('/[^\d]/','',$_POST['league']); 
+  $league=preg_replace('/[^\d]/','',$_POST['league']);
 
   $sql=<<<EOF
 UPDATE teams SET name='$name',league=$league WHERE id=$id
@@ -88,11 +88,11 @@ EOF;
 </form>
 
 <form action="team_add.php" name="delete" style="margin-left: 70px;" method="post">
-<p><b>Important:</b> Before deleting a team, please make sure there are no games in 
+<p><b>Important:</b> Before deleting a team, please make sure there are no games in
 the database for that team.  Otherwise, things are going to look pretty screwy on the schedules page.</p>
-	<input type="hidden" name="delete" value="yes">
-	<input type="hidden" name="id" value="$id">
-	<input type="submit" value="Delete this team" onclick="javascript:return confirm('Really delete this team?')">
+  <input type="hidden" name="delete" value="yes">
+  <input type="hidden" name="id" value="$id">
+  <input type="submit" value="Delete this team" onclick="javascript:return confirm('Really delete this team?')">
 </form>
 EOF;
 
@@ -134,7 +134,7 @@ function getLeagues($active) {
 
       $leagues[$name]=$id;
     }
-  
+
     mysqli_free_result($result);
   }else{
     $error=dberror();

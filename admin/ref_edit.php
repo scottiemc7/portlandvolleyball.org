@@ -80,12 +80,12 @@ EOF;
     <td>&nbsp;</td>
     <td><input type="submit" name="submit_edit" value="Edit"></td>
   </tr>
-</table>			
+</table>
 <input type="hidden" name="id" value="$id" />
 </form>
 
 <form action="ref_add.php" name="delete" style="margin-left: 70px;" method="post">
-<p><b>Important:</b> Before deleting a ref, please make sure the ref isn't attached to any games.  
+<p><b>Important:</b> Before deleting a ref, please make sure the ref isn't attached to any games.
 Otherwise, this could cause some things to look pretty funky.</p>
 <input type="hidden" name="delete" value="yes" />
 <input type="hidden" name="id" value="$id" />
