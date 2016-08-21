@@ -1,14 +1,13 @@
-<?php include("../header.html"); ?>
+<?php include '../header.html'; ?>
 <?php 
 require 'DB.php';
 $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
 $dbh = DB::connect($dsn);
 if (DB::isError($dbh)) {
-die($dbh->getMessage());
+    die($dbh->getMessage());
 }
 $list = 'announcements';
-if($_GET['l'] != '')
-{
+if ($_GET['l'] != '') {
     $list = $_GET['l'];
 }
 ?>
@@ -31,4 +30,4 @@ you information pertaining to the league, registrations, etc.
   </form>
 
   <p>Note:  we will never share your email address with anybody, and you can unsubscribe at any time.  We hate spam as much as you do.</p>
-<?php include("../footer.html"); ?>
+<?php include '../footer.html'; ?>

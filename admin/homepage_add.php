@@ -1,45 +1,45 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include '../lib/mysql.php';
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Add new home page article</h1>
 
 <p>You can now add a column and priority to each story.  Stories in column 1 will go on the left; column 2 stories go in the box on the right.  Higher priority stories will show up at the top of the page; lower priority stories show up toward the bottom.  If two stories have the same priority, the newer story will appear first.</p>
 EOF;
 
-if($_POST['delete'] == "yes") {
-  if(isset($_POST['id'])) {
-    $id=preg_replace('/[^\d]/','',$_POST['id']);
+if ($_POST['delete'] == 'yes') {
+    if (isset($_POST['id'])) {
+        $id = preg_replace('/[^\d]/', '', $_POST['id']);
 
-    if(! dbquery("DELETE FROM home_page where id=$id")) {
-      $error=dberror();
-      print "***ERROR*** dbquery: Failed query<br />$error\n";
-      exit;
+        if (!dbquery("DELETE FROM home_page where id=$id")) {
+            $error = dberror();
+            echo "***ERROR*** dbquery: Failed query<br />$error\n";
+            exit;
+        }
     }
-  }
 }
 
-if ($_POST['title'] != "") {
-  $title = ereg_replace("'", "&#39;", $_POST['title']);
-  $article = ereg_replace("'", "&#39;", $_POST['article']);
-  $column = $_POST['column'];
-  $priority = $_POST['priority'];
-  if(! dbquery("INSERT INTO home_page (title, article, storycolumn, priority) VALUES('$title', '$article', '$column', '$priority')")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+if ($_POST['title'] != '') {
+    $title = ereg_replace("'", '&#39;', $_POST['title']);
+    $article = ereg_replace("'", '&#39;', $_POST['article']);
+    $column = $_POST['column'];
+    $priority = $_POST['priority'];
+    if (!dbquery("INSERT INTO home_page (title, article, storycolumn, priority) VALUES('$title', '$article', '$column', '$priority')")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
 
-print <<<EOF
+echo <<<'EOF'
 <form name="addEvent" class="eventForm" method="post">
   <table>
     <tr>
@@ -89,20 +89,18 @@ print <<<EOF
 </form>
 EOF;
 
-$sql=<<<EOF
+$sql = <<<'EOF'
 SELECT id, title, article, storycolumn, priority
 FROM home_page
 ORDER BY priority desc, dtm DESC
 EOF;
 
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print "<div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no items to display.</div>";
-  }else{
-
-    print <<<EOF
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo '<div style="width: 750px; font-weight: bold; text-align: center;">There are no items to display.</div>';
+    } else {
+        echo <<<'EOF'
 <h1>Current home page articles</h1>
 <table cellpadding="6" cellspacing="0" width="750" class="eventTable">
   <tr>
@@ -115,14 +113,14 @@ if($result=dbquery($sql)) {
 
 EOF;
 
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $title=$row['title'];
-      $article=$row['article'];
-      $storycolumn=$row['storycolumn'];
-      $priority=$row['priority'];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $title = $row['title'];
+            $article = $row['article'];
+            $storycolumn = $row['storycolumn'];
+            $priority = $row['priority'];
 
-      print <<<EOF
+            echo <<<EOF
     <tr>
     <td valign="top">$tile</td>
     <td valign="top">$article</td>
@@ -136,22 +134,19 @@ EOF;
     </td>
   </tr>
 EOF;
+        }
     }
-
-  }
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
-print <<<EOF
+echo <<<'EOF'
 </table>
 </body>
 </html>
 EOF;
 
 dbclose();
-
-?>

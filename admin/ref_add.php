@@ -1,43 +1,43 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include '../lib/mysql.php';
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Add referee</h1>
 EOF;
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
-if($_POST['delete'] == "yes") {
-  $id=preg_replace('/[^\d]/','',$_POST['id']);
-  if(!dbquery("DELETE FROM refs WHERE id=$id")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
-}elseif($_POST['fname'] != "") {
-  $uname=preg_replace('/[^a-zA-Z\d]/','',$_POST['uname']);
-  $password=preg_replace('/[^a-zA-Z\d]/','',$_POST['password']);
-  $fname=preg_replace('/[^a-zA-Z]/','',$_POST['fname']);
-  $lname=preg_replace('/[^a-zA-Z]/','',$_POST['lname']);
+if ($_POST['delete'] == 'yes') {
+    $id = preg_replace('/[^\d]/', '', $_POST['id']);
+    if (!dbquery("DELETE FROM refs WHERE id=$id")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
+} elseif ($_POST['fname'] != '') {
+    $uname = preg_replace('/[^a-zA-Z\d]/', '', $_POST['uname']);
+    $password = preg_replace('/[^a-zA-Z\d]/', '', $_POST['password']);
+    $fname = preg_replace('/[^a-zA-Z]/', '', $_POST['fname']);
+    $lname = preg_replace('/[^a-zA-Z]/', '', $_POST['lname']);
 
-  $sql=<<<EOF
+    $sql = <<<EOF
 INSERT INTO refs(uname, password, fname, lname)
 VALUES('$uname', '$password', '$fname', '$lname')
 EOF;
-  if(!dbquery($sql)) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+    if (!dbquery($sql)) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
 
-print <<<EOF
+echo <<<'EOF'
 <form action="ref_add.php" name="addRef" class="eventForm" method="post">
 <table>
   <tr>
@@ -68,20 +68,18 @@ print <<<EOF
 </form>
 EOF;
 
-$sql=<<<EOF
+$sql = <<<'EOF'
 SELECT id, lname, fname FROM refs ORDER BY lname
 EOF;
 
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print <<<EOF
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo <<<'EOF'
 <div style="width: 750px; font-weight: bold; text-align: center;">There are no refs to display.</div>
 EOF;
-  }else{
-
-    print <<<EOF
+    } else {
+        echo <<<'EOF'
 <h1>Current refs</h1>
 <table cellpadding="6" cellspacing="0" width="750" class="eventTable">
   <tr>
@@ -90,14 +88,14 @@ EOF;
   </tr>
 EOF;
 
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $uname=$row['uname'];
-      $password=$row['password'];
-      $fname=$row['fname'];
-      $lname=$row['lname'];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $uname = $row['uname'];
+            $password = $row['password'];
+            $fname = $row['fname'];
+            $lname = $row['lname'];
 
-      print <<<EOF
+            echo <<<EOF
   <tr>
     <td valign="top">$lname, $fname</td>
     <td>
@@ -108,25 +106,22 @@ EOF;
     </td>
   </tr>
 EOF;
-    }
+        }
 
-    print <<<EOF
+        echo <<<'EOF'
 </table>
 EOF;
-
-  }
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    }
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
-print <<<EOF
+echo <<<'EOF'
 </body>
 </html>
 EOF;
-
-?>

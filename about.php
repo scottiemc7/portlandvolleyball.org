@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
       <h1>About PVA</h1>
       <p>The Portland Volleyball Association works in cooperation with Portland Parks and Recreation to bring
@@ -60,4 +60,4 @@
         </tr>
     </table>
 
-<?php include("footer.html"); ?>
+<?php include 'footer.html'; ?>

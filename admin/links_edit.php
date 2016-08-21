@@ -3,54 +3,52 @@
 include 'header.html';
 include '../lib/mysql.php';
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Edit article</h1>
 EOF;
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
-}
-
-$id=preg_replace('/[^\d]/','',$_POST['id']);
-
-if($_POST['linktext'] != "") {
-  $link=dbescape($_POST['link']);
-  $linktext=dbescape($_POST['linktext']);
-  $description=dbescape($_POST['description']);
-
-  if(!dbquery("UPDATE linkage SET link='$link', linktext='$linktext', description='$description' WHERE id=$id")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
     exit;
-  }
-  print "This link has been successfully edited.  <a href=\"links_add.php\">return to list</a>";
 }
 
-$sql=<<<EOF
+$id = preg_replace('/[^\d]/', '', $_POST['id']);
+
+if ($_POST['linktext'] != '') {
+    $link = dbescape($_POST['link']);
+    $linktext = dbescape($_POST['linktext']);
+    $description = dbescape($_POST['description']);
+
+    if (!dbquery("UPDATE linkage SET link='$link', linktext='$linktext', description='$description' WHERE id=$id")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
+    echo 'This link has been successfully edited.  <a href="links_add.php">return to list</a>';
+}
+
+$sql = <<<EOF
 SELECT * FROM linkage WHERE id=$id
 EOF;
 
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print "<div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no links to display.</div>";
-  }else{
-
-    print <<<EOF
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo '<div style="width: 750px; font-weight: bold; text-align: center;">There are no links to display.</div>';
+    } else {
+        echo <<<'EOF'
 <form name="editEvent" class="eventForm" method="post">
 <table>
 EOF;
 
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $link=htmlentities($row['link']);
-      $linktext=htmlentities($row['linktext']);
-      $description=htmlentities($row['description']);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $link = htmlentities($row['link']);
+            $linktext = htmlentities($row['linktext']);
+            $description = htmlentities($row['description']);
 
-      print <<<EOF
+            echo <<<EOF
   <tr>
     <td>URL:</td>
     <td><input type="text" name="link" value="$link" size="40" /></td>
@@ -76,23 +74,19 @@ EOF;
   <input type="submit" value="Delete this link" onclick="javascript:return confirm('Really delete this link?')">
 </form>
 EOF;
-
+        }
+        echo '</table>';
     }
-    print "</table>";
-
-  }
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
-print <<<EOF
+echo <<<'EOF'
 </body>
 </html>
 EOF;
-
-?>

@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
 <h1>Rule Differences</h1>
 <p><i>NFSHA MODIFICATIONS TO USA RULES<br>
@@ -230,4 +230,4 @@ CENTER LINE</td>
   </tr>
 </table>
 
-<?php include("footer.html"); ?>
+<?php include 'footer.html'; ?>

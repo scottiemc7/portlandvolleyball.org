@@ -1,16 +1,16 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
 <?php
   require 'DB.php';
   $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
   $dbh = DB::connect($dsn);
   if (DB::isError($dbh)) {
-    die($dbh->getMessage());
+      die($dbh->getMessage());
   }
 
-  if ($_POST['league'] != "") {
-    $leagueid = $_POST['league'];
-    $dbh->query("update registration set league = $leagueid
+  if ($_POST['league'] != '') {
+      $leagueid = $_POST['league'];
+      $dbh->query("update registration set league = $leagueid
           WHERE id = $id");
   }
 
@@ -20,24 +20,22 @@
             WHERE r.id = $id");
 
   if (!$qry) {
-    echo "div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no items to display.</div>";
+      echo 'div style="width: 750px; font-weight: bold; text-align: center;">There are no items to display.</div>';
   } else {
-?>
+      ?>
 
     <h1>Team Details</h1>
 
     <form method="post">
       Change league to:
       <?php
-        $qryLeagues = $dbh->getAll("select id, name, night from registration_leagues where active = 1");
-      ?>
+        $qryLeagues = $dbh->getAll('select id, name, night from registration_leagues where active = 1'); ?>
       <select name="league">
         <option value="">-- Select --</option>
         <?php
-        foreach($qryLeagues as $league){
-            echo("<option value=\"$league[0]\">$league[1] - $league[2]</option>");
-        }
-        ?>
+        foreach ($qryLeagues as $league) {
+            echo "<option value=\"$league[0]\">$league[1] - $league[2]</option>";
+        } ?>
       </select>
       <input type="submit" value="Change" />
     </form>
@@ -48,8 +46,7 @@
     <td>
       <?php
       foreach ($qry as $result) {
-
-      echo"
+          echo"
         <table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" valign=\"top\">
           <tr><td>Team name:</td><td>$result[1]</td></tr>
           <tr><td>League:</td><td>$result[2] $result[3]</td></tr>
@@ -66,16 +63,16 @@
        </td>
        <td valign=\"top\" style=\"padding-left: 20px;\">";
 
-        $qryRoster = $dbh->getAll("select firstname, lastname, addedby, dateadded from team_members where teamid = ".$result[0]);
-        if($qryRoster) {
-          echo("<h2>Roster</h2><table class=\"eventTable\" cellspacing=\"0\" cellpadding=\"6\"><tr><th>Player</th><th>Added by</th><th>Date added</th></tr>");
-          foreach($qryRoster as $player){
-              echo("<tr><td>$player[0] $player[1]</td><td>$player[2]</td><td>$player[3]&nbsp;</td></tr>");
+          $qryRoster = $dbh->getAll('select firstname, lastname, addedby, dateadded from team_members where teamid = '.$result[0]);
+          if ($qryRoster) {
+              echo '<h2>Roster</h2><table class="eventTable" cellspacing="0" cellpadding="6"><tr><th>Player</th><th>Added by</th><th>Date added</th></tr>';
+              foreach ($qryRoster as $player) {
+                  echo "<tr><td>$player[0] $player[1]</td><td>$player[2]</td><td>$player[3]&nbsp;</td></tr>";
+              }
+              echo '</table>';
           }
-          echo("</table>");
-        }
       }
-}
+  }
 ?>
     </td>
   </tr>

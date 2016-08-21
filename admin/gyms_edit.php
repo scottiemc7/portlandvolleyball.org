@@ -3,51 +3,49 @@
 include 'header.html';
 include '../lib/mysql.php';
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Edit gym</h1>
 EOF;
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
-}
-
-$id=preg_replace('/[^\d]/','',$_POST['id']);
-
-if($_POST['name'] != "") {
-  $name=dbescape($_POST['name']);
-  $address=dbescape($_POST['address']);
-  $map=dbescape($_POST['map']);
-  $directions=dbescape($_POST['directions']);
-
-  if(!dbquery("UPDATE gyms SET name='$name', address='$address', map='$map', directions='$directions' WHERE id=$id")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
     exit;
-  }
-  print "This gym has been successfully edited. <a href=\"gyms_add.php\">return to list</a>";
 }
 
-$sql=<<<EOF
+$id = preg_replace('/[^\d]/', '', $_POST['id']);
+
+if ($_POST['name'] != '') {
+    $name = dbescape($_POST['name']);
+    $address = dbescape($_POST['address']);
+    $map = dbescape($_POST['map']);
+    $directions = dbescape($_POST['directions']);
+
+    if (!dbquery("UPDATE gyms SET name='$name', address='$address', map='$map', directions='$directions' WHERE id=$id")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
+    echo 'This gym has been successfully edited. <a href="gyms_add.php">return to list</a>';
+}
+
+$sql = <<<EOF
 SELECT * FROM gyms WHERE id=$id
 EOF;
 
-if($result=dbquery($sql)) {
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo '<div style="width: 750px; font-weight: bold; text-align: center;">Gym successfully deleted.</div>';
+    } else {
+        $row = mysqli_fetch_assoc($result);
+        $id = $row['id'];
+        $name = htmlentities($row['name']);
+        $address = htmlentities($row['address']);
+        $map = htmlentities($row['map']);
+        $directions = $row['directions'];
 
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print "<div style=\"width: 750px; font-weight: bold; text-align: center;\">Gym successfully deleted.</div>";
-  }else{
-
-    $row=mysqli_fetch_assoc($result);
-    $id=$row['id'];
-    $name=htmlentities($row['name']);
-    $address=htmlentities($row['address']);
-    $map=htmlentities($row['map']);
-    $directions=$row['directions'];
-
-    print <<<EOF
+        echo <<<EOF
 <form name="editGym" class="gymForm" method="post">
 <table>
   <tr>
@@ -83,20 +81,17 @@ if($result=dbquery($sql)) {
 <input type="submit" value="Delete this gym" onclick="javascript:return confirm('Really delete this gym?')" />
 </form>
 EOF;
-
-  }
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    }
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
-print <<<EOF
+echo <<<'EOF'
 </body>
 </html>
 EOF;
-
-?>

@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
 <h1>Portland Volleyball Association - Outdoor Playing Regulations</h1>
 <p>
@@ -47,4 +47,4 @@
   </li>
 </ul>
 
-<?php include("footer.html"); ?>
+<?php include 'footer.html'; ?>

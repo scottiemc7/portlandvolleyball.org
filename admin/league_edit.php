@@ -3,28 +3,30 @@
 include 'header.html';
 include '../lib/mysql.php';
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
 $nights = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-  'Friday', 'Saturday'];
+  'Friday', 'Saturday', ];
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Edit league</h1>
 EOF;
 
-$id = preg_replace('/[^\d]/','',$_POST['id']);
-$name = preg_replace('/[^a-zA-Z0-9\ \-\']/','',$_POST['name']);
-$night = preg_replace('/[^a-zA-Z0-9\ \-\']/','',$_POST['night']);
-$cap = preg_replace('/[^\d]/','',$_POST['cap']);
-$active = preg_replace('/[^\d]/','',$_POST['active']);
+$id = preg_replace('/[^\d]/', '', $_POST['id']);
+$name = preg_replace('/[^a-zA-Z0-9\ \-\']/', '', $_POST['name']);
+$night = preg_replace('/[^a-zA-Z0-9\ \-\']/', '', $_POST['night']);
+$cap = preg_replace('/[^\d]/', '', $_POST['cap']);
+$active = preg_replace('/[^\d]/', '', $_POST['active']);
 
-function validNight($night) {
-  global $nights;
-  return in_array($night, $nights);
+function validNight($night)
+{
+    global $nights;
+
+    return in_array($night, $nights);
 }
 
 $fieldsSupplied = !empty($id) &&
@@ -33,48 +35,46 @@ $fieldsSupplied = !empty($id) &&
                   !empty($cap) &&
                   ($active == 1 || $active == 0);
 
-if($fieldsSupplied) {
-  $id = (int) $id;
-  $name = dbescape($name);
-  $night = dbescape($night);
-  $cap = (int) $cap;
-  if(!dbquery("UPDATE leagues SET name='$name', night = '$night', cap = $cap, active = $active WHERE id = $id")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
-  print "This league has been successfully updated. <a href=\"league_add.php\">return to list</a>";
+if ($fieldsSupplied) {
+    $id = (int) $id;
+    $name = dbescape($name);
+    $night = dbescape($night);
+    $cap = (int) $cap;
+    if (!dbquery("UPDATE leagues SET name='$name', night = '$night', cap = $cap, active = $active WHERE id = $id")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
+    echo 'This league has been successfully updated. <a href="league_add.php">return to list</a>';
 }
 
-$sql=<<<EOF
+$sql = <<<EOF
 SELECT * FROM leagues WHERE id = $id
 EOF;
 
-if($result=dbquery($sql)) {
+if ($result = dbquery($sql)) {
+    if ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $name = htmlentities($row['name']);
+        $night = $row['night'];
+        $cap = $row['cap'];
+        $active = $row['active'];
 
-  if($row=mysqli_fetch_assoc($result)) {
-    $id=$row['id'];
-    $name=htmlentities($row['name']);
-    $night = $row['night'];
-    $cap = $row['cap'];
-    $active=$row['active'];
+        $selectedyes = 'selected="selected"';
+        $selectedno = '';
+        if ($active != 1) {
+            $selectedyes = '';
+            $selectedno = 'selected="selected"';
+        }
 
-    $selectedyes='selected="selected"';
-    $selectedno='';
-    if($active!=1) {
-      $selectedyes='';
-      $selectedno='selected="selected"';
-    }
+        function selected($nightOption, $night)
+        {
+            if ($nightOption == $night) {
+                return 'selected = "selected"';
+            }
 
-
-    function selected($nightOption, $night) {
-      if ($nightOption == $night) {
-        return 'selected = "selected"';
-      }
-      return '';
-    }
-
-?>
+            return '';
+        } ?>
 <form name="editLeague" class="eventForm" method="post">
 <table>
   <tr>
@@ -85,9 +85,11 @@ if($result=dbquery($sql)) {
     <td>League Night</td>
     <td>
       <select name="night">
-      <?php foreach($nights as $nightOption) { ?>
+      <?php foreach ($nights as $nightOption) {
+            ?>
         <option <?php echo selected($nightOption, $night); ?>><?php echo $nightOption; ?></option>
-      <?php } ?>
+      <?php 
+        } ?>
       </select>
     </td>
   </tr>
@@ -121,20 +123,20 @@ if($result=dbquery($sql)) {
 
 <?php
 
-  }else{
-    print "<div style=\"width: 750px; font-weight: bold; text-align: center;\">There is no league to display.</div>";
-  }
+    } else {
+        echo '<div style="width: 750px; font-weight: bold; text-align: center;">There is no league to display.</div>';
+    }
 
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
-print <<<EOF
+echo <<<'EOF'
 </body>
 </html>
 EOF;

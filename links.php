@@ -1,28 +1,26 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include 'lib/mysql.php';
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
-$sql=<<<EOF
+$sql = <<<'EOF'
 SELECT * FROM linkage
 EOF;
 
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print <<<EOF
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo <<<'EOF'
 <div style="width: 750px; font-weight: bold; text-align: center;">There are no links to display.</div>
 EOF;
-  }else{
-
-    print <<<EOF
+    } else {
+        echo <<<'EOF'
 <h1>Volleyball Links</h1>
 <table class="interiorTable" cellspacing="0">
 <tr>
@@ -31,33 +29,30 @@ EOF;
 </tr>
 EOF;
 
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $link=$row['link'];
-      $linktext=$row['linktext'];
-      $description=$row['description'];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $link = $row['link'];
+            $linktext = $row['linktext'];
+            $description = $row['description'];
 
-      print <<<EOF
+            echo <<<EOF
 <tr>
   <td nowrap valign="top"><a href="$link">$linktext</a></td>
   <td valign="top">$description</td>
 </tr>
 EOF;
+        }
+
+        echo "</table>\n";
     }
 
-    print "</table>\n";
-
-  }
-
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
-include("footer.html");
-
-?>
+include 'footer.html';

@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
 <h1>Portland Volleyball Association - Playing Regulations</h1>
 <b><i>USA Volleyball Rules will be followed, with the following differences:</i></b>
@@ -208,4 +208,4 @@ All jewelry, which in the official's judgment could cause injury, is illegal. Ha
 Springtime, sunlight, problem.  Switch sides every 8 points until sundown.   
 </p>
 
-<?php include("footer.html"); ?>
+<?php include 'footer.html'; ?>

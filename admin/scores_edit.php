@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
 <h1>Edit Scores</h1>
 
@@ -7,21 +7,21 @@
   $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
   $dbh = DB::connect($dsn);
   if (DB::isError($dbh)) {
-    die($dbh->getMessage());
+      die($dbh->getMessage());
   }
 
   $id = $_POST['id'];
 
-  if ($_POST['id'] != "") {
-    $bOK = true;
-    $home1 = $_POST['home1'];
-    $visitor1 = $_POST['visitor1'];
-    $home2 = $_POST['home2'];
-    $visitor2 = $_POST['visitor2'];
-    $home3 = $_POST['home3'];
-    $visitor3 = $_POST['visitor3'];
-    $sql = "INSERT INTO scores (gameid, home1, visitor1, home2, visitor2, home3, visitor3) values($id, $home1, $visitor1, $home2, $visitor2, $home3, $visitor3)";
-    echo $sql;
+  if ($_POST['id'] != '') {
+      $bOK = true;
+      $home1 = $_POST['home1'];
+      $visitor1 = $_POST['visitor1'];
+      $home2 = $_POST['home2'];
+      $visitor2 = $_POST['visitor2'];
+      $home3 = $_POST['home3'];
+      $visitor3 = $_POST['visitor3'];
+      $sql = "INSERT INTO scores (gameid, home1, visitor1, home2, visitor2, home3, visitor3) values($id, $home1, $visitor1, $home2, $visitor2, $home3, $visitor3)";
+      echo $sql;
 //    $status = $dbh->query($sql);
 //    if(DB::isError($status)) {
 //      die($status->getMessage());
@@ -32,19 +32,17 @@
 
   $qry = $dbh->getAll("SELECT * FROM scores WHERE s.gameid = $id");
   if (!$qry) {
-    echo "<div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no games to display.</div>";
+      echo '<div style="width: 750px; font-weight: bold; text-align: center;">There are no games to display.</div>';
   } else {
-    foreach ($qry as $result) {
-    $id = $result[0];
-    $home1 = $result[1];
-    $visitor1 = $result[2];
-    $home2 = $result[3];
-    $visitor2 = $result[4];
-    $home3 = $result[5];
-    $visitor3 = $result[6];
-    }
-
-?>
+      foreach ($qry as $result) {
+          $id = $result[0];
+          $home1 = $result[1];
+          $visitor1 = $result[2];
+          $home2 = $result[3];
+          $visitor2 = $result[4];
+          $home3 = $result[5];
+          $visitor3 = $result[6];
+      } ?>
 
   <form name="editScores" class="eventForm" method="post">
   <table>
@@ -68,12 +66,12 @@
   <input type="hidden" name="delete" value="yes">
   <input type="hidden" name="id" value=
 <?php
-  echo "\"$id\">";
-?>
+  echo "\"$id\">"; ?>
   <input type="submit" value="Delete this game" onclick="javascript:return confirm('Really delete this game?')">
 </form>
 <?php
-}
+
+  }
 ?>
 </body>
 </html>

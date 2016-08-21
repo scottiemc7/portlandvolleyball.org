@@ -1,54 +1,54 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include '../lib/mysql.php';
 include '../lib/support.php';
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
-}
-
-if($_POST['delete'] != "") {
-  $id=preg_replace('/[^\d]/','',$_POST['id']);
-  if(!dbquery("DELETE FROM games WHERE id=$id")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
     exit;
-  }
 }
 
-if($_POST['deleteall'] != "") {
-  if(!dbquery("DELETE FROM games WHERE 1")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+if ($_POST['delete'] != '') {
+    $id = preg_replace('/[^\d]/', '', $_POST['id']);
+    if (!dbquery("DELETE FROM games WHERE id=$id")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
 
-if(isset($_POST['home'])) {
-  $dtarray = explode('/',$_POST['dt']);
-  $dt = $dtarray[2] . '-' . $dtarray[0] . '-' . $dtarray[1];
-  $tm = $_POST['time'];
-  $gym = $_POST['gym'];
-  $court = $_POST['court'];
-  $home = $_POST['home'];
-  $visitor = $_POST['visitor'];
-  $ref = $_POST['ref'];
+if ($_POST['deleteall'] != '') {
+    if (!dbquery('DELETE FROM games WHERE 1')) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
+}
 
-  $sql=<<<EOF
+if (isset($_POST['home'])) {
+    $dtarray = explode('/', $_POST['dt']);
+    $dt = $dtarray[2].'-'.$dtarray[0].'-'.$dtarray[1];
+    $tm = $_POST['time'];
+    $gym = $_POST['gym'];
+    $court = $_POST['court'];
+    $home = $_POST['home'];
+    $visitor = $_POST['visitor'];
+    $ref = $_POST['ref'];
+
+    $sql = <<<EOF
 INSERT INTO games (dt, tm, gym, court, home, visitor, ref)
 VALUES ('$dt', '$tm', $gym, '$court', $home, $visitor, '$ref')
 EOF;
-  if(!dbquery($sql)) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+    if (!dbquery($sql)) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Add Game</h1>
 
 <p>Note: In order to add a game, the teams and gym location must already be in the database.</p>
@@ -62,33 +62,32 @@ print <<<EOF
     <option value=""> -- Select -- </option>
 EOF;
 
-$sql=<<<EOF
+$sql = <<<'EOF'
 SELECT t.id AS id, t.name AS team, l.name AS league
 FROM (teams t LEFT JOIN leagues l ON l.id = t.league)
 ORDER BY l.name, t.name
 EOF;
 
-$str="";
-if($result=dbquery($sql)) {
+$str = '';
+if ($result = dbquery($sql)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $team = htmlentities($row['team']);
+        $league = $row['league'];
 
-  while($row=mysqli_fetch_assoc($result)) {
-    $id=$row['id'];
-    $team=htmlentities($row['team']);
-    $league=$row['league'];
-
-    $str.=<<<EOF
+        $str .= <<<EOF
     <option value="$id">$team ($league)</option>
 EOF;
-  }
+    }
 
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
-print <<<EOF
+echo <<<EOF
     $str
     </select>
   </td>
@@ -141,15 +140,15 @@ print <<<EOF
     <option value=""> -- Select -- </option>
 EOF;
 
-$gyms=getGyms();
+$gyms = getGyms();
 
-foreach($gyms as $gym => $g) {
-  print <<<EOF
+foreach ($gyms as $gym => $g) {
+    echo <<<EOF
 <option value="{$g['id']}">$gym</option>
 EOF;
 }
 
-print <<<EOF
+echo <<<'EOF'
     </select>
   </td>
 </tr>
@@ -164,15 +163,15 @@ print <<<EOF
     <option value=""> -- Select -- </option>
 EOF;
 
-$refs=getRefs();
+$refs = getRefs();
 
-foreach($refs as $ref => $r) {
-  print <<<EOF
+foreach ($refs as $ref => $r) {
+    echo <<<EOF
 <option value="{$r['id']}">$ref</option>
 EOF;
 }
 
-print <<<EOF
+echo <<<'EOF'
 </tr>
 <tr>
   <td>&nbsp;</td>
@@ -196,7 +195,7 @@ print <<<EOF
 </tr>
 EOF;
 
-$sql=<<<EOF
+$sql = <<<'EOF'
 SELECT teams.name AS visitor, t.name AS home, gyms.name AS gym,
 dt, tm, s.id AS id, s.edited AS edited, refs.fname AS fname,
 refs.lname AS lname, refs.id AS refid, s.hmp AS hmp, s.vmp AS vmp,
@@ -207,36 +206,35 @@ LEFT JOIN refs ON refs.id = s.ref )
 ORDER BY dt, tm
 EOF;
 
-if($result=dbquery($sql)) {
+if ($result = dbquery($sql)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $visitor = htmlentities($row['visitor']);
+        $home = htmlentities($row['home']);
+        $gym = $row['gym'];
+        $dt = $row['dt'];
+        $tm = $row['tm'];
+        $id = $row['id'];
+        $edited = $row['edited'];
+        $fname = $row['fname'];
+        $lname = $row['lname'];
+        $refid = $row['refid'];
+        $hmp = $row['hmp'];
+        $vmp = $row['vmp'];
+        $h1 = $row['h1'];
+        $v1 = $row['v1'];
+        $notes = $row['notes'];
 
-  while($row=mysqli_fetch_assoc($result)) {
-    $visitor=htmlentities($row['visitor']);
-    $home=htmlentities($row['home']);
-    $gym=$row['gym'];
-    $dt=$row['dt'];
-    $tm=$row['tm'];
-    $id=$row['id'];
-    $edited=$row['edited'];
-    $fname=$row['fname'];
-    $lname=$row['lname'];
-    $refid=$row['refid'];
-    $hmp=$row['hmp'];
-    $vmp=$row['vmp'];
-    $h1=$row['h1'];
-    $v1=$row['v1'];
-    $notes=$row['notes'];
+        $dtarray = explode('-', $dt);
+        $date = sprintf('%d/%d/%d', $dtarray[1], $dtarray[2], $dtarray[0]);
+        $tmarray = explode(':', $tm);
+        $time = sprintf('%d:%02d', $tmarray[0], $tmarray[1]);
 
-    $dtarray = explode('-', $dt);
-    $date=sprintf("%d/%d/%d", $dtarray[1], $dtarray[2], $dtarray[0]);
-    $tmarray = explode(':', $tm);
-    $time=sprintf("%d:%02d", $tmarray[0], $tmarray[1]);
+        $style = '';
+        if ($edited != 0) {
+            $style = ' style="background-color: #ffff99;"';
+        }
 
-    $style="";
-    if($edited!=0) {
-      $style=' style="background-color: #ffff99;"';
-    }
-
-    print <<<EOF
+        echo <<<EOF
 <tr$style>
 <td valign="top">$date</td>
 <td valign="top">$time</td>
@@ -245,20 +243,20 @@ if($result=dbquery($sql)) {
 <td valign="top">
 EOF;
 
-    if($visitor == "BYE" || $home == "BYE" || $gym == "BYE" || $gym == "Cancelled") {
-      print '<span style="text-align: center;">N/A</span>';
-    }elseif(($h1==NULL && $v1==NULL) && strtotime($dt) < time() - 86400) {
-      // If the first game has no score and the date is past, we need a score
-      print '<span style="color: #ff0000;">Need score</span>';
-    }else{
-      // Otherwise, choose match winner on match points
-      if($hmp != $vmp){
-        $hmp>$vmp ? $msg=$home : $msg=$visitor;
-        print "$msg";
+        if ($visitor == 'BYE' || $home == 'BYE' || $gym == 'BYE' || $gym == 'Cancelled') {
+            echo '<span style="text-align: center;">N/A</span>';
+        } elseif (($h1 == null && $v1 == null) && strtotime($dt) < time() - 86400) {
+            // If the first game has no score and the date is past, we need a score
+      echo '<span style="color: #ff0000;">Need score</span>';
+        } else {
+            // Otherwise, choose match winner on match points
+      if ($hmp != $vmp) {
+          $hmp > $vmp ? $msg = $home : $msg = $visitor;
+          echo "$msg";
       }
-      print  "&nbsp;";
-    }
-    print <<<EOF
+            echo  '&nbsp;';
+        }
+        echo <<<EOF
 </td>
   <td valign="top">$gym</td>
   <td valign="top">$fname $lname &nbsp;</td>
@@ -272,17 +270,16 @@ EOF;
   </td>
 </tr>
 EOF;
+    }
 
-  }
-
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
-print <<<EOF
+echo <<<'EOF'
 </table>
 
 <p>
@@ -297,5 +294,3 @@ print <<<EOF
 EOF;
 
 dbclose();
-
-?>

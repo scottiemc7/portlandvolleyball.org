@@ -3,37 +3,37 @@
 include 'header.html';
 include '../lib/mysql.php';
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
-}
-
-if($_POST['delete'] == "yes") {
-  $id=preg_replace('/[^\d]/','',$_POST['id']);
-  if(!empty($id)) {
-    if(!dbquery("DELETE FROM linkage WHERE id=$id")) {
-      $error=dberror();
-      print "***ERROR*** dbquery: Failed query<br />$error\n";
-      exit;
-    }
-  }
-}
-
-if($_POST['link'] != "") {
-  $link=dbescape($_POST['link']);
-  $linktext=dbescape($_POST['linktext']);
-  $description=dbescape($_POST['description']);
-
-  $sql="INSERT INTO linkage (link, linktext, description) VALUES ('$link', '$linktext', '$description')";
-  if(!dbquery($sql)) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
     exit;
-  }
 }
 
-print <<<EOF
+if ($_POST['delete'] == 'yes') {
+    $id = preg_replace('/[^\d]/', '', $_POST['id']);
+    if (!empty($id)) {
+        if (!dbquery("DELETE FROM linkage WHERE id=$id")) {
+            $error = dberror();
+            echo "***ERROR*** dbquery: Failed query<br />$error\n";
+            exit;
+        }
+    }
+}
+
+if ($_POST['link'] != '') {
+    $link = dbescape($_POST['link']);
+    $linktext = dbescape($_POST['linktext']);
+    $description = dbescape($_POST['description']);
+
+    $sql = "INSERT INTO linkage (link, linktext, description) VALUES ('$link', '$linktext', '$description')";
+    if (!dbquery($sql)) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
+}
+
+echo <<<'EOF'
 <h1>Add Link</h1>
 <b>All fields are required.</b>
 <form name="addLink" class="eventForm" method="post">
@@ -60,18 +60,16 @@ print <<<EOF
 <h1>Current Links</h1>
 EOF;
 
-$sql=<<<EOF
+$sql = <<<'EOF'
 SELECT * FROM linkage ORDER BY id DESC
 EOF;
 
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print "<div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no items to display.</div>";
-  }else{
-
-    print <<<EOF
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo '<div style="width: 750px; font-weight: bold; text-align: center;">There are no items to display.</div>';
+    } else {
+        echo <<<'EOF'
 <table cellpadding="6" cellspacing="0" width="750" class="eventTable">
   <tr>
     <th>URL</th>
@@ -81,13 +79,13 @@ if($result=dbquery($sql)) {
   </tr>
 EOF;
 
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $link=$row['link'];
-      $linktext=$row['linktext'];
-      $description=$row['description'];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $link = $row['link'];
+            $linktext = $row['linktext'];
+            $description = $row['description'];
 
-      print <<<EOF
+            echo <<<EOF
   <tr>
     <td valign="top">$link</td>
     <td valign="top">$linktext</td>
@@ -100,23 +98,20 @@ EOF;
     </td>
   </tr>
 EOF;
+        }
+
+        echo '</table>';
     }
-
-    print "</table>";
-
-  }
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
-print <<<EOF
+echo <<<'EOF'
 </body>
 </html>
 EOF;
-
-?>

@@ -1,7 +1,5 @@
 <?php
 
-include("../header.html");
+include '../header.html';
 
-include("../footer.html");
-
-?>
+include '../footer.html';

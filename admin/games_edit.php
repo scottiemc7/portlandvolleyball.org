@@ -1,120 +1,150 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include '../lib/mysql.php';
 include '../lib/support.php';
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Edit Game</h1>
 EOF;
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
-$id=NULL;
-if(isset($_POST['id'])) {
-  $id=preg_replace('/[^\d]/','',$_POST['id']);
+$id = null;
+if (isset($_POST['id'])) {
+    $id = preg_replace('/[^\d]/', '', $_POST['id']);
 }
-if(!is_numeric($id)) {
-  print "***ERROR*** Invalid ID\n";
-  exit;
+if (!is_numeric($id)) {
+    echo "***ERROR*** Invalid ID\n";
+    exit;
 }
 
-if ($_POST['home'] != "") {
-  $dtarray = explode('/',$_POST['date']);
-  if(!checkdate($dtarray[0], $dtarray[1], $dtarray[2])) {
-    print <<<EOF
+if ($_POST['home'] != '') {
+    $dtarray = explode('/', $_POST['date']);
+    if (!checkdate($dtarray[0], $dtarray[1], $dtarray[2])) {
+        echo <<<'EOF'
 <script language="Javascript">
   alert("Date must be M(M)/D(D)/YYYY");
 </script>
 EOF;
-  }
-  $dt = $dtarray[2].'-'.$dtarray[0].'-'.$dtarray[1];
-  $tm = $_POST['time'];
-  $gym = $_POST['gym'];
-  $home = $_POST['home'];
-  $visitor = $_POST['visitor'];
-  $edited = $_POST['edited'];
-  $ref = $_POST['ref']; if($ref == '') $ref=0;
-  $h1 = $_POST['h1']; if($h1 == '') $h1=NULL;
-  $h2 = $_POST['h2']; if($h2 == '') $h2=NULL;
-  $h3 = $_POST['h3']; if($h3 == '') $h3=NULL;
-  $v1 = $_POST['v1']; if($v1 == '') $v1=NULL;
-  $v2 = $_POST['v2']; if($v2 == '') $v2=NULL;
-  $v3 = $_POST['v3']; if($v3 == '') $v3=NULL;
-  $notes = $_POST['notes'];
-
-  $sql2="";
-  $hmp=$vmp=NULL;
-  if(($h1 != NULL) && ($v1 != NULL)) {
-
-    if($h1 == NULL) $h1=0;
-    if($v1 == NULL) $v1=0;
-    if($h2 == NULL) $h2=0;
-    if($v2 == NULL) $v2=0;
-    if($h3 == NULL) $h3=0;
-    if($v3 == NULL) $v3=0;
-
-    $hmp = $vmp = 0;
-    if ($h1 != $v1) {
-      // 0.5 match points per game
-      $h1>$v1 ? $hmp+=0.5 : $vmp+=0.5;
     }
-    if ($h2 != $v2) {
-      // 0.5 match points per game
-      $h2>$v2 ? $hmp+=0.5 : $vmp+=0.5;
+    $dt = $dtarray[2].'-'.$dtarray[0].'-'.$dtarray[1];
+    $tm = $_POST['time'];
+    $gym = $_POST['gym'];
+    $home = $_POST['home'];
+    $visitor = $_POST['visitor'];
+    $edited = $_POST['edited'];
+    $ref = $_POST['ref'];
+    if ($ref == '') {
+        $ref = 0;
     }
-    if ($h3 != $v3) {
-      // 0.5 match points per game
-      $h3>$v3 ? $hmp+=0.5 : $vmp+=0.5;
+    $h1 = $_POST['h1'];
+    if ($h1 == '') {
+        $h1 = null;
     }
-    if ($hmp != $vmp) {
-      // 2 points for winning the most games
-      $hmp>$vmp ? $hmp+=2 : $vmp+=2;
+    $h2 = $_POST['h2'];
+    if ($h2 == '') {
+        $h2 = null;
     }
+    $h3 = $_POST['h3'];
+    if ($h3 == '') {
+        $h3 = null;
+    }
+    $v1 = $_POST['v1'];
+    if ($v1 == '') {
+        $v1 = null;
+    }
+    $v2 = $_POST['v2'];
+    if ($v2 == '') {
+        $v2 = null;
+    }
+    $v3 = $_POST['v3'];
+    if ($v3 == '') {
+        $v3 = null;
+    }
+    $notes = $_POST['notes'];
 
-    $hsum = $h1+$h2+$h3;
-    $vsum = $v1+$v2+$v3;
-    if ($hsum != $vsum) {
-      // 1 point for scoring the most game points in the match
-      $hsum>$vsum ? $hmp+=1 : $vmp+=1;
-    }
+    $sql2 = '';
+    $hmp = $vmp = null;
+    if (($h1 != null) && ($v1 != null)) {
+        if ($h1 == null) {
+            $h1 = 0;
+        }
+        if ($v1 == null) {
+            $v1 = 0;
+        }
+        if ($h2 == null) {
+            $h2 = 0;
+        }
+        if ($v2 == null) {
+            $v2 = 0;
+        }
+        if ($h3 == null) {
+            $h3 = 0;
+        }
+        if ($v3 == null) {
+            $v3 = 0;
+        }
 
-    $sql2=<<<EOF
+        $hmp = $vmp = 0;
+        if ($h1 != $v1) {
+            // 0.5 match points per game
+      $h1 > $v1 ? $hmp += 0.5 : $vmp += 0.5;
+        }
+        if ($h2 != $v2) {
+            // 0.5 match points per game
+      $h2 > $v2 ? $hmp += 0.5 : $vmp += 0.5;
+        }
+        if ($h3 != $v3) {
+            // 0.5 match points per game
+      $h3 > $v3 ? $hmp += 0.5 : $vmp += 0.5;
+        }
+        if ($hmp != $vmp) {
+            // 2 points for winning the most games
+      $hmp > $vmp ? $hmp += 2 : $vmp += 2;
+        }
+
+        $hsum = $h1 + $h2 + $h3;
+        $vsum = $v1 + $v2 + $v3;
+        if ($hsum != $vsum) {
+            // 1 point for scoring the most game points in the match
+      $hsum > $vsum ? $hmp += 1 : $vmp += 1;
+        }
+
+        $sql2 = <<<EOF
 hscore1=$h1, hscore2=$h2, hscore3=$h3,
 vscore1=$v1, vscore2=$v2, vscore3=$v3,
 hmp=$hmp, vmp=$vmp,
 EOF;
-
-  }else{
-
-    $sql2=<<<EOF
+    } else {
+        $sql2 = <<<'EOF'
 hscore1=NULL, hscore2=NULL, hscore3=NULL,
 vscore1=NULL, vscore2=NULL, vscore3=NULL,
 hmp=NULL, vmp=NULL,
 EOF;
-  }
+    }
 
-  $sql=<<<EOF
+    $sql = <<<EOF
 UPDATE games
 SET dt='$dt', tm='$tm', gym=$gym, home=$home, visitor=$visitor, edited=$edited, ref=$ref,
 $sql2 notes='$notes'
 WHERE id=$id
 EOF;
 
-  if(! dbquery($sql)) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }else{
-    print "This game has been successfully edited.  <a href=\"games_add.php\">return to list</a>";
-  }
+    if (!dbquery($sql)) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    } else {
+        echo 'This game has been successfully edited.  <a href="games_add.php">return to list</a>';
+    }
 }
 
-$sql=<<<EOF
+$sql = <<<EOF
 SELECT t.id AS home, teams.id AS visitor, gyms.id AS gym,
 dt, tm, s.edited AS edited, refs.id AS ref,
 s.hscore1 AS h1, s.vscore1 AS v1,
@@ -127,30 +157,28 @@ LEFT JOIN refs on refs.id=s.ref )
 WHERE s.id=$id
 EOF;
 
-if($result=dbquery($sql)) {
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo '<div style="width: 750px; font-weight: bold; text-align: center;">There are no games to display.</div>';
+    } else {
+        $row = mysqli_fetch_assoc($result);
+        $home = $row['home'];
+        $visitor = $row['visitor'];
+        $gym = $row['gym'];
+        $dt = $row['dt'];
+        $tm = $row['tm'];
+        $edited = $row['edited'];
+        $ref = $row['ref'];
+        $h1 = $row['h1'];
+        $v1 = $row['v1'];
+        $h2 = $row['h2'];
+        $v2 = $row['v2'];
+        $h3 = $row['h3'];
+        $v3 = $row['v3'];
+        $notes = $row['notes'];
 
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print "<div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no games to display.</div>";
-  }else{
-
-    $row=mysqli_fetch_assoc($result);
-    $home=$row['home'];
-    $visitor=$row['visitor'];
-    $gym=$row['gym'];
-    $dt=$row['dt'];
-    $tm=$row['tm'];
-    $edited=$row['edited'];
-    $ref=$row['ref'];
-    $h1=$row['h1'];
-    $v1=$row['v1'];
-    $h2=$row['h2'];
-    $v2=$row['v2'];
-    $h3=$row['h3'];
-    $v3=$row['v3'];
-    $notes=$row['notes'];
-
-    print <<<EOF
+        echo <<<'EOF'
 <form name="editEvent" class="eventForm" method="post">
 <table>
 <tr>
@@ -160,19 +188,19 @@ if($result=dbquery($sql)) {
     <option value=""> -- Select -- </option>
 EOF;
 
-    $teams=getTeams();
+        $teams = getTeams();
 
-    foreach($teams as $team => $t) {
-      $selected="";
-      if($home==$t['id']) {
-        $selected=' selected="selected"';
-      }
-      print <<<EOF
+        foreach ($teams as $team => $t) {
+            $selected = '';
+            if ($home == $t['id']) {
+                $selected = ' selected="selected"';
+            }
+            echo <<<EOF
 <option value="{$t['id']}"$selected>$team</option>
 EOF;
-    }
+        }
 
-    print <<<EOF
+        echo <<<EOF
 </select>
 Scores:
 Game 1 <input type="text" size="2" name="h1" value="$h1" \>
@@ -180,7 +208,7 @@ Game 2 <input type="text" size="2" name="h2" value="$h2" \>
 Game 3 <input type="text" size="2" name="h3" value="$h3" \>
 EOF;
 
-    print <<<EOF
+        echo <<<'EOF'
   </td>
 </tr>
 <tr>
@@ -190,22 +218,22 @@ EOF;
     <option value=""> -- Select -- </option>
 EOF;
 
-    foreach($teams as $team => $t) {
-      $selected="";
-      if($visitor==$t['id']) {
-        $selected=' selected="selected"';
-      }
-      print <<<EOF
+        foreach ($teams as $team => $t) {
+            $selected = '';
+            if ($visitor == $t['id']) {
+                $selected = ' selected="selected"';
+            }
+            echo <<<EOF
 <option value="{$t['id']}"$selected>$team</option>
 EOF;
-    }
+        }
 
-    $dtarray = explode('-',$dt);
-    $dat = $dtarray[1].'/'.$dtarray[2].'/'.$dtarray[0];
-    $tm_array = explode(':', $tm);
-    $tim=sprintf("%d:%02d", $tm_array[0], $tm_array[1]);
+        $dtarray = explode('-', $dt);
+        $dat = $dtarray[1].'/'.$dtarray[2].'/'.$dtarray[0];
+        $tm_array = explode(':', $tm);
+        $tim = sprintf('%d:%02d', $tm_array[0], $tm_array[1]);
 
-    print <<<EOF
+        echo <<<EOF
 </select>
 Scores:
 Game 1 <input type="text" size="2" name="v1" value="$v1">
@@ -228,26 +256,26 @@ Game 3 <input type="text" size="2" name="v3" value="$v3">
   <option value=""> -- Select -- </option>
 EOF;
 
-    $gyms=getGyms();
+        $gyms = getGyms();
 
-    foreach($gyms as $gym2 => $g) {
-      $selected="";
-      if($gym==$g['id']) {
-        $selected=' selected="selected"';
-      }
-      print <<<EOF
+        foreach ($gyms as $gym2 => $g) {
+            $selected = '';
+            if ($gym == $g['id']) {
+                $selected = ' selected="selected"';
+            }
+            echo <<<EOF
 <option value="{$g['id']}"$selected>$gym2</option>
 EOF;
-    }
+        }
 
-    $selectedYes="";
-    $selectedNo=' selected="selected"';
-    if($edited==1) {
-      $selectedYes=' selected="selected"';
-      $selectedNo="";
-    }
+        $selectedYes = '';
+        $selectedNo = ' selected="selected"';
+        if ($edited == 1) {
+            $selectedYes = ' selected="selected"';
+            $selectedNo = '';
+        }
 
-    print <<<EOF
+        echo <<<EOF
   </select>
 </td>
 </tr>
@@ -267,21 +295,21 @@ EOF;
     <option value=""> -- Select -- </option>
 EOF;
 
-    $refs=getRefs();
+        $refs = getRefs();
 
-    foreach($refs as $ref2 => $r) {
-      $selected="";
-      if($ref==$r['id']) {
-        $selected=' selected="selected"';
-      }
-      print <<<EOF
+        foreach ($refs as $ref2 => $r) {
+            $selected = '';
+            if ($ref == $r['id']) {
+                $selected = ' selected="selected"';
+            }
+            echo <<<EOF
 <option value="{$r['id']}"$selected>$ref2</option>
 EOF;
-    }
+        }
 
-    $notes=htmlentities($notes);
+        $notes = htmlentities($notes);
 
-    print <<<EOF
+        echo <<<EOF
     </select>
   </td>
 </tr>
@@ -306,17 +334,13 @@ EOF;
 </body>
 </html>
 EOF;
+    }
 
-  }
-
-  mysqli_free_result($result);
-
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
-
-?>

@@ -5,12 +5,12 @@
   //$pass = $HTTP_GET_VARS['pw'];
   $user = $_REQUEST['uname'];
   $pass = $_REQUEST['pw'];
-  if ($user == "pva_admin" && $pass == "deep energy idea store") {
-    //$HTTP_SESSION_VARS['logged_in'] = true;
+  if ($user == 'pva_admin' && $pass == 'deep energy idea store') {
+      //$HTTP_SESSION_VARS['logged_in'] = true;
     $_SESSION['logged_in'] = true;
-    header("Location: index.php");
+      header('Location: index.php');
   } else {
-    //$HTTP_SESSION_VARS['logged_in'] = false;
+      //$HTTP_SESSION_VARS['logged_in'] = false;
     $_SESSION['logged_in'] = false;
   }
 ?>

@@ -1,52 +1,53 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
 <?php
 
-$dtRegularDeadline = mktime(0,0,0,5,20,2006);
+$dtRegularDeadline = mktime(0, 0, 0, 5, 20, 2006);
 $dtFinalDeadline = mktime(0, 0, 0, 5, 25, 2006);
 $timenow = time();
 
-
-if($timenow > $dtFinalDeadline) {
+if ($timenow > $dtFinalDeadline) {
 
 //if($isLate) {
 ?>
 <p>We are no longer accepting online registrations.</p>
 <?php
-}
-else {
-  require 'DB.php';
-  $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
-  $dbh = DB::connect($dsn);
-  if (DB::isError($dbh)) {
-    die($dbh->getMessage());
-  }
+
+} else {
+    require 'DB.php';
+    $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
+    $dbh = DB::connect($dsn);
+    if (DB::isError($dbh)) {
+        die($dbh->getMessage());
+    }
 
   //constants
   $season = 'Summer 2006';
-  $fee = 160.00;
+    $fee = 160.00;
 
-  if($_POST['division'] == "Reverse Coed Grass Doubles")
-    $fee = 40.00;
+    if ($_POST['division'] == 'Reverse Coed Grass Doubles') {
+        $fee = 40.00;
+    }
 
-  $lateFee = 15.00;
-  $payPalFee = 5.00;
-  $registrationDeadline = 'Friday, May 19';
-  $totalFee = $fee;
-  $isLate = $timenow > $dtRegularDeadline;
+    $lateFee = 15.00;
+    $payPalFee = 5.00;
+    $registrationDeadline = 'Friday, May 19';
+    $totalFee = $fee;
+    $isLate = $timenow > $dtRegularDeadline;
 
-  if($isLate)
-    $totalFee += $lateFee;
+    if ($isLate) {
+        $totalFee += $lateFee;
+    }
 
-  $statusMessage = "";
+    $statusMessage = '';
 
-  $formSubmitted = false;
+    $formSubmitted = false;
 
   //process form
-  if ($_POST['teamname'] != "") {
-    $bOK = true;
+  if ($_POST['teamname'] != '') {
+      $bOK = true;
 
-    $teamName = $_POST['teamname'];
+      $teamName = $_POST['teamname'];
     //if(strlen($teamName) == 0)
       //bOK = false;
     $mgrName = $_POST['mgrName'];
@@ -56,15 +57,15 @@ else {
     //if($mgrPhone == "")
       //bOK = false;
     $mgrPhone2 = $_POST['phone2'];
-    $mgrEmail = $_POST['email'];
+      $mgrEmail = $_POST['email'];
     //if($mgrEmail == "")
       //bOK = false;
     $mgrEmail2 = $_POST['email2'];
-    $altName = $_POST['alt_name'];
-    $altPhone = $_POST['alt_phone1'];
-    $altPhone2 = $_POST['alt_phone2'];
-    $altEmail = $_POST['alt_email'];
-    $division = $_POST['division'];
+      $altName = $_POST['alt_name'];
+      $altPhone = $_POST['alt_phone1'];
+      $altPhone2 = $_POST['alt_phone2'];
+      $altEmail = $_POST['alt_email'];
+      $division = $_POST['division'];
 
     //if($division == "")
       //bOK = false;
@@ -87,42 +88,40 @@ else {
     //if($zip == "")
       //bOK = false;
     $comments = $_POST['comments'];
-    $night = $_POST['night'];
+      $night = $_POST['night'];
 
-    if($bOK == true) {
-      $status = $dbh->query("INSERT INTO registration(teamName, mgrName, mgrPhone, mgrPhone2,
+      if ($bOK == true) {
+          $status = $dbh->query("INSERT INTO registration(teamName, mgrName, mgrPhone, mgrPhone2,
         mgrEmail, mgrEmail2, altName, altPhone, altPhone2, altEmail, division, league,
         addr1, addr2, city, state, zip, comments, night)
         VALUES('$teamName', '$mgrName', '$mgrPhone', '$mgrPhone2', '$mgrEmail', '$mgrEmail2', '$altName',
         '$altPhone', '$altPhone2', '$altEmail', '$division', '$league', '$addr1', '$addr2', '$city', '$state',
         '$zip', '$comments', '$night')");
-      if (DB::isError($status)) {
-        die($status->getMessage());
-      }
+          if (DB::isError($status)) {
+              die($status->getMessage());
+          }
 
-      $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
-      $formSubmitted = true;
-      $mailstring = "Team: $teamname\r\n\r\nManager: $mgrName";
-      $mailstring = "$mailstring\r\n\tPhone: $mgrPhone, $mgrPhone2\r\n\tEmail: $mgrEmail, $mgrEmail2";
-      $mailstring = "$mailstring\r\n\r\nAlternate: $altName\r\n\tPhone: $altPhone, $altPhone2\r\n\tEmail: $altEmail";
-      $mailstring = "$mailstring\r\n\r\nDivision: $division"; //\r\nLeague: $league\r\nNight: $night";
+          $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
+          $formSubmitted = true;
+          $mailstring = "Team: $teamname\r\n\r\nManager: $mgrName";
+          $mailstring = "$mailstring\r\n\tPhone: $mgrPhone, $mgrPhone2\r\n\tEmail: $mgrEmail, $mgrEmail2";
+          $mailstring = "$mailstring\r\n\r\nAlternate: $altName\r\n\tPhone: $altPhone, $altPhone2\r\n\tEmail: $altEmail";
+          $mailstring = "$mailstring\r\n\r\nDivision: $division"; //\r\nLeague: $league\r\nNight: $night";
       $mailstring = "$mailstring\r\n\r\nComments: $comments";
 
-      mail("register@portlandvolleyball.org", "New registration - $teamname", $mailstring, "From: $mgrName<$mgrEmail>");
-    }
-    else {
-      $statusMessage = "<p class=highlight>You forgot to fill in one or more required
-      fields.  Please make sure all fields marked with an asterisk have been filled in.</p>";
-    }
-  }
-?>
+          mail('register@portlandvolleyball.org', "New registration - $teamname", $mailstring, "From: $mgrName<$mgrEmail>");
+      } else {
+          $statusMessage = '<p class=highlight>You forgot to fill in one or more required
+      fields.  Please make sure all fields marked with an asterisk have been filled in.</p>';
+      }
+  } ?>
 <div id="content">
 <h1>Registration - <?php echo $season?></h1>
 <?=$statusMessage?>
 
 <?php
-if($formSubmitted == true) {
-?>
+if ($formSubmitted == true) {
+      ?>
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="info@portlandvolleyball.org">
@@ -135,12 +134,12 @@ if($formSubmitted == true) {
     <p>Your registration will not be complete until we've also received your payment for this season.</p>
     <p>The team fee for the <?=$season?> season is $<?=$fee?>.
   <?php
-    if($isLate) {
-  ?>
+    if ($isLate) {
+        ?>
     Also, since it's after <?=$registrationDeadline?>, <b>you now owe the $<?=$lateFee?> late fee</b>.
   <?php
-  }
-  ?>
+
+    } ?>
     You have two payment options:
       <ol>
         <li>Mail your check to:<br/>
@@ -160,9 +159,9 @@ if($formSubmitted == true) {
     be added to the normal team fee.</p>
   </form>
 <?php
-}
-else {
-?>
+
+  } else {
+      ?>
   <p>To register, please fill in the information requested below and click the &quot;Register your team&quot;
   button.  Required fields are marked with an asterisk (*).</p>
 
@@ -170,14 +169,14 @@ else {
   Association, PO Box 4684, Portland, OR 97208. <em>Make sure to write the team name on your check.</em>
   The team fee for <?php echo $season?> is $<?php echo $fee?> ($40 for doubles teams).
   <?php
-  if($isLate){
-  ?>
+  if ($isLate) {
+      ?>
   <b>Also, since it's after
   <?=$registrationDeadline?>, you owe the $<?php echo $lateFee?> late fee.</b> Please include it
   with your payment.
   <?php
-  }
-  ?>
+
+  } ?>
 
 <form name="register" method="post">
   <table>
@@ -276,11 +275,12 @@ else {
   <input type="hidden" name="formSubmitted" value="true">
 </form>
 <?php
-}
-?>
+
+  } ?>
 
 </div>
 <?php
+
 }
 ?>
-<?php include("footer.html"); ?>
+<?php include 'footer.html'; ?>

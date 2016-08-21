@@ -1,63 +1,60 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include '../lib/mysql.php';
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Edit ref</h1>
 EOF;
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
-$id=preg_replace('/[^\d]/','',$_POST['id']);
+$id = preg_replace('/[^\d]/', '', $_POST['id']);
 
-if($_POST['lname'] != "") {
+if ($_POST['lname'] != '') {
+    $uname = preg_replace('/[^a-zA-Z\d]/', '', $_POST['uname']);
+    $password = preg_replace('/[^a-zA-Z\d]/', '', $_POST['password']);
+    $fname = preg_replace('/[^a-zA-Z]/', '', $_POST['fname']);
+    $lname = preg_replace('/[^a-zA-Z]/', '', $_POST['lname']);
 
-  $uname=preg_replace('/[^a-zA-Z\d]/','',$_POST['uname']);
-  $password=preg_replace('/[^a-zA-Z\d]/','',$_POST['password']);
-  $fname=preg_replace('/[^a-zA-Z]/','',$_POST['fname']);
-  $lname=preg_replace('/[^a-zA-Z]/','',$_POST['lname']);
-
-  $sql=<<<EOF
+    $sql = <<<EOF
 UPDATE refs SET uname='$uname',password='$password',fname='$fname',lname ='$lname'
 WHERE id=$id
 EOF;
 
-  if(!dbquery($sql)) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+    if (!dbquery($sql)) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 
-  print <<<EOF
+    echo <<<'EOF'
 This ref has been successfully edited. <a href="ref_add.php">return to list</a>
 EOF;
 }
 
-$sql=<<<EOF
+$sql = <<<EOF
 SELECT * FROM refs WHERE id=$id
 EOF;
 
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print <<<EOF
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo <<<'EOF'
 <div style="width: 750px; font-weight: bold; text-align: center;">There are no refs to display.</div>
 EOF;
-  }else{
+    } else {
+        $row = mysqli_fetch_assoc($result);
+        $uname = $row['uname'];
+        $password = $row['password'];
+        $fname = $row['fname'];
+        $lname = $row['lname'];
 
-    $row=mysqli_fetch_assoc($result);
-    $uname=$row['uname'];
-    $password=$row['password'];
-    $fname=$row['fname'];
-    $lname=$row['lname'];
-
-    print <<<EOF
+        echo <<<EOF
 <form name="refEdit" class="eventForm" method="post">
 <table>
   <tr>
@@ -92,21 +89,18 @@ Otherwise, this could cause some things to look pretty funky.</p>
 <input type="submit" value="Delete this ref" onclick="javascript:return confirm('Really delete this ref?')">
 </form>
 EOF;
+    }
 
-  }
-
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
-print <<<EOF
+echo <<<'EOF'
 </body>
 </html>
 EOF;
-
-?>

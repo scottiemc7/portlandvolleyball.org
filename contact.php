@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
 <br><br>
 <table border="0" cellpadding="6" align="center">
@@ -30,4 +30,4 @@
 <br><br>
 
 
-<?php include("footer.html"); ?>
+<?php include 'footer.html'; ?>

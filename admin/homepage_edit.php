@@ -1,64 +1,62 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include '../lib/mysql.php';
 
-  print <<<EOF
+  echo <<<'EOF'
 <h1>Edit article</h1>
 EOF;
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
-if(isset($_POST['id'])) {
-  $id=preg_replace('/[^\d]/','',$_POST['id']);
+if (isset($_POST['id'])) {
+    $id = preg_replace('/[^\d]/', '', $_POST['id']);
 }
 
-if ($_POST['title'] != "") {
-  $title = dbescape($_POST['title']);
-  $article = dbescape($_POST['article']);
-  $column = preg_replace('/[^\d]/','',$_POST['column']);
-  $priority = preg_replace('/[^\d]/','',$_POST['priority']);
+if ($_POST['title'] != '') {
+    $title = dbescape($_POST['title']);
+    $article = dbescape($_POST['article']);
+    $column = preg_replace('/[^\d]/', '', $_POST['column']);
+    $priority = preg_replace('/[^\d]/', '', $_POST['priority']);
 
-  $sql=<<<EOF
+    $sql = <<<EOF
 UPDATE home_page SET title='$title', article='$article', storycolumn='$column', priority=$priority  WHERE id=$id
 EOF;
 
-  if(! dbquery($sql)) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+    if (!dbquery($sql)) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 
-  print <<<EOF
+    echo <<<'EOF'
 <p>This article has been successfully edited.  <a href="homepage_add.php">return to list</a></p>
 EOF;
 }
 
-$sql=<<<EOF
+$sql = <<<EOF
 SELECT id, title, article, storycolumn, priority FROM home_page WHERE id=$id
 EOF;
 
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print <<<EOF
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo <<<'EOF'
 <div style="width: 750px; font-weight: bold; text-align: center;">There are no events to display.</div>
 EOF;
-  }else{
+    } else {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $title = htmlentities($row['title']);
+            $article = htmlentities($row['article']);
+            $storycolumn = $row['storycolumn'];
+            $priority = $row['priority'];
 
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $title=htmlentities($row['title']);
-      $article=htmlentities($row['article']);
-      $storycolumn=$row['storycolumn'];
-      $priority=$row['priority'];
-
-      print <<<EOF
+            echo <<<EOF
 <form name="edit" class="eventForm" method="post">
   <table>
 
@@ -103,14 +101,13 @@ EOF;
   <input type="submit" value="Delete this article" onclick="javascript:return confirm('Really delete this article?')" />
 </form>
 EOF;
+        }
     }
-
-  }
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();

@@ -1,57 +1,57 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include '../lib/mysql.php';
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
-$id=preg_replace('/[^\d]/','',$_POST['id']);
-if ($_POST['delete'] == "true") {
-  if(! dbquery("DELETE FROM registration WHERE id=$id")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+$id = preg_replace('/[^\d]/', '', $_POST['id']);
+if ($_POST['delete'] == 'true') {
+    if (!dbquery("DELETE FROM registration WHERE id=$id")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
-if ($_POST['deleteall'] == "true") {
-  if(! dbquery("DELETE FROM registration WHERE 1")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+if ($_POST['deleteall'] == 'true') {
+    if (!dbquery('DELETE FROM registration WHERE 1')) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
-if ($_POST['paid'] == "true") {
-  if(! dbquery("UPDATE registration SET paid=1 WHERE id=$id")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
-}
-
-$count=0;
-if($result=dbquery('SELECT COUNT(*) AS count FROM registration')) {
-  $row=mysqli_fetch_assoc($result);
-  $count=$row['count'];
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+if ($_POST['paid'] == 'true') {
+    if (!dbquery("UPDATE registration SET paid=1 WHERE id=$id")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
 
-$countPaid=0;
-if($result=dbquery('SELECT COUNT(*) AS count FROM registration WHERE paid=1')) {
-  $row=mysqli_fetch_assoc($result);
-  $countPaid=$row['count'];
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+$count = 0;
+if ($result = dbquery('SELECT COUNT(*) AS count FROM registration')) {
+    $row = mysqli_fetch_assoc($result);
+    $count = $row['count'];
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
+}
+
+$countPaid = 0;
+if ($result = dbquery('SELECT COUNT(*) AS count FROM registration WHERE paid=1')) {
+    $row = mysqli_fetch_assoc($result);
+    $countPaid = $row['count'];
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 $sql = '
@@ -62,23 +62,21 @@ $sql = '
   left join leagues rl2 on rl2.id = r.league2)
   ORDER BY rl.name, rl.night, teamname';
 
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print <<<EOF
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo <<<'EOF'
 <div style="width: 750px; font-weight: bold; text-align: center; padding: 50px;">There are no items to display.</div>
 EOF;
-  }else{
-
-    print <<<EOF
+    } else {
+        echo <<<EOF
 <h1>Registered Teams ($count total, $countPaid paid)</h1>
 <p />
 EOF;
 
-    showSummary();
+        showSummary();
 
-    print <<<EOF
+        echo <<<'EOF'
 <br style="clear: both;" />
 <p />
 <table cellpadding="6" cellspacing="0" class="eventTable">
@@ -94,22 +92,22 @@ EOF;
 </tr>
 EOF;
 
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $teamname=$row['teamname'];
-      $league1=$row['league1'];
-      $mgrName=$row['mgrName'];
-      $mgrPhone=$row['mgrPhone'];
-      $mgrEmail=$row['mgrEmail'];
-      $night1=$row['night1'];
-      $league2=$row['league2'];
-      $night2=$row['night2'];
-      $paid=$row['paid'];
-      $teammembers=$row['teammembers'];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $teamname = $row['teamname'];
+            $league1 = $row['league1'];
+            $mgrName = $row['mgrName'];
+            $mgrPhone = $row['mgrPhone'];
+            $mgrEmail = $row['mgrEmail'];
+            $night1 = $row['night1'];
+            $league2 = $row['league2'];
+            $night2 = $row['night2'];
+            $paid = $row['paid'];
+            $teammembers = $row['teammembers'];
 
-      $paidstring = $paid ? '<span style="color: #009900; font-weight: bold;">Paid</span>' : '<span style="color: #990000; font-weight: bold;">Not Paid</span>';
-      $rosterstring = ($teammembers < 1) ? "No" : $teammembers." players";
-      print <<<EOF
+            $paidstring = $paid ? '<span style="color: #009900; font-weight: bold;">Paid</span>' : '<span style="color: #990000; font-weight: bold;">Not Paid</span>';
+            $rosterstring = ($teammembers < 1) ? 'No' : $teammembers.' players';
+            echo <<<EOF
 <tr>
   <td nowrap valign="top"><a href="registration_detail.php?id=$id">$teamname</a><br/>$paidstring</td>
   <td valign="top">$rosterstring</td>
@@ -121,18 +119,18 @@ EOF;
   <td valign="top" nowrap>
 EOF;
 
-      if(!$paid){
-        $teamname = str_replace("'", "\'", $teamname);
-        print <<<EOF
+            if (!$paid) {
+                $teamname = str_replace("'", "\'", $teamname);
+                echo <<<EOF
 <form method="post">
   <input type="submit" value="Mark as paid" />
   <input type="hidden" name="id" value="$id" />
   <input type="hidden" name="paid" value="true" />
 </form>
 EOF;
-      }
+            }
 
-      print <<<EOF
+            echo <<<EOF
 <form method="post" onclick="javascript: return confirm('Really delete this registration?');">
   <input type="submit" value="Delete" />
   <input type="hidden" name="id" value="$id" />
@@ -141,10 +139,9 @@ EOF;
 </td>
 </tr>
 EOF;
+        }
 
-    }
-
-    print <<<EOF
+        echo <<<'EOF'
 </table>
 
 <p>
@@ -157,31 +154,29 @@ EOF;
 </body>
 </html>
 EOF;
+    }
 
-  }
-
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
 /****************************************************************/
 
-function showSummary() {
-
-  $sql = '
+function showSummary()
+{
+    $sql = '
     SELECT name, night, cap,
     (SELECT count(*) FROM registration WHERE league=leagues.id) AS registered,
     (SELECT count(*) FROM registration WHERE league=leagues.id AND paid=1) AS paid
     FROM leagues WHERE active = 1 ORDER BY name, night';
 
-  if($result=dbquery($sql)) {
-
-    print <<<EOF
+    if ($result = dbquery($sql)) {
+        echo <<<'EOF'
 <h3>Quick Summary:</h3>
 <table cellpadding="6" cellspacing="0" class="eventTable">
 <tr>
@@ -194,15 +189,15 @@ function showSummary() {
 
 EOF;
 
-    $iCounter = 0;
-    while($row=mysqli_fetch_assoc($result)) {
-      $name=$row['name'];
-      $night=$row['night'];
-      $registered=$row['registered'];
-      $cap = $row['cap'];
-      $paid=$row['paid'];
+        $iCounter = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $name = $row['name'];
+            $night = $row['night'];
+            $registered = $row['registered'];
+            $cap = $row['cap'];
+            $paid = $row['paid'];
 
-      print <<<EOF
+            echo <<<EOF
 <tr>
   <td nowrap>$name</td>
   <td>$night</td>
@@ -211,18 +206,16 @@ EOF;
   <td>$cap</td>
 </tr>
 EOF;
-    }
+        }
 
-    print <<<EOF
+        echo <<<'EOF'
 </table>
 EOF;
 
-    mysqli_free_result($result);
-  }else{
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+        mysqli_free_result($result);
+    } else {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
-
-?>

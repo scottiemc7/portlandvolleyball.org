@@ -3,57 +3,55 @@
 include 'header.html';
 include '../lib/mysql.php';
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Edit article</h1>
 EOF;
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
-}
-
-$id=preg_replace('/[^\d]/','',$_POST['id']);
-$name=preg_replace('/[^a-zA-Z0-9\ \']/','',$_POST['name']);
-$night=preg_replace('/[^a-zA-Z]/','',$_POST['night']);
-$active=preg_replace('/[^01]/','',$_POST['active']);
-
-if(($name != "") && ($night != "")) {
-  $name=dbescape($name);
-  if(!dbquery("UPDATE registration_leagues SET name='$name', night='$night', active=$active WHERE id=$id")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
     exit;
-  }else{
-    print "This registration league has been successfully edited. <a href=\"registration_league_add.php\">return to list</a>";
-  }
 }
 
-$sql=<<<EOF
+$id = preg_replace('/[^\d]/', '', $_POST['id']);
+$name = preg_replace('/[^a-zA-Z0-9\ \']/', '', $_POST['name']);
+$night = preg_replace('/[^a-zA-Z]/', '', $_POST['night']);
+$active = preg_replace('/[^01]/', '', $_POST['active']);
+
+if (($name != '') && ($night != '')) {
+    $name = dbescape($name);
+    if (!dbquery("UPDATE registration_leagues SET name='$name', night='$night', active=$active WHERE id=$id")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    } else {
+        echo 'This registration league has been successfully edited. <a href="registration_league_add.php">return to list</a>';
+    }
+}
+
+$sql = <<<EOF
 SELECT * FROM registration_leagues WHERE id=$id
 EOF;
 
-if($result=dbquery($sql)) {
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo '<div style="width: 750px; font-weight: bold; text-align: center;">There are no events to display.</div>';
+    } else {
+        if ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $name = htmlentities($row['name']);
+            $night = htmlentities($row['night']);
+            $active = $row['active'];
 
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print "<div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no events to display.</div>";
-  }else{
+            $selectedyes = '';
+            $selectedno = 'selected="selected"';
+            if ($active == 1) {
+                $selectedyes = 'selected="selected"';
+                $selectedno = '';
+            }
 
-    if($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $name=htmlentities($row['name']);
-      $night=htmlentities($row['night']);
-      $active=$row['active'];
-
-      $selectedyes='';
-      $selectedno='selected="selected"';
-      if($active==1) {
-        $selectedyes='selected="selected"';
-        $selectedno='';
-      }
-
-      print <<<EOF
+            echo <<<EOF
 <form name="editEvent" class="eventForm" method="post">
 <table>
   <tr>
@@ -86,23 +84,19 @@ if($result=dbquery($sql)) {
 <input type="submit" value="Delete this registration league" onclick="javascript:return confirm('Really delete this registration league?')">
 </form>
 EOF;
-
+        }
     }
 
-  }
-
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
-print <<<EOF
+echo <<<'EOF'
 </body>
 </html>
 EOF;
-
-?>

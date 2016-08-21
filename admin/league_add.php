@@ -3,38 +3,38 @@
 include 'header.html';
 include '../lib/mysql.php';
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
-if($_POST['delete'] == "yes") {
-  $id=preg_replace('/[^\d]/','',$_POST['id']);
-  if(!empty($id)) {
-    if(!dbquery("DELETE FROM leagues WHERE id=$id")) {
-      $error=dberror();
-      print "***ERROR*** dbquery: Failed query<br />$error\n";
-      exit;
+if ($_POST['delete'] == 'yes') {
+    $id = preg_replace('/[^\d]/', '', $_POST['id']);
+    if (!empty($id)) {
+        if (!dbquery("DELETE FROM leagues WHERE id=$id")) {
+            $error = dberror();
+            echo "***ERROR*** dbquery: Failed query<br />$error\n";
+            exit;
+        }
     }
-  }
 }
 
 $name = preg_replace('/[^a-zA-Z0-9\ \-\']/', '', $_POST['name']);
 $night = preg_replace('/[^a-zA-Z0-9\ \-\']/', '', $_POST['night']);
 $cap = $_POST['cap'];
 
-if(!empty($name) && !empty($cap) && !empty($night)) {
-  $name = dbescape($name);
-  $night = dbescape($night);
-  if(!dbquery("INSERT INTO leagues(name, night, cap) VALUES('$name', '$night', $cap)")) {
-    $error = dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+if (!empty($name) && !empty($cap) && !empty($night)) {
+    $name = dbescape($name);
+    $night = dbescape($night);
+    if (!dbquery("INSERT INTO leagues(name, night, cap) VALUES('$name', '$night', $cap)")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Add league</h1>
 
 <form name="addEvent" class="eventForm" method="post">
@@ -69,18 +69,16 @@ print <<<EOF
 </form>
 EOF;
 
-$sql=<<<EOF
+$sql = <<<'EOF'
 SELECT * FROM leagues ORDER BY active DESC, name, night
 EOF;
 
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print "div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no items to display.</div>";
-  }else{
-
-    print <<<EOF
+if ($result = dbquery($sql)) {
+    $row_cnt = mysqli_num_rows($result);
+    if ($row_cnt == 0) {
+        echo 'div style="width: 750px; font-weight: bold; text-align: center;">There are no items to display.</div>';
+    } else {
+        echo <<<'EOF'
 <h1>Current leagues</h1>
 <table cellpadding="6" cellspacing="0" width="750" class="eventTable">
   <tr>
@@ -92,20 +90,20 @@ if($result=dbquery($sql)) {
   </tr>
 EOF;
 
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $name=$row['name'];
-      $night = $row['night'];
-      $cap = $row['cap'];
-      $active=$row['active'];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $name = $row['name'];
+            $night = $row['night'];
+            $cap = $row['cap'];
+            $active = $row['active'];
 
-      if($active==1) {
-        $active="Yes";
-      }else{
-        $active="No";
-      }
+            if ($active == 1) {
+                $active = 'Yes';
+            } else {
+                $active = 'No';
+            }
 
-      print <<<EOF
+            echo <<<EOF
   <tr>
     <td valign="top">$name</td>
     <td valign="top">$night</td>
@@ -119,24 +117,20 @@ EOF;
     </td>
   </tr>
 EOF;
-
+        }
     }
 
-  }
-
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
 dbclose();
 
-print <<<EOF
+echo <<<'EOF'
 </table>
 </body>
 </html>
 EOF;
-
-?>

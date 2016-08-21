@@ -7,44 +7,43 @@ session_start();
 //session_register('ref');
 //session_register('refname');
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
 //$user=dbescape($_POST['uname']);
 //$pass=dbescape($_POST['pw']);
-$user=preg_replace('/[^a-zA-Z0-9]/','',$_POST['uname']);
-$pass=preg_replace('/[^a-zA-Z0-9]/','',$_POST['pw']);
+$user = preg_replace('/[^a-zA-Z0-9]/', '', $_POST['uname']);
+$pass = preg_replace('/[^a-zA-Z0-9]/', '', $_POST['pw']);
 
-$sql=<<<EOF
+$sql = <<<EOF
 SELECT uname, id FROM refs WHERE uname='$user' AND password ='$pass'
 EOF;
 
-if($result=dbquery($sql)) {
-
-  while($row=mysqli_fetch_assoc($result)) {
-    if($row['uname'] != '') {
-      $_SESSION['logged_in_ref'] = true;
-      $_SESSION['ref'] = $row['id'];
-      $_SESSION['refname'] = $user;
-      header("Location: index.php");
-    }else{
-      $_SESSION['logged_in_ref'] = false;
+if ($result = dbquery($sql)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['uname'] != '') {
+            $_SESSION['logged_in_ref'] = true;
+            $_SESSION['ref'] = $row['id'];
+            $_SESSION['refname'] = $user;
+            header('Location: index.php');
+        } else {
+            $_SESSION['logged_in_ref'] = false;
+        }
     }
-  }
 
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
-if($_POST['logout']) {
-  $_SESSION['logged_in_ref'] = false;
-  $_SESSION['ref'] = '';
+if ($_POST['logout']) {
+    $_SESSION['logged_in_ref'] = false;
+    $_SESSION['ref'] = '';
 }
 
 dbclose();
@@ -76,7 +75,7 @@ dbclose();
 <?php
 
 if ($_SESSION['logged_in_ref'] == false) {
-?>
+    ?>
   <form action="login.php" method="post" class="eventForm" cellpadding="6">
   <table>
     <tr>
@@ -94,20 +93,21 @@ if ($_SESSION['logged_in_ref'] == false) {
   </table>
   </form>
 <?php
-  } else {
-?>
+
+} else {
+    ?>
   <form action="login.php" method="post" class="eventForm" cellpadding="6">
   <table>
     <tr>
     <?php
-    $msg = "<td>Logged in as " . $_SESSION['refname'] . ".</td>";
-    echo $msg;
-    ?>
+    $msg = '<td>Logged in as '.$_SESSION['refname'].'.</td>';
+    echo $msg; ?>
     <td><input type="submit" name="logout" value="logout"></td>
     </tr>
   </form>
 <?php
-  }
+
+}
 
 ?>
 </body>

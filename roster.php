@@ -1,78 +1,83 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include 'lib/mysql.php';
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
+    exit;
 }
 
 //constants
-$statusMessage="";
-$addedMessage="";
+$statusMessage = '';
+$addedMessage = '';
 
 $bOK = true;
 $formSubmitted = false;
-if($_POST['formSubmitted'] == "true") {
-  $formSubmitted = true;
+if ($_POST['formSubmitted'] == 'true') {
+    $formSubmitted = true;
 }
 
 //process form
 if ($formSubmitted == true) {
+    $teamid = preg_replace('/[^\d]/', '', $_POST['teamid']);
+    if (strlen($teamid) == 0) {
+        $bOK = false;
+    }
 
-  $teamid=preg_replace('/[^\d]/','',$_POST['teamid']);
-  if(strlen($teamid) == 0) $bOK = false;
+    if (strlen($_POST['firstname1']) == 0) {
+        $bOK = false;
+    }
 
-  if(strlen($_POST['firstname1']) == 0) $bOK = false;
+    $addedBy = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['addedBy']);
+    $addedByClean = dbescape($addedBy);
+    if ($addedBy == '') {
+        $bOK = false;
+    }
 
-  $addedBy=preg_replace('/[^a-zA-Z\'\-\ ]/','',$_POST['addedBy']);
-  $addedByClean=dbescape($addedBy);
-  if($addedBy == "") $bOK = false;
-
-  if($bOK == true) {
-    for($i=1; $i<=12; $i++) {
-      $firstName = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['firstname'.$i]);
-      $lastName = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['lastname'.$i]);
-      $email = $_POST['email'.$i];
+    if ($bOK == true) {
+        for ($i = 1; $i <= 12; ++$i) {
+            $firstName = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['firstname'.$i]);
+            $lastName = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['lastname'.$i]);
+            $email = $_POST['email'.$i];
 
       // Prevent SQL injection
-      $firstNameClean=dbescape($firstName);
-      $lastNameClean=dbescape($lastName);
-      $emailClean = dbescape($email);
+      $firstNameClean = dbescape($firstName);
+            $lastNameClean = dbescape($lastName);
+            $emailClean = dbescape($email);
 
-      if(strlen($firstName) > 0){
-        $addedMessage.="<br/>".$firstName." ".$lastName;
-        $sql=<<<EOF
+            if (strlen($firstName) > 0) {
+                $addedMessage .= '<br/>'.$firstName.' '.$lastName;
+                $sql = <<<EOF
 INSERT INTO team_members(teamID, firstName, lastName, addedBy, dateAdded, email)
 VALUES($teamid, '$firstNameClean', '$lastNameClean', '$addedByClean', now(), '$email')
 EOF;
 
-        if(!dbquery($sql)) {
-          $error=dberror();
-          print "***ERROR*** dbquery: Failed query<br />$error\n";
-          exit;
+                if (!dbquery($sql)) {
+                    $error = dberror();
+                    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+                    exit;
+                }
+            }
         }
-      }
-    }
-  }else{
-      $statusMessage=<<<EOF
+    } else {
+        $statusMessage = <<<'EOF'
 <p class=highlight>You forgot to fill in one or more required fields.<br />
 Please make sure all fields marked with an asterisk have been filled in.</p>
 EOF;
-  }
+    }
 }
 
-print <<<EOF
+echo <<<EOF
 <div id="content">
 <h1>Team Roster</h1>
 $statusMessage
 
 EOF;
 
-if($formSubmitted == true && $bOK == true) {
-  print <<<EOF
+if ($formSubmitted == true && $bOK == true) {
+    echo <<<EOF
   <p>Thank you for updating your roster online.  You have added the following members to your team.</p>
   <p>$addedMessage</p>
   <p>For changes or deletions, please email Michelle Baldwin at
@@ -81,20 +86,18 @@ if($formSubmitted == true && $bOK == true) {
     </script>
 </p>
 EOF;
+} else {
+    $teamid = '';
+    if (isset($_POST['teamid'])) {
+        $teamid = preg_replace('/[^\d]/', '', $_POST['teamid']);
+    }
 
-}else{
+    $addedBy = '';
+    if (isset($_POST['addedBy'])) {
+        $addedBy = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['addedBy']);
+    }
 
-  $teamid="";
-  if(isset($_POST['teamid'])) {
-    $teamid=preg_replace('/[^\d]/','',$_POST['teamid']);
-  }
-
-  $addedBy="";
-  if(isset($_POST['addedBy'])) {
-    $addedBy=preg_replace('/[^a-zA-Z\'\-\ ]/','',$_POST['addedBy']);
-  }
-
-  print <<<EOF
+    echo <<<'EOF'
 <form name="roster" method="post" style="border: 1px solid #aaaaaa; padding: 40px;">
   <input type="hidden" name="formSubmitted" value="true" />
   <table>
@@ -103,41 +106,42 @@ EOF;
       <td>
 EOF;
 
-  $sql=<<<EOF
+    $sql = <<<'EOF'
 SELECT r.id AS id, r.teamname AS team, rl.name AS league, rl.night AS night
 FROM leagues rl
 JOIN registration r on rl.id = r.league
 ORDER BY rl.name, rl.night, r.teamname
 EOF;
 
-  print <<<EOF
+    echo <<<'EOF'
 <select name="teamid">
 <option value="">Select your team from the list</option>
 EOF;
 
-  if($result=dbquery($sql)) {
+    if ($result = dbquery($sql)) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row['id'];
+            $team = $row['team'];
+            $league = $row['league'];
+            $night = $row['night'];
 
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $team=$row['team'];
-      $league=$row['league'];
-      $night=$row['night'];
-
-      $selected = "";
-      if($id == $teamid) $selected=' selected="selected"';
-      print <<<EOF
+            $selected = '';
+            if ($id == $teamid) {
+                $selected = ' selected="selected"';
+            }
+            echo <<<EOF
 <option value="$id"$selected>$league $night - $team</option>
 EOF;
+        }
+
+        mysqli_free_result($result);
+    } else {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
     }
 
-    mysqli_free_result($result);
-  }else{
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
-
-  print <<<EOF
+    echo <<<EOF
         </select>
       </td>
     </tr>
@@ -158,12 +162,12 @@ EOF;
           </tr>
 EOF;
 
-  for($i=1; $i<=12; $i++) {
-    $firstname = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['firstname'.$i]);
-    $lastname = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['lastname'.$i]);
-    $email = $_POST['email'.$i];
+    for ($i = 1; $i <= 12; ++$i) {
+        $firstname = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['firstname'.$i]);
+        $lastname = preg_replace('/[^a-zA-Z\'\-\ ]/', '', $_POST['lastname'.$i]);
+        $email = $_POST['email'.$i];
 
-    print <<<EOF
+        echo <<<EOF
           <tr>
             <td>
               <input type="text" name="firstname$i" value="$firstname" size="20" />
@@ -176,9 +180,9 @@ EOF;
             </td>
           </tr>
 EOF;
-  }
+    }
 
-  print <<<EOF
+    echo <<<'EOF'
         </table>
       </td>
     </tr>
@@ -191,10 +195,8 @@ EOF;
   </table>
 </form>
 EOF;
-
 }
 
 dbclose();
 
-include("footer.html");
-?>
+include 'footer.html';

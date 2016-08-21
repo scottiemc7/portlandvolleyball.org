@@ -1,39 +1,39 @@
 <?php
 
-include("header.html");
+include 'header.html';
 include '../lib/mysql.php';
 
-print <<<EOF
+echo <<<'EOF'
 <h1>Add new team</h1>
 EOF;
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
-}
-
-if($_POST['delete'] == "yes") {
-  $id=preg_replace('/[^\d]/','',$_POST['id']);
-  if(! dbquery("DELETE FROM teams WHERE id=$id")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
+$error = dbinit();
+if ($error !== '') {
+    echo "***ERROR*** dbinit: $error\n";
     exit;
-  }
 }
 
-if($_POST['name'] != "") {
-  $name=dbescape($_POST['name']);
-  $league=preg_replace('/[^\d]/','',$_POST['league']);
-
-  if(! dbquery("INSERT INTO teams (name,league) VALUES('$name',$league)")) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
-  }
+if ($_POST['delete'] == 'yes') {
+    $id = preg_replace('/[^\d]/', '', $_POST['id']);
+    if (!dbquery("DELETE FROM teams WHERE id=$id")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
 }
 
-print <<<EOF
+if ($_POST['name'] != '') {
+    $name = dbescape($_POST['name']);
+    $league = preg_replace('/[^\d]/', '', $_POST['league']);
+
+    if (!dbquery("INSERT INTO teams (name,league) VALUES('$name',$league)")) {
+        $error = dberror();
+        echo "***ERROR*** dbquery: Failed query<br />$error\n";
+        exit;
+    }
+}
+
+echo <<<'EOF'
 <p>Note: In order to add a team, the league must already be in the database.</p>
 <form name="addTeam" class="eventForm" method="post">
   <table>
@@ -47,29 +47,28 @@ print <<<EOF
         <option value=""> -- Select -- </option>
 EOF;
 
-$sql=<<<EOF
+$sql = <<<'EOF'
 SELECT * FROM leagues WHERE active=1 ORDER BY name
 EOF;
 
-if($result=dbquery($sql)) {
+if ($result = dbquery($sql)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $name = $row['name'];
 
-  while($row=mysqli_fetch_assoc($result)) {
-    $id=$row['id'];
-    $name=$row['name'];
-
-    print <<<EOF
+        echo <<<EOF
 <option value="$id">$name</option>
 EOF;
-  }
+    }
 
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
-print <<<EOF
+echo <<<'EOF'
         </select>
       </td>
     </tr>
@@ -89,20 +88,19 @@ print <<<EOF
   </tr>
 EOF;
 
-$sql=<<<EOF
+$sql = <<<'EOF'
 SELECT teams.id AS id, teams.name AS team, leagues.name AS league
 FROM teams LEFT JOIN leagues ON leagues.id=teams.league
 ORDER BY leagues.name, teams.name
 EOF;
 
-if($result=dbquery($sql)) {
+if ($result = dbquery($sql)) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $team = $row['team'];
+        $league = $row['league'];
 
-  while($row=mysqli_fetch_assoc($result)) {
-    $id=$row['id'];
-    $team=$row['team'];
-    $league=$row['league'];
-
-    print <<<EOF
+        echo <<<EOF
   <tr>
     <td valign="top">$team</td>
     <td valign="top">$league</td>
@@ -114,20 +112,19 @@ if($result=dbquery($sql)) {
     </td>
   </tr>
 EOF;
-  }
+    }
 
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    mysqli_free_result($result);
+} else {
+    $error = dberror();
+    echo "***ERROR*** dbquery: Failed query<br />$error\n";
+    exit;
 }
 
-print <<<EOF
+echo <<<'EOF'
 </table>
 </body>
 </html>
 EOF;
 
 dbclose();
-?>

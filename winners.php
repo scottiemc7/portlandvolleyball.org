@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
 <h1>Fall 2015 Playoff Winners</h1>
 <ul>
@@ -129,4 +129,4 @@
   <li><strong>Coed C Thurs</strong> Volley Llama</li>
 </ul>
 
-<?php include("footer.html"); ?>
+<?php include 'footer.html'; ?>

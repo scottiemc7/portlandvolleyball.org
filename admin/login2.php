@@ -3,11 +3,11 @@
   session_register('logged_in');
   $user = $_POST['uname'];
   $pass = $_POST['pw'];
-  if ($user == "pva_admin" && $pass == "@dm1n1st37") {
-    $_SESSION['logged_in'] = true;
-    header("Location: index.php");
+  if ($user == 'pva_admin' && $pass == '@dm1n1st37') {
+      $_SESSION['logged_in'] = true;
+      header('Location: index.php');
   } else {
-    $_SESSION['logged_in'] = false;
+      $_SESSION['logged_in'] = false;
   }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">

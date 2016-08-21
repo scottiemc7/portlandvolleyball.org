@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html'; ?>
 
 <h1>Rules &amp; Regulations</h1>
 
@@ -16,4 +16,4 @@
 <p />
 <a href="/pva_bylaws.pdf" target="_blank">PVA Bylaws</a>
 
-<?php include("footer.html"); ?>
+<?php include 'footer.html'; ?>
