@@ -18,7 +18,7 @@
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="admin.css">
+	<link rel="stylesheet" type="text/css" href="/admin/admin.css">
 	<script language="javascript">
 		function loadMe() {
 			document.forms[0].uname.focus();

@@ -9,7 +9,7 @@ $_SESSION['logged_in']=false;
 <html>
 <head>
 <title>Logged Out</title>
-<link rel="stylesheet" type="text/css" href="admin.css">
+<link rel="stylesheet" type="text/css" href="/admin/admin.css">
 </head>
 <body>
 
