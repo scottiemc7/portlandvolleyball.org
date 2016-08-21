@@ -6,7 +6,7 @@ function dbinit() {
   global $mysql;
   $error="";
 
-  require 'config/mysql.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/config/mysql.php';
   $mysql=new mysqli($host,$username,$password,$dbname);
 
 
