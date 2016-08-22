@@ -22,6 +22,7 @@ $sql=<<<EOF
 SELECT uname, id FROM refs WHERE uname='$user' AND password ='$pass'
 EOF;
 
+echo $sql;
 if($result=dbquery($sql)) {
 
   while($row=mysqli_fetch_assoc($result)) {

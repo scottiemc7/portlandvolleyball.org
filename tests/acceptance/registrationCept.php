@@ -1,0 +1,48 @@
+<?php
+$I = new AcceptanceTester($scenario);
+$I->wantTo('register for a league');
+$I->lookForwardTo('and see the info in the database');
+$I->amOnPage('/');
+$I->click('REGISTER');
+$I->fillField('teamName','Team Name');
+$I->fillField('mgrName','Joe Blow');
+$I->fillField('addr1','123 Pine st.');
+$I->fillField('addr2','Apt 321');
+$I->fillField('city','Portland');
+$I->fillField('state','OR');
+$I->fillField('zip','92713');
+$I->fillField('email','joe.blow@example.com');
+$I->fillField('email2','joey.blower@example.com');
+$I->fillField('phone1','555-555-5555');
+$I->fillField('phone2','666-666-6666');
+$I->fillField('alt_name','Joey Blower');
+$I->fillField('alt_phone1','123-456-7890');
+$I->fillField('alt_phone2','098-765-4321');
+$I->fillField('alt_email','jane.blow@example.com');
+$I->selectOption('league', '25');
+$I->selectOption('league2', '120');
+$I->selectOption('newOld', 'Returning team');
+$I->fillField('comments', 'I like this league');
+$I->click('Register your team');
+$I->seeInDatabase('registration', array('teamName' => 'Team Name'));
+$I->seeInDatabase('registration', array('mgrName' => 'Joe Blow'));
+$I->seeInDatabase('registration', array('mgrPhone' => '555-555-5555'));
+$I->seeInDatabase('registration', array('mgrPhone2' => '666-666-6666'));
+$I->seeInDatabase('registration', array('mgrEmail' => 'joe.blow@example.com'));
+$I->seeInDatabase('registration', array('mgrEmail2' => 'joey.blower@example.com'));
+$I->seeInDatabase('registration', array('altName' => 'Joey Blower'));
+$I->seeInDatabase('registration', array('altPhone' => '123-456-7890'));
+$I->seeInDatabase('registration', array('altPhone2' => '098-765-4321'));
+$I->seeInDatabase('registration', array('altEmail' => 'jane.blow@example.com'));
+$I->seeInDatabase('registration', array('league' => '25'));
+$I->seeInDatabase('registration', array('league2' => '120'));
+$I->seeInDatabase('registration', array('addr1' => '123 Pine st.'));
+$I->seeInDatabase('registration', array('addr2' => 'Apt 321'));
+$I->seeInDatabase('registration', array('city' => 'Portland'));
+$I->seeInDatabase('registration', array('state' => 'OR'));
+$I->seeInDatabase('registration', array('zip' => '92713'));
+$I->seeInDatabase('registration', array('comments' => 'I like this league'));
+$I->seeInDatabase('registration', array('paid' => 0));
+$I->seeInDatabase('registration', array('newOld' => 'Returning team'));
+
+

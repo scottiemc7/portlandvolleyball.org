@@ -4,7 +4,7 @@
 $command = sprintf(
     'php -S %s:%d -t %s >/dev/null 2>&1 & echo $!',
     'localhost',
-    8000,
+    8001,
     dirname(__FILE__) . '/../../' // Sets the document root to the app root
 );
 
@@ -17,7 +17,7 @@ echo sprintf(
     '%s - Web server started on %s:%d with PID %d',
     date('r'),
     'localhost',
-    8000,
+    8001,
     $pid
 ) . PHP_EOL;
 
