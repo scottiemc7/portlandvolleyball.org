@@ -1,4 +1,5 @@
 <?php include("header.html"); ?>
+<div id="content" class="container">
 <br><br>
 <table width="750" cellpadding="8" border="1">
 	<tr>
@@ -12,7 +13,7 @@
 		</td>
 		<td>
 			From downtown, cross the Morrison Bridge eastbound.  Go to 12th, and turn left.  Go north on 12th, across Sandy/Burnside, to the school.  It is across the street from Vic Alfonso Cadillac.<br><br>
-			From the east side, take I-84 to the Lloyd Center exit.  Stay in the left lane, turn left at the second light, go over the freeway, and the school is on the left.  The gym is at the south end of the school. 
+			From the east side, take I-84 to the Lloyd Center exit.  Stay in the left lane, turn left at the second light, go over the freeway, and the school is on the left.  The gym is at the south end of the school.
 		</td>
 	</tr>
 	<tr>
@@ -30,7 +31,7 @@
 			5405 SE Woodward
 		</td>
 		<td>
-			Take Powell to 50th.  Turn north on 50th, and go to Woodward.  Turn right, and go across 52nd.  The school is on the left.  The gym is at the far end of the school. 
+			Take Powell to 50th.  Turn north on 50th, and go to Woodward.  Turn right, and go across 52nd.  The school is on the left.  The gym is at the far end of the school.
 		</td>
 	</tr>
 	<tr>
@@ -130,7 +131,7 @@
 	<tr>
 		<td valign="top" nowrap>
 			Jason Lee School<br>
-			2222 NE 92nd 
+			2222 NE 92nd
 		</td>
 		<td>
 			Take NE 82nd north from I-84 to the light at NE Tillamook.  Turn right and go to NE 92nd.  Turn left, and the school is on the right.  The gym is on the north end of the school.

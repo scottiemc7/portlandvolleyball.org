@@ -1,5 +1,5 @@
 <?php include("header.html"); ?>
-
+<div id="content" class="container">
 <h1>Rules &amp; Regulations</h1>
 
 <p />
@@ -15,5 +15,5 @@
 
 <p />
 <a href="/pva_bylaws.pdf" target="_blank">PVA Bylaws</a>
-			
+
 <?php include("footer.html"); ?>

@@ -1,6 +1,8 @@
 <?php include("header.html"); ?>
+<div id="content" class="container">
 
-<br><br>
+<h1>Contact</h1>
+
 <table border="0" cellpadding="6" align="center">
 	<tr>
 		<td width="300" valign="top">
@@ -29,5 +31,5 @@
 
 <br><br>
 
-		
+
 <?php include("footer.html"); ?>

@@ -1,6 +1,10 @@
 <?php
 
 include("header.html");
+?>
+<div id="content" class="container">
+<?php
+
 include 'lib/mysql.php';
 
 $error=dbinit();
@@ -24,7 +28,7 @@ EOF;
 
     print <<<EOF
 <h1>Volleyball Links</h1>
-<table class="interiorTable" cellspacing="0">
+<table class="table" cellspacing="0">
 <tr>
   <th>Link</th>
   <th>Description</th>

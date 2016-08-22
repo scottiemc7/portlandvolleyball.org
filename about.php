@@ -1,16 +1,17 @@
 <?php include("header.html"); ?>
+<div id="content" class="container">
 
 			<h1>About PVA</h1>
-			<p>The Portland Volleyball Association works in cooperation with Portland Parks and Recreation to bring 
-			competetive volleyball to the Portland area.  In addition to Portland City League volleyball, we also 
+			<p>The Portland Volleyball Association works in cooperation with Portland Parks and Recreation to bring
+			competetive volleyball to the Portland area.  In addition to Portland City League volleyball, we also
 			coordinate tournaments and workshops from time to time.</p>
 
-			<p>League play is year-round, broken up into four seasons throughout the year.  During the summer, we offer 
-			outdoor sand and grass leagues.  Throughout the rest of the year, play is held indoors at school gyms and 
+			<p>League play is year-round, broken up into four seasons throughout the year.  During the summer, we offer
+			outdoor sand and grass leagues.  Throughout the rest of the year, play is held indoors at school gyms and
 			community centers all over Portland.</p>
 
-			<p>Everybody is welcome to play in the Portland City League!  We have leagues for all skill levels:  
-			Coed A-G, Mens A and B, and Womens A and B.  Summer leagues are:  Coed Grass 4s Reverse, Coed Grass 
+			<p>Everybody is welcome to play in the Portland City League!  We have leagues for all skill levels:
+			Coed A-G, Mens A and B, and Womens A and B.  Summer leagues are:  Coed Grass 4s Reverse, Coed Grass
 			Doubles Reverse, Grass Coed 6s, Grass Womens 4s, Sand 4s, and Sand 6s.</p>
 
 			<h4>PVA Board</h4>
@@ -59,5 +60,5 @@
           <td>Member at Large</td>
         </tr>
     </table>
-		
+
 <?php include("footer.html"); ?>

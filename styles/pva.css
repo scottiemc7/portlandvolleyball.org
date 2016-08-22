@@ -1,0 +1,71 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 20px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.jumbotron {
+  text-align: center;
+  color: white;
+  background: url('/images/jumbotron-bg.jpg') center center no-repeat;
+  background-size: cover;
+}
+.btn {
+  border-radius: 24px;
+}
+
+.pva-banner {
+  line-height: 40px;
+  background: #00CF86;
+  color: white;
+  text-align: center;
+  border-bottom: 2px solid white;
+}
+
+.pva-banner .btn {
+  padding: 3px 12px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 24px;
+  margin-left: 20px;
+
+}
+.navbar {
+  background: #06c;
+  margin-bottom: 0;
+  border-bottom: 0;
+  box-shadow: 3px 3px 3px rgba(0,0,0,.3);
+}
+
+.navbar-brand {
+  padding: 0;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #EEEEEE;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #FFFFFF;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background: white;
+}
+
+
+.facebook-alert {
+  width:50%;
+  float: right;
+}
+
+@media screen and (max-width: 768px) {
+  .facebook-alert {
+    width:100%;
+    float: none;
+  }
+}

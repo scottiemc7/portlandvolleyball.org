@@ -8,12 +8,21 @@ if($error!=="") {
   print "***ERROR*** dbinit: $error\n";
   exit;
 }
+?>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Portland Volleyball Association</h1>
+  </div>
+</div>
+
+<div id="content" class="container">
+<?php
 
 print <<<EOF
-<div id="sidebar">
+<div class="facebook-alert alert alert-info">
 <h4>PVA is now on Facebook!</h4>
-<p>To find a team or to look for a sub go to <a href="https://www.facebook.com/groups/portlandvolleyballassociation/" target="_blank">Portland Volleyball Association Managers and Free Agents</a>
-<p>For general information go to <a href="http://www.facebook.com/PortlandVolleyballAssociation" target="_blank">Portland Volleyball Association</a>
+<p>To find a team or to look for a sub go to: <br /><a href="https://www.facebook.com/groups/portlandvolleyballassociation/" target="_blank">Portland Volleyball Association Managers and Free Agents</a>
+<p>For general information go to: <br /><a href="http://www.facebook.com/PortlandVolleyballAssociation" target="_blank">Portland Volleyball Association</a>
 EOF;
 
 $sql=<<<EOF
@@ -26,7 +35,7 @@ if($result=dbquery($sql)) {
 
   while($row=mysqli_fetch_assoc($result)) {
     $title=$row['title'];
-    $article=ereg_replace('\\\"','"',$row['article']);
+    $article=preg_replace('/\\\"/','"',$row['article']);
 
     print <<<EOF
 <h4>$title</h4>
@@ -54,10 +63,10 @@ if($result=dbquery($sql)) {
 
   while($row=mysqli_fetch_assoc($result)) {
     $title=$row['title'];
-    $article=ereg_replace('\\\"','"',$row['article']);
+    $article=preg_replace('/\\\"/','"',$row['article']);
 
     print <<<EOF
-<h1>$title</h1>
+<h2>$title</h2>
 <p>$article</p>
 EOF;
   }

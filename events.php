@@ -1,5 +1,5 @@
 <?php include("header.html"); ?>
-
+<div id="content" class="container">
 
 <?php
 
@@ -21,7 +21,7 @@ if($result=dbquery($sql)) {
   if($row_cnt > 0) {
     print <<<EOF
 <h1>PVA Schedule of Events</h1>
-<table class="interiorTable" cellspacing="0">
+<table class="table" cellspacing="0">
 <tr>
 <th>Date/Time</th>
 <th>Event</th>
@@ -32,12 +32,12 @@ EOF;
     while($row=mysqli_fetch_assoc($result)) {
       $dtarray = explode('-', $row['dt']);
       $dt=sprintf("%d/%d/%d",$dtarray[1],$dtarray[2],$dtarray[0]);
-  
+
       $tmarray = explode(':', $row['tm']);
       $tm=sprintf("%d:%02d",$tmarray[0],$tmarray[1]);
-  
+
       $title=$row['title'];
-  
+
       $desc=$row['description'];
       if(!empty($row['link'])) {
         $link=$row['link'];

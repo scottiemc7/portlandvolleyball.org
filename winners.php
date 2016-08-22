@@ -1,5 +1,5 @@
 <?php include("header.html"); ?>
-
+<div id="content" class="container">
 <h1>Fall 2015 Playoff Winners</h1>
 <ul>
   <li><strong>Women&#39;s A1</strong> Team North</li>
