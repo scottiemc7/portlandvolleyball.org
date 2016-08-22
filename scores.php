@@ -63,7 +63,7 @@ print <<<EOF
 </select>
 </div>
 <div class="form-group">
-<select class="form-control"name="leagues" onchange="document.sort.teams.selectedIndex = 0;">
+<select class="form-control" name="leagues" onchange="document.sort.teams.selectedIndex = 0;">
 <option value="">-- Select league --</option>
 EOF;
 
