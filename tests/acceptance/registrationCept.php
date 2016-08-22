@@ -19,30 +19,39 @@ $I->fillField('alt_name','Joey Blower');
 $I->fillField('alt_phone1','123-456-7890');
 $I->fillField('alt_phone2','098-765-4321');
 $I->fillField('alt_email','jane.blow@example.com');
-$I->selectOption('league', '25');
-$I->selectOption('league2', '120');
+$I->selectOption('league', '25'); // Coed A Thursday Doubleheaders - Thursday
+$I->selectOption('league2', '120'); // Coed A Wednesday - Wednesday
 $I->selectOption('newOld', 'Returning team');
 $I->fillField('comments', 'I like this league');
 $I->click('Register your team');
-$I->seeInDatabase('registration', array('teamName' => 'Team Name'));
-$I->seeInDatabase('registration', array('mgrName' => 'Joe Blow'));
-$I->seeInDatabase('registration', array('mgrPhone' => '555-555-5555'));
-$I->seeInDatabase('registration', array('mgrPhone2' => '666-666-6666'));
-$I->seeInDatabase('registration', array('mgrEmail' => 'joe.blow@example.com'));
-$I->seeInDatabase('registration', array('mgrEmail2' => 'joey.blower@example.com'));
-$I->seeInDatabase('registration', array('altName' => 'Joey Blower'));
-$I->seeInDatabase('registration', array('altPhone' => '123-456-7890'));
-$I->seeInDatabase('registration', array('altPhone2' => '098-765-4321'));
-$I->seeInDatabase('registration', array('altEmail' => 'jane.blow@example.com'));
-$I->seeInDatabase('registration', array('league' => '25'));
-$I->seeInDatabase('registration', array('league2' => '120'));
-$I->seeInDatabase('registration', array('addr1' => '123 Pine st.'));
-$I->seeInDatabase('registration', array('addr2' => 'Apt 321'));
-$I->seeInDatabase('registration', array('city' => 'Portland'));
-$I->seeInDatabase('registration', array('state' => 'OR'));
-$I->seeInDatabase('registration', array('zip' => '92713'));
-$I->seeInDatabase('registration', array('comments' => 'I like this league'));
-$I->seeInDatabase('registration', array('paid' => 0));
-$I->seeInDatabase('registration', array('newOld' => 'Returning team'));
+$I->see('Wait!  You\'re not done yet!');
+$I->see('Your registration will not be complete until we\'ve also received your payment for this season.');
+
+
+// Now let's make sure the administrator can see the results
+$I->amOnPage('/admin');
+$I->fillField('uname', 'pva_admin');
+$I->fillField('pw', 'deep energy idea store');
+$I->click('submit');
+$I->click('Registrations');
+$I->click('Team Name');
+
+$I->see('Team Name');
+$I->see('Joe Blow');
+$I->see('555-555-5555');
+$I->see('666-666-6666');
+$I->see('joe.blow@example.com');
+$I->see('joey.blower@example.com');
+$I->see('Joey Blower');
+$I->see('jane.blow@example.com');
+$I->see('Coed A Thursday Doubleheaders - Thursday');
+$I->see('Coed A Wednesday - Wednesday');
+$I->see('123 Pine st.');
+$I->see('Apt 321');
+$I->see('Portland');
+$I->see('OR');
+$I->see('92713');
+$I->see('I like this league');
+$I->see('Returning team');
 
 
