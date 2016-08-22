@@ -92,6 +92,7 @@ foreach ($leagues as $dis) {
     $name=$dis->name;
     print <<<EOF
 <h3><a name="$name">$name</a></h3>
+<div class="table-responsive">
 <table class="table table-striped">
 <tr>
   <th align=center>Team</th>
@@ -134,7 +135,7 @@ EOF;
 EOF;
     }
 
-    print  "</table>";
+    print  "</table></div>";
   }
 }
 

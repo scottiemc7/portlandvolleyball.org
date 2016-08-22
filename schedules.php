@@ -128,7 +128,7 @@ mysqli_free_result($qryLeagues);
 <p>
 </div>
 </div>
-
+<div class="table-responsive">
 <table class="table table-striped" cellspacing="0">
 	<tr>
 		<th>Date</th>
@@ -203,6 +203,7 @@ EOF;
 
   print <<<EOF
 </table>
+</div>
 EOF;
 
 }else{
