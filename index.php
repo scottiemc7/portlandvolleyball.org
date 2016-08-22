@@ -26,7 +26,7 @@ print <<<EOF
 EOF;
 
 $sql=<<<EOF
-SELECT title, article FROM home_page WHERE 1 and storycolumn=2 order by priority desc, dtm desc
+SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=2 order by priority desc, dtm desc
 EOF;
 
 if($result=dbquery($sql)) {
@@ -36,7 +36,6 @@ if($result=dbquery($sql)) {
   while($row=mysqli_fetch_assoc($result)) {
     $title=$row['title'];
     $article=preg_replace('/\\\"/','"',$row['article']);
-
     print <<<EOF
 <h4>$title</h4>
 <p>$article</p>
@@ -53,7 +52,7 @@ EOF;
 print "</div\n";
 
 $sql=<<<EOF
-SELECT title, article FROM home_page WHERE 1 and storycolumn=1 order by priority desc, dtm desc
+SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=1 order by priority desc, dtm desc
 EOF;
 
 if($result=dbquery($sql)) {
@@ -64,9 +63,10 @@ if($result=dbquery($sql)) {
   while($row=mysqli_fetch_assoc($result)) {
     $title=$row['title'];
     $article=preg_replace('/\\\"/','"',$row['article']);
-
+    $posted_on = date("F j, Y, g:i a", strtotime($row['dtm']));
     print <<<EOF
 <h2>$title</h2>
+<p><strong>$posted_on</strong></p>
 <p>$article</p>
 EOF;
   }
