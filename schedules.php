@@ -161,7 +161,7 @@ if($result=dbquery($sql)) {
     }
 
     $rowstyle="";
-    if($edited==1) {
+    if($edited==1 || true) {
       $rowstyle=' bgcolor="#ffff99"';
     }
 

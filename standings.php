@@ -68,13 +68,13 @@ EOF;
 
 }
 
-print "<p>";
+print '<p style="text-align: center;">';
 foreach ($leagues as $dis) {
   if(sizeof($dis->teamArray) > 0) {
 
     $name=$dis->name;
     print <<<EOF
-<a class="btn btn-default" href="#$name">$name</a>
+<a class="btn btn-default" style="margin: 5px;" href="#$name">$name</a>
 
 EOF;
   ++$i;
