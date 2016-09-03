@@ -10,7 +10,7 @@ h1,h2,h3,h4,h5,h6 {
 .jumbotron {
   text-align: center;
   color: white;
-  background: url('/images/jumbotron-bg.jpg') center center no-repeat;
+  background: url('/images/jumbotron-bg.jpg?1') center center no-repeat;
   background-size: cover;
   background-position: center bottom;
 }
