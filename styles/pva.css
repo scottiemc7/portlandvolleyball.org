@@ -49,6 +49,12 @@ h1,h2,h3,h4,h5,h6 {
   color: #EEEEEE;
 }
 
+@media screen and (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #EEEEEE;
+  }
+}
+
 .navbar-default .navbar-nav>li>a:hover {
   color: #FFFFFF;
 }
