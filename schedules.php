@@ -56,7 +56,6 @@ if(! $qryLeagues=dbquery($sql)) {
     		</script>
       </p>
     </div>
-    <di
   </div>
   <div class="row">
     <div class="col-xs-12">
