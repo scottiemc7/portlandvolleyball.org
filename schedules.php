@@ -56,28 +56,7 @@ if(! $qryLeagues=dbquery($sql)) {
     		</script>
       </p>
     </div>
-    <div class="col-md-6">
-  	  <div class="panel panel-default">
-
-    		<div class="panel-heading">
-          Sign up for our mailing list
-        </div>
-        <div class="panel-body">
-    		  <form method="post" action="http://scripts.dreamhost.com/add_list.cgi">
-      			<input type="hidden" name="list" value="announcements@portlandvolleyball.org" />
-      			<input type="hidden" name="domain" value="portlandvolleyball.org" />
-      			<input type="hidden" name="emailit" value="0" />
-    			 <label>
-            Name: <input name="name" class="form-control" />
-            </label>
-            <label>
-              E-mail: <input name="email" type="email" class="form-control" />
-            </label>
-              <input class="btn btn-default" type="submit" name="submit" value="Sign up" />
-    		  </form>
-        </div>
-  	  </div>
-    </div>
+    <di
   </div>
   <div class="row">
     <div class="col-xs-12">
