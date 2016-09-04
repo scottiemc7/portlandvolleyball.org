@@ -1,5 +1,5 @@
 <?php include("header.html"); ?>
-
+<div id="content" class="container">
 <h1>Portland Volleyball Association - Outdoor Playing Regulations</h1>
 <p>
 <i>Outdoor Rules for Sand and Grass Leagues</i><br />

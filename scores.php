@@ -130,7 +130,7 @@ if($result=dbquery($sql)) {
 
   if($row_cnt==0) {
     print <<<EOF
-<tr><td><div style="font-size: larger; color: #0000dd;">No results to display</div></td></tr>
+<tr><td colspan=8 class="text-center">No results to display</td></tr>
 EOF;
   }else{
     while($row=mysqli_fetch_assoc($result)) {
