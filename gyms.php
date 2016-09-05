@@ -37,7 +37,8 @@ if($result=dbquery($sql)) {
   }else{
 
     print <<<EOF
-<table class="table  table-striped" cellspacing="0">
+<div class="table-responsive">
+<table class="table table-striped">
 <tr>
   <th width="20%">Facility</th>
   <th width="80%">Directions</th>
@@ -74,7 +75,7 @@ EOF;
 
   }
 
-  print "</table\n";
+  print "</table></div>\n";
 
   mysqli_free_result($result);
 }else{
