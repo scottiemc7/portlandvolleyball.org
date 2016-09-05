@@ -18,7 +18,11 @@
 			<p>Portland Volleyball Association is managed by an all-volunteer board and one paid executive assistant.  The
 			board meets approximately every 5-6 weeks to discuss all aspects of running the league.  The current
 			board members are as follows:</p>
-			<table cellspacing="4">
+			<table class="table table-striped table-bordered">
+        <tr>
+          <th>Member</th>
+          <th>Title</th>
+        </tr>
         <tr>
           <td>Jocelyn Pease</td>
           <td>President</td>

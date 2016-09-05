@@ -107,7 +107,7 @@ mysqli_free_result($qryLeagues);
 </div>
 </div>
 <div class="table-responsive">
-<table class="table table-striped" cellspacing="0">
+<table class="table table-striped table-condensed">
 	<tr>
 		<th>Date</th>
 		<th>Time</th>

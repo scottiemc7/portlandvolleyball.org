@@ -83,7 +83,7 @@ mysqli_free_result($qryLeagues);
 </form>
 <br />
 <div class="table-responsive">
-<table class="table table-striped">
+<table class="table table-striped table-condensed">
 <tr>
 <th>Date</th>
 <th>Time</th>
@@ -116,7 +116,7 @@ $sql=<<<EOF
 SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt1, tm,
 g.hscore1 AS h1, g.hscore2 AS h2, g.hscore3 AS h3,
 g.vscore1 AS v1, g.vscore2 AS v2, g.vscore3 AS v3,
-t.name AS home, teams.name AS visitor, l.name AS league
+t.name AS home, teams.name AS visitor, l.name AS league, hmp, vmp
 FROM ((((games g)
 LEFT JOIN teams t ON t.id = g.home)
 LEFT JOIN teams ON teams.id = g.visitor)
@@ -145,12 +145,14 @@ EOF;
       $home=$row['home'];
       $visitor=$row['visitor'];
       $league=$row['league'];
-
+      $home_team_class = $row['hmp'] > $row['vmp'] ? "winning-team" : "";
+      $visitor_team_class = $row['hmp'] < $row['vmp'] ? "winning-team" : "";
       print <<<EOF
 <tr>
 <td>$dt</td><td>$tm</td>
 <td>$league</td>
-<td>$home</td><td>$visitor</td>
+<td><span class="$home_team_class">$home</span></td>
+<td><span class="$visitor_team_class">$visitor</span></td>
 <td>$h1 - $v1</td><td>$h2 - $v2</td>
 <td>$h3 - $v3</td>
 </tr>
