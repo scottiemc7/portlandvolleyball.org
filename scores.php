@@ -79,7 +79,7 @@ mysqli_free_result($qryLeagues);
 ?>
 </select>
 </div>
-<input type="submit" value="filter" class="btn btn-default" />
+<input type="submit" value="Filter" class="btn btn-default" />
 </form>
 <br />
 <div class="table-responsive">
@@ -95,10 +95,10 @@ mysqli_free_result($qryLeagues);
 <th>Game 3</th>
 </tr>
 <tr>
-<td colspan="8">
-<div style="font-weight: normal; font-size: smaller; float: right; margin-right: 15%;">
-Scores are shown 'home - visitor'
-</div>
+<td colspan="5">
+</td>
+<td colspan="3">
+<em><small>Scores are shown 'home - visitor'</small></em>
 </td>
 </tr>
 

@@ -44,7 +44,7 @@ if(! $qryLeagues=dbquery($sql)) {
 	  <div class="row">
       <div class="col-md-6">
     		<p>
-    		  To sort, choose one of the options below, and click "Sort".
+    		  To filter, choose one of the options below, and click "Filter".
     		  <br>
     			Games that have been changed are denoted with a <span style="background-color: #ffff99;">yellow background</span>.
     		</p>
@@ -101,7 +101,7 @@ mysqli_free_result($qryLeagues);
 ?>
 	</select>
   </div>
-	<input type="submit" value="sort" class="btn btn-default"/>
+	<input type="submit" value="Filter" class="btn btn-default"/>
 </form>
 <p>
 </div>

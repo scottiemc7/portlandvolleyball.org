@@ -87,6 +87,8 @@ h1,h2,h3,h4,h5,h6 {
 
 .scores-table__game-score {
   white-space: nowrap;
+  border: 1px solid #ddd;
+  text-align: center;
 }
 .scores-table__team--winning-team {
   display: inline-block;
@@ -97,7 +99,6 @@ h1,h2,h3,h4,h5,h6 {
   line-height: 1;
   color: #fff;
   text-align: center;
-  white-space: nowrap;
   vertical-align: middle;
   background-color: #777;
   border-radius: 10px;
