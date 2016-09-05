@@ -365,108 +365,76 @@ EOF;
 
     print <<<EOF
 </p>
+EOF;
 
-<p>If you have already registered, but have not yet paid:</p>
+include './includes/registration_payment_options.php';
 
-<table style="margin-left: 20px;">
-  <tr>
-    <td>
-      Mail your check to:<br/>
-      Portland Volleyball Association<br/>
-      PO Box 25503<br/>
-      Portland, OR 97298-0503<br/>
-      <em>Make sure to write the team name on your check.</em>
-    </td>
-    <td valign="top" style="padding-left: 15px;">
-      Pay for <strong>standard</strong> leagues using PayPal by clicking the button below.
-      <p>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Team Fee" />
-        <input type="hidden" name="amount" value="$amount" />
-        <input type="hidden" name="no_shipping" value="1" />
-        <input type="hidden" name="cn" value="Your Team Name" />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
-      </form>
-      </p>
-    </td>
-    <td valign="top" style="padding-left: 15px;">
-      <p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Double Header League Team Fee" />
-        <input type="hidden" name="amount" value="$doubleHeaderAmount" />
-        <input type="hidden" name="no_shipping" value="1" />
-        <input type="hidden" name="cn" value="Your Team Name" />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
-      </form>
-    </td>
-  </tr>
-</table>
+    print <<<EOF
+</p>
+
 
 <form name="register" method="post" style="border: 1px solid #aaaaaa; padding: 40px; margin-top: 10px;">
 <table>
-  <tr>
-    <td>Team Name*</td>
-    <td><input type="text" name="teamName" value="$teamName" size="40" /></td>
-  </tr>
-  <tr>
-    <td>Manager's Name*</td>
-    <td><input type="text" name="mgrName" value="$mgrName" size="40" /></td>
-  </tr>
-  <tr>
-    <td valign="top">Mailing Address*</td>
-    <td><input type="text" name="addr1" value="$addr1" size="40" /><br />
-        <input type="text" name="addr2" value="$addr2" size="40" /></td>
-  </tr>
-  <tr>
-    <td>City*</td>
-    <td><input type="text" name="city" value="$city" size="40" /></td>
-  </tr>
-  <tr>
-    <td>State*/Zip*</td>
-    <td><input type="text" name="state" value="$state" size="4" maxlength="2" />
-        &nbsp;<input type="text" name="zip" value="$zip" size="10" maxlength="10" /></td>
-  </tr>
-  <tr>
-    <td>Manager's Email Address*</td>
-    <td><input type="text" name="email" value="$email" size="40" /></td>
-  </tr>
-  <tr>
-    <td>Manager's Other Email Address</td>
-    <td><input type="text" name="email2" value="$email2" size="40" /></td>
-  </tr>
-  <tr>
-    <td>Daytime Phone*</td>
-    <td><input type="text" name="phone1" value="$phone1" size="40" /></td>
-  </tr>
-  <tr>
-    <td>Evening Phone</td>
-    <td><input type="text" name="phone2" value="$phone2" size="40" /></td>
-  </tr>
-  <tr>
-    <td>Alternate Contact</td>
-    <td><input type="text" name="alt_name" value="$alt_name" size="40" /></td>
-  </tr>
-  <tr>
-    <td>Alternate Work Phone</td>
-    <td><input type="text" name="alt_phone1" value="$alt_phone1" size="40" /></td>
-  </tr>
-  <tr>
-    <td>Alternate Home Phone</td>
-    <td><input type="text" name="alt_phone2" value="$alt_phone2" size="40" /></td>
-  </tr>
-  <tr>
-    <td>Alternate Email</td>
-    <td><input type="text" name="alt_email" value="$alt_email" size="40" /></td>
-  </tr>
-  <tr>
-    <td valign="top">League Requested*</td>
-    <td><select name="league">
+  <div class="form-group">
+    <label>Team Name*</label>
+    <input class="form-control" type="text" name="teamName" value="$teamName" size="40" />
+  </div>
+  <div class="form-group">
+    <label>Manager's Name*</label>
+    <input class="form-control" type="text" name="mgrName" value="$mgrName" size="40" />
+  </div>
+  <div class="form-group">
+    <td valign="top">Mailing Address*</label>
+    <input class="form-control" type="text" name="addr1" value="$addr1" size="40" /><br />
+    <input class="form-control" type="text" name="addr2" value="$addr2" size="40" />
+  </div>
+  <div class="form-group">
+    <label>City*</label>
+    <input class="form-control" type="text" name="city" value="$city" size="40" />
+  </div>
+  <div class="form-group">
+    <label>State*</label>
+    <input class="form-control" type="text" name="state" value="$state" size="4" maxlength="2" />
+  </div>
+  <div class="form-group">
+    <label>Zip*</label>
+    <input class="form-control" type="text" name="zip" value="$zip" size="10" maxlength="10" />
+  </div>
+  <div class="form-group">
+    <label>Manager's Email Address*</label>
+    <input class="form-control" type="text" name="email" value="$email" size="40" />
+  </div>
+  <div class="form-group">
+    <label>Manager's Other Email Address</label>
+    <input class="form-control" type="text" name="email2" value="$email2" size="40" />
+  </div>
+  <div class="form-group">
+    <label>Daytime Phone*</label>
+    <input class="form-control" type="text" name="phone1" value="$phone1" size="40" />
+  </div>
+  <div class="form-group">
+    <label>Evening Phone</label>
+    <input class="form-control" type="text" name="phone2" value="$phone2" size="40" />
+  </div>
+  <div class="form-group">
+    <label>Alternate Contact</label>
+    <input class="form-control" type="text" name="alt_name" value="$alt_name" size="40" />
+  </div>
+  <div class="form-group">
+    <label>Alternate Work Phone</label>
+    <input class="form-control" type="text" name="alt_phone1" value="$alt_phone1" size="40" />
+  </div>
+  <div class="form-group">
+    <label>Alternate Home Phone</label>
+    <input class="form-control" type="text" name="alt_phone2" value="$alt_phone2" size="40" />
+  </div>
+  <div class="form-group">
+    <label>Alternate Email</label>
+    <input class="form-control" type="text" name="alt_email" value="$alt_email" size="40" />
+  </div>
+  <div class="form-group">
+    <label>League Requested*</label>
+    <select class="form-control" name="league">
 EOF;
 
     $leagueSelect="";
@@ -527,21 +495,19 @@ If the league you want is not listed, contact Michelle Baldwin at <a href="mailt
 EOF;
 
     print <<<EOF
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">2nd Choice* <br/>(in case 1st choice is full)</td>
-    <td valign="top">
-      <select name="league2">
+
+  </div>
+  <div class="form-group">
+    <label>2nd Choice* <br/>(in case 1st choice is full)</label>
+      <select class="form-control" name="league2">
       $leagueSelect
       </select>
       <br/>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">Team Status*</td>
-    <td valign="top">
-      <select name="newOld">
+
+  </div>
+  <div class="form-group">
+    <label>Team Status*</label>
+      <select class="form-control" name="newOld">
         <option value="New team" selected="selected">New team</option>
         <option value="Returning team">Returning team</option>
       </select>
@@ -550,16 +516,15 @@ EOF;
         (If "Returning team" and your team name and/or team manager has changed then
         enter your previous team name and manager in comments section below.)
       </small>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">Please enter any comments here.</td>
-    <td><textarea name="comments" cols="35" rows="5">$comments</textarea></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><input type="submit" value="Register your team" /></td>
-  </tr>
+
+  </div>
+  <div class="form-group">
+    <label>Please enter any comments here.</label>
+    <textarea class="form-control" name="comments" cols="35" rows="5">$comments</textarea>
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Register your team" />
+  </div>
 </table>
 <input type="hidden" name="formSubmitted" value="true">
 </form>
