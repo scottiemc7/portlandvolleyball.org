@@ -11,7 +11,7 @@ if($error!=="") {
 ?>
 <div class="jumbotron">
   <div class="container">
-    <h1>Portland Volleyball Association</h1>
+      <img src="/images/header-logo.svg" style="max-width: 450px;width: 60%;" />
   </div>
 </div>
 

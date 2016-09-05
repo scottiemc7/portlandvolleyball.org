@@ -36,7 +36,7 @@ h1,h2,h3,h4,h5,h6 {
 
 }
 .navbar {
-  background: #06c;
+  background: #0066cc;
   margin-bottom: 0;
   border-bottom: 0;
   box-shadow: 3px 3px 3px rgba(0,0,0,.3);
@@ -85,7 +85,10 @@ h1,h2,h3,h4,h5,h6 {
 
 /* Scores */
 
-.winning-team {
+.scores-table__game-score {
+  white-space: nowrap;
+}
+.scores-table__team--winning-team {
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;

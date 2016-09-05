@@ -145,16 +145,17 @@ EOF;
       $home=$row['home'];
       $visitor=$row['visitor'];
       $league=$row['league'];
-      $home_team_class = $row['hmp'] > $row['vmp'] ? "winning-team" : "";
-      $visitor_team_class = $row['hmp'] < $row['vmp'] ? "winning-team" : "";
+      $home_team_class = $row['hmp'] > $row['vmp'] ? "scores-table__team--winning-team" : "";
+      $visitor_team_class = $row['hmp'] < $row['vmp'] ? "scores-table__team--winning-team" : "";
       print <<<EOF
 <tr>
 <td>$dt</td><td>$tm</td>
 <td>$league</td>
 <td><span class="$home_team_class">$home</span></td>
 <td><span class="$visitor_team_class">$visitor</span></td>
-<td>$h1 - $v1</td><td>$h2 - $v2</td>
-<td>$h3 - $v3</td>
+<td class="scores-table__game-score">$h1 - $v1</td>
+<td class="scores-table__game-score">$h2 - $v2</td>
+<td class="scores-table__game-score">$h3 - $v3</td>
 </tr>
 
 EOF;
