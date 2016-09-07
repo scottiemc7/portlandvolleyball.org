@@ -83,6 +83,12 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 
+/* Schedules */
+
+.schedule-table__row--edited {
+  background-color: #ffff99 !important;
+}
+
 /* Scores */
 
 .scores-table__game-score {

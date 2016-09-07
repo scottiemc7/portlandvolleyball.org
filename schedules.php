@@ -161,8 +161,8 @@ if($result=dbquery($sql)) {
     }
 
     $rowstyle="";
-    if($edited==1 || true) {
-      $rowstyle=' bgcolor="#ffff99"';
+    if($edited==1) {
+      $rowstyle=' class="schedule-table__row--edited"';
     }
 
     print <<<EOF
