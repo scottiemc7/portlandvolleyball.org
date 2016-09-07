@@ -2,7 +2,7 @@
 <div id="content" class="container">
 
 			<h1>About PVA</h1>
-			<p>The Portland Volleyball Association works in cooperation with Portland Parks and Recreation to bring
+			<p>Portland Volleyball Association is a nonprofit organization that works in cooperation with Portland Parks and Recreation to bring
 			competetive volleyball to the Portland area.  In addition to Portland City League volleyball, we also
 			coordinate tournaments and workshops from time to time.</p>
 
@@ -52,7 +52,7 @@
           <td>Member at Large</td>
         </tr>
         <tr>
-          <td>Carly Dirks</td>
+          <td>Carley Dirks</td>
           <td>Member at Large</td>
         </tr>
         <tr>
