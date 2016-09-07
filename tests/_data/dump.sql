@@ -7199,9 +7199,9 @@ INSERT INTO `vars` (`name`, `value`)
 VALUES
   ('reg_fee','500'),
   ('reg_latefee','25'),
-  ('reg_deadline','8/25/2016'),
-  ('reg_latedeadline','9/5/2016'),
-  ('reg_season','Fall, 2016'),
+  ('reg_deadline','8/25/2116'), /* This way they never expire for tests */
+  ('reg_latedeadline','9/5/2116'),
+  ('reg_season','Fall, 2116'),
   ('reg_payPalFee','14.80'),
   ('reg_isSummer','0'),
   ('reg_doublesFee','70'),
