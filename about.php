@@ -3,7 +3,7 @@
 
 			<h1>About PVA</h1>
 			<p>Portland Volleyball Association is a nonprofit organization that works in cooperation with Portland Parks and Recreation to bring
-			competetive volleyball to the Portland area.  In addition to Portland City League volleyball, we also
+			competitive volleyball to the Portland area.  In addition to Portland City League volleyball, we also
 			coordinate tournaments and workshops from time to time.</p>
 
 			<p>League play is year-round, broken up into four seasons throughout the year.  During the summer, we offer
