@@ -129,11 +129,12 @@ if(isset($teams) && ($teams > 0))
   $where.=" AND (home.id=$teams OR visitor.id=$teams)";
 
 $sql=<<<EOF
-SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt, tm, home.name AS h, visitor.name AS v, gym.id AS gymID, gym.name AS gymName, court, edited, l.name AS league
+SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt, tm, home.name AS h, visitor.name AS v, gym.id AS gymID, gym.name AS gymName, ref.fname AS ref_name, court, edited, l.name AS league
 FROM games g
 JOIN teams home on g.home = home.id
 JOIN teams visitor on g.visitor = visitor.id
 JOIN gyms gym on gym.id = g.gym
+JOIN refs ref on ref.id = g.ref
 JOIN leagues l on l.id = home.league
 $where
 ORDER BY g.dt, g.tm
@@ -150,6 +151,7 @@ if($result=dbquery($sql)) {
     $visitor=stripslashes($row['v']);
     $gymID=$row['gymID'];
     $gym=$row['gymName'];
+    $ref_name=$row['ref_name'];
     $court=$row['court'];
     $edited=$row['edited'];
     $league=$row['league'];
@@ -171,7 +173,7 @@ if($result=dbquery($sql)) {
   <td>$tm</td>
   <td>$home</td>
   <td>$visitor</td>
-  <td><a href="/gyms.php?gym=$gymID">$gym</a> $court</td>
+  <td><a href="/gyms.php?gym=$gymID">$gym</a> ($ref_name)</td>
   <td>$league</td>
 </tr>
 EOF;
