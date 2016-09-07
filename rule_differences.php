@@ -4,7 +4,7 @@
 <p><i>NFSHA MODIFICATIONS TO USA RULES<br>
 (updated 01/01/2001)</i></p>
 
-<table class="interiorTable">
+<table class="table">
 	<tr>
 		<th>ITEM</th>
 		<th>USA</th>
@@ -48,7 +48,7 @@
 	</tr>
 	<tr>
 		<td><b>CENTERLINE CROSSING</b></td>
-		<td>LEGAL OUTSIDE OF SIDELINE BOTH THE FOOT AND PALM CAN BE ON OR ABOVE THE 
+		<td>LEGAL OUTSIDE OF SIDELINE BOTH THE FOOT AND PALM CAN BE ON OR ABOVE THE
 CENTER LINE</td>
 		<td>LEGAL OUTSIDE OF SIDELINE BOTH THE FOOT AND PALM CAN BE ON OR ABOVE THE CENTER LINE.</td>
 		<td>ILLEGAL EVEN IF OUTSIDE SIDELINE</td>
@@ -229,5 +229,5 @@ CENTER LINE</td>
 
 	</tr>
 </table>
-			
+
 <?php include("footer.html"); ?>

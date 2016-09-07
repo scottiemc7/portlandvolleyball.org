@@ -3,6 +3,8 @@
 include("header.html");
 include 'lib/mysql.php';
 
+print '<div id="content" class="container">';
+
 $error=dbinit();
 if($error!=="") {
   print "***ERROR*** dbinit: $error\n";

@@ -1,9 +1,10 @@
-<?php 
+<?php
 
 include("header.html");
 include 'lib/mysql.php';
 
 print <<<EOF
+<div id="content" class="container">
 <h1>PVA Gyms / Playing Locations</h1>
 
 EOF;
@@ -36,7 +37,8 @@ if($result=dbquery($sql)) {
   }else{
 
     print <<<EOF
-<table class="interiorTable" cellspacing="0">
+<div class="table-responsive">
+<table class="table table-striped">
 <tr>
   <th width="20%">Facility</th>
   <th width="80%">Directions</th>
@@ -73,7 +75,7 @@ EOF;
 
   }
 
-  print "</table\n";
+  print "</table></div>\n";
 
   mysqli_free_result($result);
 }else{

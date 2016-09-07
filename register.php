@@ -2,6 +2,9 @@
 
 include 'header.html';
 include 'lib/mysql.php';
+?>
+<div id="content" class="container">
+<?php
 include 'lib/support.php';
 
 $error=dbinit();

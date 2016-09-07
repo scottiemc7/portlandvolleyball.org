@@ -1,5 +1,6 @@
 <?php
-
+$errorlevel=error_reporting();
+error_reporting($errorlevel & ~E_NOTICE);
 static $mysql="";
 
 function dbinit() {

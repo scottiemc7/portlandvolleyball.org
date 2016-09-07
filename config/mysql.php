@@ -1,5 +1,6 @@
 <?php
 // Test
+
 if ($_SERVER['SERVER_PORT'] == 8001) {
   $host = '127.0.0.1';
   $username='root';
@@ -12,6 +13,12 @@ if ($_SERVER['SERVER_PORT'] == 8001) {
   $password='root';
   $dbname='pvaDB';
 // Production
+} else if ($_SERVER['SERVER_NAME'] == 'pva.joshuabremer.com') {
+  $host = 'localhost';
+  $username='stingeyb_pva';
+  $password='C]Xt8dgKM73eG&';
+  $dbname='stingeyb_pva';
+
 } else {
   $host = 'mysql.portlandvolleyball.org';
   $username='pvaDBusr';

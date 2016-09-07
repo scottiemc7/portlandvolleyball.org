@@ -1,6 +1,7 @@
 <?php
 
 include("header.html");
+print '<div id="content" class="container">';
 include 'lib/mysql.php';
 
 $leagues = $_POST['leagues'];
@@ -14,8 +15,8 @@ if($error!=="") {
 
 $sql=<<<EOF
 SELECT t.id AS id, t.name AS team, l.name AS league
-FROM teams t 
-JOIN leagues l on t.league=l.id 
+FROM teams t
+JOIN leagues l on t.league=l.id
 WHERE l.active=1
 ORDER BY t.name
 EOF;
@@ -37,13 +38,13 @@ if(! $qryLeagues=dbquery($sql)) {
 }
 
 print <<<EOF
-<div id="content">
 <h1>Scores for completed games</h1>
 
-<p>To filter, choose one of the options below, and click "Filter". 
+<p>To filter, choose one of the options below, and click "Filter".</p>
 
-<form name="sort" method="post">
-	<select name="teams" onchange="document.sort.leagues.selectedIndex = 0;">
+<form class="form-inline" name="sort" method="post">
+  <div class="form-group">
+	<select class="form-control" name="teams" onchange="document.sort.leagues.selectedIndex = 0;">
 	<option value="">-- Select team --</option>
 
 EOF;
@@ -60,8 +61,9 @@ mysqli_free_result($qryTeams);
 
 print <<<EOF
 </select>
-
-<select name="leagues" onchange="document.sort.teams.selectedIndex = 0;">
+</div>
+<div class="form-group">
+<select class="form-control" name="leagues" onchange="document.sort.teams.selectedIndex = 0;">
 <option value="">-- Select league --</option>
 EOF;
 
@@ -74,13 +76,14 @@ EOF;
 }
 mysqli_free_result($qryLeagues);
 
-print <<<EOF
+?>
 </select>
-
-<input type="submit" value="filter"/>
+</div>
+<input type="submit" value="Filter" class="btn btn-default" />
 </form>
-
-<table class="interiorTable" cellspacing="0">
+<br />
+<div class="table-responsive">
+<table class="table table-striped table-condensed">
 <tr>
 <th>Date</th>
 <th>Time</th>
@@ -92,14 +95,14 @@ print <<<EOF
 <th>Game 3</th>
 </tr>
 <tr>
-<td colspan="8">
-<div style="font-weight: normal; font-size: smaller; float: right; margin-right: 15%;">
-Scores are shown 'home - visitor'
-</div>
+<td colspan="5">
+</td>
+<td colspan="3">
+<em><small>Scores are shown 'home - visitor'</small></em>
 </td>
 </tr>
-	
-EOF;
+
+<?php
 
 $where="";
 
@@ -110,15 +113,15 @@ if(isset($teams) && ($teams > 0))
   $where.=" AND (t.id=$teams OR teams.id=$teams)";
 
 $sql=<<<EOF
-SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt1, tm, 
-g.hscore1 AS h1, g.hscore2 AS h2, g.hscore3 AS h3, 
-g.vscore1 AS v1, g.vscore2 AS v2, g.vscore3 AS v3, 
-t.name AS home, teams.name AS visitor, l.name AS league
+SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt1, tm,
+g.hscore1 AS h1, g.hscore2 AS h2, g.hscore3 AS h3,
+g.vscore1 AS v1, g.vscore2 AS v2, g.vscore3 AS v3,
+t.name AS home, teams.name AS visitor, l.name AS league, hmp, vmp
 FROM ((((games g)
 LEFT JOIN teams t ON t.id = g.home)
 LEFT JOIN teams ON teams.id = g.visitor)
 LEFT JOIN leagues l ON t.league = l.id)
-WHERE g.hscore1 IS NOT NULL $where 
+WHERE g.hscore1 IS NOT NULL $where
 ORDER BY dt, tm
 EOF;
 
@@ -127,7 +130,7 @@ if($result=dbquery($sql)) {
 
   if($row_cnt==0) {
     print <<<EOF
-<tr><td><div style="font-size: larger; color: #0000dd;">No results to display</div></td></tr>
+<tr><td colspan=8 class="text-center">No results to display</td></tr>
 EOF;
   }else{
     while($row=mysqli_fetch_assoc($result)) {
@@ -142,14 +145,17 @@ EOF;
       $home=$row['home'];
       $visitor=$row['visitor'];
       $league=$row['league'];
-
+      $home_team_class = $row['hmp'] > $row['vmp'] ? "scores-table__team--winning-team" : "";
+      $visitor_team_class = $row['hmp'] < $row['vmp'] ? "scores-table__team--winning-team" : "";
       print <<<EOF
 <tr>
 <td>$dt</td><td>$tm</td>
 <td>$league</td>
-<td>$home</td><td>$visitor</td>
-<td>$h1 - $v1</td><td>$h2 - $v2</td>
-<td>$h3 - $v3</td>
+<td><span class="$home_team_class">$home</span></td>
+<td><span class="$visitor_team_class">$visitor</span></td>
+<td class="scores-table__game-score">$h1 - $v1</td>
+<td class="scores-table__game-score">$h2 - $v2</td>
+<td class="scores-table__game-score">$h3 - $v3</td>
 </tr>
 
 EOF;
@@ -169,5 +175,6 @@ dbclose();
 ?>
 
 </table>
+</div>
 </body>
 </html>

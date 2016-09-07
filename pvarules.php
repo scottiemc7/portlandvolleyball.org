@@ -1,5 +1,5 @@
 <?php include("header.html"); ?>
-
+<div id="content" class="container">
 <h1>Portland Volleyball Association - Playing Regulations</h1>
 <b><i>USA Volleyball Rules will be followed, with the following differences:</i></b>
 
@@ -86,25 +86,25 @@ Can serve one position, female can replace either, male only male, USAV rules.
 
 <p>
 <i>SERVE</i><br />
-Only one toss or release of the ball is allowed. No re-serve is permitted. 
+Only one toss or release of the ball is allowed. No re-serve is permitted.
 At most 8 seconds may transpire from whistle to contact of the serve.
 </p>
 
 <p>
 <i>PLAYERS</i><br />
-Teams consist of 6 players.  
-In order to reduce forfeits, when necessary, teams may play with 4 players. 
-If fewer than 4 players are present, set is forfeited to the opposing team. 
-If both teams fail to have 4 players present, both teams will receive a loss in the standings.  
-This will include playoffs. 
-Players will still have to rotate in position and therefore serve in the correct rotation. 
+Teams consist of 6 players.
+In order to reduce forfeits, when necessary, teams may play with 4 players.
+If fewer than 4 players are present, set is forfeited to the opposing team.
+If both teams fail to have 4 players present, both teams will receive a loss in the standings.
+This will include playoffs.
+Players will still have to rotate in position and therefore serve in the correct rotation.
 Server will be the back row player with the other 3 being front row players.
 </p>
 
 <p>
 <i>COED ONLY</i><br />
-The player positions must alternate man/woman/man/woman. 
-When a ball is hit two or more times and crosses the plane of the net, one hit must be by a woman. 
+The player positions must alternate man/woman/man/woman.
+When a ball is hit two or more times and crosses the plane of the net, one hit must be by a woman.
 </p>
 <p>
 Coed teams are legal as follows:
@@ -128,7 +128,7 @@ If a team has 4 players (i.e. 2 men + 2 women or 3 women + 1 man), the service r
 If a team has 5 players consisting of 3 women and 2 men they will always rotate so that 3 players are in the front row and 2 are in the back row--no ghost rule.
 </p>
 <p>
-If a team has 4 women and 2 men, the men must still be lined up as though there are 3 men (they CANNOT be opposite each other in the lineup). 
+If a team has 4 women and 2 men, the men must still be lined up as though there are 3 men (they CANNOT be opposite each other in the lineup).
 In addition, the extra woman does not count as a man touching the ball when there is more than one contact.
 </p>
 <p>
@@ -143,7 +143,7 @@ If a team has 3 men and 3 women present at the match, the team must play them; t
 Officials have the right to request one piece of I.D. from players. Players refusing will be ejected. Teams playing illegal players will forfeit the match.
 <p />
 <i><a name="standings" />LEAGUE STANDINGS</i><br />
-Final league standings will be determined by: 
+Final league standings will be determined by:
 <ul>
 <li>Win percentage</li>
 <li>Percentage of possible match points</li>
@@ -156,7 +156,7 @@ Final league standings will be determined by:
 
 <p>
 <i>MATCH POINTS</i><br />
-Match points are awarded according to the following: 
+Match points are awarded according to the following:
 <ul>
 <li>One-half point for each set won in a match</li>
 <li>One point for most total points scored in a match</li>
@@ -205,7 +205,7 @@ The home team calls all coin tosses, unless the home team does not have a scoreb
 <p />
 All jewelry, which in the official's judgment could cause injury, is illegal. Hats and bandannas that cover the top of the head are illegal and must be removed. Bandannas worn as a headband, around the forehead, are acceptable.
 <p />
-Springtime, sunlight, problem.  Switch sides every 8 points until sundown.   
+Springtime, sunlight, problem.  Switch sides every 8 points until sundown.
 </p>
 
 <?php include("footer.html"); ?>

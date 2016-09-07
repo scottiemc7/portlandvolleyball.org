@@ -1,5 +1,5 @@
 <?php include("header.html"); ?>
-
+<div id="content" class="container">
 <?php
 include 'lib/mysql.php';
 
@@ -10,8 +10,8 @@ if($error!=="") {
 }
 
 /*
-SELECT t.id, t.name, league.name 
-FROM teams t 
+SELECT t.id, t.name, league.name
+FROM teams t
 JOIN leagues league ON t.league=league.id WHERE league.active=1
 ORDER BY t.name
 */
@@ -39,44 +39,40 @@ if(! $qryLeagues=dbquery($sql)) {
   exit;
 }
 
-print <<<EOF
-<div id="content">
-  <div style="width: 980px;">
+?>
 	<h1>Schedules</h1>
-	  <div style="float: left; width: 450px;">
-		<p>
-		  To sort, choose one of the options below, and click "Sort".
-		  <br>
-			Games that have been changed are denoted with a <span style="background-color: #ffff99;">yellow background</span>.
-		</p>
-	
-		<p>
-		  For scheduling questions, contact Michelle Baldwin at
-		  <script language="javascript">
-			document.write('<a href="mailto:' + getE('info', 'portlandvolleyball.org') + '">' + getE('info', 'portlandvolleyball.org') + '</a>.</p>');
-		</script>
-	  </div>
-	  <div style="float: right; width: 500px; background-color: #ffffcc; padding: 10px 10px 0px 10px; border: 1px solid #0066cc;">
-		<b>Sign up for our mailing list</b>
-		<p>
-		  <form method="post" action="http://scripts.dreamhost.com/add_list.cgi">
-			<input type="hidden" name="list" value="announcements@portlandvolleyball.org" />
-			<input type="hidden" name="domain" value="portlandvolleyball.org" />
-			<input type="hidden" name="emailit" value="0" />
-			Name: <input name="name" /> &nbsp; E-mail: <input name="email" /> <input type="submit" name="submit" value="Sign up" />
-		  </form>
-	  </div>
+	  <div class="row">
+      <div class="col-md-6">
+    		<p>
+    		  To filter, choose one of the options below, and click "Filter".
+    		  <br>
+    			Games that have been changed are denoted with a <span style="background-color: #ffff99;">yellow background</span>.
+    		</p>
+
+    		<p>
+    		  For scheduling questions, contact Michelle Baldwin at
+    		  <script language="javascript">
+    			document.write('<a href="mailto:' + getE('info', 'portlandvolleyball.org') + '">' + getE('info', 'portlandvolleyball.org') + '</a>.</p>');
+    		</script>
+      </p>
+    </div>
   </div>
-<form name="sort" method="post" style="clear: both;">
-	<select name="teams" onchange="document.sort.leagues.selectedIndex = 0;">
-	<option value="">-- Select team --</option>
-EOF;
+  <div class="row">
+    <div class="col-xs-12">
+    <p>
+  <form name="sort" method="post" style="clear: both;" class="form-inline">
+  <div class="form-group">
+  	<select class="form-control" name="teams" onchange="document.sort.leagues.selectedIndex = 0;">
+  	<option value="">-- Select team --</option>
+
+<?php
 
 
 while($row=mysqli_fetch_assoc($qryTeams)) {
   $id=$row['id'];
   $name=$row['team'];
   $league=$row['league'];
+  $selected = $id == $teams;
   print <<<EOF
 <option value="$id">$name ($league)</option>
 EOF;
@@ -84,12 +80,13 @@ EOF;
 
 mysqli_free_result($qryTeams);
 
-print <<<EOF
+?>
 	</select>
-
-	<select name="leagues" onchange="document.sort.teams.selectedIndex = 0;">
+  </div>
+  <div class="form-group">
+	<select class="form-control" name="leagues" onchange="document.sort.teams.selectedIndex = 0;">
 	<option value="">-- Select league --</option>
-EOF;
+<?php
 
 while($row=mysqli_fetch_assoc($qryLeagues)) {
   $id=$row['id'];
@@ -101,13 +98,16 @@ EOF;
 
 mysqli_free_result($qryLeagues);
 
-print <<<EOF
+?>
 	</select>
-
-	<input type="submit" value="sort"/>
+  </div>
+	<input type="submit" value="Filter" class="btn btn-default"/>
 </form>
-
-<table class="interiorTable" cellspacing="0">
+<p>
+</div>
+</div>
+<div class="table-responsive">
+<table class="table table-striped table-condensed">
 	<tr>
 		<th>Date</th>
 		<th>Time</th>
@@ -116,7 +116,7 @@ print <<<EOF
 		<th>Location</th>
 		<th>League</th>
 	</tr>
-EOF;
+<?php
 
 $leagues = $_POST["leagues"];
 $teams = $_POST["teams"];
@@ -130,11 +130,11 @@ if(isset($teams) && ($teams > 0))
 
 $sql=<<<EOF
 SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt, tm, home.name AS h, visitor.name AS v, gym.id AS gymID, gym.name AS gymName, court, edited, l.name AS league
-FROM games g 
+FROM games g
 JOIN teams home on g.home = home.id
 JOIN teams visitor on g.visitor = visitor.id
 JOIN gyms gym on gym.id = g.gym
-JOIN leagues l on l.id = home.league 
+JOIN leagues l on l.id = home.league
 $where
 ORDER BY g.dt, g.tm
 EOF;
@@ -161,7 +161,7 @@ if($result=dbquery($sql)) {
     }
 
     $rowstyle="";
-    if($edited==1) {
+    if($edited==1 || true) {
       $rowstyle=' bgcolor="#ffff99"';
     }
 

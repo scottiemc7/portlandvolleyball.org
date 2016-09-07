@@ -2,13 +2,14 @@
 
 include("header.html");
 include 'lib/mysql.php';
+?>
+<div id="content" class="container">
+<h1>Standings</h1>
+<p>Standings are calculated according to the <a href="pvarules.php#standings">PVA Rules.</a></p>
+<p>Standings will fluctuate and may not be representative as teams will have played different numbers of games.</p>
+<p>Go to the <a href="scores.php">scores page</a> to see game results.</p>
 
-print <<<EOF
-Standings are calculated according to the <a href="pvarules.php#standings">PVA Rules.</a><br />
-Standings will fluctuate and may not be representative as teams will have played different numbers of games.<br />
-Go to the <a href="scores.php">scores page</a> to see game results.<br /><br />
-EOF;
-
+<?php
 $error=dbinit();
 if($error!=="") {
   print "***ERROR*** dbinit: $error\n";
@@ -66,27 +67,20 @@ EOF;
   }
 
 }
-	
-$tmpLeagues = NULL;
-foreach($leagues as $league) {
-  $tmpLeagues[] = $league->name;
-}
-sort($tmpLeagues);
-$i=0;
-foreach($tmpLeagues as $item) {
-  if($i == 0) {
-    $tmp1 = substr($item, 0, 3); 
-  }
-  $tmp2 = $tmp1;
-  $tmp1 = substr($item, 0, 3);
-  if(($tmp2 != $tmp1) && ($i > 0)) {
-    print "<br />";
-  }
-  print <<<EOF
-<a href="#$item">$item</a> &nbsp;
+
+print '<p style="text-align: center;">';
+foreach ($leagues as $dis) {
+  if(sizeof($dis->teamArray) > 0) {
+
+    $name=$dis->name;
+    print <<<EOF
+<a class="btn btn-default" style="margin: 5px;" href="#$name">$name</a>
+
 EOF;
   ++$i;
 }
+}
+print "</p>";
 
 //$echoteam = $leagues['nor\'easter']->getTeamById($currTeamId);
 //echo "getting team in league: " . $echoteam->getName() . "<br />";
@@ -97,10 +91,9 @@ foreach ($leagues as $dis) {
 
     $name=$dis->name;
     print <<<EOF
-<br /><br />
-<div style="font-size: 120%; font-weight: bold;">
-<a name="$name">$name</a></div><br />
-<table cellspacing='5' cellpadding='5'>
+<h3><a name="$name">$name</a></h3>
+<div class="table-responsive">
+<table class="table table-striped">
 <tr>
   <th align=center>Team</th>
   <th align=center>Wins</th>
@@ -141,8 +134,8 @@ EOF;
 </tr>
 EOF;
     }
-			
-    print  "</table>";
+
+    print  "</table></div>";
   }
 }
 
@@ -239,7 +232,7 @@ class League {
 		if ($ap == $bp) { return 0; }
 		else { return $ap > $bp ? 1 : -1; }
 	}
-	
+
 	function leagueSort() {
 		/*echo "<h3>Sorting some teams! Calling leagueSort()!</h3><br />";
 		foreach ($this->teamArray as $gnark) {
@@ -308,7 +301,7 @@ class Team {
 		$BYE_GYM = 42;
 		$CANCELLED_GYM = 43;
 		$BYE_TEAM = 457;
-                
+
 		$id=$this->id;
 
                 $sql=<<<EOF
@@ -326,9 +319,9 @@ AND home <> $BYE_TEAM
 AND gym <> $BYE_GYM
 AND gym <> $CANCELLED_GYM)
 EOF;
-                
+
                 if($result=dbquery($sql)) {
-                
+
                   while($row=mysqli_fetch_assoc($result)) {
                     $us1=$row['us1'];
                     $them1=$row['them1'];
@@ -344,7 +337,7 @@ EOF;
                     $this->addGame($tmp);
 		    //echo "Size of gamesArray is " . sizeof($this->gamesArray) . "<br/>";
                   }
-                
+
                   mysqli_free_result($result);
                 }else{
                   $error=dberror();
@@ -497,7 +490,7 @@ class Game {
 	function isCompleted() {
 		$retval =  (($this->us1 != '') && ($this->them1 != ''));
 		$retval =  $retval && (($this->us1 != 0) || ($this->them1 != 0));
-		return $retval;	
+		return $retval;
 	}
 }
 
