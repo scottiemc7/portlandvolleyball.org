@@ -32,11 +32,11 @@
           <td>Vice President</td>
         </tr>
         <tr>
-          <td>Abby Strom</td>
+          <td>Deb Whitehead</td>
           <td>Treasurer</td>
         </tr>
         <tr>
-          <td>David Rueck</td>
+          <td>Gloria Bremer</td>
           <td>Secretary</td>
         </tr>
         <tr>
@@ -48,15 +48,15 @@
           <td>Executive Assistant</td>
         </tr>
         <tr>
+          <td>Abby Strom</td>
+          <td>Member at Large</td>
+        </tr>
+        <tr>
           <td>Jill Emmert-Tricarico</td>
           <td>Member at Large</td>
         </tr>
         <tr>
           <td>Carley Dirks</td>
-          <td>Member at Large</td>
-        </tr>
-        <tr>
-          <td>Gloria Bremer</td>
           <td>Member at Large</td>
         </tr>
         <tr>
