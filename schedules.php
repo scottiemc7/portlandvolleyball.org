@@ -113,7 +113,7 @@ mysqli_free_result($qryLeagues);
 		<th>Time</th>
 		<th>Home</th>
 		<th>Visitor</th>
-		<th>Location</th>
+		<th>Location (Ref)</th>
 		<th>League</th>
 	</tr>
 <?php
