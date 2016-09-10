@@ -167,13 +167,14 @@ if($result=dbquery($sql)) {
       $game_class .= ' schedule-table__row--edited';
     }
 
+    $ref_html = ($ref_name ? "($ref_name)" : "");
     print <<<EOF
 <tr class="$game_class">
   <td>$dt</td>
   <td>$tm</td>
   <td>$home</td>
   <td>$visitor</td>
-  <td><a href="/gyms.php?gym=$gymID">$gym</a> ($ref_name)</td>
+  <td><a href="/gyms.php?gym=$gymID">$gym</a> $ref_html</td>
   <td>$league</td>
 </tr>
 EOF;
