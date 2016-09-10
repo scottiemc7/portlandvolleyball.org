@@ -11,3 +11,4 @@ modules:
             url: http://localhost:8001
         - \Helper\Acceptance
         - Db
+        - DbHelper
