@@ -164,7 +164,7 @@ if($result=dbquery($sql)) {
 
     $game_class="schedule-table__row";
     if($edited==1) {
-      $game_class .= 'schedule-table__row--edited';
+      $game_class .= ' schedule-table__row--edited';
     }
 
     print <<<EOF
