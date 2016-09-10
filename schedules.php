@@ -107,7 +107,7 @@ mysqli_free_result($qryLeagues);
 </div>
 </div>
 <div class="table-responsive">
-<table class="table table-striped table-condensed">
+<table class="table table-striped table-condensed schedule-table">
 	<tr>
 		<th>Date</th>
 		<th>Time</th>
@@ -134,7 +134,7 @@ FROM games g
 JOIN teams home on g.home = home.id
 JOIN teams visitor on g.visitor = visitor.id
 JOIN gyms gym on gym.id = g.gym
-JOIN refs ref on ref.id = g.ref
+LEFT JOIN refs ref on ref.id = g.ref
 JOIN leagues l on l.id = home.league
 $where
 ORDER BY g.dt, g.tm
@@ -162,13 +162,13 @@ if($result=dbquery($sql)) {
       $court="";
     }
 
-    $rowstyle="";
+    $game_class="schedule-table__row";
     if($edited==1) {
-      $rowstyle=' class="schedule-table__row--edited"';
+      $game_class .= 'schedule-table__row--edited';
     }
 
     print <<<EOF
-<tr$rowstyle>
+<tr class="$game_class">
   <td>$dt</td>
   <td>$tm</td>
   <td>$home</td>
