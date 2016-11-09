@@ -28,7 +28,7 @@ h1,h2,h3,h4,h5,h6 {
 
 @media screen and (max-width: 767px) {
   .pva-banner, .pva-banner .btn {
-    font-size: 0.7em;
+    font-size: 0.9em;
   }
 }
 
