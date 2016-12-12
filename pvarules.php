@@ -130,7 +130,7 @@
 <p>
   Officials have the right to request one piece of I.D. from players. Players refusing will be ejected. Teams playing illegal players will forfeit the match.
 </p>
-<h2><a name="standings">LEAGUE STANDINGS</a></h4>
+<h4><a name="standings"></a>LEAGUE STANDINGS</h4>
   <p>
     Final league standings will be determined by:
     <ul>
