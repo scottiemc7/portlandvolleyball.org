@@ -13,13 +13,13 @@
     <a href="/pvaoutdoorrules.php">PVA Outdoor Rules</a>
   </li>
   <li>
-    <a href="/2015_17DCRindoor.pdf">USA Volleyball Indoor Rules</a>
+    <a href="/assets/2015_17DCRindoor.pdf">USA Volleyball Indoor Rules</a>
   </li>
   <li>
-    <a href="/2015_17DCRbeach.pdf">USA Volleyball Outdoor Rules</a>
+    <a href="/assets/2015_17DCRbeach.pdf">USA Volleyball Outdoor Rules</a>
   </li>
   <li>
-    <a href="/pva_bylaws.pdf" target="_blank">PVA Bylaws</a>
+    <a href="/assets/pva_bylaws.pdf" target="_blank">PVA Bylaws</a>
   </li>
 </ul>
 
