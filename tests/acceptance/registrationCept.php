@@ -2,8 +2,7 @@
 $I = new AcceptanceTester($scenario);
 $I->wantTo('register for a league');
 $I->lookForwardTo('and see the info in the database');
-$I->amOnPage('/');
-$I->click('REGISTER');
+$I->amOnPage('/register.php');
 $I->fillField('teamName','Team Name');
 $I->fillField('mgrName','Joe Blow');
 $I->fillField('addr1','123 Pine st.');
