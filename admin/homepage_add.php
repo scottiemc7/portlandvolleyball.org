@@ -28,8 +28,8 @@ if($_POST['delete'] == "yes") {
 }	
 	
 if ($_POST['title'] != "") {
-  $title = ereg_replace("'", "&#39;", $_POST['title']);
-  $article = ereg_replace("'", "&#39;", $_POST['article']);
+  $title = str_replace("'", "&#39;", $_POST['title']);
+  $article = str_replace("'", "&#39;", $_POST['article']);
   $column = $_POST['column'];
   $priority = $_POST['priority'];
   if(! dbquery("INSERT INTO home_page (title, article, storycolumn, priority) VALUES('$title', '$article', '$column', '$priority')")) {
