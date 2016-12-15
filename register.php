@@ -366,18 +366,18 @@ EOF;
     print <<<EOF
 </p>
 
-<p>If you have already registered, but have not yet paid:</p>
+<p><strong>If you have already registered, but have not yet paid:</strong></p>
 
-<table style="margin-left: 20px;">
-  <tr>
-    <td>
+
+  <div class="row">
+    <div class="col-xs-4">
       Mail your check to:<br/>
       Portland Volleyball Association<br/>
       PO Box 25503<br/>
       Portland, OR 97298-0503<br/>
       <em>Make sure to write the team name on your check.</em>
-    </td>
-    <td valign="top" style="padding-left: 15px;">
+    </div>
+    <div class="col-xs-4">
       Pay for <strong>standard</strong> leagues using PayPal by clicking the button below.
       <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -391,8 +391,8 @@ EOF;
         <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
       </form>
       </p>
-    </td>
-    <td valign="top" style="padding-left: 15px;">
+    </div>
+    <div class="col-xs-4">
       <p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
@@ -404,9 +404,8 @@ EOF;
         <input type="hidden" name="currency_code" value="USD" />
         <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
       </form>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
 
 <form name="register" method="post" style="border: 1px solid #aaaaaa; padding: 40px; margin-top: 10px;">
 <table>
