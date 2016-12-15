@@ -22,7 +22,7 @@ if($error!=="") {
 <?php
 
 $sql=<<<EOF
-SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=1 ORDER BY priority desc, dtm, id DESC LIMIT 5
+SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=1 ORDER BY priority DESC, dtm DESC, id DESC LIMIT 5
 EOF;
 
 if($result=dbquery($sql)) {
@@ -74,7 +74,7 @@ EOF;
 
 <?php
 $sql=<<<EOF
-SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=2 ORDER BY priority desc, dtm, id desc 
+SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=2 ORDER BY priority DESC, dtm DESC, id DESC 
 EOF;
 
 if($result=dbquery($sql)) {

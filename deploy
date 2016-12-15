@@ -6,7 +6,7 @@ die () {
 }
 
 [ "$#" -eq 1 ] || die "tag required in first argument, e.g. `./deploy v2.0.1`"
-echo $1 | grep -E -q '^[0-9]+$' || die "Numeric argument required, $1 provided"
-
-ssh pva@portlandvolleyball.org "eval '$(ssh-agent -s)';ssh-add ~/.ssh/joshuabremer_id_rsa;cd portlandvolleyball.org; git fetch josh; echo $1";
+eval `ssh-agent -s`
+ssh-add ~/.ssh/id_rsa
+ssh pva@portlandvolleyball.org "eval '$(ssh-agent -s /bin/sh)';echo 'here';ssh-add /home/pva/.ssh/joshuabremer_id_rsa;cd portlandvolleyball.org; git fetch josh; echo $1";
 
