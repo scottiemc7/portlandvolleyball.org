@@ -18,7 +18,7 @@ if($error!=="") {
 <?php
 
 $sql=<<<EOF
-SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=1 ORDER BY priority desc, dtm, id DESC LIMIT 5, 99999
+SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=1 ORDER BY priority DESC, dtm DESC, id DESC LIMIT 5, 99999
 EOF;
 
 if($result=dbquery($sql)) {
