@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html.php'; ?>
 
 <h1>Edit Scores</h1>
 

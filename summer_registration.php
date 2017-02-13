@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html.php'; ?>
 
 <?php
 
@@ -283,4 +283,4 @@ else {
 <?php 
 }
 ?>
-<?php include("footer.html"); ?>
+<?php include("footer.html.php"); ?>

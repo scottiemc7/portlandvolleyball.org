@@ -1,9 +1,10 @@
 <?php 	//This file is the primary page for referees,
 	//provide a list of games to choose for editing
 
-include("header.html");
+require_once '../lib/mysql.php';
+include 'header.html.php';
 
-include '../lib/mysql.php';
+
 
 $ref = $_SESSION['ref'];
 

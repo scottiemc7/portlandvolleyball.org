@@ -1,8 +1,8 @@
 <?php
 
-include("header.html");
+include 'header.html.php';
 print '<div id="content" class="container">';
-include 'lib/mysql.php';
+require_once 'lib/mysql.php';
 
 $leagues = $_POST['leagues'];
 $teams = $_POST['teams'];

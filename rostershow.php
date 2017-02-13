@@ -1,7 +1,8 @@
 <?php
 
-include("header.html");
-include 'lib/mysql.php';
+require_once 'lib/mysql.php';
+include 'header.html.php';
+
 
 $req=array_merge($_GET,$_POST);
 
@@ -96,7 +97,7 @@ EOF;
 
 dbclose();
 
-include("footer.html");
+include("footer.html.php");
 exit;
 
 /********************************************************/

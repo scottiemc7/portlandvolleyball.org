@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html.php'; ?>
 
 <?php
   
@@ -480,4 +480,4 @@ as number from registration_leagues where active = 1 order by name, night");
 <?php 
 }
 ?>
-<?php include("footer.html"); ?>
+<?php include("footer.html.php"); ?>

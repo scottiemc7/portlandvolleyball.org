@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html.php'; ?>
 <div id="content" class="container">
   <h1>Portland Volleyball Association - Playing Regulations</h1>
   <strong><em>USA Volleyball Rules will be followed, with the following differences:</em></strong>
@@ -199,4 +199,4 @@
     Springtime, sunlight, problem.  Switch sides every 8 points until sundown.
   </p>
 
-<?php include("footer.html"); ?>
+<?php include("footer.html.php"); ?>

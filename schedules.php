@@ -1,7 +1,7 @@
-<?php include("header.html"); ?>
+<?php include 'header.html.php'; ?>
 <div id="content" class="container">
 <?php
-include 'lib/mysql.php';
+require_once 'lib/mysql.php';
 
 $error=dbinit();
 if($error!=="") {
@@ -197,4 +197,4 @@ dbclose();
 
 ?>
 
-<?php include("footer.html"); ?>
+<?php include("footer.html.php"); ?>

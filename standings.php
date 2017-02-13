@@ -1,7 +1,8 @@
 <?php
 
-include("header.html");
-include 'lib/mysql.php';
+require_once 'lib/mysql.php';
+include 'header.html.php';
+
 ?>
 <div id="content" class="container">
 <h1>Standings</h1>

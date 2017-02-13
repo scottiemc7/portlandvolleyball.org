@@ -1,8 +1,9 @@
 <?php 
 
-include("../header.html"); 
+require_once 'lib/mysql.php';
+include '../header.html.php'; 
 
-include 'lib/mysql.php';
+
 
 $error=dbinit();
 if($error!=="") {

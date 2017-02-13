@@ -1,6 +1,6 @@
 <?php 
 
-include("../header.html"); 
+include '../header.html.php'; 
 
 require 'DB.php';
 $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';

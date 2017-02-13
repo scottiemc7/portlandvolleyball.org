@@ -1,11 +1,11 @@
 <?php
 
-include("header.html");
+include 'header.html.php';
 ?>
 <div id="content" class="container">
 <?php
 
-include 'lib/mysql.php';
+require_once 'lib/mysql.php';
 
 $error=dbinit();
 if($error!=="") {
@@ -63,6 +63,6 @@ EOF;
 
 dbclose();
 
-include("footer.html");
+include("footer.html.php");
 
 ?>

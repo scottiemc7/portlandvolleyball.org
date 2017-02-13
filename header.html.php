@@ -38,9 +38,7 @@
 </head>
 
 <body>
-  <div class="pva-banner"><div class="container">
-    Registration for Winter is Open! <a class="btn btn-default" href="/register.php" onclick="ga('send', 'event', 'Banner', 'Click', 'Winter Registration');">Register!</a>
-  </div></div>
+  <?php include 'partials/registration_banner.html.php'; ?>
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">

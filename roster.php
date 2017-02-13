@@ -1,7 +1,8 @@
 <?php
 
-include("header.html");
-include 'lib/mysql.php';
+require_once 'lib/mysql.php';
+include 'header.html.php';
+
 
 print '<div id="content" class="container">';
 
@@ -198,5 +199,5 @@ EOF;
 
 dbclose();
 
-include("footer.html");
+include("footer.html.php");
 ?>

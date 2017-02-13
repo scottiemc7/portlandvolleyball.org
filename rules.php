@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html.php'; ?>
 <div id="content" class="container">
 <h1>Rules &amp; Regulations</h1>
 
@@ -23,4 +23,4 @@
   </li>
 </ul>
 
-<?php include("footer.html"); ?>
+<?php include("footer.html.php"); ?>
