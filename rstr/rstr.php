@@ -1,6 +1,6 @@
 <?php
 
-include("../header.html");
+include '../header.html.php';
 
 // Connect to database
 require 'DB.php';
@@ -47,7 +47,7 @@ EOF;
   FormTeams($dbh,$season);
 }
 
-include("../footer.html");
+include("../footer.html.php");
 exit;
 
 /********************************************************/

@@ -1,6 +1,6 @@
 <?php
 
-include '../lib/mysql.php';
+require_once '../lib/mysql.php';
 
 session_start();
 //session_register('logged_in_ref');

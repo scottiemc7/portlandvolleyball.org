@@ -2,8 +2,8 @@
 
 <?php
 
-include '../lib/mysql.php';
-include '../lib/support.php';
+require_once '../lib/mysql.php';
+require_once '../lib/support.php';
 
 $error=dbinit();
 if($error!=="") {

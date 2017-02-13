@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html.php'; ?>
 
 <p><b>Registrations:</b> <a href="/admin/registrations.php">View</a></p>
 <p><b>Events:</b> <a href="/admin/events.php">Add/Edit</a></p>

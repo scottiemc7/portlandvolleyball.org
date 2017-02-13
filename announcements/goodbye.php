@@ -1,4 +1,4 @@
-<?php include("../header.html"); ?>
+<?php include '../header.html.php'; ?>
 <?php 
 require 'DB.php';
 $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
@@ -23,4 +23,4 @@ if($_GET['l'] != '')
 	   <input type="submit" name="unsub" value="Unsubscribe" />
 	</form>
 
-<?php include("../footer.html"); ?>
+<?php include("../footer.html.php"); ?>

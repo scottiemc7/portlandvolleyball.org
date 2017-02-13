@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html.php'; ?>
 <div id="content" class="container">
 
 <h1>Contact</h1>
@@ -30,4 +30,4 @@
 <br><br>
 
 
-<?php include("footer.html"); ?>
+<?php include("footer.html.php"); ?>

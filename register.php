@@ -1,17 +1,21 @@
 <?php
 
-include 'header.html';
-include 'lib/mysql.php';
-?>
-<div id="content" class="container">
-<?php
-include 'lib/support.php';
-
+require_once 'lib/mysql.php';
+require_once 'lib/support.php';
+include 'header.html.php';
 $error=dbinit();
 if($error!=="") {
   print "***ERROR*** dbinit: $error\n";
   exit;
 }
+
+?>
+
+
+<?php
+
+
+
 
 $season=getOne('reg_season');
 $deadline=getOne('reg_deadline');
@@ -38,10 +42,16 @@ $doubleHeaderFee = 525.0;
 $doubleHeaderPayPalFee = $doubleHeaderFee * 0.029 + 0.30;
 $doubleHeaderAmount = $doubleHeaderFee + $doubleHeaderPayPalFee;
 // end special thursday double header stuff
+?>
 
+<div id="content" class="container">
+  <h1>
+    Registration - <?php echo $season ?>
+  </h1>
+<?php
 if($isClosed) {
   print <<<EOF
-<p>We are no longer accepting online registrations.</p>
+  <p>We are no longer accepting online registrations.</p>
 EOF;
 }else{
   if($isLate) $totalFee+=$lateFee;
@@ -226,10 +236,6 @@ EOF;
   $amount=$totalFee + $payPalFee;
 
   print <<<EOF
-<div id="content">
-  <h1>
-    Registration - $season
-  </h1>
 $statusMessage
 
 EOF;
@@ -571,6 +577,6 @@ EOF;
 
 dbclose();
 
-include("footer.html");
+include("footer.html.php");
 
 ?>

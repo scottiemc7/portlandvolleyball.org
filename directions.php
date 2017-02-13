@@ -1,4 +1,4 @@
-<?php include("header.html"); ?>
+<?php include 'header.html.php'; ?>
 <div id="content" class="container">
 <br><br>
 <table width="750" cellpadding="8" border="1">

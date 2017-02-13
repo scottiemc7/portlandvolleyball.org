@@ -1,7 +1,7 @@
 <?php
 
-include 'header.html';
-include '../lib/mysql.php';
+require_once '../lib/mysql.php';
+include 'header.html.php';
 
 $error=dbinit();
 if($error!=="") {

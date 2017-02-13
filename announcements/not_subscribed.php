@@ -1,4 +1,4 @@
-<?php include("../header.html"); ?>
+<?php include '../header.html.php'; ?>
 <?php 
 require 'DB.php';
 $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
@@ -15,4 +15,4 @@ if($_GET['l'] != '')
 <h1>Email not found</h1>
 <p>Either you typed your email wrong, or you were not subscribed to the PVA <?= $list ?> list.</p>
 
-<?php include("../footer.html"); ?>
+<?php include("../footer.html.php"); ?>

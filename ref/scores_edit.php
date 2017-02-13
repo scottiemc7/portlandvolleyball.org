@@ -1,9 +1,10 @@
 <?php 	//This file is the score-editing page for
 	//a particular game for the logged-in ref
 
-include("header.html");
+require_once '../lib/mysql.php';
+include 'header.html.php';
 
-include '../lib/mysql.php';
+
  
 $ref = $HTTP_SESSION_VARS['ref'];
 

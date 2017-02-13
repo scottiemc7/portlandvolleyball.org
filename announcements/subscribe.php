@@ -1,4 +1,4 @@
-<?php include("../header.html"); ?>
+<?php include '../header.html.php'; ?>
 <?php 
 require 'DB.php';
 $dsn = 'mysql://pvaDBusr:V0ll3y@mysql.portlandvolleyball.org/pvaDB';
@@ -18,4 +18,4 @@ if($_GET['l'] != '')
   You should receive a message with a confirmation link; use this to verify your email address.
 </p>
 
-<?php include("../footer.html"); ?>
+<?php include("../footer.html.php"); ?>
