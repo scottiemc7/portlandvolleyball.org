@@ -57,25 +57,32 @@ EOF;
   </p>
   </div>
   <div class="col-md-6">
-  <div class="alert alert-info">
-    <h4>
-      PVA is now on Facebook!
-    </h4>
-    <p>
-      To find a team or to look for a sub go to: <br />
-      <a href="https://www.facebook.com/groups/portlandvolleyballassociation/" target="_blank">Portland Volleyball Association Managers and Free Agents</a>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <?php include("includes/_mailchimp_signup.html.php"); ?>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+      <h4>
+        PVA is now on Facebook!
+      </h4>
       <p>
-        For general information go to: 
-        <br />
-        <a href="http://www.facebook.com/PortlandVolleyballAssociation" target="_blank">Portland Volleyball Association</a>
+        To find a team or to look for a sub go to: <br />
+        <a href="https://www.facebook.com/groups/portlandvolleyballassociation/" target="_blank">Portland Volleyball Association Managers and Free Agents</a>
+        <p>
+          For general information go to:
+          <br />
+          <a href="http://www.facebook.com/PortlandVolleyballAssociation" target="_blank">Portland Volleyball Association</a>
+        </p>
       </p>
-    </p>
-  </div>
+      </div>
+    </div>
 
 
 <?php
 $sql=<<<EOF
-SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=2 ORDER BY priority DESC, dtm DESC, id DESC 
+SELECT title, article, dtm FROM home_page WHERE 1 and storycolumn=2 ORDER BY priority DESC, dtm DESC, id DESC
 EOF;
 
 if($result=dbquery($sql)) {
