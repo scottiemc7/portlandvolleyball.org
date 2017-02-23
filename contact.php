@@ -8,8 +8,8 @@
 		<h4>Mailing Address</h4>
 		<p>
 			Portland Volleyball Association<br>
-			PO Box 25503<br>
-			Portland OR 97298-0503
+			PO Box 92122<br>
+			Portland OR 97292
 		</p>
 		</div>
 		<div class="col-sm-4">

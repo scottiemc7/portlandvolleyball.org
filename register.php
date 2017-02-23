@@ -275,8 +275,8 @@ You have two payment options:
   <li>
     Mail your check to:<br/>
     Portland Volleyball Association<br/>
-    PO Box 25503<br/>
-    Portland, OR 97298-0503<br/>
+    PO Box 92122<br/>
+    Portland, OR 97292<br/>
     <strong><em>Make sure to write your team name on your check.</em></strong>
   </li>
   <br/>
@@ -379,8 +379,8 @@ EOF;
     <div class="col-xs-4">
       Mail your check to:<br/>
       Portland Volleyball Association<br/>
-      PO Box 25503<br/>
-      Portland, OR 97298-0503<br/>
+      PO Box 92122<br/>
+      Portland, OR 97292<br/>
       <em>Make sure to write the team name on your check.</em>
     </div>
     <div class="col-xs-4">
