@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/styles/pva.css?2.0.8">
 
 
-  <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet">
   <script language="javascript">
     function getE(handle, domain) {
       return handle + '@' + domain;
