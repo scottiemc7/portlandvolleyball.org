@@ -1,6 +1,21 @@
 <?php include 'header.html.php'; ?>
 <div id="content" class="container">
 <h1>Winners</h1>
+
+<h2>Fall 2016 Playoff Winners</h2>
+<ul>
+<li><b>Women's A1</b> Notorious DIG CC</li>
+<li><b>Women's A2</b> 6-Pack</li>
+<li><b>Women's B</b> Kiss My Pass</li>
+<li><b>Women's BB</b> Lady Balls</li>
+<li><b>Women's AA</b> Will Work for Sets</li>
+<li><b>Women's A</b> Sneaker Wave</li>
+<li><b>Coed B1</b> Gangsta Pair'a Dice</li>
+<li><b>Coed B2</b> Group Sets</li>
+<li><b>Coed C</b> Mudsharks</li>
+<li><b>Coed A</b> Thursday SettersOnly.com</li>
+<li><b>Coed B</b> Thursday Volley Llamas</li>
+</ul>
 <h2>Summer 2016 Playoff Winners</h2>
 <ul>
 <li><b>Women's A1</b> Mavens</li>
