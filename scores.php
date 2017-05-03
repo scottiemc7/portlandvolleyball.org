@@ -175,6 +175,6 @@ dbclose();
 ?>
 
 </table>
-</div>
-</body>
-</html>
+<?php
+include("footer.html.php");
+
