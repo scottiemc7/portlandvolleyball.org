@@ -2,6 +2,7 @@
 
 /****************************************************************/
 // $gyms=getGyms();
+date_default_timezone_set('America/Los_Angeles');
 
 function getGyms() {
 
