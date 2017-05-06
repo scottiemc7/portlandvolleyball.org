@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: mysql.portlandvolleyball.org (MySQL 5.6.25-log)
+# Host: 127.0.0.1 (MySQL 5.6.17)
 # Database: pvaDB
-# Generation Time: 2016-08-21 17:33:15 +0000
+# Generation Time: 2017-05-06 23:48:37 +0000
 # ************************************************************
 
 
@@ -18,6 +18,28 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table admins
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `admins`;
+
+CREATE TABLE `admins` (
+  `username` varchar(50) NOT NULL DEFAULT '',
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+LOCK TABLES `admins` WRITE;
+/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
+
+INSERT INTO `admins` (`username`, `password`)
+VALUES
+  ('pva_admin','b25272a0622b7f21571b9e3fef8b9243');
+
+/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table events
@@ -7199,7 +7221,7 @@ INSERT INTO `vars` (`name`, `value`)
 VALUES
   ('reg_fee','500'),
   ('reg_latefee','25'),
-  ('reg_deadline','8/25/2116'), /* This way they never expire for tests */
+  ('reg_deadline','8/25/2116'),
   ('reg_latedeadline','9/5/2116'),
   ('reg_season','Fall, 2116'),
   ('reg_payPalFee','14.80'),
