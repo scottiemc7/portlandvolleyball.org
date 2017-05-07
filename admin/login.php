@@ -51,12 +51,6 @@
 <body>
 
 	<form action="login.php" method="post" class="eventForm" cellpadding="6">
-		<?php
-		parse_str($_SERVER['QUERY_STRING']);
-		if ($incorrect_login == true) {?>
-			<p>Your login was incorrect. Please try again.</p>
-			<hr />
-		<?php } ?>
 	<table>
 		<tr>
 			<td>Login:</td>
