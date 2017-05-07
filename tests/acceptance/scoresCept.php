@@ -1,7 +1,7 @@
 <?php
 $I = new AcceptanceTester($scenario);
-$I->wantTo('go to the standings page');
-$I->lookForwardTo('see the standings');
+$I->wantTo('go to the scores page');
+$I->lookForwardTo('see the scores');
 $I->amOnPage('/');
 $I->click('Scores');
 $I->see('Scores for completed games');
