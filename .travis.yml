@@ -13,6 +13,7 @@ before_script:
     # Install Codeception.
     # Doing this last gives the webdriver and server time to start up.
     - composer install --prefer-source
+    - vendor/bin/codecept build
     - mysql -e 'CREATE DATABASE pva_test;'
 
 script:
