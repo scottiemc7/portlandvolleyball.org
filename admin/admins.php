@@ -34,19 +34,19 @@ if($error!=="") {
 if($_POST['uname'] != "") {
   $uname=$_POST['uname'];
   $password=md5($_POST['password']);
-  $password_errors = checkPassword($password);
+  $password_errors = checkPassword($_POST['password']);
   if (count($password_errors) !== 0) {
-    print "***ERROR*** $password_errors<br />$error\n";
-    exit;
-  }
-  $sql=<<<EOF
+    echo "<p class='error'>" . implode("<br>",$password_errors) . "</p>";
+  } else {
+    $sql=<<<EOF
 INSERT INTO admins(username, password)
 VALUES('$uname', '$password')
 EOF;
-  if(!dbquery($sql)) {
-    $error=dberror();
-    print "***ERROR*** dbquery: Failed query<br />$error\n";
-    exit;
+    if(!dbquery($sql)) {
+      $error=dberror();
+      print "***ERROR*** dbquery: Failed query<br />$error\n";
+      exit;
+    }
   }
 }
 ?>
@@ -88,7 +88,7 @@ EOF;
 
     print <<<EOF
 <h1>portlandvolleyball.org Administrators</h1>
-<table cellpadding="6" cellspacing="0" width="750" class="eventTable">
+<table cellpadding="6" cellspacing="0" width="750" class="eventTable admins-table">
   <tr>
     <th>Username</th>
     <th>&nbsp;</th>
@@ -99,7 +99,7 @@ EOF;
       $username=$row['username'];
 
       print <<<EOF
-  <tr>
+  <tr class="admins-table__row">
     <td valign="top">$username</td>
     <td>
     </td>

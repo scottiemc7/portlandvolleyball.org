@@ -35,3 +35,4 @@
 <span class="button"><a href="/admin/registrations.php">Registrations</a></span>
 <span class="button"><a href="/admin/ref_add.php">Referees</a></span>
 <span class="button"><a href="/admin/admins.php">Admins</a></span>
+<span class="button"><a href="/admin/login.php">Logout</a></span>
