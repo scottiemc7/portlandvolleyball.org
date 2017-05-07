@@ -21,7 +21,6 @@
 		$home3 = $_POST['home3'];
 		$visitor3 = $_POST['visitor3'];
 		$sql = "INSERT INTO scores (gameid, home1, visitor1, home2, visitor2, home3, visitor3) values($id, $home1, $visitor1, $home2, $visitor2, $home3, $visitor3)";
-		echo $sql;
 //		$status = $dbh->query($sql);
 //		if(DB::isError($status)) {
 //			die($status->getMessage());
@@ -29,7 +28,7 @@
 //			echo "This game has been successfully edited.  <a href=\"games_add.php\">return to list</a>";
 //		}
 	}
-	
+
 	$qry = $dbh->getAll("SELECT * FROM scores WHERE s.gameid = $id");
 	if (!$qry) {
 		echo "<div style=\"width: 750px; font-weight: bold; text-align: center;\">There are no games to display.</div>";
@@ -43,13 +42,13 @@
 		$home3 = $result[5];
 		$visitor3 = $result[6];
 		}
-	
+
 ?>
-	
+
 	<form name="editScores" class="eventForm" method="post">
-	<table>	
+	<table>
 		<tr>
-			<td><input type="text" name="home1" value="<?php $home1 ?>" /></td> 
+			<td><input type="text" name="home1" value="<?php $home1 ?>" /></td>
 			<td><input type="text" name="visitor1" value="<?php $visitor1 ?>" /></td>
 			<td><input type="text" name="home2" value="<?php $home2 ?>" /></td>
 			<td><input type="text" name="visitor2" value="<?php $visitor2 ?>" /></td>
