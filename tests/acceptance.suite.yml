@@ -12,3 +12,11 @@ modules:
         - \Helper\Acceptance
         - Db
         - DbHelper
+    config:
+        Db:
+            dsn: 'mysql:host=127.0.0.1;dbname=pva_test'
+            user: 'root'
+            password: ''
+            dump: tests/_data/dump.sql
+            populate: true
+            cleanup: true
