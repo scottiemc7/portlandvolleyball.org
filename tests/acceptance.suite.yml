@@ -11,7 +11,7 @@ modules:
             url: http://localhost:8001
         - \Helper\Acceptance
         - Db
-        - DbHelper
+        - \Helper\DbHelper
     config:
         Db:
             dsn: 'mysql:host=127.0.0.1;dbname=pva_test'
