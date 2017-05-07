@@ -22,3 +22,5 @@ tests/_output/*
 
 composer.phar
 /vendor/
+
+config/mysql.php
