@@ -8,7 +8,7 @@ function dbinit() {
   $error="";
 
   require $_SERVER['DOCUMENT_ROOT'] . '/config/mysql.php';
-  $mysql=new mysqli($host,$username,$password,$dbname);
+  $mysql=new mysqli(MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DBNAME);
 
 
   if(!$mysql) {
