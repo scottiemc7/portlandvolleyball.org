@@ -4,7 +4,7 @@ require_once '../lib/mysql.php';
 include 'header.html.php';
 
 print <<<EOF
-<h1>Add referee</h1>
+<h1>Add Admin</h1>
 EOF;
 
 function checkPassword($pwd) {
@@ -54,20 +54,19 @@ EOF;
 <form action="admins.php" name="add_admin" class="eventForm" method="post">
 <table>
   <tr>
-    <td>Username (Allowed characters: a-z, A-Z, 0-9)</td>
+    <td>Username</td>
     <td><input type="text" name="uname" value="" size="40"></td>
   </tr>
   <tr>
-    <td>Password (Allowed characters: a-z, A-Z, 0-9)</td>
+    <td>Password</td>
     <td><input type="password" name="password" value="" size="40"></td>
   </tr>
   <tr>
-    <td colspan="2">Supply the username and password to the referee.
-    The referee will use these to login to enter scores.</td>
+    <td colspan="2">Supply the username and password to the admin.</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><input type="submit" name="submit" value="Add Ref"></td>
+    <td><input type="submit" name="submit" value="Add Admin"></td>
   </tr>
 </table>
 </form>
