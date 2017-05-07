@@ -125,7 +125,6 @@ WHERE g.hscore1 IS NOT NULL $where
 ORDER BY dt, tm
 EOF;
 
-echo $sql;
 
 if($result=dbquery($sql)) {
   $row_cnt=mysqli_num_rows($result);

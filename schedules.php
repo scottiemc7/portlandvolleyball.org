@@ -140,7 +140,6 @@ $where
 ORDER BY g.dt, g.tm
 EOF;
 
-echo $sql;
 
 if($result=dbquery($sql)) {
 
