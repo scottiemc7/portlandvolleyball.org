@@ -11,6 +11,7 @@ modules:
             url: http://localhost:8001
         - \Helper\Acceptance
         - Db
+        - MailCatcher
     config:
         Db:
             dsn: 'mysql:host=127.0.0.1;dbname=pva_test'
@@ -19,3 +20,8 @@ modules:
             dump: tests/_data/dump.sql
             populate: true
             cleanup: true
+
+                enabled:
+        MailCatcher:
+            url: 'http://project.dev'
+            port: '1080'

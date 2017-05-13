@@ -1,5 +1,6 @@
 {
     "require": {
-        "codeception/codeception": "^2.2"
+        "codeception/codeception": "^2.2",
+        "captbaritone/mailcatcher-codeception-module": "1.*"
     }
 }

@@ -6,6 +6,7 @@ php:
 services:
     - mysql
 before_script:
+    - bundle install
     # Start up a web server.
     - php -S 127.0.0.1:8888 -t / >/dev/null 2>&1 &
     # Start up the webdriver.

@@ -2,6 +2,9 @@
 $I = new AcceptanceTester($scenario);
 $I->wantTo('register for a league');
 $I->lookForwardTo('and see the info in the database');
+
+$I->resetEmails();
+
 $I->amOnPage('/register.php');
 $I->fillField('teamName','Team Name');
 $I->fillField('mgrName','Joe Blow');
@@ -25,6 +28,8 @@ $I->fillField('comments', 'I like this league');
 $I->click('Register your team');
 $I->see('Wait!  You\'re not done yet!');
 $I->see('Your registration will not be complete until we\'ve also received your payment for this season.');
+$I->seeEmailCount(1);
+$I->seeInLastEmail("2nd choice:");
 
 
 // Now let's make sure the administrator can see the results
