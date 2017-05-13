@@ -1,9 +1,13 @@
 <?php
 require_once 'lib/swiftmailer/lib/swift_required.php';
 
-$transport = Swift_SmtpTransport::newInstance('sub5.mail.dreamhost.com', 465, "ssl")
-  ->setUsername('test@portlandvolleyball.org')
-  ->setPassword('blahblah');
+// $transport = Swift_SmtpTransport::newInstance('sub5.mail.dreamhost.com', 465, "ssl")
+//   ->setUsername('test@portlandvolleyball.org')
+//   ->setPassword('blahblah');
+$transport = Swift_SmtpTransport::newInstance('127.0.0.1', 1025);
+  // ->setUsername('')
+  // ->setPassword('');
+
 
 $mailer = Swift_Mailer::newInstance($transport);
 

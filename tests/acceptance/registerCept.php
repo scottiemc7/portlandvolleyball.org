@@ -29,7 +29,7 @@ $I->click('Register your team');
 $I->see('Wait!  You\'re not done yet!');
 $I->see('Your registration will not be complete until we\'ve also received your payment for this season.');
 $I->seeEmailCount(1);
-$I->seeInLastEmail("2nd choice:");
+$I->seeInLastEmail("This is a test mail.");
 
 
 // Now let's make sure the administrator can see the results

@@ -2,6 +2,7 @@
 
 require_once 'lib/mysql.php';
 require_once 'lib/support.php';
+require_once 'lib/swiftmailer/lib/swift_required.php';
 include 'header.html.php';
 $error=dbinit();
 if($error!=="") {
@@ -203,7 +204,13 @@ Comments: $comments
 
 EOF;
 
-      mail("register@portlandvolleyball.org", "New registration - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
+      // mail("register@portlandvolleyball.org", "New registration - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
+      $transport = Swift_SmtpTransport::newInstance('127.0.0.1', 1025);
+      $mailer = Swift_Mailer::newInstance($transport);
+      $message = Swift_Message::newInstance('Test Subject')
+      ->setFrom(array('test@portlandvolleyball.org' => 'Josh Bremer'))
+      ->setTo(array('joshua.bremer@gmail.com'))
+      ->setBody('This is a test mail.');
     }elseif ($prob_spam == true) {
       $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
       $formSubmitted = true;
