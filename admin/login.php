@@ -12,11 +12,11 @@
 		  exit;
 		}
 
-		$username = $_POST['uname'];
+		$username = strtolower($_POST['uname']);
 		$password = $_POST['pw'];
 		$hash = md5($password);
 
-		$sql = "SELECT * from admins WHERE username LIKE '{$username}' AND password LIKE '{$hash}' LIMIT 1";
+		$sql = "SELECT * from admins WHERE LOWER(username) LIKE '{$username}' AND password LIKE '{$hash}' LIMIT 1";
 
 		if(! $result=dbquery($sql)) {
 		  $error=dberror();

@@ -260,9 +260,6 @@ EOF;
     if($isSummer) {
       print <<<EOF
 <div>
-<b>Doubles teams: </b> the fee is $$doublesFee.  Please send your check by mail.
-</div>
-<div>
 <b>Sand teams: </b> the fee is $$sandFee.  Please send your check by mail.
 </div>
 EOF;
@@ -331,7 +328,9 @@ button.  Required fields are marked with an asterisk (*).
 </p>
 
 <p>
-The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
+The team fee for $season is $$fee for Standard leagues.
+
+<!-- The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues. -->
 
 <!--
 <div>
