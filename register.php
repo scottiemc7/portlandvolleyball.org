@@ -243,12 +243,9 @@ EOF;
   if($formSubmitted == true) {
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
-<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.</p>
-<!--
- <div>
-   <b>NOTE: If registering a quads team then contact Michelle (<a href="mailto:info@portlandvolleyball.org">info@portlandvolleyball.org</a>) to pay.</b>
- </div>
--->
+
+<p>The team fee for $season is $$fee for all Doubleheader leagues.</p>
+<p><b>Coed Thursday Sand teams: </b> the fee is $$sandFee.  Please send your check by mail or contact info@portlandvolleyball.org for a Paypal invoice.</p>
 EOF;
 
     if($isLate) {
@@ -259,9 +256,6 @@ EOF;
     }
     if($isSummer) {
       print <<<EOF
-<div>
-<b>Doubles teams: </b> the fee is $$doublesFee.  Please send your check by mail.
-</div>
 <div>
 <b>Sand teams: </b> the fee is $$sandFee.  Please send your check by mail.
 </div>
@@ -299,20 +293,6 @@ You have two payment options:
         <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
       </form>
     </p>
-
-    <p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
-    <p>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Double Header League Team Fee" />
-        <input type="hidden" name="amount" value="$doubleHeaderAmount" />
-        <input type="hidden" name="no_shipping" value="1" />
-        <input type="hidden" name="cn" value="Your Team Name" />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
-      </form>
-    </p>
   </li>
 </ol>
 </p>
@@ -330,14 +310,9 @@ To register, please fill in the information requested below and click the &quot;
 button.  Required fields are marked with an asterisk (*).
 </p>
 
-<p>
-The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
+<p>The team fee for $season is $$fee for all Doubleheader leagues (Grass and Sand).</p>
+<p><b>Coed Thursday Sand teams: </b> the fee is $$sandFee.  Please send your check by mail or contact info@portlandvolleyball.org for a Paypal invoice.</p>
 
-<!--
-<div>
-  <b>NOTE: If registering a quads team then contact Michelle (<a href="mailto:info@portlandvolleyball.org">info@portlandvolleyball.org</a>) to pay.</b>
-</div>
--->
 
 EOF;
 
@@ -398,19 +373,7 @@ EOF;
       </form>
       </p>
     </div>
-    <div class="col-xs-4">
-      <p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Double Header League Team Fee" />
-        <input type="hidden" name="amount" value="$doubleHeaderAmount" />
-        <input type="hidden" name="no_shipping" value="1" />
-        <input type="hidden" name="cn" value="Your Team Name" />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
-      </form>
-    </div>
+
   </div>
 
 <form name="register" method="post" style="border: 1px solid #aaaaaa; padding: 40px; margin-top: 10px;">
