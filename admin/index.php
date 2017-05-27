@@ -1,7 +1,6 @@
 <?php include 'header.html.php'; ?>
 
 <p><b>Registrations:</b> <a href="/admin/registrations.php">View</a></p>
-<p><b>Events:</b> <a href="/admin/events.php">Add/Edit</a></p>
 <p><b>Home page:</b> <a href="/admin/homepage_add.php">Add/Edit</a></p>
 <p><b>Teams:</b>  <a href="/admin/team_add.php">Add/Edit</a></p>
 <p><b>Leagues:</b>  <a href="/admin/league_add.php">Add/Edit</a></p>

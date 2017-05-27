@@ -7,8 +7,31 @@ function dbinit() {
   global $mysql;
   $error="";
 
-  require $_SERVER['DOCUMENT_ROOT'] . '/config/mysql.php';
-  $mysql=new mysqli($host,$username,$password,$dbname);
+  $filename = $_SERVER['DOCUMENT_ROOT'] . '/config/mysql.php';
+
+  if (file_exists($filename)) {
+    // Production
+    require $_SERVER['DOCUMENT_ROOT'] . '/config/mysql.php';
+
+  } else if ($_SERVER['SERVER_PORT'] == 8001) {
+    // Tests
+    define(MYSQL_HOST,'127.0.0.1');
+    define(MYSQL_USERNAME,'root');
+    define(MYSQL_PASSWORD,'');
+    define(MYSQL_DBNAME,'pva_test');
+
+  } else if ($_SERVER['SERVER_PORT'] == 8000) {
+
+    // Development
+    define(MYSQL_HOST,'127.0.0.1');
+    define(MYSQL_USERNAME,'root');
+    define(MYSQL_PASSWORD,'');
+    define(MYSQL_DBNAME,'pvaDB');
+  } else {
+    die('Cannot find MySQL credentials. Use mysql.example.php to create a credentials file in config/mysql.php');
+  }
+
+  $mysql=new mysqli(MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DBNAME);
 
 
   if(!$mysql) {

@@ -1,0 +1,20 @@
+language: php
+
+php:
+    - 5.6
+
+services:
+    - mysql
+before_script:
+    # Start up a web server.
+    - php -S 127.0.0.1:8888 -t / >/dev/null 2>&1 &
+    # Start up the webdriver.
+    - phantomjs --webdriver=4444 >/dev/null 2>&1 &
+    # Install Codeception.
+    # Doing this last gives the webdriver and server time to start up.
+    - composer install --prefer-source
+    - vendor/bin/codecept build
+    - mysql -e 'CREATE DATABASE pva_test;'
+
+script:
+    - vendor/bin/codecept run

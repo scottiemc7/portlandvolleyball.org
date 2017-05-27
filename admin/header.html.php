@@ -26,7 +26,6 @@
 <span class="button"><a href="/index.php">PVA site</a></span>
 <span class="button"><a href="/admin/index.php">Menu</a></span>
 <span class="button"><a href="/admin/homepage_add.php">Home Page Articles</a></span>
-<span class="button"><a href="/admin/events.php">Events</a></span>
 <span class="button"><a href="/admin/team_add.php">Teams</a></span>
 <span class="button"><a href="/admin/league_add.php">Leagues</a></span>
 <span class="button"><a href="/admin/gyms_add.php">Gyms</a></span>
@@ -34,3 +33,5 @@
 <span class="button"><a href="/admin/links_add.php">Links</a></span>
 <span class="button"><a href="/admin/registrations.php">Registrations</a></span>
 <span class="button"><a href="/admin/ref_add.php">Referees</a></span>
+<span class="button"><a href="/admin/admins.php">Admins</a></span>
+<span class="button"><a href="/admin/login.php">Logout</a></span>

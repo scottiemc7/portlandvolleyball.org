@@ -313,7 +313,6 @@ button.  Required fields are marked with an asterisk (*).
 <p>The team fee for $season is $$fee for all Doubleheader leagues (Grass and Sand).</p>
 <p><b>Coed Thursday Sand teams: </b> the fee is $$sandFee.  Please send your check by mail or contact info@portlandvolleyball.org for a Paypal invoice.</p>
 
-
 EOF;
 
     if($isLate) {

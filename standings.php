@@ -136,7 +136,7 @@ EOF;
 EOF;
     }
 
-    print  "</table></div>";
+    print  "</table>";
   }
 }
 
@@ -495,4 +495,5 @@ class Game {
 	}
 }
 
-?>
+
+include("footer.html.php");

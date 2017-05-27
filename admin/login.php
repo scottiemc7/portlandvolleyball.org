@@ -1,12 +1,35 @@
 <?php
 	session_start();
-	$user = $_REQUEST['uname'];
-	$pass = $_REQUEST['pw'];
-	if ($user == "pva_admin" && $pass == "deep energy idea store") {
-		$_SESSION['logged_in'] = true;
-		header("Location: index.php");
-	} else {
+
+	if (!isset($_POST['uname'])){
 		$_SESSION['logged_in'] = false;
+	} else {
+		require_once '../lib/mysql.php';
+
+		$error=dbinit();
+		if($error!=="") {
+		  print "***ERROR*** dbinit: $error\n";
+		  exit;
+		}
+
+		$username = strtolower($_POST['uname']);
+		$password = $_POST['pw'];
+		$hash = md5($password);
+
+		$sql = "SELECT * from admins WHERE LOWER(username) LIKE '{$username}' AND password LIKE '{$hash}' LIMIT 1";
+
+		if(! $result=dbquery($sql)) {
+		  $error=dberror();
+		  print "***ERROR*** dbquery: Failed query<br />$error\n";
+		  exit;
+		}
+		if (mysqli_num_rows($result)==0) {
+			$_SESSION['logged_in'] = false;
+			header("Location: login.php?failed=1");
+		} else {
+			$_SESSION['logged_in'] = true;
+			header("Location: index.php");
+		}
 	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -14,11 +37,6 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="/admin/admin.css">
-	<script language="javascript">
-		function loadMe() {
-			document.forms[0].uname.focus();
-		}
-	</script>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -30,12 +48,13 @@
 
 	</script>
 </head>
-<body onLoad="javascript:loadMe();">
-	<form action="login.php" method="get" class="eventForm" cellpadding="6">
+<body>
+
+	<form action="login.php" method="post" class="eventForm" cellpadding="6">
 	<table>
 		<tr>
 			<td>Login:</td>
-			<td><input type="text" name="uname"></td>
+			<td><input autofocus type="text" name="uname"></td>
 		</tr>
 		<tr>
 			<td>Password:</td>

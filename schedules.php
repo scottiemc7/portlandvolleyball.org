@@ -140,6 +140,7 @@ $where
 ORDER BY g.dt, g.tm
 EOF;
 
+
 if($result=dbquery($sql)) {
 
   $row_cnt=mysqli_num_rows($result);
