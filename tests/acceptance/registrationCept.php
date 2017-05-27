@@ -19,7 +19,7 @@ $I->fillField('alt_phone1','123-456-7890');
 $I->fillField('alt_phone2','098-765-4321');
 $I->fillField('alt_email','jane.blow@example.com');
 $I->selectOption('league', '102'); // Coed A Thursday Doubleheaders - Thursday
-$I->selectOption('league2', '120'); // Coed A Wednesday - Wednesday
+$I->selectOption('league2', '113'); // Coed A Wednesday - Wednesday
 $I->selectOption('newOld', 'Returning team');
 $I->fillField('comments', 'I like this league');
 $I->click('Register your team');
