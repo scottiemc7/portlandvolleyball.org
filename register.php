@@ -445,7 +445,7 @@ EOF;
                  FROM registration
                  GROUP BY league) as r
       ON l.id = r.league
-      WHERE l.active = 1
+      WHERE l.active = 1 AND (name LIKE \'%Grass%\' OR name LIKE \'%Sand%\')
       AND (r.registrations IS NULL OR r.registrations < l.cap)
       ORDER BY l.name';
 
