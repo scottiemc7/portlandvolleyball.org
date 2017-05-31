@@ -5,6 +5,6 @@ $I->lookForwardTo('see the schedules');
 $I->amOnPage('/');
 $I->click('Schedules');
 $I->see('For scheduling questions');
-$I->see('Brentwood Park (Norm)');
+$I->see('Brentwood Park (Eddie R.)');
 $I->see('Fembots');
 $I->seeNumberOfElements('.schedule-table__row', 263);
