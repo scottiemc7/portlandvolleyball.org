@@ -581,25 +581,25 @@ LOCK TABLES `refs` WRITE;
 
 INSERT INTO `refs` (`id`, `uname`, `password`, `fname`, `lname`)
 VALUES
-  (8,'Waylon','Password1','Waylon','Dalton'),
+  (8,'waylon','Password1','Waylon','Dalton'),
   (9,'dan','Password1','Justine','Henderson'),
   (12,'Abdullah','Password1','Abdullah','Lang'),
-  (13,'Marcus','Password1','Marcus','Cruz'),
-  (15,'Thalia','Password1','Thalia','Cobb'),
-  (16,'Mathias','Password1','Mathias','Little'),
-  (17,'Eddie','Password1','Eddie','Randolph'),
-  (18,'Angela','Password1','Angela','Walker'),
-  (43,'Marc','Password1','Marc','Nolan'),
-  (21,'Adriel','Password1','Adriel','Osborne'),
-  (55,'Avah','Password1','Avah','Sandell'),
-  (44,'Sterling','Password1','Sterling','Lyons'),
-  (36,'Rafael','Password1','Rafael','Gibbs'),
-  (56,'Jadiel','Password1','Jadiel','Austin'),
-  (41,'Janessa','Password1','Janessa','Lawson'),
-  (57,'Laurel','Password1','Laurel','Nash'),
-  (54,'Jordan','Password1','Jordan','Roach'),
-  (46,'Damari','Password1','Damari','Cole'),
-  (51,'Eric','Password1','Eric ','Edwards');
+  (13,'marcus','Password1','Marcus','Cruz'),
+  (15,'thalia','Password1','Thalia','Cobb'),
+  (16,'mathias','Password1','Mathias','Little'),
+  (17,'eddie','Password1','Eddie','Randolph'),
+  (18,'angela','Password1','Angela','Walker'),
+  (43,'marc','Password1','Marc','Nolan'),
+  (21,'adriel','Password1','Adriel','Osborne'),
+  (55,'avah','Password1','Avah','Sandell'),
+  (44,'sterling','Password1','Sterling','Lyons'),
+  (36,'rafael','Password1','Rafael','Gibbs'),
+  (56,'jadiel','Password1','Jadiel','Austin'),
+  (41,'janessa','Password1','Janessa','Lawson'),
+  (57,'laurel','Password1','Laurel','Nash'),
+  (54,'jordan','Password1','Jordan','Roach'),
+  (46,'damari','Password1','Damari','Cole'),
+  (51,'eric','Password1','Eric ','Edwards');
 
 /*!40000 ALTER TABLE `refs` ENABLE KEYS */;
 UNLOCK TABLES;
