@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.12)
 # Database: scratch
-# Generation Time: 2017-05-31 18:49:17 +0000
+# Generation Time: 2017-05-31 19:09:03 +0000
 # ************************************************************
 
 
@@ -581,25 +581,25 @@ LOCK TABLES `refs` WRITE;
 
 INSERT INTO `refs` (`id`, `uname`, `password`, `fname`, `lname`)
 VALUES
-  (8,'waylon','Password1','Waylon','Dalton'),
+  (8,'Waylon','Password1','Waylon','Dalton'),
   (9,'dan','Password1','Justine','Henderson'),
-  (12,'abdullah','Password1','Abdullah','Lang'),
-  (13,'marcus','Password1','Marcus','Cruz'),
-  (15,'thalia','Password1','Thalia','Cobb'),
-  (16,'mathias','Password1','Mathias','Little'),
-  (17,'eddie','Password1','Eddie','Randolph'),
-  (18,'angela','Password1','Angela','Walker'),
-  (43,'marc','Password1','Marc','Nolan'),
-  (21,'adriel','Password1','Adriel','Osborne'),
-  (55,'avah','Password1','Avah','Sandell'),
-  (44,'sterling','Password1','Sterling','Lyons'),
-  (36,'rafael','Password1','Rafael','Gibbs'),
-  (56,'jadiel','Password1','Jadiel','Austin'),
-  (41,'janessa','Password1','Janessa','Lawson'),
-  (57,'laurel','Password1','Laurel','Nash'),
-  (54,'jordan','Password1','Jordan','Roach'),
-  (46,'damari','Password1','Damari','Cole'),
-  (51,'eric','Password1','Eric ','Edwards');
+  (12,'Abdullah','Password1','Abdullah','Lang'),
+  (13,'Marcus','Password1','Marcus','Cruz'),
+  (15,'Thalia','Password1','Thalia','Cobb'),
+  (16,'Mathias','Password1','Mathias','Little'),
+  (17,'Eddie','Password1','Eddie','Randolph'),
+  (18,'Angela','Password1','Angela','Walker'),
+  (43,'Marc','Password1','Marc','Nolan'),
+  (21,'Adriel','Password1','Adriel','Osborne'),
+  (55,'Avah','Password1','Avah','Sandell'),
+  (44,'Sterling','Password1','Sterling','Lyons'),
+  (36,'Rafael','Password1','Rafael','Gibbs'),
+  (56,'Jadiel','Password1','Jadiel','Austin'),
+  (41,'Janessa','Password1','Janessa','Lawson'),
+  (57,'Laurel','Password1','Laurel','Nash'),
+  (54,'Jordan','Password1','Jordan','Roach'),
+  (46,'Damari','Password1','Damari','Cole'),
+  (51,'Eric','Password1','Eric ','Edwards');
 
 /*!40000 ALTER TABLE `refs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -642,47 +642,47 @@ LOCK TABLES `registration` WRITE;
 
 INSERT INTO `registration` (`id`, `teamName`, `mgrName`, `mgrPhone`, `mgrPhone2`, `mgrEmail`, `mgrEmail2`, `altName`, `altPhone`, `altPhone2`, `altEmail`, `league`, `league2`, `league_old`, `addr1`, `addr2`, `city`, `state`, `zip`, `comments`, `night`, `paid`, `newOld`)
 VALUES
-  (3699,'Down and Dirty Diggers','Chris Whytock','2068981652','','cwhytock@gmail.com','ertigger@cox.net','','','','',107,107,'','1910 NE Knott St','','Portland','OR','97212','Our team manager was and will remain Erin Bellignham, I just don\'t have her information handy for signup',NULL,0,'Returning team'),
-  (3700,'Court Jesters','David Rueck','5037303631','','drueck@gmail.com','drueck@gmail.com','','','','',107,107,'','9462 SE Harney Ct','','Portland','OR','97266','',NULL,0,'Returning team'),
-  (3701,'The bald and the beautiful','Meghan Mulkey ','5034909202','','Meghanmulkey@gmail.com','','','','','',107,78,'','8646 SW 9th ave','','Portland ','OR','97219','',NULL,0,'New team'),
-  (3702,'Whatever','Ronda Johnson','5037503120','5037503120','Rbjcats@comcast.net','','Carrie Putsch','','5032679195','Carrie.putsch@gmail.com',107,107,'','16511 Carnegie Ave','','Lake Oswego','OR','97035','I\'ll pay at board meeting',NULL,0,'Returning team'),
-  (3703,'Floor Burn','Kristie Hopkins','503-737-9943','','coachkristie10@gmail.com','','','','','',20,110,'','2926 SE 71st Ave','','Portland','OR','97206','I think A2 is the next level up from B? If not, we would like to go up a level. ',NULL,0,'Returning team'),
-  (3704,'Lollipop Girls','Ronda Johnson','5037503120','5036757469','rbjcats@comcast.net','','Carrie Putsch','5032679195','','c.putsch@gmail.com',19,114,'','16511 Carnegie Ave.','','Lake Oswego','OR','97035','We are going to try A this season.',NULL,0,'Returning team'),
-  (3705,'Red Hots','Genevieve Leineweber','5033674162','','gleineweb@gmail.com','','','','','',88,20,'','3451 SE Ankeny St','','Portland','OR','97214','Same manager, same team name',NULL,0,'Returning team'),
-  (3706,'Healthy Hits','Marie Benedetti','503.830.7213','','marie.benedetti@vigor.net','','','','','',82,88,'','4604 SE 45th Ave','','Portland','OR','97206','Will mail check',NULL,0,'Returning team'),
-  (3707,'Net 2.0','Josh Bremer','720-635-1035','720-635-1032','joshua.bremer@gmail.com','','Gloria Bremer','','303-819-6027','gloria.s.bremer@gmail.com',108,108,'','3204 NE 62nd Ave','','Portland','OR','97213','',NULL,0,'Returning team'),
-  (3708,'Spiked Punch','Jordan Giboney','5035026160','','jordangiboney@gmail.com','','','','','',114,114,'','132 NE 44th Ave','','Portland ','OR','97213','Returning team for women\'s AA league on tuesday nights.',NULL,0,'Returning team'),
-  (3709,'Dig This!','Sheri Bauer','503-504-2765','','Sherilhancock@gmail.com','','','','','',88,20,'','10608 NW Tudor Lane','','Portland','OR','97229','',NULL,0,'Returning team'),
-  (3710,'Motorboat','Stephanie Nass','5037548639','5037548639','VB05racer17@comcast.net','stephanie.gross17@gmail.com','Sarah Slaughter','5734247566','','seslaugh@alumni.unca.edu',88,107,'','580 SE 2nd Ave.','','Canby','OR','97013','Played as Motorboat for all of the 2015-2016 season. :)',NULL,0,'Returning team'),
-  (3711,'Nip Lash','Mindy Montgomery','5033073719','','mindy@cianmontgomery.com','','','','','',19,19,'','9538 NW Roseway Ave','','Portland','OR','97231','',NULL,0,'Returning team'),
-  (3712,'The Guidettes','Teri Jones','503-819-5542','503-819-5542','wascowoman@gmail.com','littlebighorn2010@gmail.com','Sabrina Jones','','','sbjones333@gmail.com',82,110,'','19338 Silverfox Pkwy','','Oregon City','OR','97045-7264','',NULL,0,'New team'),
-  (3713,'High Fives','Jackie Ostroff','8162690392','','jackieostroff@gmail.com','','','','','',24,120,'','8730 N Foss Ave','','Portland','OR','97203','Previous manager was Hayley Purdy who is taking the season off. ',NULL,0,'Returning team'),
-  (3714,'A & L Bombers','Brenda Fleming-Wilkes','503 780-5607','','brendafleming44@hotmail.com','','Terry Wilkes','','503 421-6122','terwilkes10@hotmail.com',25,25,'','2045 SE 130th Ave','','Portland','OR','97233','',NULL,0,'Returning team'),
-  (3715,'Booya','Samantha Kocher','(971) 221-5624','','samantha.kocher@comcast.net','samantha.kocher@comcast.net','','','','',24,120,'','1390 Beverly Drive','','Gladstone','Or','97027','Skittles',NULL,0,'New team'),
-  (3716,'Spike heels','Anna bar','5032602368','','Annabarmd@me.com','','','','','',88,20,'','636 SE Andover pl','','Portland','Or','97202','',NULL,0,'Returning team'),
-  (3717,'Serv-ivors','Brandi bazurto','360-253-6533','360-253-6533','Bbazurto@gmail.com','','','','','',82,82,'','15815 NE 43rd way','','Vancouver','Wa','98682','',NULL,0,'Returning team'),
-  (3718,'You\'ve Been Served','Rachel Cummings','406-207-4815','','rachel.cummings@mossadams.com','','','','','',88,20,'','9394 SW Fast Pl','','Tigard','OR','97223','',NULL,0,'Returning team'),
-  (3719,'You\'ve Been Served','Rachel Cummings','4062074815','','rachel.cummings@mossadams.com','','','','','',107,107,'','9394 SW Fast Pl','','Tigard','OR','97223','',NULL,0,'Returning team'),
-  (3720,'Kiss My Pass','Chavienne Gruber / Crystal Steinmueller','6122375965','','chavienne@gmail.com','chavienne@gmail.com','','','csteiny10@aol.com','',110,82,'','2207 NE 9th Ave','','Portland','OR','97212-4009','Hi, we would prefer to be in Tuesday B, but it wasn\'t an option in the drop down? Is it full? Also, I am signing the team up because Crystal is out of the country. She mentioned we have a credit due to our team from last fall. Could you tell me how much we owe after the credit is applied and the I will send payment. Thank you!',NULL,0,'Returning team'),
-  (3721,'Mavens','Laurie Rule','503-679-7691','503-760-3477','lrule@advocateswest.org','orrule@comcast.net','Ami Opal','503-548-8353','','doctorami@yewmedicine.com',114,19,'','7326 SE 27th Ave','','Portland','OR','97202','',NULL,0,'Returning team'),
-  (3722,'Dirty Half Dozen','Dave Stainsby','503-655-6004 ext 191','503-970-9997','dstainsby@benchmade.com','','Brooke Walker','503-496-1852','503-317-5224','bwalker@benchmade.com',25,25,'','300 Beavercreek Rd','','Oregon City','OR','97045','',NULL,0,'Returning team'),
-  (3723,'Gangta Pair\'a Dice','Rachel Cummings','4062074815','','rachel.cummings@mossadams.com','','','','','',24,120,'','9394 SW Fast Pl','','Tigard','OR','97223','',NULL,0,'Returning team'),
-  (3724,'PVA All-Stars','Shawn Busse','541-941-9920','','shawn@kinesisinc.com','','','','','',107,107,'','5936 NE Mason St.','','Portland','OR','97218','',NULL,0,'Returning team'),
-  (3725,'Gangsta Pair\'a Dice','Rachel Cummings','4062074815','','rachel.cummings@mossadams.com','','','','','',24,120,'','9394 SW Fast Pl','','Tigard','OR','97223','',NULL,0,'Returning team'),
-  (3726,'Over the net','Jill brown','5033475843','','Bbbrownjam@aol.com','Jbrown@nwceilinglifts.com','','','','',82,107,'','18389 s Norman rd ','','Oregon city ','Or','','',NULL,0,'Returning team'),
-  (3727,'Panda Panda Panda','Cincy Lee','6147832545','6147832545','chlee316@gmail.com','chlee316@gmail.com','','','','',19,114,'','603 SE 46th Ave','','Portland','OR','97215','Pandas and Giraffes and Set for Life',NULL,0,'Returning team'),
-  (3728,'Vertically Challenged','Packy Flynn','360-773-5785','','padraic_flynn@hotmail.com','','Jim Dewson','','','jdewson@gmail.com',25,25,'','15402 NE 47th Circle','','Vancouver','WA','98682','',NULL,0,'New team'),
-  (3729,'Volley Llamas','Jeff Correa','503-539-6872','','Jeffcorrea21@gmail.com','','Stacy Vonderahe ','503-547-4331','','',108,107,'','12473 SE Bari Ave ','','Happy Valley','OR','97086','',NULL,0,'Returning team'),
-  (3730,'Empire Spikes Back','Eric Anderson','8015579792','','Ike4life14@yahoo.com','','','','','',108,108,'','17175 SW Meinecke Rd','','Sherwood','OR','97140','',NULL,0,'Returning team'),
-  (3731,'Spiked Punch','Gina Bjorvik','5033318543','5033318543','gembjorvik@yahoo.com','','','','','',24,120,'','3042 NE 24th Avenue','','Portland','OR','97212','',NULL,0,'Returning team'),
-  (3732,'Vital Force','Hilary Sandell','6307818851','','hilary.sandell@gmail.com','','','','','',88,20,'','1517 SE Haig St','','Portland ','OR','97202','same name, same manager! ',NULL,0,'Returning team'),
-  (3733,'Balls','Melanie Althaus','503-708-6194','','Mcalthaus@gmail.com','Lazocc@yahoo.com','','','','',20,88,'','3745 Sw Water Ave ','Apt 302','Portland','Or','97239','',NULL,0,'Returning team'),
-  (3734,'Balls','Melanie Althaus','503-708-6194','','Mcalthaus@gmail.com','Lazocc@yahoo.com','','','','',20,88,'','3745 Sw Water Ave ','Apt 302','Portland','Or','97239','',NULL,0,'Returning team'),
-  (3735,'East of Eden','John Charles','503-459-3727','','john@cascadepolicy.org','','','','','',24,120,'','4850 SW Scholls Ferry, Suite 103','','Portland','OR','97225','',NULL,0,'Returning team'),
-  (3736,'Falcons','Sylvia Peterson-Perry','5034905503','','sylvia.petersonperry@gmail.com','','','','','',108,25,'','2749 SE 33rd Pl','','Portland','OR','97202','We played Sand Quads this summer but are new to the indoor leagues.',NULL,0,'New team'),
-  (3737,'Becky\'s All-Star Jazz Hands Reviews','Jim Lieblick','5033138817','','jim.lieblick@gmail.com','jim.lieblick@gmail.com','','','','',120,78,'','11955 Southwest Blakeney Street','','Beaverton','OR','97008','',NULL,0,'Returning team'),
-  (3738,'LADYBALLS ','Mari Paulus','503-502-9340','','maripaulus@comcast.net','','','','','',46,39,'','636 SE 49th','','Portland','OR','97215','','',0,'Returning team'),
-  (3739,'The Good Mod','Brenda Miller','503 206-6919','503 367-7300','Brenda@thegoodmod.com','hello@thegoodmod.com','Spencer Staley','503 206-6919','503 317-7009','Spencer@thegoodmod.com',25,120,'','1313 W Burnside, 4th Floor','','Portland','OR','97209','',NULL,0,'New team');
+  (3699,'Down and Dirty Diggers','John Doe','555-555-5555','555-555-5555','049d17f40fbb01d85d7a3458a623397f@example.com','049d17f40fbb01d85d7a3458a623397f@example.com','John Doe','555-555-5555','555-555-5555','049d17f40fbb01d85d7a3458a623397f@example.com',107,107,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3700,'Court Jesters','John Doe','555-555-5555','555-555-5555','5e63cb4bcb9cfc6f7a6ad7cf5e27e87c@example.com','5e63cb4bcb9cfc6f7a6ad7cf5e27e87c@example.com','John Doe','555-555-5555','555-555-5555','5e63cb4bcb9cfc6f7a6ad7cf5e27e87c@example.com',107,107,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3701,'The bald and the beautiful','John Doe','555-555-5555','555-555-5555','87d505eb628fdc9b5b5c2dc6cb04057a@example.com','87d505eb628fdc9b5b5c2dc6cb04057a@example.com','John Doe','555-555-5555','555-555-5555','87d505eb628fdc9b5b5c2dc6cb04057a@example.com',107,78,'','123 Pine Ste','','Portland ','OR','97200','',NULL,0,'New team'),
+  (3702,'Whatever','John Doe','555-555-5555','555-555-5555','3a45da0d5405623c2443e30e0bc76939@example.com','3a45da0d5405623c2443e30e0bc76939@example.com','John Doe','555-555-5555','555-555-5555','3a45da0d5405623c2443e30e0bc76939@example.com',107,107,'','123 Pine Ste','','Lake Oswego','OR','97200','',NULL,0,'Returning team'),
+  (3703,'Floor Burn','John Doe','555-555-5555','555-555-5555','71d79d29055179b6d377e58284fb4de4@example.com','71d79d29055179b6d377e58284fb4de4@example.com','John Doe','555-555-5555','555-555-5555','71d79d29055179b6d377e58284fb4de4@example.com',20,110,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3704,'Lollipop Girls','John Doe','555-555-5555','555-555-5555','9ef973e6b0be9ea67ad08975d972fa98@example.com','9ef973e6b0be9ea67ad08975d972fa98@example.com','John Doe','555-555-5555','555-555-5555','9ef973e6b0be9ea67ad08975d972fa98@example.com',19,114,'','123 Pine Ste','','Lake Oswego','OR','97200','',NULL,0,'Returning team'),
+  (3705,'Red Hots','John Doe','555-555-5555','555-555-5555','1f29e50bd9dc2a434b58a26f6f9ccb41@example.com','1f29e50bd9dc2a434b58a26f6f9ccb41@example.com','John Doe','555-555-5555','555-555-5555','1f29e50bd9dc2a434b58a26f6f9ccb41@example.com',88,20,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3706,'Healthy Hits','John Doe','555-555-5555','555-555-5555','d5401ee0ede06f08141071a6b3956d93@example.com','d5401ee0ede06f08141071a6b3956d93@example.com','John Doe','555-555-5555','555-555-5555','d5401ee0ede06f08141071a6b3956d93@example.com',82,88,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3707,'Net 2.0','John Doe','555-555-5555','555-555-5555','1954bd690138c3063c2a333d3a424d07@example.com','1954bd690138c3063c2a333d3a424d07@example.com','John Doe','555-555-5555','555-555-5555','1954bd690138c3063c2a333d3a424d07@example.com',108,108,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3708,'Spiked Punch','John Doe','555-555-5555','555-555-5555','bbc553aa29464b1b58cea651c92d477f@example.com','bbc553aa29464b1b58cea651c92d477f@example.com','John Doe','555-555-5555','555-555-5555','bbc553aa29464b1b58cea651c92d477f@example.com',114,114,'','123 Pine Ste','','Portland ','OR','97200','',NULL,0,'Returning team'),
+  (3709,'Dig This!','John Doe','555-555-5555','555-555-5555','9079b66070a93ebf65af6124d9e71147@example.com','9079b66070a93ebf65af6124d9e71147@example.com','John Doe','555-555-5555','555-555-5555','9079b66070a93ebf65af6124d9e71147@example.com',88,20,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3710,'Motorboat','John Doe','555-555-5555','555-555-5555','2dd1519ba6e148ff6a49c780fbe7ff43@example.com','2dd1519ba6e148ff6a49c780fbe7ff43@example.com','John Doe','555-555-5555','555-555-5555','2dd1519ba6e148ff6a49c780fbe7ff43@example.com',88,107,'','123 Pine Ste','','Canby','OR','97200','',NULL,0,'Returning team'),
+  (3711,'Nip Lash','John Doe','555-555-5555','555-555-5555','f287ffbfecb7d37f5d728915c6f62028@example.com','f287ffbfecb7d37f5d728915c6f62028@example.com','John Doe','555-555-5555','555-555-5555','f287ffbfecb7d37f5d728915c6f62028@example.com',19,19,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3712,'The Guidettes','John Doe','555-555-5555','555-555-5555','22897e02f75261ee19ce9fb1cd68d1fa@example.com','22897e02f75261ee19ce9fb1cd68d1fa@example.com','John Doe','555-555-5555','555-555-5555','22897e02f75261ee19ce9fb1cd68d1fa@example.com',82,110,'','123 Pine Ste','','Oregon City','OR','97200','',NULL,0,'New team'),
+  (3713,'High Fives','John Doe','555-555-5555','555-555-5555','df45ccbdc9a09f47e29a3a2a31552aab@example.com','df45ccbdc9a09f47e29a3a2a31552aab@example.com','John Doe','555-555-5555','555-555-5555','df45ccbdc9a09f47e29a3a2a31552aab@example.com',24,120,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3714,'A & L Bombers','John Doe','555-555-5555','555-555-5555','995534042a08fb1be0bf6d404ac3f452@example.com','995534042a08fb1be0bf6d404ac3f452@example.com','John Doe','555-555-5555','555-555-5555','995534042a08fb1be0bf6d404ac3f452@example.com',25,25,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3715,'Booya','John Doe','555-555-5555','555-555-5555','b4ae98c9798d4e4ac7fe272a20a8f057@example.com','b4ae98c9798d4e4ac7fe272a20a8f057@example.com','John Doe','555-555-5555','555-555-5555','b4ae98c9798d4e4ac7fe272a20a8f057@example.com',24,120,'','123 Pine Ste','','Gladstone','Or','97200','',NULL,0,'New team'),
+  (3716,'Spike heels','John Doe','555-555-5555','555-555-5555','e6bb58bf5fdae78f749b0b88e70dca01@example.com','e6bb58bf5fdae78f749b0b88e70dca01@example.com','John Doe','555-555-5555','555-555-5555','e6bb58bf5fdae78f749b0b88e70dca01@example.com',88,20,'','123 Pine Ste','','Portland','Or','97200','',NULL,0,'Returning team'),
+  (3717,'Serv-ivors','John Doe','555-555-5555','555-555-5555','2d086918cd3900fb7d2ddc997d914752@example.com','2d086918cd3900fb7d2ddc997d914752@example.com','John Doe','555-555-5555','555-555-5555','2d086918cd3900fb7d2ddc997d914752@example.com',82,82,'','123 Pine Ste','','Vancouver','Wa','97200','',NULL,0,'Returning team'),
+  (3718,'You\'ve Been Served','John Doe','555-555-5555','555-555-5555','906cbef2961c4a3a16012f40b7a80635@example.com','906cbef2961c4a3a16012f40b7a80635@example.com','John Doe','555-555-5555','555-555-5555','906cbef2961c4a3a16012f40b7a80635@example.com',88,20,'','123 Pine Ste','','Tigard','OR','97200','',NULL,0,'Returning team'),
+  (3719,'You\'ve Been Served','John Doe','555-555-5555','555-555-5555','906cbef2961c4a3a16012f40b7a80635@example.com','906cbef2961c4a3a16012f40b7a80635@example.com','John Doe','555-555-5555','555-555-5555','906cbef2961c4a3a16012f40b7a80635@example.com',107,107,'','123 Pine Ste','','Tigard','OR','97200','',NULL,0,'Returning team'),
+  (3720,'Kiss My Pass','John Doe','555-555-5555','555-555-5555','739787e150ea80dae8901d818a2697aa@example.com','739787e150ea80dae8901d818a2697aa@example.com','John Doe','555-555-5555','555-555-5555','739787e150ea80dae8901d818a2697aa@example.com',110,82,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3721,'Mavens','John Doe','555-555-5555','555-555-5555','6ec039f0f7e737b9d85ed97fbe9848e0@example.com','6ec039f0f7e737b9d85ed97fbe9848e0@example.com','John Doe','555-555-5555','555-555-5555','6ec039f0f7e737b9d85ed97fbe9848e0@example.com',114,19,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3722,'Dirty Half Dozen','John Doe','555-555-5555','555-555-5555','1a14c8c6a20402c51702e6c042ddd2e9@example.com','1a14c8c6a20402c51702e6c042ddd2e9@example.com','John Doe','555-555-5555','555-555-5555','1a14c8c6a20402c51702e6c042ddd2e9@example.com',25,25,'','123 Pine Ste','','Oregon City','OR','97200','',NULL,0,'Returning team'),
+  (3723,'Gangta Pair\'a Dice','John Doe','555-555-5555','555-555-5555','4eb592fe4c57ae485459182857980669@example.com','4eb592fe4c57ae485459182857980669@example.com','John Doe','555-555-5555','555-555-5555','4eb592fe4c57ae485459182857980669@example.com',24,120,'','123 Pine Ste','','Tigard','OR','97200','',NULL,0,'Returning team'),
+  (3724,'PVA All-Stars','John Doe','555-555-5555','555-555-5555','b6729a85e3c6518b9ff1201cb9b24796@example.com','b6729a85e3c6518b9ff1201cb9b24796@example.com','John Doe','555-555-5555','555-555-5555','b6729a85e3c6518b9ff1201cb9b24796@example.com',107,107,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3725,'Gangsta Pair\'a Dice','John Doe','555-555-5555','555-555-5555','4723b64e71fb64da2f02151236adb10b@example.com','4723b64e71fb64da2f02151236adb10b@example.com','John Doe','555-555-5555','555-555-5555','4723b64e71fb64da2f02151236adb10b@example.com',24,120,'','123 Pine Ste','','Tigard','OR','97200','',NULL,0,'Returning team'),
+  (3726,'Over the net','John Doe','555-555-5555','555-555-5555','d31dbcec27bbc199d5cc3fb74b5390e0@example.com','d31dbcec27bbc199d5cc3fb74b5390e0@example.com','John Doe','555-555-5555','555-555-5555','d31dbcec27bbc199d5cc3fb74b5390e0@example.com',82,107,'','123 Pine Ste','','Oregon city ','Or','97200','',NULL,0,'Returning team'),
+  (3727,'Panda Panda Panda','John Doe','555-555-5555','555-555-5555','b6acee385f078d50d39d5bab859ba53b@example.com','b6acee385f078d50d39d5bab859ba53b@example.com','John Doe','555-555-5555','555-555-5555','b6acee385f078d50d39d5bab859ba53b@example.com',19,114,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3728,'Vertically Challenged','John Doe','555-555-5555','555-555-5555','fe52c14c3331aab3183bf1b2dd42fe7b@example.com','fe52c14c3331aab3183bf1b2dd42fe7b@example.com','John Doe','555-555-5555','555-555-5555','fe52c14c3331aab3183bf1b2dd42fe7b@example.com',25,25,'','123 Pine Ste','','Vancouver','WA','97200','',NULL,0,'New team'),
+  (3729,'Volley Llamas','John Doe','555-555-5555','555-555-5555','e5faa4883bc5a198fdc6c9e52eb8ee22@example.com','e5faa4883bc5a198fdc6c9e52eb8ee22@example.com','John Doe','555-555-5555','555-555-5555','e5faa4883bc5a198fdc6c9e52eb8ee22@example.com',108,107,'','123 Pine Ste','','Happy Valley','OR','97200','',NULL,0,'Returning team'),
+  (3730,'Empire Spikes Back','John Doe','555-555-5555','555-555-5555','6b17c118ecb9863ea951bb6c70ee599a@example.com','6b17c118ecb9863ea951bb6c70ee599a@example.com','John Doe','555-555-5555','555-555-5555','6b17c118ecb9863ea951bb6c70ee599a@example.com',108,108,'','123 Pine Ste','','Sherwood','OR','97200','',NULL,0,'Returning team'),
+  (3731,'Spiked Punch','John Doe','555-555-5555','555-555-5555','bbc553aa29464b1b58cea651c92d477f@example.com','bbc553aa29464b1b58cea651c92d477f@example.com','John Doe','555-555-5555','555-555-5555','bbc553aa29464b1b58cea651c92d477f@example.com',24,120,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3732,'Vital Force','John Doe','555-555-5555','555-555-5555','c1939feeed5469debeee0ecffce22d83@example.com','c1939feeed5469debeee0ecffce22d83@example.com','John Doe','555-555-5555','555-555-5555','c1939feeed5469debeee0ecffce22d83@example.com',88,20,'','123 Pine Ste','','Portland ','OR','97200','',NULL,0,'Returning team'),
+  (3733,'Balls','John Doe','555-555-5555','555-555-5555','3136a9f696493782b8b07c895377f81f@example.com','3136a9f696493782b8b07c895377f81f@example.com','John Doe','555-555-5555','555-555-5555','3136a9f696493782b8b07c895377f81f@example.com',20,88,'','123 Pine Ste','','Portland','Or','97200','',NULL,0,'Returning team'),
+  (3734,'Balls','John Doe','555-555-5555','555-555-5555','3136a9f696493782b8b07c895377f81f@example.com','3136a9f696493782b8b07c895377f81f@example.com','John Doe','555-555-5555','555-555-5555','3136a9f696493782b8b07c895377f81f@example.com',20,88,'','123 Pine Ste','','Portland','Or','97200','',NULL,0,'Returning team'),
+  (3735,'East of Eden','John Doe','555-555-5555','555-555-5555','38e3288228e46752de37840fb43d98b5@example.com','38e3288228e46752de37840fb43d98b5@example.com','John Doe','555-555-5555','555-555-5555','38e3288228e46752de37840fb43d98b5@example.com',24,120,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'Returning team'),
+  (3736,'Falcons','John Doe','555-555-5555','555-555-5555','50c9688c2b100f96eb07b13db1d08924@example.com','50c9688c2b100f96eb07b13db1d08924@example.com','John Doe','555-555-5555','555-555-5555','50c9688c2b100f96eb07b13db1d08924@example.com',108,25,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'New team'),
+  (3737,'Becky\'s All-Star Jazz Hands Reviews','John Doe','555-555-5555','555-555-5555','f2cd119c49ffcc7f5b3e4de02be13b52@example.com','f2cd119c49ffcc7f5b3e4de02be13b52@example.com','John Doe','555-555-5555','555-555-5555','f2cd119c49ffcc7f5b3e4de02be13b52@example.com',120,78,'','123 Pine Ste','','Beaverton','OR','97200','',NULL,0,'Returning team'),
+  (3738,'LADYBALLS ','John Doe','555-555-5555','555-555-5555','549a53cd128764b483e61ade24e1074c@example.com','549a53cd128764b483e61ade24e1074c@example.com','John Doe','555-555-5555','555-555-5555','549a53cd128764b483e61ade24e1074c@example.com',46,39,'','123 Pine Ste','','Portland','OR','97200','','',0,'Returning team'),
+  (3739,'The Good Mod','John Doe','555-555-5555','555-555-5555','1ebdd2a0be1e7e2d7c942144deb671a2@example.com','1ebdd2a0be1e7e2d7c942144deb671a2@example.com','John Doe','555-555-5555','555-555-5555','1ebdd2a0be1e7e2d7c942144deb671a2@example.com',25,120,'','123 Pine Ste','','Portland','OR','97200','',NULL,0,'New team');
 
 /*!40000 ALTER TABLE `registration` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -732,196 +732,6 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table registration_leagues2
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `registration_leagues2`;
-
-CREATE TABLE `registration_leagues2` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `night` varchar(9) NOT NULL DEFAULT '',
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-LOCK TABLES `registration_leagues2` WRITE;
-/*!40000 ALTER TABLE `registration_leagues2` DISABLE KEYS */;
-
-INSERT INTO `registration_leagues2` (`id`, `name`, `night`, `active`)
-VALUES
-  (1,'Coed A','Wednesday',1),
-  (2,'Coed A West','Thursday',1),
-  (3,'Coed B','Wednesday',1),
-  (4,'Coed B','Thursday',1),
-  (5,'Coed C','Wednesday',1),
-  (6,'Coed C','Thursday',1),
-  (7,'Coed D','Wednesday',1),
-  (8,'Women\'s AA','Tuesday',1),
-  (9,'Women\'s A','Tuesday',1),
-  (10,'Women\'s B','Monday',1),
-  (11,'Women\'s C','Monday',1),
-  (12,'Men\'s A','Tuesday',1),
-  (13,'Men\'s B','Tuesday',1),
-  (14,'Women\'s BB','Monday',1),
-  (15,'Women\'s 4\'s grass A','Monday',0),
-  (16,'Reverse coed 4\'s grass A','Tuesday',0),
-  (17,'Coed 6\'s grass','Wednesday',0),
-  (18,'Coed 4\'s sand','Wednesday',0),
-  (19,'Coed 6\'s sand','Thursday',0),
-  (20,'Reverse coed doubles grass','Thursday',0),
-  (21,'Women\'s C','Tuesday',0),
-  (22,'Coed C2','Thursday',0),
-  (23,'Coed C2','Wednesday',0),
-  (24,'Women\'s A','Monday',1),
-  (25,'Women\'s 4\'s grass B','Monday',0),
-  (26,'Reverse coed 4\'s grass B','Tuesday',0),
-  (32,'Reverse coed 4\'s indoor','Wednesday',0),
-  (27,'Women\'s A-E','Tuesday',0),
-  (28,'Women\'s A-W','Tuesday',0),
-  (33,'Coed 6\'s indoor','Thursday',0),
-  (29,'Coed 40/45','Wednesday',0),
-  (30,'Women\'s A','Tuesday',0),
-  (31,'Women\'s B','Tuesday',1),
-  (34,'Coed A East','Thursday',1);
-
-/*!40000 ALTER TABLE `registration_leagues2` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table registration2
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `registration2`;
-
-CREATE TABLE `registration2` (
-  `id` int(11) NOT NULL,
-  `teamName` varchar(100) NOT NULL DEFAULT '',
-  `mgrName` varchar(55) NOT NULL DEFAULT '',
-  `mgrPhone` varchar(20) NOT NULL DEFAULT '',
-  `mgrPhone2` varchar(20) DEFAULT NULL,
-  `mgrEmail` varchar(55) NOT NULL DEFAULT '',
-  `mgrEmail2` varchar(55) DEFAULT NULL,
-  `altName` varchar(55) DEFAULT NULL,
-  `altPhone` varchar(20) DEFAULT NULL,
-  `altPhone2` varchar(20) DEFAULT NULL,
-  `altEmail` varchar(55) DEFAULT NULL,
-  `league` smallint(6) NOT NULL DEFAULT '0',
-  `league2` smallint(6) DEFAULT NULL,
-  `league_old` varchar(20) NOT NULL DEFAULT '',
-  `addr1` varchar(55) NOT NULL DEFAULT '',
-  `addr2` varchar(55) DEFAULT NULL,
-  `city` varchar(55) NOT NULL DEFAULT '',
-  `state` char(2) NOT NULL DEFAULT '',
-  `zip` varchar(10) NOT NULL DEFAULT '',
-  `comments` mediumtext,
-  `night` varchar(25) DEFAULT NULL,
-  `paid` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-LOCK TABLES `registration2` WRITE;
-/*!40000 ALTER TABLE `registration2` DISABLE KEYS */;
-
-INSERT INTO `registration2` (`id`, `teamName`, `mgrName`, `mgrPhone`, `mgrPhone2`, `mgrEmail`, `mgrEmail2`, `altName`, `altPhone`, `altPhone2`, `altEmail`, `league`, `league2`, `league_old`, `addr1`, `addr2`, `city`, `state`, `zip`, `comments`, `night`, `paid`)
-VALUES
-  (2195,'Healthy Hits','Chihiro Aber','503 481 3335','','chihiro14@hotmail.com','','','','','',10,0,'','2110 Alpine Dr','','West Linn','OR','97068','','',1),
-  (2196,'A & L Bombers','Brenda Fleming-Wilkes','503 421-6122','503 257-1068','bfleming@ronorthert.com','brendafleming44@hotmail.com','Terry Wilkes','','','',7,0,'','2045 SE 130th Ave','','Portland','OR','97233-1417','I would like to register a team for fall - Co-ed on Wednesdays \"D\" League','',1),
-  (2197,'Floor Burn','Kristie Janssen','503-737-9943','','kristie@injurylaworegon.com','','','','','',10,14,'','2926 SE 71st Ave','','PORTLAND','OR','97206','We will be sending in the full amount ($400) on Monday August 15th. ','',1),
-  (2198,'Game On','Jill Emmert-Tricarico','5033070142','5033070142','jillemmerttricarico@gmail.com','drkrista@openmindmedicine.com','Krista Emmert-Tricarico','','','',9,24,'','1743 NE Junior St','','Portland','OR','97211','','',1),
-  (2200,'Flying Pie','Rick TIpton','503-721-6472','503-281-7567','tipton28@comcast.net','tipton28@comcast.net','','503-704-3614','503-704-3614','Rick.L.Tipton@kp.org',1,3,'','3520 NE US Grant Place','','Portland','OR','97212','','',1),
-  (2201,'Set for Life','Cincy Lee','614-783-2545','','chlee316@gmail.com','','','','','',8,9,'','603 SE 46th Ave','','Portland','OR','97215','','',1),
-  (2202,'Too Setsy','Krista Patchin','360-601-8154','','mkpatchin@hotmail.com','','','','','',24,14,'','17403 NE Cole Witter Rd.','','Battle Ground','WA','98604','','',1),
-  (2203,'Dinks & Drinks','Susan Wold','503.452.3668','503.936.7551','susanwold@hotmail.com','swold@heery.com','Erin Danielson','503.313.4100 ','','etdanielson@comcast.net',14,24,'','10135 SW 50th ','','Portland','OR','97219','','',1),
-  (2204,'Ditry Sets','Natalie Dickinson','503-780-1100','','nattled@hotmail.com','','','','','',24,8,'','730 NW 20th Ave. #101','','Portland','OR','97209','','',1),
-  (2205,'I\'d Hit That','Melissa OBrien','503-753-6683','','melobrien75@hotmail.com','','','','','',14,10,'','5403 NE 26th Avenue','','Portland','OR','97211','','',1),
-  (2206,'Net Gain','Cathy Merz','5037152220','5034754942','catherinemerz@aol.com','cathy.merz@donnamcarlson.com','Sheri Bauer','5035042765','5037473360','',8,9,'','5607 SW Westdale Dr','','Portland','OR','97221','Would like to remian in same league as Badgers','',1),
-  (2207,'Floor Play','Jason Pavelka','503-810-0588','','easytosendcards@yahoo.com','easytosendcards@yahoo.com','Sam Cheek','817-564-6922','','trojansam@gmail.com',6,4,'','PO Box 68326','','Portland','OR','97268','','',1),
-  (2208,'Whatever','Jeff Putsch','503-267-5480','','jdputsch@comcast.net','jdputsch@comcast.net','Carrie Putsch','','503-267-9195','carrie@cnj.homeip.net',34,0,'','2686 NE 6th Place ','','Portland','OR','97212','','',1),
-  (2209,'Lollipop Girls','Ronda Johnson','503-750-3120','503-675-7469','Rbjcats@comcast.net','','Carrie Putsch','503-267-9195','','carrie@cnj.homeip.net',8,9,'','16511 SW Carnegie Ave','','Lake Oswego','OR','97035','I\'ll get the check in the mail','',1),
-  (2210,'Volley Llamas','Jeff Correa','503-539-6872','','jeffcorrea21@gmail.cm','jcorrea@usapears.com','','','','',6,6,'','196 SE Spokane St.','#207','Portland','OR','97202','Because of other commitments, this is the only day that we can play.  Thanks!','',1),
-  (2211,'MY BAD','MARTY DAVIS','503-453-7432','','MARTYDOG3@COMCAST.NET','','','','','',34,0,'','3325 NE 43RD AVE','','PORTLAND','OR','97213','','',1),
-  (2212,'Mintonettes','Kate Brundage','585-329-0818','','kathleen_brundage@yahoo.com','kathleen.brundage@va.gov','','','','',10,0,'','3825 N Longview Ave','','portland','','97227','','',1),
-  (2213,'Served Hot','Kristen Ashurex','9715339463','','kristen.ashurex@gmail.com','','Maren Schultz','','','m.zielonyschultz@gmail.com',14,10,'','28910 SW Ravenna Loop','Apt 302','Wilsonville','OR','97070','','',1),
-  (2214,'One Hit Wonders','Kristen Ashurex','9715339463','','kristen.ashurex@gmail.com','','Kristin Palmer','','','kristin.palmer@ymail.com',31,9,'','28910 SW Ravenna Loop','Apt 302','Wilsonville','OR','','','',1),
-  (2215,'Mavens','Laurie Rule','503 679-7691','503 760-3477','lrule@advocateswest.org','orrule@comcast.net','Jenni Peters','','858 395-5023','jethomson13@hotmail.com',8,9,'','7326 SE 27th Ave','','Portland','OR','97202','','',1),
-  (2216,'The Meatballs','Sarah Hollingsworth','503-449-3287','Same','shollingsworth@woodburnsd.org','saritabear@hotmail.com','Jeff Berard','','503-704-0592','jeff.berard@comcast.net',4,0,'','725 E. Hereford St.','','Gladstone','Or','97027','I\'ve been playing Women\'s AA on Tuesdays for years but am new to Coed. I assume it is six players, not four, correct?','',1),
-  (2217,'Dig This','Scott Rosenthal','503-922-9564','503-922-9564','scottr128@yahoo.com','','Liz Shatzer','503-758-5659','503-758-5659','e_shatzer@yahoo.com',2,34,'','2201 NE 58th Ave','','Portland','OR','97213','If there are going to be 2 Thurs night A leagues we would like to play in the \"weaker\" of the 2 divisions.  Not sure if that is east or west.','',1),
-  (2218,'All Together Now','Shannon Van Horn','503-866-8012','','shandale_1972@hotmail.com','shandale_1972@hotmail.com','Stefanie Linch','5035458914','','shandale_1972@hotmail.com',9,0,'','10920 NE Hancock Street','','Portland','OR','97220','','',1),
-  (2219,'Over the Net','Debbie Whitehead','503-913-5684','503-252-7815','debbiew_17@msn.com','debbiew@multnomah.edu','Lynne Piazza','503-504-7170','','',14,24,'','8432 NE Broadway','','Portland','OR','97220','','',1),
-  (2220,'On the Floor','Carrie Maxwell','503-285-1643','971-563-0516','cmaxwell_1972@hotmail.com','carriefayemax_9722q.com','Shannon Van Horn','503-866-8012','503-866-8012','shandale_1972@hotmail.com',24,10,'','7059 N. Borthwick Avenue','','Portland','OR','97217-1615','If there is anyway to play at Central Catholic (have a freshman there this year) and could help with set up and clean-up.','',1),
-  (2221,'Diggin\' It','Suzy Minne','503-723-7026','503-723-7026','suzyminne@q.com','danminne@live.com','','','','',6,4,'','17311 Holly Ln','','Oregon City','OR','97045','We all live in the Oregon City area, so if there is a chance to keep our games on this end of Portland that would be GREAT!! :)  Thanks!','',1),
-  (2222,'PVA All Stars','Shawn Busse','541-941-9920','','shawn@kinesisinc.com','','','','','',34,2,'','5936 NE Mason St.','','Portland','OR','97218','Hi Michelle,\r\n\r\nI\'ve assembled a new team (Formerly \'Kinesis\'). It\'s definitely an \"A\" league team (all very experienced/competitive players). I\'m assuming that COED A - East is the league with the best teams. If this is the wrong league, please contact me.\r\n\r\nThanks!\r\nShawn','',1),
-  (2223,'Serve-ivors','Kim Blahnik','360-513-3105','','kimmieb7@yahoo.com','','','','','',14,9,'','3204 SE 196th Ave','','Camas','WA','98607','','',1),
-  (2224,'Mo Diggity','Jessica Bruce','206-718-0108','','JessicaLynneBruce@gmail.com','brucejl@comcast.net','Tyler Gassaway','','503-807-1828','tjgassaw@yahoo.com',1,34,'','1010 Netzel St. ','','Oregon City','OR','97045','','',1),
-  (2225,'SPIKERS','Fred Wallis','503-329-1737','','fsbholly@aol.com','','','','503-238-1916','',6,0,'','1530.S.E. Holly ST.','','Portland','OR','97214','','',1),
-  (2226,'Block Heads','Hannah May','541-231-6090','','hannahrosemay@gmail.com','hannah_may@ziba.com','','','','',34,2,'','6912 N Armour Street','','Portland','OR','97203','What is the difference between East and West? We would like the league that plays mostly around the downtown area (Southwest comm center, st johns, Milwaukee). I don\'t remember what we were in the Spring...','',1),
-  (2227,'Dahlias','Carolyn Garnett','5038805397','','cgarnett00@yahoo.com','','Val Jones','3602417786','','',24,9,'','3505 Fairview Way','','West Linn','OR','97068','','',1),
-  (2228,'Passing Fancy','Emily Gabler','503 756-8630','','Gabler@OHSU.edu','','Stephanie BleckmanN','503 998-7938','','Stephanie.bleckmann@nike.com',24,0,'','3403 NE 13th Ave.','','Portland','Or','97212','Michelle,\r\nOur team won our B league championship last spring. We would like to play Women\'s A league this fall. We were supposed to be given an opportunity to move up a level last season but due to last minute schedule','',1),
-  (2234,'Spiked Punch','Mike Otis','503.781.3638','','cptnsandbr@aol.com','','','','','',3,5,'','51737 SE 9th St','','Scappoose','OR','97056','I believe we are a low B or high C coed team','',1),
-  (2235,'Dig It','Lindsey Phelps','503-218-2526','208-250-6920','lindseyphelps24@yahoo.com','lphelps@crkt.com','Annie Klug','503-310-4512','503-310-4512','annieklug@gmail.com',9,8,'','8900 SW Sweek Dr. #926','','Tualatin','OR','97062','Please apply the summer credit to our fall fees. Thank you!','',1),
-  (2236,'Vertically Challenged','Packy Flynn','360-773-5785','','padraic_flynn@hotmail.com','flynnpac@parkrose.k12.or.us','Jim Dewson','','503-236-8392','jdewson@gmail.com',5,0,'','15402 NE 47th Circle','','Vancouver','WA','98682','','',1),
-  (2230,'Hop Heads','Gary Rule','503-230-5424','503-760-3477','orrule@comcast.net','gary.rule@noaa.gov','Laurie Rule','503-914-6388','','lrule@advocateswest.org',34,2,'','7326 SE 27th Avenue','','Portland','OR','97202','I don\'t remember if we were in Coed A West or East last time. Not sure what the difference is but we are an A-level team and want to play the best teams.','',1),
-  (2231,'Six Shots','Stefanie Reel','503-522-9579','','reelstef@gmail.com','','','','','',14,24,'','9001 NW Skyline blvd.','','Portland','OR','','','',1),
-  (2232,'Notorious D.I.G.','Chris Whytock','2068981652','','cwhytock@gmail.com','cwhytock@gmail.com','','','','',34,2,'','325 NE Graham St #12','','Portland','OR','97212','','',1),
-  (2233,'Fed Up','Tara Watanathai','443-226-8452','','alohatara@gmail.com','','Jim Malloy','503-552-5243','503-358-8596','jtmalloy13@gmail.com',6,4,'','C/O FBI','1500 SW 1st Avenue, Suite 400','Portland','OR','97201','','',1),
-  (2237,'Block of Seagulls','Jen Braun','503 231 3625','503 333 4289','jenbraunrocks@yahoo.com','','','503 231 5050','','',5,0,'','18025 se Stephens St','','Portland','or','97233','','',1),
-  (2238,'One Track Mind','Adrienne Nicoll','3603340310','3603340310','tallpeople@me.com','adriennenicoll@gmail.com','','','','',8,24,'','2304 NW 209th St.','','Ridgefield','WA','98642','','',1),
-  (2239,'Mudsharks','Cindy Keegan','503-282-7087','','c.keegan@comcast.net','','','','','',5,0,'','1715NE 49th','','Portland','OR','97213','','',1),
-  (2240,'Air Dink','Yuen Chin','503-254-9359','','ebeanie529@aol.com','','','','','',7,0,'','14520 NE Shaver','','Portland','OR','97230','','',1),
-  (2241,'Yes Yes','Paul Crenna','503-969-7736','','paulcrenna@comcast.net','pcrenna@geopacificeng.com','','','','',4,0,'','12021 Orchard Hill Way','','Lake Oswego','OR','97035','','',1),
-  (2242,'Dig HITS','Mike Merz','503 423 9459','503 897 6848','mike.merz@cigna.com','','','','','',3,0,'','5607 sw westdale dr','','port','or','97221','We want to continue in the same league we have played in for a dozen years, thanks, Mike','',1),
-  (2243,'Bumpin Ugly','Ingrid Jensen','(503) 797-5824','','ingrid.jensen@fredmeyer.com','','Jaime Kraushaar','','503-310-9289','jaime.kraushaar@gmail.com',10,10,'','12844 SW Boones Ferry Rd','','Lake Oswego ','OR','97035','','',1),
-  (2244,'Fish Sticks','Shannon Wolcott','503-816-6594','','shannon.wolcott@gmail.com','','Marci Gibson','503-984-1831','','marcigibson_cnt@yahoo.com',9,24,'','13555 SW Salal Ct','','Beaverton','OR','97008','','',1),
-  (2245,'WildCatheters','Jerome Susi','9715335521','','jsusi@linfield.edu','','Lindsey Chow','','5034598045','lichow@linfield.edu',6,4,'','2215 NW Northrup Ave','92A','Portland','OR','97210','','',1),
-  (2247,'Spirits Willing','John Chapman','503-657-8288','503-475-6210','John.p.chapman@kcc.com','','John Rawlins','503-866-6855','503-245-3742','John.rawlins@igrafx.com',4,0,'','7768 SE Clackamas Rd.','','Milwaukie','OR','97267','If Coed B Thursday is not open, need to discuss next option. Thanks.','',1),
-  (2248,'The Rickrollers','Derek Musashe','407-927-2746','','dmusashe@gmail.com','','Caitlin Corcoran','','805-689-8580','caitydid57@gmail.com',1,0,'','0610 SW Nevada St','Apt C','Portland','OR','97219','','',1),
-  (2249,'Cupcakin\' It','Gloria Garcia ','5036192156','','Glogarcia05@yahoo.com','','','','','',31,11,'','7607 N Fessenden','','Portland','Or','97203','','',1),
-  (2250,'Ace to the Face','Whitney Stevens','541-517-4231','541-517-4231','info@blissstudio.net','alynn21@aol.com','Dawn Schott','541-954-3250','503-563-5212','dawnrick1@comcast.net',11,10,'','10903 SW 55th Ave','','Portland','OR','97219','','',1),
-  (2251,'Kiss Our Aces','Molly Hendler ','4156094995','4156094995','mollyrhendler@gmail.com','mollyrhendler@gmail.com','Kaitlin Ogilvie','(209) 380-5260','(209) 380-5260','Kaitlinogilvie@gmail.com',9,31,'','4263 SE Belmlont #301','','Portland','OR','97215','','',1),
-  (2252,'Black Sunshine','Sheryl Dopps','5039985619','Same','dopps6@gmail.com','','Laurie Ramos','','3602815845','leibchenwa@yahoo.com',10,14,'','4129 SE 162nd CT','','Vancouver, WA','wa','98683','','',1),
-  (2253,'Block Party','Heidie Massie','(971) 645-3972','(503) 663-1100','bhmassie55@hotmail.com','heidie@bamboorivermarketing.com','Brian Massie','(503) 312-7689','(503) 663-1100','brian@massiehd.com',7,5,'','5672 SE Chase Loop','','Gresham','OR','97080','All women have played volleyball in high school but that was 20 years ago!  So it has been a long time but most of us are good with the basics.  Thinking D would be a good league to start and maybe bump up to C if needed or possible?  Thanks!','',1),
-  (2254,'Net2O','Tom Jones','503-245-3117','','tbmsjones@comcast.net','','','','','',4,6,'','4911 SW Iowa Street','','Portland','OR','97221','','',1),
-  (2255,'Slippery When Set','Michael Weaver','5038967321','5038967321','michael@portlandplayhouse.org','mikeweaver78@gmail.com','','5038967321','5038967321','michael@portlandplayhouse.org',3,0,'','4307 N. Commercial Ave.','','Portland','OR','97217','','',1),
-  (2256,'Beer and Fries','Stan Tamiyasu','503 647 5041','','stamiyasu@msn.com','','','503 332 3819','','',2,34,'','27365 NW Dorland Rd','','North Plains','OR','97133','','',1),
-  (2257,'Baby Got Backset','Karen Gorretta','360-713-0765','360-546-0348','kgorretta@clearaccess.com','','Teri Calcagno','','','tcalcagno@centralcatholichigh.org',10,14,'','2401 NW 115th St','','Vancouver','WA','98685','','',1),
-  (2258,'You\'ve Been Served','Paula Dunham','503-750-6807','same','psjohnson2354@hotmail.com','','Sarah Hovdey','','406-370-0490','shovdey@gmail.com',24,24,'','2613 NE 59th Ave.','','Portland','OR','97213','I am unable to attend the manager\'s meeting on August 17 but have been playing in the league for many years.','',1),
-  (2259,'Set it sister, spike it!','Mindy Montgomery','5033890523','','mindy@mindyx.com','','','','','',31,10,'','9538 NW Roseway ','','Portland','OR','97231','','',1),
-  (2260,'Diggin Dirty','Corinne Lazo','5038697470','','lazocc@yahoo.com','','5037086194','','','',14,0,'','1639 SE Knapp Street','','Portland','Or','97206','','',1),
-  (2261,'The Average Jills','Lindsey Minnema','616-308-7023','','lminnema@gmail.com','','','','','',14,0,'','925 NW Hoyt St. #101','','Portland','OR','97209','','',1),
-  (2262,'Brown Chicken Brown Cow','Bob Schatz','503 235-8585','503 260-7286','bob@allusaarchitecture.com','','','','','',3,0,'','2118 SE Division street','','Portland','OR','97202','','',1),
-  (2263,'Way Out','Christine Cvitanich','971 678-9505','503-775-9714','chriscvitanich@hotmail.com','ccvitani@mesd.k12.or.us','Mattye Dahl','503-808-6412','503-952-6125','chriscvitanich@hotmail.com',9,24,'','3735 SE Lambert St','','Portland','OR','97202','','',1),
-  (2264,'Wilson\'s Worst Nightmare','Ed Anderson','971-221-7523','971-221-7523','ed.anderson@nwea.org','eanderson74@gmail.com','Eddie Martinez','','503-961-2733','eddie.martinez@nwea.org',7,5,'','8639 SW Iroquois Dr','','Tualatin','OR','97062','','',1),
-  (2265,'Crush','Christin Bryk','503.209.1275','503.267.4558','bryk9c@yahoo.com','christinb@landscapeeast.com','Dana Lockhart','503.867.1329','','',9,8,'','7206 N Kerby Ave.','','Portland ','OR','97217','I put the check in the mail this evening.  Hope Tuesday\'s aren\'t full yet.  Thanks:)','',1),
-  (2266,'Smokin\' Aces','Kelsey Prenger','971-506-1858','503-283-4601','kprenger@hotmail.com','','','503-968-7939','','',11,10,'','1542 N Wygant St','','Portland','or','97217','','',1),
-  (2267,'Phelps Pham','Rachel Phelps','503-349-2799','','Rachelandsteveforever@gmail.com','','Lyle  Phelps','971-570-0930','','lylecil@hotmail.com',4,0,'','12706 SE 110th ct.','','Clackamas','OR','97015',' ','',1),
-  (2268,'Angry Birds','Nicole Nelson','971-242-9524','971-242-9524','volleynik1@yahoo.com','','Brandyce Nelson','503-704-5343','503-704-5343','brandx1983@hotmail.com',31,9,'','6242 SE 29th Way','','Gresham','OR','97080','','',1),
-  (2269,'Red Hots','Jill Hertel','503-804-9300','503-804-9300','hertelj@juno.com','jhertel@fgsd.k12.or.us','Joanna DePeralta','503-797-9848','503-475-8917','joanna.deperalta@trailblazers.com',8,0,'','1388 SE 70th Avenue','','Hillsboro','OR','97123','','',1),
-  (2270,'I\'D HIT THAT','Stacy Towell','503-708-6724','','stacytowell@gmail.com','','','','','',24,9,'','10548 NE Davis','','Portland','OR','97220','','',1),
-  (2271,'Orville Ready Blockers','Jeff Correa','503-539-6872','','Jeffcorrea21@gmail.com','Jcorrea@usapears.com','','','','',13,13,'','196 SE Spokane St. #207','','Portland','OR','97202','','',1),
-  (2272,'Top Gun','Mark Giesmann','503-568-6862','','mgiesmann@hntb.com','mgoose27@yahoo.com','','503-205-4150','','',2,34,'','12120 SW McKay Ct','','Beaverton','OR','97008','','',1),
-  (2273,'Joy of Sets','Kelly Clifton','443.622.1266','','kelly.j.clifton@gmail.com','','Kristi Currans','','','curransk@gmail.com ',31,31,'','1431 SW Park Ave. #610','','Portland','OR','97201','','',1),
-  (2274,'Flugtag','Bill Fussell','503.381.0699','','william_fussell@yahoo.com','','','','','',4,0,'','22737 W Bluff Ct','','West Linn','OR','','','',1),
-  (2275,'Fuse','Steve Erickson','503.307.4086','','steve_erickson@comcast.net','','','503.797.1595','','',3,4,'','1415 NE 17th Av','','Portland','OR','97232','Sorry about the late registration.  Emailed the team 2 weeks ago and 3 people responded today.   Ugggghhhh.. Thanks for your patience.','',1),
-  (2276,'Grumpy Old Men','Mike Vixie','503-225-5476','503-287-1977','mevixie@earthlink.net','michael.vixie@regence.com','','','','',13,31,'','1411 NE 47th Ave','','Portland','OR','97213','','',1),
-  (2277,'beta blockers','terri hoos','503 309 9895','503 234 8098','mikanter@comcast.net','teresa.hoos@va.gov','Anna Brones','253 651 2020','','anna.brones@gmail.com',10,31,'','6005 SE 20th Ave','','Portland','or','97202','','',1),
-  (2278,'A & J Awesome Team, Great Job!','Amanda Grassman','503-347-2773','','grassman.a@gmail.com','grass1719@gmail.com','','','','',1,0,'','13020 SW 17th Street','','Beaverton','OR','97008','','',1),
-  (2279,'East of Eden','John Charles','503/242-0900','503-459-3727','john@cascadepolicy.org','','','','','',13,12,'','4850 SW Scholls Ferry, #103','','Portland','OR','97225','','',1),
-  (2280,'Belmar Beach','John Charles','503/242-0900','503-459-3727','john@cascadepolicy.org','','','','','',2,0,'','4850 SW Scholls Ferry, #103','','Portland','OR','97225','I think this was our league last Spring; it was a good, competitive league for us.','',1),
-  (2281,'Off the Wall','Larry Kiggans','503 758-7573','503 558-9107','lkiggans@indepak.com','otalways@aol.com','Rick Bennett','','503 266-3376','spokesandstitches@yahoo.com',6,4,'','15330 SE Anderson Rd','','Damascus','OR','97089','check is in the mail','',1),
-  (2282,'Scared Hitless','Jennifer Ford','503-860-6481','','jzea33@hotmail.com','','','','','',8,9,'','13774 SE 115th Ave','','Clackamas','OR','97015','Would like to continue to play in the Women\'s top league.  Thank you.','',1),
-  (2283,'Blue Sky','Roland Chadburn','503-880-9510','','rolandchadburn@comcast.net','','Cathy Merz','503-475-4942','','',1,2,'','7265 SW 76th Avenue','','Portland','OR','97223','','',1),
-  (2284,'Trend setters','Melissa Yi','5037506572','','jayoungyi@yahoo.com','jayoungyi@gmail.com','','','','',8,8,'','941 NW Naito Parkway #116','','Portland','Or','97209','','',1),
-  (2285,'Kinetics','Joyce Schwer','503-658-5354','503-869-1851','jptk_schwer@msn.com','','','','','',5,6,'','15960 SE Bel Air Dr.','','Damascus','OR','97089','','',1),
-  (2286,'Benchmade Knife Company','Jason Bills','503 655 6004','','jlbills@benchmade.com','','Kathy Delaplain','503 655 6004','','',7,0,'','300 Beavercreek Rd','','Oregon City','OR','','','',1),
-  (2287,'Beer \'n Tots ','Karen Dutton','503.816.0735','','karendutton16@gmail.com','','Stephanie Williams','stephaniewilliams201','503.784.0468','',9,0,'','1515 SE 22nd Ave #7','','Portland','OR','97214','','',1),
-  (2289,'Kiss My Pass','Leah Ray','360','','leahray.od@gmail.com','','','','','',31,0,'','1','','Battleground','WA','98630','I picked up a check from her today in BG.','',1),
-  (2290,'Lovely Lady Bumps','Lani Farnworth','503-703-9493','','lani@lanifarnworth.com','','Denise Ransome','denise@52ltd.com','','',31,0,'','4557 NE 33rd AVE','','Portland','OR','97211','','',1);
-
-/*!40000 ALTER TABLE `registration2` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
 # Dump of table team_members
 # ------------------------------------------------------------
 
@@ -935,22 +745,6 @@ CREATE TABLE `team_members` (
   `dateAdded` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `shirtSize` varchar(10) DEFAULT NULL,
   `email` varchar(50) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-
-
-# Dump of table team_members2
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `team_members2`;
-
-CREATE TABLE `team_members2` (
-  `teamid` int(11) NOT NULL DEFAULT '0',
-  `firstName` varchar(50) NOT NULL DEFAULT '',
-  `lastName` varchar(50) NOT NULL DEFAULT '',
-  `addedBy` varchar(255) NOT NULL DEFAULT '',
-  `dateAdded` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `shirtSize` varchar(10) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
