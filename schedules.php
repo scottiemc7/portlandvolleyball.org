@@ -129,7 +129,7 @@ if(isset($teams) && ($teams > 0))
   $where.=" AND (home.id=$teams OR visitor.id=$teams)";
 
 $sql=<<<EOF
-SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt, tm, home.name AS h, visitor.name AS v, gym.id AS gymID, gym.name AS gymName, ref.fname AS ref_name, court, edited, l.name AS league
+SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt, tm, home.name AS h, visitor.name AS v, gym.id AS gymID, gym.name AS gymName, ref.fname AS ref_first_name, ref.lname AS ref_last_name,court, edited, l.name AS league
 FROM games g
 JOIN teams home on g.home = home.id
 JOIN teams visitor on g.visitor = visitor.id
@@ -146,16 +146,19 @@ if($result=dbquery($sql)) {
   $row_cnt=mysqli_num_rows($result);
 
   while($row=mysqli_fetch_assoc($result)) {
-    $dt=$row['dt'];
-    $tm=$row['tm'];
-    $home=stripslashes($row['h']);
-    $visitor=stripslashes($row['v']);
-    $gymID=$row['gymID'];
-    $gym=$row['gymName'];
-    $ref_name=$row['ref_name'];
-    $court=$row['court'];
-    $edited=$row['edited'];
-    $league=$row['league'];
+    $dt             = $row['dt'];
+    $tm             = $row['tm'];
+    $home           = stripslashes($row['h']);
+    $visitor        = stripslashes($row['v']);
+    $gymID          = $row['gymID'];
+    $gym            = $row['gymName'];
+    $ref_first_name = $row['ref_first_name'];
+    $ref_last_name  = $row['ref_last_name'];
+    $ref_name       = ($ref_first_name ? $row['ref_first_name'] . ' ' . substr($row['ref_last_name'],0,1) . '.' : "");
+
+    $court          = $row['court'];
+    $edited         = $row['edited'];
+    $league         = $row['league'];
 
     if(isset($court) && (strlen($court)>0)) {
       $court=" ($court)";
