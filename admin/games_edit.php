@@ -15,8 +15,8 @@ if($error!=="") {
 }
 
 $id=NULL;
-if(isset($_POST['id'])) { 
-  $id=preg_replace('/[^\d]/','',$_POST['id']); 
+if(isset($_POST['id'])) {
+  $id=preg_replace('/[^\d]/','',$_POST['id']);
 }
 if(!is_numeric($id)) {
   print "***ERROR*** Invalid ID\n";
@@ -46,7 +46,7 @@ EOF;
   $v2 = $_POST['v2']; if($v2 == '') $v2=NULL;
   $v3 = $_POST['v3']; if($v3 == '') $v3=NULL;
   $notes = $_POST['notes'];
-  
+
   $sql2="";
   $hmp=$vmp=NULL;
   if(($h1 != NULL) && ($v1 != NULL)) {
@@ -70,7 +70,7 @@ EOF;
     if ($h3 != $v3) {
       // 0.5 match points per game
       $h3>$v3 ? $hmp+=0.5 : $vmp+=0.5;
-    }	
+    }
     if ($hmp != $vmp) {
       // 2 points for winning the most games
       $hmp>$vmp ? $hmp+=2 : $vmp+=2;
@@ -84,25 +84,25 @@ EOF;
     }
 
     $sql2=<<<EOF
-hscore1=$h1, hscore2=$h2, hscore3=$h3, 
+hscore1=$h1, hscore2=$h2, hscore3=$h3,
 vscore1=$v1, vscore2=$v2, vscore3=$v3,
-hmp=$hmp, vmp=$vmp, 
+hmp=$hmp, vmp=$vmp,
 EOF;
 
   }else{
 
     $sql2=<<<EOF
-hscore1=NULL, hscore2=NULL, hscore3=NULL, 
+hscore1=NULL, hscore2=NULL, hscore3=NULL,
 vscore1=NULL, vscore2=NULL, vscore3=NULL,
-hmp=NULL, vmp=NULL, 
+hmp=NULL, vmp=NULL,
 EOF;
   }
 
   $sql=<<<EOF
-UPDATE games 
+UPDATE games
 SET dt='$dt', tm='$tm', gym=$gym, home=$home, visitor=$visitor, edited=$edited, ref=$ref,
-$sql2 notes='$notes' 
-WHERE id=$id 
+$sql2 notes='$notes'
+WHERE id=$id
 EOF;
 
   if(! dbquery($sql)) {
@@ -115,15 +115,15 @@ EOF;
 }
 
 $sql=<<<EOF
-SELECT t.id AS home, teams.id AS visitor, gyms.id AS gym, 
-dt, tm, s.edited AS edited, refs.id AS ref, 
+SELECT t.id AS home, teams.id AS visitor, gyms.id AS gym,
+dt, tm, s.edited AS edited, refs.id AS ref,
 s.hscore1 AS h1, s.vscore1 AS v1,
 s.hscore2 AS h2, s.vscore2 AS v2,
-s.hscore3 AS h3, s.vscore3 AS v3, 
+s.hscore3 AS h3, s.vscore3 AS v3,
 s.notes AS notes
-FROM ((((games s LEFT JOIN teams ON teams.id=s.visitor) 
-LEFT JOIN gyms ON gyms.id=s.gym) LEFT JOIN teams t ON t.id=s.home) 
-LEFT JOIN refs on refs.id=s.ref ) 
+FROM ((((games s LEFT JOIN teams ON teams.id=s.visitor)
+LEFT JOIN gyms ON gyms.id=s.gym) LEFT JOIN teams t ON t.id=s.home)
+LEFT JOIN refs on refs.id=s.ref )
 WHERE s.id=$id
 EOF;
 
@@ -156,7 +156,7 @@ if($result=dbquery($sql)) {
 <tr>
   <td>Home Team:</td>
   <td>
-    <select name="home">		
+    <select name="home">
     <option value=""> -- Select -- </option>
 EOF;
 
@@ -168,13 +168,13 @@ EOF;
         $selected=' selected="selected"';
       }
       print <<<EOF
-<option value="{$t['id']}"$selected>$team</option>
+<option value="{$t['id']}"$selected>$team ({$t['league']})</option>
 EOF;
     }
 
     print <<<EOF
-</select> 
-Scores: 
+</select>
+Scores:
 Game 1 <input type="text" size="2" name="h1" value="$h1" \>
 Game 2 <input type="text" size="2" name="h2" value="$h2" \>
 Game 3 <input type="text" size="2" name="h3" value="$h3" \>
@@ -196,7 +196,7 @@ EOF;
         $selected=' selected="selected"';
       }
       print <<<EOF
-<option value="{$t['id']}"$selected>$team</option>
+<option value="{$t['id']}"$selected>$team ({$t['league']})</option>
 EOF;
     }
 
@@ -207,7 +207,7 @@ EOF;
 
     print <<<EOF
 </select>
-Scores: 
+Scores:
 Game 1 <input type="text" size="2" name="v1" value="$v1">
 Game 2 <input type="text" size="2" name="v2" value="$v2">
 Game 3 <input type="text" size="2" name="v3" value="$v3">
