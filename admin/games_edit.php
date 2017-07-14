@@ -168,7 +168,7 @@ EOF;
         $selected=' selected="selected"';
       }
       print <<<EOF
-<option value="{$t['id']}"$selected>$team</option>
+<option value="{$t['id']}"$selected>$team ({$t['league']})</option>
 EOF;
     }
 
@@ -196,7 +196,7 @@ EOF;
         $selected=' selected="selected"';
       }
       print <<<EOF
-<option value="{$t['id']}"$selected>$team</option>
+<option value="{$t['id']}"$selected>$team ({$t['league']})</option>
 EOF;
     }
 
