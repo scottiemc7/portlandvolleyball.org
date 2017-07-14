@@ -139,8 +139,8 @@ function getTeams() {
 
   $sql=<<<EOF
 SELECT t.id AS id, t.name AS team, l.name AS league
-FROM (teams t LEFT JOIN leagues l ON l.id=t.league)
-ORDER BY t.name
+FROM (teams t JOIN leagues l ON l.id=t.league AND l.active = 1)
+ORDER BY l.name, t.name
 EOF;
 
   if($result=dbquery($sql)) {
