@@ -25,7 +25,7 @@ function dbinit() {
     // Development
     define(MYSQL_HOST,'127.0.0.1');
     define(MYSQL_USERNAME,'root');
-    define(MYSQL_PASSWORD,'');
+    define(MYSQL_PASSWORD,'root');
     define(MYSQL_DBNAME,'pvaDB');
   } else {
     die('Cannot find MySQL credentials. Use mysql.example.php to create a credentials file in config/mysql.php');
