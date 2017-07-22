@@ -189,6 +189,7 @@ EOF;
   print <<<EOF
 </table>
 </div>
+</div>
 EOF;
 
 }else{
