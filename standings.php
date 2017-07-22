@@ -136,7 +136,7 @@ EOF;
 EOF;
     }
 
-    print  "</table>";
+    print  "</table></div>";
   }
 }
 
