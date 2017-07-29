@@ -18,6 +18,17 @@ if($error!=="") {
 
 <div id="content" class="container">
   <div class="row">
+    <div class="col-md-12">
+      <div class="well">
+      <h2>PVA Mission Statement:</h2>
+      <blockquote class="lead">
+        <em>“Our goal is to foster volleyball in the greater Portland area and to promote friendliness and sportspersonship at different levels of competition in an all-inclusive environment.  We strive to create a volleyball community that maintains an environment that respects diverse traditions, heritages and experiences while honoring the fundamental value and dignity of all individuals.”</em>
+      </blockquote>
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
 
 <div class="col-md-6">
 <?php
