@@ -284,7 +284,7 @@ You have two payment options:
     <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
+        <input type="hidden" name="business" value="pva@portlandvolleyball.org" />
         <input type="hidden" name="item_name" value="$season Team Fee" />
         <input type="hidden" name="amount" value="$amount" />
         <input type="hidden" name="no_shipping" value="1" />
@@ -362,7 +362,7 @@ EOF;
       <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
+        <input type="hidden" name="business" value="pva@portlandvolleyball.org" />
         <input type="hidden" name="item_name" value="$season Team Fee" />
         <input type="hidden" name="amount" value="$amount" />
         <input type="hidden" name="no_shipping" value="1" />
