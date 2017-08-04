@@ -190,13 +190,19 @@
 
   <h4>COIN TOSS</h4>
   <p>
-    The home team calls all coin tosses, unless the home team does not have a scoreboard. In that case, the visiting team automatically wins all coin tosses during the match. Scoreboards are only allowed if they are large enough to be visible by both teams. Phones are not allowed as a scoreboard. If a team has a larger electronic device (e.g. tablet) and someone to operate it, it will be allowed. 
+    The home team calls all coin tosses, unless the home team does not have a scoreboard. In that case, the visiting team automatically wins all coin tosses during the match. Scoreboards are only allowed if they are large enough to be visible by both teams. Phones are not allowed as a scoreboard. If a team has a larger electronic device (e.g. tablet) and someone to operate it, it will be allowed.
   </p>
   <p>
     All jewelry, which in the official's judgment could cause injury, is illegal. Hats and bandannas that cover the top of the head are illegal and must be removed. Bandannas worn as a headband, around the forehead, are acceptable.
   </p>
   <p>
     Springtime, sunlight, problem.  Switch sides every 8 points until sundown.
+  </p>
+
+  <h4>REFUNDS</h4>
+  <p>
+    $10 refund for no ref; all seasons</p>
+    $35 refund for a missed game; Fall, Winter and Spring seasons only</p>
   </p>
 
 <?php include("footer.html.php"); ?>
