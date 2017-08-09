@@ -244,8 +244,7 @@ EOF;
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
 
-<p>The team fee for $season is $$fee for all Doubleheader leagues.</p>
-<p><b>Coed Thursday Sand teams: </b> the fee is $$sandFee.  Please send your check by mail or contact info@portlandvolleyball.org for a Paypal invoice.</p>
+<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.</p>
 EOF;
 
     if($isLate) {
@@ -310,8 +309,9 @@ To register, please fill in the information requested below and click the &quot;
 button.  Required fields are marked with an asterisk (*).
 </p>
 
-<p>The team fee for $season is $$fee for all Doubleheader leagues (Grass and Sand).</p>
-<p><b>Coed Thursday Sand teams: </b> the fee is $$sandFee.  Please send your check by mail or contact info@portlandvolleyball.org for a Paypal invoice.</p>
+<p>
+  The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
+</p>
 
 EOF;
 
@@ -445,7 +445,7 @@ EOF;
                  FROM registration
                  GROUP BY league) as r
       ON l.id = r.league
-      WHERE l.active = 1 AND (name LIKE \'%Grass%\' OR name LIKE \'%Sand%\')
+      WHERE l.active = 1 AND (name NOT LIKE \'%Grass%\' AND name NOT LIKE \'%Sand%\')
       AND (r.registrations IS NULL OR r.registrations < l.cap)
       ORDER BY l.name';
 
