@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . 'lib/swiftmailer/lib/swift_required.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/config/email.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/swiftmailer/lib/swift_required.php';
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/config/email.php';
 
 class Emailer {
   var $name;

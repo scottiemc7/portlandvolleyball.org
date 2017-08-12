@@ -2,7 +2,7 @@
 
 require_once 'lib/mysql.php';
 require_once 'lib/support.php';
-require_once 'lib/swiftmailer/lib/swift_required.php';
+require_once 'lib/emailer.php';
 include 'header.html.php';
 $error=dbinit();
 if($error!=="") {
@@ -205,12 +205,9 @@ Comments: $comments
 EOF;
 
       // mail("register@portlandvolleyball.org", "New registration - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
-      $transport = Swift_SmtpTransport::newInstance('127.0.0.1', 1025);
-      $mailer = Swift_Mailer::newInstance($transport);
-      $message = Swift_Message::newInstance('Test Subject')
-      ->setFrom(array('test@portlandvolleyball.org' => 'Josh Bremer'))
-      ->setTo(array('joshua.bremer@gmail.com'))
-      ->setBody('This is a test mail.');
+      $emailer = new Emailer();
+      $emailer->send_email('joshua.bremer@gmail.com', 'Test Subject', 'This is a test mail.');
+
     }elseif ($prob_spam == true) {
       $statusMessage = "<p class=highlight>Wait!  You're not done yet!</p>";
       $formSubmitted = true;
@@ -229,7 +226,8 @@ Status: $newOld
 Comments: $comments
 EOF;
 
-      //mail("pva@portlandvolleyball.org", "Probable pva reg spam - $teamName", $mailstring, "From: $mgrName<$mgrEmail>");
+      $emailer = new Emailer();
+      $emailer->send_email('joshua.bremer@gmail.com', 'Test Subject', 'This is a test mail.');
     }else{
       $statusMessage=<<<EOF
 <p class="highlight">You forgot to fill in one or more required fields.<br />
