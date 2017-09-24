@@ -204,7 +204,7 @@
     $10 refund for no ref; all seasons
   </p>
   <p>
-    $35 refund for a cancelled game by PVA if it is unable to be rescheduled for that season; Fall, Winter and Spring seasons only
+    $35 refund for matches cancelled by PVA if they are unable to be rescheduled for that season; Fall, Winter and Spring seasons only
   </p>
 
 <?php include("footer.html.php"); ?>
