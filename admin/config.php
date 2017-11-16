@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 
   if(isset($_POST['payPalFee'])) {
     $value=preg_replace('/[^0-9\.]/','',$_POST['payPalFee']);
-    if(empty($value)) {
+    if(!is_numeric($value)) {
       $statusSummary.="<br />Invalid PayPal fee";
     }else{
       setOne('reg_payPalFee',$value);
