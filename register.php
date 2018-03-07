@@ -244,7 +244,7 @@ EOF;
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
 
-<p>The team fee for $season is $$fee for Standard leagues.</p>
+<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.</p>
 EOF;
 
     if($isLate) {
@@ -310,7 +310,7 @@ button.  Required fields are marked with an asterisk (*).
 </p>
 
 <p>
-  The team fee for $season is $$fee for Standard leagues.
+  The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
 </p>
 
 EOF;
