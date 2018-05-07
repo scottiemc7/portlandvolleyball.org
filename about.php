@@ -28,7 +28,7 @@
           <td>President</td>
         </tr>
         <tr>
-          <td>Ronda Johnson</td>
+          <td>Carley Dirks</td>
           <td>Vice President</td>
         </tr>
         <tr>
@@ -36,7 +36,7 @@
           <td>Treasurer</td>
         </tr>
         <tr>
-          <td>Gloria Bremer</td>
+          <td>Josh Bremer</td>
           <td>Secretary</td>
         </tr>
         <tr>
@@ -46,6 +46,10 @@
         <tr>
           <td>Michelle Baldwin</td>
           <td>Executive Assistant</td>
+        </tr>
+        <tr>
+          <td>Ronda Johnson</td>
+          <td>Member at Large</td>
         </tr>
         <tr>
           <td>Abby Strom</td>
@@ -61,6 +65,10 @@
         </tr>
         <tr>
           <td>Meghan Mulkey</td>
+          <td>Member at Large</td>
+        </tr>
+        <tr>
+          <td>Gary Rule</td>
           <td>Member at Large</td>
         </tr>
     </table>
