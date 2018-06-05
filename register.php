@@ -39,9 +39,9 @@ $registrationDeadline = date('l, F j, Y', $dtRegularDeadline);
 
 // custom code to handle special thursday double header leagues with higher price
 $doubleHeaderFee = 300;
-// $doubleHeaderPayPalFee = $doubleHeaderFee * 0.029 + 0.30;
-// $doubleHeaderAmount = $doubleHeaderFee + $doubleHeaderPayPalFee;
-$doubleHeaderAmount = $doubleHeaderFee;
+$doubleHeaderPayPalFee = $doubleHeaderFee * 0.029 + 0.30;
+$doubleHeaderAmount = $doubleHeaderFee + $doubleHeaderPayPalFee;
+// $doubleHeaderAmount = $doubleHeaderFee;
 // end special thursday double header stuff
 ?>
 
