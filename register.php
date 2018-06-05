@@ -244,8 +244,7 @@ EOF;
   if($formSubmitted == true) {
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
-
-<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.</p>
+<p>The team fee for $season is $$fee for Standard leagues, or $$sandFee for Doubleheader leagues.
 EOF;
 
     if($isLate) {
@@ -324,9 +323,7 @@ To register, please fill in the information requested below and click the &quot;
 button.  Required fields are marked with an asterisk (*).
 </p>
 
-<p>
-  The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
-</p>
+<p>The team fee for $season is $$fee for Standard leagues, or $$sandFee for Doubleheader leagues.
 
 EOF;
 
@@ -472,7 +469,7 @@ EOF;
                  FROM registration
                  GROUP BY league) as r
       ON l.id = r.league
-      WHERE l.active = 1 AND (name NOT LIKE \'%Grass%\' AND name NOT LIKE \'%Sand%\')
+      WHERE l.active = 1 AND (name LIKE \'%Grass%\' OR name LIKE \'%Sand%\')
       AND (r.registrations IS NULL OR r.registrations < l.cap)
       ORDER BY l.name';
 
