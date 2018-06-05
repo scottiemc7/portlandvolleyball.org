@@ -38,7 +38,7 @@ $isLate = $dtRegularDeadline - $timenow <= 0;
 $registrationDeadline = date('l, F j, Y', $dtRegularDeadline);
 
 // custom code to handle special thursday double header leagues with higher price
-$doubleHeaderFee = 578;
+$doubleHeaderFee = 300;
 // $doubleHeaderPayPalFee = $doubleHeaderFee * 0.029 + 0.30;
 // $doubleHeaderAmount = $doubleHeaderFee + $doubleHeaderPayPalFee;
 $doubleHeaderAmount = $doubleHeaderFee;
@@ -244,21 +244,13 @@ EOF;
   if($formSubmitted == true) {
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
-
-<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.</p>
+<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
 EOF;
 
     if($isLate) {
       print <<<EOF
 Also, since it's after $registrationDeadline,
 <b>you now owe the $$lateFee late fee</b>.
-EOF;
-    }
-    if($isSummer) {
-      print <<<EOF
-<div>
-<b>Sand teams: </b> the fee is $$sandFee.  Please send your check by mail.
-</div>
 EOF;
     }
 
@@ -324,9 +316,7 @@ To register, please fill in the information requested below and click the &quot;
 button.  Required fields are marked with an asterisk (*).
 </p>
 
-<p>
-  The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
-</p>
+<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
 
 EOF;
 
@@ -472,7 +462,7 @@ EOF;
                  FROM registration
                  GROUP BY league) as r
       ON l.id = r.league
-      WHERE l.active = 1 AND (name NOT LIKE \'%Grass%\' AND name NOT LIKE \'%Sand%\')
+      WHERE l.active = 1 AND (name LIKE \'%Grass%\' OR name LIKE \'%Sand%\')
       AND (r.registrations IS NULL OR r.registrations < l.cap)
       ORDER BY l.name';
 
