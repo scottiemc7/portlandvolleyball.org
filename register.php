@@ -244,7 +244,7 @@ EOF;
   if($formSubmitted == true) {
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
-<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
+<p>The team fee for $season is $$fee for Sand Coed Quads, or $$doubleHeaderFee for Doubleheader leagues.
 EOF;
 
     if($isLate) {
@@ -271,7 +271,7 @@ You have two payment options:
     for a free account, and an additional service fee will be charged
     for all online payments.</p>
 
-    <p>Pay for <strong>standard</strong> leagues using PayPal by clicking the button below.</p>
+    <p>Pay for <strong>Sand Coed Quads</strong> leagues using PayPal by clicking the button below.</p>
 
     <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -316,7 +316,7 @@ To register, please fill in the information requested below and click the &quot;
 button.  Required fields are marked with an asterisk (*).
 </p>
 
-<p>The team fee for $season is $$fee for Standard leagues, or $$doubleHeaderFee for Doubleheader leagues.
+<p>The team fee for $season is $$fee for Sand Coed Quads leagues, or $$doubleHeaderFee for Doubleheader leagues.
 
 EOF;
 
@@ -363,7 +363,7 @@ EOF;
       <em>Make sure to write the team name on your check.</em>
     </div>
     <div class="col-xs-4">
-      Pay for <strong>standard</strong> leagues using PayPal by clicking the button below.
+      Pay for <strong>Sand Coed Quads</strong> leagues using PayPal by clicking the button below.
       <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
