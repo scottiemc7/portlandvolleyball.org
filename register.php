@@ -244,7 +244,7 @@ EOF;
   if($formSubmitted == true) {
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
-<p>The team fee for $season is $$fee for Sand Coed Quads, or $$doubleHeaderFee for Doubleheader leagues.
+<p>The team fee for $season is $$fee for Single Match, or $$doubleHeaderFee for Doubleheader leagues.
 EOF;
 
     if($isLate) {
