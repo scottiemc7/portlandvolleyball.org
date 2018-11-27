@@ -24,11 +24,11 @@
           <th>Title</th>
         </tr>
         <tr>
-          <td>Jocelyn Pease</td>
+          <td>Carley Dirks</td>
           <td>President</td>
         </tr>
         <tr>
-          <td>Carley Dirks</td>
+          <td>Gary Rule</td>
           <td>Vice President</td>
         </tr>
         <tr>
@@ -36,7 +36,7 @@
           <td>Treasurer</td>
         </tr>
         <tr>
-          <td>Josh Bremer</td>
+          <td>Ronda Johnson</td>
           <td>Secretary</td>
         </tr>
         <tr>
@@ -48,27 +48,15 @@
           <td>Executive Assistant</td>
         </tr>
         <tr>
-          <td>Ronda Johnson</td>
+          <td>Harley Combs</td>
           <td>Member at Large</td>
         </tr>
         <tr>
-          <td>Abby Strom</td>
-          <td>Member at Large</td>
-        </tr>
-        <tr>
-          <td>Jill Emmert-Tricarico</td>
-          <td>Member at Large</td>
-        </tr>
-        <tr>
-          <td>Carley Dirks</td>
+          <td>Scott McClure</td>
           <td>Member at Large</td>
         </tr>
         <tr>
           <td>Meghan Mulkey</td>
-          <td>Member at Large</td>
-        </tr>
-        <tr>
-          <td>Gary Rule</td>
           <td>Member at Large</td>
         </tr>
     </table>
