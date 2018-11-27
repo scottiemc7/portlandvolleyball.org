@@ -463,9 +463,10 @@ EOF;
                  GROUP BY league) as r
       ON l.id = r.league
       WHERE l.active = 1
-      // AND (name LIKE \'%Grass%\' OR name LIKE \'%Sand%\')
       AND (r.registrations IS NULL OR r.registrations < l.cap)
       ORDER BY l.name';
+
+      //AND (name LIKE \'%Grass%\' OR name LIKE \'%Sand%\')
 
     if($result=dbquery($sql)) {
       while($row=mysqli_fetch_assoc($result)) {
