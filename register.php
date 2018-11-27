@@ -244,7 +244,7 @@ EOF;
   if($formSubmitted == true) {
     print <<<EOF
 <p>Your registration will not be complete until we've also received your payment for this season.</p>
-<p>The team fee for $season is $$fee for Single Match, or $$doubleHeaderFee for Doubleheader leagues.
+<p>The team fee for $season is $$fee for Single Match <!--, or $$doubleHeaderFee for Doubleheader --> leagues.
 EOF;
 
     if($isLate) {
@@ -286,7 +286,7 @@ You have two payment options:
       </form>
     </p>
 
-    <p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
+    <!--<p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
     <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
@@ -298,7 +298,7 @@ You have two payment options:
         <input type="hidden" name="currency_code" value="USD" />
         <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
       </form>
-    </p>
+    </p>-->
   </li>
 </ol>
 </p>
@@ -316,7 +316,7 @@ To register, please fill in the information requested below and click the &quot;
 button.  Required fields are marked with an asterisk (*).
 </p>
 
-<p>The team fee for $season is $$fee for Single Match leagues, or $$doubleHeaderFee for Doubleheader leagues.
+<p>The team fee for $season is $$fee for Single Match leagues. <!--, or $$doubleHeaderFee for Doubleheader leagues.-->
 
 EOF;
 
@@ -378,7 +378,7 @@ EOF;
       </p>
     </div>
     <div class="col-xs-4">
-      <p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
+      <!--<p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
         <input type="hidden" name="business" value="info@portlandvolleyball.org" />
@@ -388,7 +388,7 @@ EOF;
         <input type="hidden" name="cn" value="Your Team Name" />
         <input type="hidden" name="currency_code" value="USD" />
         <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
-      </form>
+      </form>-->
     </div>
   </div>
 
