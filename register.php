@@ -363,7 +363,7 @@ EOF;
       <em>Make sure to write the team name on your check.</em>
     </div>-->
     <div class="col-xs-4">
-      Pay for <strong>Sand Coed Quads</strong> leagues using PayPal by clicking the button below.
+      Pay for <strong>Single Match</strong> leagues using PayPal by clicking the button below.
       <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
