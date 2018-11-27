@@ -258,13 +258,13 @@ EOF;
 <p>
 You have two payment options:
 <ol>
-  <li>
+  /*<li>
     Mail your check to:<br/>
     Portland Volleyball Association<br/>
     PO Box 92122<br/>
     Portland, OR 97292<br/>
     <strong><em>Make sure to write your team name on your check.</em></strong>
-  </li>
+  </li>*/
   <br/>
   <li>
     <p>Pay online by clicking the PayPal Payments button.  PayPal will require you to sign up
@@ -355,13 +355,13 @@ EOF;
 
 
   <div class="row">
-    <div class="col-xs-4">
+    /*<div class="col-xs-4">
       Mail your check to:<br/>
       Portland Volleyball Association<br/>
       PO Box 92122<br/>
       Portland, OR 97292<br/>
       <em>Make sure to write the team name on your check.</em>
-    </div>
+    </div>*/
     <div class="col-xs-4">
       Pay for <strong>Sand Coed Quads</strong> leagues using PayPal by clicking the button below.
       <p>
