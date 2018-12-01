@@ -257,7 +257,7 @@ EOF;
     print <<<EOF
 <p>
 <!-- You have two payment options: -->
-<ol>
+<ul>
   <!--<li>
     Mail your check to:<br/>
     Portland Volleyball Association<br/>
@@ -300,7 +300,7 @@ EOF;
       </form>
     </p>-->
   </li>
-</ol>
+</ul>
 </p>
 
 <p style="font-weight: bold;">
