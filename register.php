@@ -256,7 +256,7 @@ EOF;
 
     print <<<EOF
 <p>
-You have two payment options:
+<!-- You have two payment options: -->
 <ol>
   <!--<li>
     Mail your check to:<br/>
