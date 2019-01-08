@@ -206,5 +206,14 @@
   <p>
     $35 refund for matches cancelled by PVA if they are unable to be rescheduled for that season; Fall, Winter and Spring seasons only
   </p>
+  <p>
+    Registration:
+    <ul>
+      <li>Withdrawal prior to Unaffiliated Player Open Gym 75% Refund.</li>
+      <li>Withdrawal after Open Gym, but before the first week of scheduled play 50% refund.</li>
+      <li>Withdrawal before the midpoint of the play season 20% refund.</li>
+      <li>Withdrawal after the midpoint of the play season NO REFUND.</li>
+    </ul>
+  </p>
 
 <?php include("footer.html.php"); ?>
