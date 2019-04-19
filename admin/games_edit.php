@@ -46,6 +46,7 @@ EOF;
   $v2 = $_POST['v2']; if($v2 == '') $v2=NULL;
   $v3 = $_POST['v3']; if($v3 == '') $v3=NULL;
   $notes = $_POST['notes'];
+  $rescheduled = $_POST['rescheduled'];
 
   $sql2="";
   $hmp=$vmp=NULL;
@@ -100,7 +101,7 @@ EOF;
 
   $sql=<<<EOF
 UPDATE games
-SET dt='$dt', tm='$tm', gym=$gym, home=$home, visitor=$visitor, edited=$edited, ref=$ref,
+SET dt='$dt', tm='$tm', gym=$gym, home=$home, visitor=$visitor, edited=$edited, rescheduled=$rescheduled, ref=$ref,
 $sql2 notes='$notes'
 WHERE id=$id
 EOF;
@@ -120,7 +121,8 @@ dt, tm, s.edited AS edited, refs.id AS ref,
 s.hscore1 AS h1, s.vscore1 AS v1,
 s.hscore2 AS h2, s.vscore2 AS v2,
 s.hscore3 AS h3, s.vscore3 AS v3,
-s.notes AS notes
+s.notes AS notes,
+s.rescheduled AS rescheduled
 FROM ((((games s LEFT JOIN teams ON teams.id=s.visitor)
 LEFT JOIN gyms ON gyms.id=s.gym) LEFT JOIN teams t ON t.id=s.home)
 LEFT JOIN refs on refs.id=s.ref )
@@ -149,6 +151,7 @@ if($result=dbquery($sql)) {
     $h3=$row['h3'];
     $v3=$row['v3'];
     $notes=$row['notes'];
+    $rescheduled=$row['rescheduled'];
 
     print <<<EOF
 <form name="editEvent" class="eventForm" method="post">
@@ -247,6 +250,13 @@ EOF;
       $selectedNo="";
     }
 
+    $rescheduledYes="";
+    $rescheduledNo=' selected="selected"';
+    if($rescheduled==1) {
+      $rescheduledYes=' selected="selected"';
+      $rescheduledNo="";
+    }
+
     print <<<EOF
   </select>
 </td>
@@ -257,6 +267,15 @@ EOF;
     <select name="edited">
     <option value="1"$selectedYes>Yes</option>
     <option value="0"$selectedNo>No</option>
+    </select>
+  </td>
+</tr>
+<tr>
+  <td>Show as rescheduled?</td>
+  <td>
+    <select name="rescheduled">
+    <option value="1"$rescheduledYes>Yes</option>
+    <option value="0"$rescheduledNo>No</option>
     </select>
   </td>
 </tr>
