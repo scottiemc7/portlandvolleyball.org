@@ -129,7 +129,9 @@ if(isset($teams) && ($teams > 0))
   $where.=" AND (home.id=$teams OR visitor.id=$teams)";
 
 $sql=<<<EOF
-SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt, tm, home.name AS h, visitor.name AS v, gym.id AS gymID, gym.name AS gymName, ref.fname AS ref_first_name, ref.lname AS ref_last_name,court, edited, l.name AS league
+SELECT DATE_FORMAT(dt, '%c/%d (%a)') as dt, tm, home.name AS h, visitor.name AS v, gym.id AS gymID, 
+  gym.name AS gymName, ref.fname AS ref_first_name, ref.lname AS ref_last_name,court, edited, l.name AS league,
+  rescheduled, rescheduledFromDt
 FROM games g
 JOIN teams home on g.home = home.id
 JOIN teams visitor on g.visitor = visitor.id
@@ -159,6 +161,8 @@ if($result=dbquery($sql)) {
     $court          = $row['court'];
     $edited         = $row['edited'];
     $league         = $row['league'];
+    $rescheduled       = $row['rescheduled'];
+    $rescheduledFromDt = $row['rescheduledFromDt'];
 
     if(isset($court) && (strlen($court)>0)) {
       $court=" ($court)";
@@ -169,6 +173,11 @@ if($result=dbquery($sql)) {
     $game_class="schedule-table__row";
     if($edited==1) {
       $game_class .= ' schedule-table__row--edited';
+    }
+
+    if(!empty($rescheduledFromDt)) {
+      $rescheduledFromDtArray = explode('-',$rescheduledFromDt);
+      $dt += '*<br>('.$rescheduledFromDtArray[1].'/'.$rescheduledFromDtArray[2].')';
     }
 
     $ref_html = ($ref_name ? "($ref_name)" : "");
