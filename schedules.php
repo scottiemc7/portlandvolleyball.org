@@ -47,6 +47,8 @@ if(! $qryLeagues=dbquery($sql)) {
     		  To filter, choose one of the options below, and click "Filter".
     		  <br>
     			Games that have been changed are denoted with a <span style="background-color: #ffff99;">yellow background</span>.
+          <br>
+    			Games that have been rescheduled are denoted with an asterisk.
     		</p>
 
     		<p>
@@ -177,7 +179,7 @@ if($result=dbquery($sql)) {
 
     if($rescheduled==1 && !empty($rescheduledFromDt)) {
       $rescheduledFromDtArray = explode('-',$rescheduledFromDt);
-      $dt .= '*<br>('.$rescheduledFromDtArray[1].'/'.$rescheduledFromDtArray[2].')';
+      $dt .= '*<br>(was '.$rescheduledFromDtArray[1].'/'.$rescheduledFromDtArray[2].')';
     }
 
     $ref_html = ($ref_name ? "($ref_name)" : "");
