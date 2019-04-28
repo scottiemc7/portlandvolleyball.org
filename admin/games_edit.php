@@ -290,7 +290,7 @@ EOF;
 </tr>
 <tr>
   <td>Rescheduled From Date:</td>
-  <td><input type="text" name="date" value="$rescheduledFromDtFormatted" /></td>
+  <td><input type="text" name="rescheduledFromDt" value="$rescheduledFromDtFormatted" /></td>
 </tr>
 <tr>
 <tr>
