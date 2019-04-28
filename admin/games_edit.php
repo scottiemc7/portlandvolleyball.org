@@ -32,6 +32,18 @@ if ($_POST['home'] != "") {
 </script>
 EOF;
   }
+  
+  if(!empty($_POST['rescheduledFromDt'])) {
+    $rescheduledFromDtArray = explode('/',$_POST['rescheduledFromDt']);
+    if(!checkdate($rescheduledFromDtArray[0], $rescheduledFromDtArray[1], $rescheduledFromDtArray[2])) {
+      print <<<EOF
+        <script language="Javascript">
+          alert("Date must be M(M)/D(D)/YYYY");
+        </script>
+EOF;
+    }
+  }
+
   $dt = $dtarray[2].'-'.$dtarray[0].'-'.$dtarray[1];
   $tm = $_POST['time'];
   $gym = $_POST['gym'];
@@ -47,7 +59,11 @@ EOF;
   $v3 = $_POST['v3']; if($v3 == '') $v3=NULL;
   $notes = $_POST['notes'];
   $rescheduled = $_POST['rescheduled'];
-  $rescheduledFromDt = $_POST['rescheduledFromDt'];
+  if(!empty($_POST['rescheduledFromDt'])) {
+    $rescheduledFromDt = $rescheduledFromDtArray[2].'-'.$rescheduledFromDtArray[0].'-'.$rescheduledFromDtArray[1]; 
+  } else {
+    $rescheduledFromDt=NULL;
+  }
 
   $sql2="";
   $hmp=$vmp=NULL;
