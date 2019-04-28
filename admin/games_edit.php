@@ -47,6 +47,7 @@ EOF;
   $v3 = $_POST['v3']; if($v3 == '') $v3=NULL;
   $notes = $_POST['notes'];
   $rescheduled = $_POST['rescheduled'];
+  $rescheduledFromDt = $_POST['rescheduledFromDt'];
 
   $sql2="";
   $hmp=$vmp=NULL;
@@ -101,7 +102,7 @@ EOF;
 
   $sql=<<<EOF
 UPDATE games
-SET dt='$dt', tm='$tm', gym=$gym, home=$home, visitor=$visitor, edited=$edited, rescheduled=$rescheduled, ref=$ref,
+SET dt='$dt', tm='$tm', gym=$gym, home=$home, visitor=$visitor, edited=$edited, rescheduled=$rescheduled, rescheduledFromDt=$rescheduledFromDt, ref=$ref,
 $sql2 notes='$notes'
 WHERE id=$id
 EOF;
