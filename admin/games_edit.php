@@ -59,7 +59,7 @@ EOF;
   $v3 = $_POST['v3']; if($v3 == '') $v3=NULL;
   $notes = $_POST['notes'];
   $rescheduled = $_POST['rescheduled'];
-  if($rescheduled != 1 && !empty($_POST['rescheduledFromDt'])) {
+  if($rescheduled == 1 && !empty($_POST['rescheduledFromDt'])) {
     $rescheduledFromDt = $rescheduledFromDtArray[2].'-'.$rescheduledFromDtArray[0].'-'.$rescheduledFromDtArray[1]; 
   } else {
     $rescheduledFromDt=NULL;

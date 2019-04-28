@@ -177,7 +177,7 @@ if($result=dbquery($sql)) {
 
     if($rescheduled==1 && !empty($rescheduledFromDt)) {
       $rescheduledFromDtArray = explode('-',$rescheduledFromDt);
-      $dt += '*<br>('.$rescheduledFromDtArray[1].'/'.$rescheduledFromDtArray[2].')';
+      $dt .= '*<br>('.$rescheduledFromDtArray[1].'/'.$rescheduledFromDtArray[2].')';
     }
 
     $ref_html = ($ref_name ? "($ref_name)" : "");
