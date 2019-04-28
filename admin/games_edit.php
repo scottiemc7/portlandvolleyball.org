@@ -102,7 +102,7 @@ EOF;
 
   $sql=<<<EOF
 UPDATE games
-SET dt='$dt', tm='$tm', gym=$gym, home=$home, visitor=$visitor, edited=$edited, rescheduled=$rescheduled, rescheduledFromDt=$rescheduledFromDt, ref=$ref,
+SET dt='$dt', tm='$tm', gym=$gym, home=$home, visitor=$visitor, edited=$edited, rescheduled=$rescheduled, rescheduledFromDt='$rescheduledFromDt', ref=$ref,
 $sql2 notes='$notes'
 WHERE id=$id
 EOF;
