@@ -175,7 +175,7 @@ if($result=dbquery($sql)) {
       $game_class .= ' schedule-table__row--edited';
     }
 
-    if(!empty($rescheduledFromDt)) {
+    if($rescheduled==1 && !empty($rescheduledFromDt)) {
       $rescheduledFromDtArray = explode('-',$rescheduledFromDt);
       $dt += '*<br>('.$rescheduledFromDtArray[1].'/'.$rescheduledFromDtArray[2].')';
     }

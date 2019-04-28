@@ -33,7 +33,7 @@ if ($_POST['home'] != "") {
 EOF;
   }
   
-  if(!empty($_POST['rescheduledFromDt'])) {
+  if($_POST['rescheduled'] == 1 && !empty($_POST['rescheduledFromDt'])) {
     $rescheduledFromDtArray = explode('/',$_POST['rescheduledFromDt']);
     if(!checkdate($rescheduledFromDtArray[0], $rescheduledFromDtArray[1], $rescheduledFromDtArray[2])) {
       print <<<EOF
@@ -59,7 +59,7 @@ EOF;
   $v3 = $_POST['v3']; if($v3 == '') $v3=NULL;
   $notes = $_POST['notes'];
   $rescheduled = $_POST['rescheduled'];
-  if(!empty($_POST['rescheduledFromDt'])) {
+  if($rescheduled != 1 && !empty($_POST['rescheduledFromDt'])) {
     $rescheduledFromDt = $rescheduledFromDtArray[2].'-'.$rescheduledFromDtArray[0].'-'.$rescheduledFromDtArray[1]; 
   } else {
     $rescheduledFromDt=NULL;
