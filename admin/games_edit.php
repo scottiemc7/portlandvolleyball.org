@@ -122,7 +122,8 @@ s.hscore1 AS h1, s.vscore1 AS v1,
 s.hscore2 AS h2, s.vscore2 AS v2,
 s.hscore3 AS h3, s.vscore3 AS v3,
 s.notes AS notes,
-s.rescheduled AS rescheduled
+s.rescheduled AS rescheduled,
+s.rescheduledFromDt AS rescheduledFromDt
 FROM ((((games s LEFT JOIN teams ON teams.id=s.visitor)
 LEFT JOIN gyms ON gyms.id=s.gym) LEFT JOIN teams t ON t.id=s.home)
 LEFT JOIN refs on refs.id=s.ref )
@@ -152,6 +153,7 @@ if($result=dbquery($sql)) {
     $v3=$row['v3'];
     $notes=$row['notes'];
     $rescheduled=$row['rescheduled'];
+    $rescheduledFromDt=$row['rescheduledFromDt'];
 
     print <<<EOF
 <form name="editEvent" class="eventForm" method="post">
@@ -205,6 +207,12 @@ EOF;
 
     $dtarray = explode('-',$dt);
     $dat = $dtarray[1].'/'.$dtarray[2].'/'.$dtarray[0];
+    $rescheduledFromDtFormatted = '';
+    if(!empty($rescheduledFromDt)) {
+      $rescheduledFromDtArray = explode('-',$rescheduledFromDt);
+      $rescheduledFromDtFormatted = $rescheduledFromDtArray[1].'/'.$rescheduledFromDtArray[2].'/'.$rescheduledFromDtArray[0];
+    }
+
     $tm_array = explode(':', $tm);
     $tim=sprintf("%d:%02d", $tm_array[0], $tm_array[1]);
 
@@ -279,6 +287,11 @@ EOF;
     </select>
   </td>
 </tr>
+<tr>
+  <td>Rescheduled From Date:</td>
+  <td><input type="text" name="date" value="$rescheduledFromDtFormatted" /></td>
+</tr>
+<tr>
 <tr>
   <td>Referee:</td>
   <td>
