@@ -160,11 +160,11 @@ $statusSummary
     <td><input type="checkbox" name="isSummer" $checked /></td>
   </tr>
   <tr>
-    <td>Doubles fee (summer only)</td>
+    <td>Wednesday Women's Quads</td>
     <td>$ <input type="text" name="doublesFee" value="$doublesFee" size="8" /></td>
   </tr>
   <tr>
-    <td>Sand fee (summer only)</td>
+    <td>Thursday Coed Quads</td>
     <td>$ <input type="text" name="sandFee" value="$sandFee" size="8" /></td>
   </tr>
   <tr>

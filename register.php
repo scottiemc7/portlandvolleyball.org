@@ -24,8 +24,8 @@ $fee=getOne('reg_fee');
 $lateFee=getOne('reg_latefee');
 $payPalFee=getOne('reg_paypalfee');  // 2.9% + $0.30
 $isSummer=getOne('reg_isSummer');
-$doublesFee=getOne('reg_doublesFee');
-$sandFee=getOne('reg_sandFee');
+$wedWomensQuads=getOne('reg_doublesFee');
+$thursCoedQuads=getOne('reg_sandFee');
 $totalFee=$fee;
 
 $aryDeadline = explode('/',$deadline);
@@ -271,13 +271,13 @@ EOF;
     for a free account, and an additional service fee will be charged
     for all online payments.</p>
 
-    <p>Pay for <strong>Single Match</strong> leagues using PayPal by clicking the button below.</p>
+    <p>Pay for <strong>Monday Women's Quads Grass and Tuesday Coed Reverse Quads Grass</strong> leagues using PayPal by clicking the button below.</p>
 
     <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
         <input type="hidden" name="business" value="pva@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Team Fee" />
+        <input type="hidden" name="item_name" value="$season Monday Or Tuesday Team Fee" />
         <input type="hidden" name="amount" value="$amount" />
         <input type="hidden" name="no_shipping" value="1" />
         <input type="hidden" name="cn" value="Your Team Name" />
@@ -286,19 +286,35 @@ EOF;
       </form>
     </p>
 
-    <!--<p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
+    <p>Pay for <strong>Wednesday Women's Quads Sand</strong> league using PayPal by clicking the button below.</p>
+
     <p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Double Header League Team Fee" />
-        <input type="hidden" name="amount" value="$doubleHeaderAmount" />
+        <input type="hidden" name="business" value="pva@portlandvolleyball.org" />
+        <input type="hidden" name="item_name" value="$season Wednesday Sand Team Fee" />
+        <input type="hidden" name="amount" value="$wedWomensQuads" />
         <input type="hidden" name="no_shipping" value="1" />
         <input type="hidden" name="cn" value="Your Team Name" />
         <input type="hidden" name="currency_code" value="USD" />
         <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
       </form>
-    </p>-->
+    </p>
+
+    <p>Pay for <strong>Thursday Coed Quads Sand</strong> league using PayPal by clicking the button below.</p>
+
+    <p>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_xclick" />
+        <input type="hidden" name="business" value="pva@portlandvolleyball.org" />
+        <input type="hidden" name="item_name" value="$season Thursday Sand Team Fee" />
+        <input type="hidden" name="amount" value="$thursCoedQuads" />
+        <input type="hidden" name="no_shipping" value="1" />
+        <input type="hidden" name="cn" value="Your Team Name" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
+      </form>
+    </p>
   </li>
 </ul>
 </p>
@@ -354,43 +370,50 @@ EOF;
 <p><strong>If you have already registered, but have not yet paid:</strong></p>
 
 
-  <div class="row">
-    <!--<div class="col-xs-4">
-      Mail your check to:<br/>
-      Portland Volleyball Association<br/>
-      PO Box 92122<br/>
-      Portland, OR 97292<br/>
-      <em>Make sure to write the team name on your check.</em>
-    </div>-->
-    <div class="col-xs-4">
-      Pay for <strong>Single Match</strong> leagues using PayPal by clicking the button below.
-      <p>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="pva@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Team Fee" />
-        <input type="hidden" name="amount" value="$amount" />
-        <input type="hidden" name="no_shipping" value="1" />
-        <input type="hidden" name="cn" value="Your Team Name" />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
-      </form>
-      </p>
-    </div>
-    <div class="col-xs-4">
-      <!--<p>Pay for <strong>Doubleheader</strong> leagues using PayPal by clicking <em>this</em> button.</p>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_xclick" />
-        <input type="hidden" name="business" value="info@portlandvolleyball.org" />
-        <input type="hidden" name="item_name" value="$season Double Header League Team Fee" />
-        <input type="hidden" name="amount" value="$doubleHeaderAmount" />
-        <input type="hidden" name="no_shipping" value="1" />
-        <input type="hidden" name="cn" value="Your Team Name" />
-        <input type="hidden" name="currency_code" value="USD" />
-        <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
-      </form>-->
-    </div>
-  </div>
+<p>Pay for <strong>Monday Women's Quads Grass and Tuesday Coed Reverse Quads Grass</strong> leagues using PayPal by clicking the button below.</p>
+
+<p>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_xclick" />
+    <input type="hidden" name="business" value="pva@portlandvolleyball.org" />
+    <input type="hidden" name="item_name" value="$season Monday Or Tuesday Team Fee" />
+    <input type="hidden" name="amount" value="$amount" />
+    <input type="hidden" name="no_shipping" value="1" />
+    <input type="hidden" name="cn" value="Your Team Name" />
+    <input type="hidden" name="currency_code" value="USD" />
+    <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
+  </form>
+</p>
+
+<p>Pay for <strong>Wednesday Women's Quads Sand</strong> league using PayPal by clicking the button below.</p>
+
+<p>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_xclick" />
+    <input type="hidden" name="business" value="pva@portlandvolleyball.org" />
+    <input type="hidden" name="item_name" value="$season Wednesday Sand Team Fee" />
+    <input type="hidden" name="amount" value="$wedWomensQuads" />
+    <input type="hidden" name="no_shipping" value="1" />
+    <input type="hidden" name="cn" value="Your Team Name" />
+    <input type="hidden" name="currency_code" value="USD" />
+    <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
+  </form>
+</p>
+
+<p>Pay for <strong>Thursday Coed Quads Sand</strong> league using PayPal by clicking the button below.</p>
+
+<p>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_xclick" />
+    <input type="hidden" name="business" value="pva@portlandvolleyball.org" />
+    <input type="hidden" name="item_name" value="$season Thursday Sand Team Fee" />
+    <input type="hidden" name="amount" value="$thursCoedQuads" />
+    <input type="hidden" name="no_shipping" value="1" />
+    <input type="hidden" name="cn" value="Your Team Name" />
+    <input type="hidden" name="currency_code" value="USD" />
+    <input type="image" src="https://www.paypal.com/images/x-click-but02.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast and secure!" />
+  </form>
+</p>
 
 <form name="register" method="post" style="border: 1px solid #aaaaaa; padding: 40px; margin-top: 10px;">
 <table>
