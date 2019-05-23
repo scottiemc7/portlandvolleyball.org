@@ -487,9 +487,8 @@ EOF;
       ON l.id = r.league
       WHERE l.active = 1
       AND (r.registrations IS NULL OR r.registrations < l.cap)
+      AND (name LIKE \'%Grass%\' OR name LIKE \'%Sand%\')
       ORDER BY l.name';
-
-      //AND (name LIKE \'%Grass%\' OR name LIKE \'%Sand%\')
 
     if($result=dbquery($sql)) {
       while($row=mysqli_fetch_assoc($result)) {
