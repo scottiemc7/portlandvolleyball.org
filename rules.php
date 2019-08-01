@@ -13,10 +13,15 @@
     <a href="/pvaoutdoorrules.php">PVA Outdoor Rules</a>
   </li>
   <li>
-    <a href="/assets/2015_17DCRindoor.pdf">USA Volleyball Indoor Rules</a>
+    <!-- <a href="/assets/2015_17DCRindoor.pdf">USA Volleyball Indoor Rules</a> -->
+    <a href="https://www.volleyballreftraining.com/rules_interpretations_indoor_dcr.php">USA Volleyball Indoor Rules</a>
   </li>
   <li>
-    <a href="/assets/2015_17DCRbeach.pdf">USA Volleyball Outdoor Rules</a>
+    <!-- <a href="/assets/2015_17DCRbeach.pdf">USA Volleyball Outdoor Rules</a> -->
+    <a href="https://volleyballreftraining.com/rules_interpretations_beach_dcr.php">USA Volleyball Outdoor Rules</a>
+  </li>
+  <li>
+    <a href="https://www.vbref.org/ref/ODRULDIF.HTM">USA Volleyball Significant Rules Differences - Indoor vs. Outdoor</a>
   </li>
   <li>
     <a href="/assets/pva_bylaws.pdf" target="_blank">PVA Bylaws</a>

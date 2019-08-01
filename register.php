@@ -14,9 +14,6 @@ if($error!=="") {
 
 <?php
 
-
-
-
 $season=getOne('reg_season');
 $deadline=getOne('reg_deadline');
 $lateDeadline=getOne('reg_latedeadline');
