@@ -14,7 +14,7 @@
   </li>
   <li>
     <!-- <a href="/assets/2015_17DCRindoor.pdf">USA Volleyball Indoor Rules</a> -->
-    <a href="https://www.volleyballreftraining.com/rules_interpretations_indoor_dcr.php">USA Volleyball Indoor Rules</a>
+    <a href="https://www.teamusa.org/-/media/USA_Volleyball/Documents/AboutUSAV/2019-2021-USA-Volleyball-Indoor-Rules-Book-Final.pdf?la=en&hash=F0C8E72751B2604CAC8CA1C797B3A2977EBBE60E">USA Volleyball Indoor Rules</a>
   </li>
   <li>
     <!-- <a href="/assets/2015_17DCRbeach.pdf">USA Volleyball Outdoor Rules</a> -->
