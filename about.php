@@ -24,7 +24,7 @@
           <th>Title</th>
         </tr>
         <tr>
-          <td>Carley Dirks</td>
+          <td>Kristie Hopkins</td>
           <td>President</td>
         </tr>
         <tr>
@@ -36,27 +36,31 @@
           <td>Treasurer</td>
         </tr>
         <tr>
-          <td>Ronda Johnson</td>
+          <td>Penny Werner</td>
           <td>Secretary</td>
         </tr>
         <tr>
-          <td>Lisa Walter</td>
+          <td>Lisa Kent</td>
           <td>Referee-in-Chief</td>
         </tr>
         <tr>
-          <td>Michelle Baldwin</td>
-          <td>Executive Assistant</td>
+          <td>Carley Dirks</td>
+          <td>Member at Large</td>
         </tr>
         <tr>
-          <td>Harley Combs</td>
+          <td>Ronda Johnson</td>
           <td>Member at Large</td>
         </tr>
         <tr>
           <td>Scott McClure</td>
+          <td>Webmaster / Member at Large</td>
+        </tr>
+        <tr>
+          <td>Erin Clougherty</td>
           <td>Member at Large</td>
         </tr>
         <tr>
-          <td>Meghan Mulkey</td>
+          <td>Melissa Johnsen</td>
           <td>Member at Large</td>
         </tr>
     </table>
