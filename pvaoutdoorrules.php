@@ -31,7 +31,8 @@
 <ul>
   <li>Men must take off behind 10 foot line to hit a ball with a downward flight</li>
   <li>Men may contact the ball in front of the 10 foot line as long as it has an upward flight</li>
-  <li>Men may not block unless ball stays on blocker's side of net (i.e. soft block) - counts as the first touch</li>
+  <li>Men may not block women unless the ball stays on blocker's side of net (i.e. soft block) - counts as the first touch</li>
+  <li>Men may block other men</li>
   <li>No woman touch rule for multiple touches</li>
 </ul>
 </p>
