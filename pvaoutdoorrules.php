@@ -4,6 +4,8 @@
 <p>
 <i>Outdoor Rules for Sand and Grass Leagues</i><br />
 <ul>
+  <li>Home team chooses serve or recieve</li>
+  <li>Visitor team chooses the game ball</li>
   <li>Rally scoring with 2 sets to 21 points (no cap, win by 2) and third set to 15 (no cap, win by 2)</li>
   <li>Sets 1 &amp; 2 switch sides every 7 points and set 3 switch sides every 5 points</li>
   <li>First and third sets begin with a coin toss (or ball spin or ...) to determine which team gets first choice of serve or side</li>
