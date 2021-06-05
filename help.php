@@ -17,8 +17,8 @@
   <li>Read the health questionnaire and click 'I Agree'</li>
   <li>Show your check-in screen to the referee on site before stepping on the court.</li>
 
-  <img src="/images/HealthQuestions.png" height="100px">
-  <img src="/images/CheckIn.png">
+  <img src="/images/HealthQuestions.png" height="300px">
+  <img src="/images/CheckIn.png" height="300px">
 </ol>
 
 <?php include("footer.html.php"); ?>
