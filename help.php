@@ -15,8 +15,9 @@
 
   <li>Sign in to your account if you're prompted to.</li>
   <li>Read the health questionnaire and click 'I Agree'</li>
-  <img src="/images/HealthQuestions.png">
   <li>Show your check-in screen to the referee on site before stepping on the court.</li>
+
+  <img src="/images/HealthQuestions.png" height="100px">
   <img src="/images/CheckIn.png">
 </ol>
 
