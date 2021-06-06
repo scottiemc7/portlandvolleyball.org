@@ -75,6 +75,9 @@
           <li>
             <a href="/contact.php">Contact</a>
           </li>
+          <li>
+            <a href="/checkin.php">COVID Check-In</a>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
             <ul class="dropdown-menu">
