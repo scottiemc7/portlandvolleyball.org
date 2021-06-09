@@ -52,7 +52,7 @@ if(! $qryLeagues=dbquery($sql)) {
     		</p>
 
     		<p>
-    		  For scheduling questions, contact Michelle Baldwin at
+    		  For scheduling questions, contact Kimberly Minguez at
     		  <script language="javascript">
     			document.write('<a href="mailto:' + getE('info', 'portlandvolleyball.org') + '">' + getE('info', 'portlandvolleyball.org') + '</a>.</p>');
     		</script>
