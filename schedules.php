@@ -113,6 +113,7 @@ mysqli_free_result($qryLeagues);
 	<tr>
 		<th>Date</th>
 		<th>Time</th>
+    <th>Court</th>
 		<th>Home</th>
 		<th>Visitor</th>
 		<th>Location (Ref)</th>
@@ -187,6 +188,7 @@ if($result=dbquery($sql)) {
 <tr class="$game_class">
   <td>$dt</td>
   <td>$tm</td>
+  <td>$court</td>
   <td>$home</td>
   <td>$visitor</td>
   <td><a href="/gyms.php?gym=$gymID">$gym</a> $ref_html</td>
