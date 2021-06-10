@@ -173,7 +173,7 @@ if($result=dbquery($sql)) {
     $notes=$row['notes'];
     $rescheduled=$row['rescheduled'];
     $rescheduledFromDt=$row['rescheduledFromDt'];
-    $court=$row['court']
+    $court=$row['court'];
 
     print <<<EOF
 <form name="editEvent" class="eventForm" method="post">
