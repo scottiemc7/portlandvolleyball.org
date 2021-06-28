@@ -1,5 +1,5 @@
 <?php
-if(isset($_COOKIE['ScheduleLogin']))
+if(isset($_COOKIE['ScheduleLoginSummer']))
 {
     include 'schedules_secure.php';
 }
@@ -9,7 +9,7 @@ else
 
     if($pass == "pvasummer123")
     {
-        setcookie('ScheduleLogin', md5($_POST['pass']));
+        setcookie('ScheduleLoginSummer', md5($_POST['pass']));
         header("Location: $_SERVER[PHP_SELF]");
     }
     else if(isset($_POST))
