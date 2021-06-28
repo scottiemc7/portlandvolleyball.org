@@ -10,7 +10,7 @@ else
     if($pass == "pvasummer123")
     {
         setcookie('ScheduleLogin', md5($_POST['pass']));
-
+        header("Location: $_SERVER[PHP_SELF]");
     }
     else if(isset($_POST))
     {?>
