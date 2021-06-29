@@ -1,7 +1,7 @@
 <?php
 if(isset($_COOKIE['ScheduleLoginSummer']))
 {
-    include 'schedules_secure.php';
+    include 'gyms_secure.php';
 }
 else
 {
