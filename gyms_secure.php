@@ -1,92 +1,23 @@
 <?php
-
-require_once 'lib/mysql.php';
-include 'header.html.php';
-
-
-print <<<EOF
-<div id="content" class="container">
-<h1>PVA Gyms / Playing Locations</h1>
-
-EOF;
-
-$sql=<<<EOF
-SELECT * FROM gyms ORDER BY name
-EOF;
-
-if(isset($_GET["gym"])) {
-  $gym=preg_replace('/[^\d]/','',$_GET['gym']);
-  if(is_numeric($gym)) {
-    print "<p>To view a list of all gyms, <a href=\"/gyms.php\">click here</a>.</p>";
-    $sql=<<<EOF
-SELECT * FROM gyms WHERE id=$gym
-EOF;
-  }
+if(isset($_COOKIE['ScheduleLoginSummer']))
+{
+    include 'gyms_secure.php';
 }
+else
+{
+    $pass = $_POST['pass'];
 
-$error=dbinit();
-if($error!=="") {
-  print "***ERROR*** dbinit: $error\n";
-  exit;
-}
-
-if($result=dbquery($sql)) {
-
-  $row_cnt=mysqli_num_rows($result);
-  if($row_cnt==0) {
-    print "<div style=\"\"width: 750px; font-weight: bold; text-align: center;\"\">Nothing to display.</div>";
-  }else{
-
-    print <<<EOF
-<div class="table-responsive">
-<table class="table table-striped">
-<tr>
-  <th width="20%">Facility</th>
-  <th width="80%">Directions</th>
-</tr>
-
-EOF;
-
-    while($row=mysqli_fetch_assoc($result)) {
-      $id=$row['id'];
-      $name=$row['name'];
-      $address=$row['address'];
-      $directions=$row['directions'];
-      if(empty($directions)) {
-        $directions="&nbsp;";
-      }
-
-      $url="";
-      if($row['map']!=NULL) {
-	$map=$row['map'];
-        $url=<<<EOF
-<a href="$map">map</a>
-EOF;
-      }
-
-      print <<<EOF
-<tr>
-  <td nowrap valign="top"><b>$name</b><br />$address<br />$url</td>
-</td>
-  <td valign="top">$directions</td>
-</tr>
-EOF;
-
+    if($pass == "pvasummer123")
+    {
+        setcookie('ScheduleLoginSummer', md5($_POST['pass']));
+        header("Location: $_SERVER[PHP_SELF]");
     }
-
-  }
-
-  print "</table></div>\n";
-
-  mysqli_free_result($result);
-}else{
-  $error=dberror();
-  print "***ERROR*** dbquery: Failed query<br />$error\n";
-  exit;
+    else if(isset($_POST))
+    {?>
+        <form method="POST" action="schedules.php">
+        Password <input type="password" name="pass"></input><br/>
+        <input type="submit" name="submit" value="Submit"></input>
+        </form>
+    <?}
 }
-
-dbclose();
-
-include("footer.html.php");
-
 ?>
