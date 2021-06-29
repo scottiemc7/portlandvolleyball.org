@@ -8,10 +8,7 @@
     <div><a href="https://register.portlandvolleyball.org/account/signup">https://register.portlandvolleyball.org/account/signup</a></div>
   </li>
   <li>
-    Scan the QR code at the facility or click on a link here:
-    <div><a href="https://register.portlandvolleyball.org/checkin/facility/2">Delta Park</a></div>
-    <div style="text-decoration:line-through">Brentwood Park</div>
-    <div><a href="https://register.portlandvolleyball.org/checkin/facility/4">Flavel Park</a></div>
+    Scan the QR code at the facility or click on a link found <a href="https://register.portlandvolleyball.org/">on your player dashboard</a>
   </li>
   <li>Sign in to your account if you're prompted to.</li>
   <li>Read the health questionnaire and click 'I Agree'.</li>
