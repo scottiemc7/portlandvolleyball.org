@@ -41,7 +41,7 @@
         </tr>
         <tr>
           <td>Lisa Kent</td>
-          <td>Referee-in-Chief</td>
+          <td>Lead Official</td>
         </tr>
         <tr>
           <td>Carley Dirks</td>

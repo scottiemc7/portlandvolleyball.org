@@ -78,6 +78,9 @@
           <li>
             <a href="/checkin.php">COVID Check-In</a>
           </li>
+          <li>
+            <a href="https://register.portlandvolleyball.org">Member Login</a>
+          </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
             <ul class="dropdown-menu">
