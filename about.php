@@ -63,6 +63,14 @@
           <td>Melissa Johnsen</td>
           <td>Member at Large</td>
         </tr>
+        <tr>
+          <td>Laurie Rule</td>
+          <td>Member at Large</td>
+        </tr>
+        <tr>
+          <td>Rylee Glassman</td>
+          <td>Member at Large</td>
+        </tr>
     </table>
 
 <?php include("footer.html.php"); ?>
