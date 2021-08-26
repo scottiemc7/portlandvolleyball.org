@@ -3,9 +3,12 @@
 <h1>Rules &amp; Regulations</h1>
 
 <p >
-  <em>It is the responsibility of each team manager to familiarize his/her team with the league rules.</em>
+  <em>It is the responsibility of each team manager to familiarize their team with the league rules.</em>
 </p>
 <ul>
+  <li>
+    <a href="/covid_protocols.php">COVID Protocols</a>
+  </li>
   <li>
     <a href="/pvarules.php">PVA Policies</a>
   </li>
