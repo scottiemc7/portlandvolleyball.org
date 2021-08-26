@@ -15,6 +15,7 @@
   </p>
   <p>
     <sup>1</sup>The Centers for Disease Control and Prevention (CDC) considers a person to have a fever when they have a measured temperature of at least 100.4 °F [38 °C].
+    <br/>
     <sup>2</sup>The CDC advises that based on existing literature, the incubation period (the time from exposure to development of symptoms) of SARS-CoV-2 and other coronaviruses (e.g. MERS-CoV, SARS-CoV) ranges from 2–14 days.
   </p>
 </div>
