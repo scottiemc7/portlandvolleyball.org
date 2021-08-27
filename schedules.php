@@ -14,12 +14,12 @@
 //     }
 //     else if(isset($_POST))
 //     {
-//   ?>
-//         <form method="POST" action="schedules.php">
-//         Password <input type="password" name="pass"></input><br/>
-//         <input type="submit" name="submit" value="Submit"></input>
-//         </form>
-//     <?
+   ?>
+         <!-- <form method="POST" action="schedules.php">
+         Password <input type="password" name="pass"></input><br/>
+         <input type="submit" name="submit" value="Submit"></input>
+         </form>-->
+     <?
 //      }
 // }
 ?>
