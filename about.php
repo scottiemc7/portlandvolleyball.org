@@ -2,8 +2,9 @@
 <div id="content" class="container">
 
 			<h1>About PVA</h1>
-			<p>Portland Volleyball Association is a nonprofit organization that works in cooperation with Portland Parks and Recreation to bring
-			competitive volleyball to the Portland area.  In addition to Portland City League volleyball, we also
+			<p>Portland Volleyball Association is a nonprofit organization that works to bring
+			competitive volleyball to the Portland area and to promote friendliness and sportspersonship at 
+      different levels of competition in an all-inclusive environment.  In addition to Portland City League volleyball, we also
 			coordinate tournaments and workshops from time to time.</p>
 
 			<p>League play is year-round, broken up into four seasons throughout the year.  During the summer, we offer
@@ -32,7 +33,7 @@
           <td>Vice President</td>
         </tr>
         <tr>
-          <td>Deb Whitehead</td>
+          <td>Samantha Kocher</td>
           <td>Treasurer</td>
         </tr>
         <tr>
