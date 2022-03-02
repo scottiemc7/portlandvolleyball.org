@@ -17,11 +17,11 @@
   </li>
   <li>
     <!-- <a href="/assets/2015_17DCRindoor.pdf">USA Volleyball Indoor Rules</a> -->
-    <a href="https://www.teamusa.org/-/media/USA_Volleyball/Documents/AboutUSAV/2019-2021-USA-Volleyball-Indoor-Rules-Book-Final.pdf?la=en&hash=F0C8E72751B2604CAC8CA1C797B3A2977EBBE60E">USA Volleyball Indoor Rules</a>
+    <a href="https://indd.adobe.com/view/f27fc70f-e33f-4e78-b718-67b4ff2af0e0">USA Volleyball Indoor Rules</a>
   </li>
   <li>
     <!-- <a href="/assets/2015_17DCRbeach.pdf">USA Volleyball Outdoor Rules</a> -->
-    <a href="https://volleyballreftraining.com/rules_interpretations_beach_dcr.php">USA Volleyball Outdoor Rules</a>
+    <a href="https://indd.adobe.com/view/d11889fd-5c51-4551-a6b4-b545023bf4df">USA Volleyball Outdoor Rules</a>
   </li>
   <li>
     <a href="https://www.vbref.org/ref/ODRULDIF.HTM">USA Volleyball Significant Rules Differences - Indoor vs. Outdoor</a>

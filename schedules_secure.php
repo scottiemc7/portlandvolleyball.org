@@ -49,6 +49,8 @@ if(! $qryLeagues=dbquery($sql)) {
     			Games that have been changed are denoted with a <span style="background-color: #ffff99;">yellow background</span>.
           <br>
     			Games that have been rescheduled are denoted with an asterisk.
+          <br>
+    			Gyms that have mask requirements are denoted with an asterisk.
     		</p>
 
     		<p>
