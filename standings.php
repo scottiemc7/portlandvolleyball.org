@@ -179,7 +179,7 @@ class League {
 		if ($c = $this->winPct($a, $b)) { return $c; }
 		else if ($c = $this->matchPct($a, $b)) { return $c; }
 		else if ($c = $this->head2Head($a, $b)) { return $c; }
-		else if ($c = $this->head2HeadMatchPoints($a, $b)) { return $c; }
+		else if ($c = $this->head2HeadPoints($a, $b)) { return $c; }
 		else if ($c = $this->ptsAllowedOpponent($a, $b)) { return $c; }
 		else if ($c = $this->ptsAllowed($a, $b)) { return $c; }
 		else if ($c = $this->ptsDifferential($a, $b)) { return $c; }
@@ -212,9 +212,9 @@ class League {
 		else { return $ap > $bp ? 1 : -1; }
 	}
 
-	function head2HeadMatchPoints($a, $b) {
-		$ap = $a->getOpponentMatchPoints($b);
-		$bp = $b->getOpponentMatchPoints($a);
+	function head2HeadPoints($a, $b) {
+		$ap = $a->getTotalPoints();
+		$bp = $b->getTotalPoints();
 		if ($ap == $bp) { return 0; }
 		else { return $ap > $bp ? 1 : -1; }
 	}
