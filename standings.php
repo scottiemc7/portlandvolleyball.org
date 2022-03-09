@@ -179,6 +179,7 @@ class League {
 		if ($c = $this->winPct($a, $b)) { return $c; }
 		else if ($c = $this->matchPct($a, $b)) { return $c; }
 		else if ($c = $this->head2Head($a, $b)) { return $c; }
+		else if ($c = $this->head2HeadMatchPoints($a, $b)) { return $c; }
 		else if ($c = $this->ptsAllowedOpponent($a, $b)) { return $c; }
 		else if ($c = $this->ptsAllowed($a, $b)) { return $c; }
 		else if ($c = $this->ptsDifferential($a, $b)) { return $c; }
@@ -207,6 +208,13 @@ class League {
 	function head2Head($a, $b) {
 		$ap = $a->getOpponentWinPct($b);
 		$bp = $b->getOpponentWinPct($a);
+		if ($ap == $bp) { return 0; }
+		else { return $ap > $bp ? 1 : -1; }
+	}
+
+	function head2HeadMatchPoints($a, $b) {
+		$ap = $a->getOpponentMatchPoints($b);
+		$bp = $b->getOpponentMatchPoints($a);
 		if ($ap == $bp) { return 0; }
 		else { return $ap > $bp ? 1 : -1; }
 	}
@@ -390,6 +398,18 @@ EOF;
 		}
 		if ($gamesPlayed == 0) { return 0; }
 		else { return $wins / $gamesPlayed; }
+	}
+
+	function getOpponentMatchPoints($id) {
+		$pts = 0;
+		
+		if (sizeof($this->gamesArray) == 0) { return 0; }
+		foreach($this->gamesArray as $game) {
+			if ($game->opponentId == $id && $game->isCompleted()) {
+				$pts += $game->getOppPoints();
+			}
+		}
+		return $pts;
 	}
 
 	function getPointsAllowedOpponent($id) {
