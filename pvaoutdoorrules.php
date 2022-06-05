@@ -10,7 +10,7 @@
   <li>Sets 1 &amp; 2 switch sides every 7 points and set 3 switch sides every 5 points</li>
   <li>First and third sets begin with a coin toss (or ball spin or ...) to determine which team gets first choice of serve or side</li>
   <li>For the second set, the team that lost the "coin toss" gets first choice of serve or side</li>
-  <li>A block counts as the first touch so only 2 more touches are allowed</li>
+  <li>A block does not count as a touch</li>
   <li>No open hand tips or dinks (cobra or knuckles are allowed)</li>
   <li>Serve receive cannot be with open hands (i.e. set)</li>
   <li>Coed serving order must alternate male and female</li>
