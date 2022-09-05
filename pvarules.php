@@ -56,7 +56,7 @@
 
   <h4>SUBSTITUTIONS</h4>
   <p>
-    Anyone can sub for any team without restrictions (e.g skill level, playoffs, etc.).
+    Anyone can sub for any team without restriction on skill level during regular season play. For playoffs, players cannot sub for a team that is in a lower letter league (i.e. AA/A level players cannot sub for a BB/B or C level team, BB/B level players cannot sub for a C level team). 
   </p>
 
   <h4>LEAGUE LEVELS: (ordered from highest to lowest skills)</h4>
