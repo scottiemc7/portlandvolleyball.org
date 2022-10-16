@@ -45,10 +45,6 @@
           <td>Lead Official</td>
         </tr>
         <tr>
-          <td>Carley Dirks</td>
-          <td>Member at Large</td>
-        </tr>
-        <tr>
           <td>Ronda Johnson</td>
           <td>Member at Large</td>
         </tr>
